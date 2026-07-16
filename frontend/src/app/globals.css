@@ -107,3 +107,26 @@ body {
   background: #0a0a0a;
   color: #ffffff;
 }
+
+.tok-key {
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+.tok-string {
+  color: #1d6f42;
+}
+
+.tok-number {
+  color: #a15c00;
+}
+
+.tok-boolean {
+  color: #6b21a8;
+  font-weight: 500;
+}
+
+.tok-null {
+  color: #999999;
+  font-style: italic;
+}

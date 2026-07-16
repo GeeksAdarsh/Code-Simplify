@@ -47,16 +47,76 @@ export const categories: Category[] = [
         "live",
         ["json formatter", "json beautifier", "pretty print json", "format json online"]
       ),
-      tool("validator", "JSON Validator", "Validate JSON syntax and get precise error locations."),
-      tool("beautifier", "JSON Beautifier", "Beautify JSON with custom indentation."),
-      tool("minifier", "JSON Minifier", "Minify JSON by removing whitespace to reduce payload size."),
-      tool("diff", "JSON Diff", "Compare two JSON documents and highlight the differences."),
-      tool("compare", "JSON Compare", "Compare JSON structures side by side."),
-      tool("viewer", "JSON Viewer", "View and explore JSON documents in a readable layout."),
-      tool("tree-viewer", "JSON Tree Viewer", "Explore JSON as a collapsible, navigable tree."),
-      tool("to-xml", "JSON to XML", "Convert JSON data into XML markup."),
-      tool("to-yaml", "JSON to YAML", "Convert JSON data into YAML."),
-      tool("to-csv", "JSON to CSV", "Convert JSON arrays into CSV spreadsheets."),
+      tool(
+        "validator",
+        "JSON Validator",
+        "Validate JSON syntax instantly and get precise line and column error locations.",
+        "live",
+        ["json validator", "validate json online", "json syntax checker"]
+      ),
+      tool(
+        "beautifier",
+        "JSON Beautifier",
+        "Beautify JSON with custom indentation and optional alphabetical key sorting.",
+        "live",
+        ["json beautifier", "beautify json online", "pretty json"]
+      ),
+      tool(
+        "minifier",
+        "JSON Minifier",
+        "Minify JSON by removing whitespace to reduce payload size for production.",
+        "live",
+        ["json minifier", "minify json online", "compress json"]
+      ),
+      tool(
+        "diff",
+        "JSON Diff",
+        "Compare two JSON documents and get a detailed, path-by-path list of differences.",
+        "live",
+        ["json diff", "compare json files", "json diff checker"]
+      ),
+      tool(
+        "compare",
+        "JSON Compare",
+        "Compare two JSON objects side by side in a clear match/differs table.",
+        "live",
+        ["json compare", "json comparison tool"]
+      ),
+      tool(
+        "viewer",
+        "JSON Viewer",
+        "View JSON with syntax highlighting for keys, strings, numbers, and booleans.",
+        "live",
+        ["json viewer", "json syntax highlighter"]
+      ),
+      tool(
+        "tree-viewer",
+        "JSON Tree Viewer",
+        "Explore deeply nested JSON as a collapsible, navigable tree structure.",
+        "live",
+        ["json tree viewer", "json tree explorer"]
+      ),
+      tool(
+        "to-xml",
+        "JSON to XML",
+        "Convert JSON data into well-formed XML markup instantly, right in your browser.",
+        "live",
+        ["json to xml converter", "convert json to xml"]
+      ),
+      tool(
+        "to-yaml",
+        "JSON to YAML",
+        "Convert JSON data into clean, properly indented YAML.",
+        "live",
+        ["json to yaml converter", "convert json to yaml"]
+      ),
+      tool(
+        "to-csv",
+        "JSON to CSV",
+        "Convert a JSON array of objects into a downloadable CSV spreadsheet.",
+        "live",
+        ["json to csv converter", "convert json to csv"]
+      ),
       tool("to-excel", "JSON to Excel", "Convert JSON data into an Excel workbook."),
       tool("to-java", "JSON to Java", "Generate Java POJO classes from JSON."),
       tool("to-csharp", "JSON to C#", "Generate C# classes from JSON."),
