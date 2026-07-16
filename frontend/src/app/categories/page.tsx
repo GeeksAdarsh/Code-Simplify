@@ -1,0 +1,49 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+import { categories, siteConfig, toolHref } from "@/config/tools";
+
+export const metadata: Metadata = {
+  title: "All Tools",
+  description: `Browse every free online developer tool on ${siteConfig.name}, organized by category: JSON, XML, YAML, SQL, security, text, and more.`,
+  alternates: { canonical: "/categories" },
+};
+
+export default function CategoriesPage() {
+  return (
+    <div className="container-page py-12">
+      <h1 className="text-3xl font-semibold tracking-tight">All tools</h1>
+      <p className="mt-2 max-w-2xl text-muted">
+        Every tool on {siteConfig.name}, organized by category. New tools ship regularly &mdash; bookmark this
+        page.
+      </p>
+
+      <div className="mt-10 space-y-12">
+        {categories.map((category) => (
+          <section key={category.slug} id={category.slug}>
+            <div className="mb-4 flex items-center gap-2">
+              <span className="text-xl">{category.icon}</span>
+              <h2 className="text-lg font-semibold">
+                <Link href={`/${category.slug}`} className="hover:underline">
+                  {category.title}
+                </Link>
+              </h2>
+              <span className="text-xs text-muted">{category.tools.length} tools</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {category.tools.map((tool) => (
+                <Link
+                  key={tool.slug}
+                  href={toolHref(category.slug, tool.slug)}
+                  className="badge gap-1.5 rounded-lg px-3 py-1.5 text-xs font-normal normal-case tracking-normal transition-colors hover:border-foreground"
+                >
+                  {tool.title}
+                  {tool.status === "soon" && <span className="text-muted">&middot; soon</span>}
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+}
