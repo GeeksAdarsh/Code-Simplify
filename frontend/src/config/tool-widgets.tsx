@@ -9,6 +9,22 @@ import { JsonTreeViewerTool } from "@/components/tools/json-tree-viewer-tool";
 import { JsonToXmlTool } from "@/components/tools/json-to-xml-tool";
 import { JsonToYamlTool } from "@/components/tools/json-to-yaml-tool";
 import { JsonToCsvTool } from "@/components/tools/json-to-csv-tool";
+import { JsonToExcelTool } from "@/components/tools/json-to-excel-tool";
+import { JsonToJavaTool } from "@/components/tools/json-to-java-tool";
+import { JsonToCSharpTool } from "@/components/tools/json-to-csharp-tool";
+import { JsonToPhpTool } from "@/components/tools/json-to-php-tool";
+import { JsonToTypeScriptTool } from "@/components/tools/json-to-typescript-tool";
+import { JsonToKotlinTool } from "@/components/tools/json-to-kotlin-tool";
+import { JsonToDartTool } from "@/components/tools/json-to-dart-tool";
+import { JsonEscapeUnescapeTool } from "@/components/tools/json-escape-unescape-tool";
+import { XmlFormatterTool } from "@/components/tools/xml-formatter-tool";
+import { XmlValidatorTool } from "@/components/tools/xml-validator-tool";
+import { XmlMinifierTool } from "@/components/tools/xml-minifier-tool";
+import { XmlToJsonTool } from "@/components/tools/xml-to-json-tool";
+import { XmlToCsvTool } from "@/components/tools/xml-to-csv-tool";
+import { XmlViewerTool } from "@/components/tools/xml-viewer-tool";
+import { XmlCompareTool } from "@/components/tools/xml-compare-tool";
+import { XPathTesterTool } from "@/components/tools/xpath-tester-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -26,6 +42,22 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "json/to-xml": () => <JsonToXmlTool />,
   "json/to-yaml": () => <JsonToYamlTool />,
   "json/to-csv": () => <JsonToCsvTool />,
+  "json/to-excel": () => <JsonToExcelTool />,
+  "json/to-java": () => <JsonToJavaTool />,
+  "json/to-csharp": () => <JsonToCSharpTool />,
+  "json/to-php": () => <JsonToPhpTool />,
+  "json/to-typescript": () => <JsonToTypeScriptTool />,
+  "json/to-kotlin": () => <JsonToKotlinTool />,
+  "json/to-dart": () => <JsonToDartTool />,
+  "json/escape-unescape": () => <JsonEscapeUnescapeTool />,
+  "xml/formatter": () => <XmlFormatterTool />,
+  "xml/validator": () => <XmlValidatorTool />,
+  "xml/minifier": () => <XmlMinifierTool />,
+  "xml/to-json": () => <XmlToJsonTool />,
+  "xml/to-csv": () => <XmlToCsvTool />,
+  "xml/viewer": () => <XmlViewerTool />,
+  "xml/compare": () => <XmlCompareTool />,
+  "xml/xpath-tester": () => <XPathTesterTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

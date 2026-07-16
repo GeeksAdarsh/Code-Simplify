@@ -81,7 +81,7 @@ function csvEscape(value: unknown): string {
   return str;
 }
 
-export function jsonToCsv(data: unknown): string {
+export function flattenJsonRows(data: unknown): { headers: string[]; rows: Record<string, unknown>[] } {
   const rows: unknown[] = Array.isArray(data) ? data : [data];
   const flatRows = rows.map((row) => {
     const flat: Record<string, unknown> = {};
@@ -96,8 +96,39 @@ export function jsonToCsv(data: unknown): string {
     }
   }
 
-  const headerLine = headers.map(csvEscape).join(",");
-  const lines = flatRows.map((row) => headers.map((h) => csvEscape(row[h])).join(","));
+  return { headers, rows: flatRows };
+}
 
+export function jsonToCsv(data: unknown): string {
+  const { headers, rows } = flattenJsonRows(data);
+  const headerLine = headers.map(csvEscape).join(",");
+  const lines = rows.map((row) => headers.map((h) => csvEscape(row[h])).join(","));
   return [headerLine, ...lines].join("\n");
+}
+
+function phpEscapeString(value: string): string {
+  return `'${value.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`;
+}
+
+export function jsonToPhpArray(value: unknown, depth = 0): string {
+  const indent = "    ".repeat(depth + 1);
+  const closingIndent = "    ".repeat(depth);
+
+  if (value === null || value === undefined) return "null";
+  if (typeof value === "boolean") return value ? "true" : "false";
+  if (typeof value === "number") return String(value);
+  if (typeof value === "string") return phpEscapeString(value);
+
+  if (Array.isArray(value)) {
+    if (value.length === 0) return "[]";
+    const items = value.map((item) => `${indent}${jsonToPhpArray(item, depth + 1)}`).join(",\n");
+    return `[\n${items},\n${closingIndent}]`;
+  }
+
+  const entries = Object.entries(value as Record<string, unknown>);
+  if (entries.length === 0) return "[]";
+  const items = entries
+    .map(([key, val]) => `${indent}${phpEscapeString(key)} => ${jsonToPhpArray(val, depth + 1)}`)
+    .join(",\n");
+  return `[\n${items},\n${closingIndent}]`;
 }

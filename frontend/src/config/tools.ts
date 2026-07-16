@@ -117,14 +117,62 @@ export const categories: Category[] = [
         "live",
         ["json to csv converter", "convert json to csv"]
       ),
-      tool("to-excel", "JSON to Excel", "Convert JSON data into an Excel workbook."),
-      tool("to-java", "JSON to Java", "Generate Java POJO classes from JSON."),
-      tool("to-csharp", "JSON to C#", "Generate C# classes from JSON."),
-      tool("to-php", "JSON to PHP", "Convert JSON into a PHP array."),
-      tool("to-typescript", "JSON to TypeScript", "Generate TypeScript interfaces from JSON."),
-      tool("to-kotlin", "JSON to Kotlin", "Generate Kotlin data classes from JSON."),
-      tool("to-dart", "JSON to Dart", "Generate Dart classes from JSON."),
-      tool("escape-unescape", "JSON Escape/Unescape", "Escape or unescape JSON strings."),
+      tool(
+        "to-excel",
+        "JSON to Excel",
+        "Convert a JSON array of objects into a downloadable Excel (.xlsx) workbook.",
+        "live",
+        ["json to excel converter", "json to xlsx"]
+      ),
+      tool(
+        "to-java",
+        "JSON to Java",
+        "Generate Java POJO classes with getters and setters from JSON.",
+        "live",
+        ["json to java pojo", "json to java class generator"]
+      ),
+      tool(
+        "to-csharp",
+        "JSON to C#",
+        "Generate C# classes with auto-properties from JSON.",
+        "live",
+        ["json to c# class generator", "json to csharp"]
+      ),
+      tool(
+        "to-php",
+        "JSON to PHP",
+        "Convert JSON into a native PHP array literal, ready to paste into your code.",
+        "live",
+        ["json to php array", "json to php converter"]
+      ),
+      tool(
+        "to-typescript",
+        "JSON to TypeScript",
+        "Generate TypeScript interfaces from JSON, including nested types.",
+        "live",
+        ["json to typescript interface", "json to ts type generator"]
+      ),
+      tool(
+        "to-kotlin",
+        "JSON to Kotlin",
+        "Generate Kotlin data classes from JSON, including nested types.",
+        "live",
+        ["json to kotlin data class"]
+      ),
+      tool(
+        "to-dart",
+        "JSON to Dart",
+        "Generate Dart classes with fromJson factories from JSON, ready for Flutter.",
+        "live",
+        ["json to dart class", "json to flutter model"]
+      ),
+      tool(
+        "escape-unescape",
+        "JSON Escape/Unescape",
+        "Escape raw text into a safe JSON string literal, or unescape one back to plain text.",
+        "live",
+        ["json escape", "json unescape", "escape json string"]
+      ),
     ],
   },
   {
@@ -133,14 +181,62 @@ export const categories: Category[] = [
     icon: "\u{1F4D1}",
     description: "Format, validate, minify, view, compare, and convert XML documents online.",
     tools: [
-      tool("formatter", "XML Formatter", "Format and indent XML into a clean, readable structure."),
-      tool("validator", "XML Validator", "Validate XML syntax and well-formedness."),
-      tool("minifier", "XML Minifier", "Minify XML by stripping whitespace."),
-      tool("to-json", "XML to JSON", "Convert XML documents into JSON."),
-      tool("to-csv", "XML to CSV", "Convert XML data into CSV."),
-      tool("viewer", "XML Viewer", "View XML in a readable, syntax-highlighted layout."),
-      tool("compare", "XML Compare", "Compare two XML documents and highlight differences."),
-      tool("xpath-tester", "XPath Tester", "Test XPath expressions against XML documents."),
+      tool(
+        "formatter",
+        "XML Formatter",
+        "Format and indent XML into a clean, readable structure with validation.",
+        "live",
+        ["xml formatter", "format xml online", "xml beautifier"]
+      ),
+      tool(
+        "validator",
+        "XML Validator",
+        "Validate XML well-formedness instantly and get clear parser error messages.",
+        "live",
+        ["xml validator", "validate xml online", "xml syntax checker"]
+      ),
+      tool(
+        "minifier",
+        "XML Minifier",
+        "Minify XML by stripping whitespace to reduce payload size.",
+        "live",
+        ["xml minifier", "minify xml online", "compress xml"]
+      ),
+      tool(
+        "to-json",
+        "XML to JSON",
+        "Convert XML documents into JSON, with attributes and repeated elements handled automatically.",
+        "live",
+        ["xml to json converter", "convert xml to json"]
+      ),
+      tool(
+        "to-csv",
+        "XML to CSV",
+        "Convert XML data with repeated elements into a downloadable CSV spreadsheet.",
+        "live",
+        ["xml to csv converter", "convert xml to csv"]
+      ),
+      tool(
+        "viewer",
+        "XML Viewer",
+        "View XML with syntax highlighting for tags, attributes, and comments.",
+        "live",
+        ["xml viewer", "xml syntax highlighter"]
+      ),
+      tool(
+        "compare",
+        "XML Compare",
+        "Compare two XML documents and get a detailed, path-by-path list of differences.",
+        "live",
+        ["xml compare", "compare xml files", "xml diff"]
+      ),
+      tool(
+        "xpath-tester",
+        "XPath Tester",
+        "Test XPath expressions against an XML document and see matching nodes instantly.",
+        "live",
+        ["xpath tester", "xpath evaluator online"]
+      ),
     ],
   },
   {

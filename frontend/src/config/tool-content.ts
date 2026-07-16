@@ -385,6 +385,537 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+
+  "json/to-excel": {
+    howToUse: [
+      "Paste a JSON array of objects into the input box.",
+      "A live preview table appears on the right so you can check the columns before exporting.",
+      "Click \"Download Excel (.xlsx)\" to save it as a real, spreadsheet-app-compatible workbook.",
+      "Open the downloaded file directly in Excel, Google Sheets, or Numbers.",
+    ],
+    features: [
+      "Generates a genuine .xlsx workbook, not just a renamed CSV.",
+      "Live preview table before you download.",
+      "Automatically flattens nested objects into columns.",
+      "Runs entirely in your browser \u2014 your data is never uploaded to a server.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Is this a real Excel file or just a CSV renamed to .xlsx?",
+        answer:
+          "It's a genuine Excel workbook (.xlsx) generated in your browser, with proper worksheet structure \u2014 not a CSV with a different extension.",
+      },
+      {
+        question: "Can I export more than one sheet?",
+        answer:
+          "Currently this tool exports your JSON to a single worksheet named \"Sheet1\". For multi-sheet workbooks, export each dataset separately and combine them in Excel.",
+      },
+      {
+        question: "What happens with deeply nested JSON?",
+        answer:
+          "Nested objects are flattened into dot-notation columns (e.g. address.city), the same way as the JSON to CSV tool, so every value ends up in its own column.",
+      },
+    ],
+  },
+
+  "json/to-java": {
+    howToUse: [
+      "Paste a sample JSON object into the input box.",
+      "Set the root class name (defaults to \"Root\").",
+      "Java POJO classes \u2014 including nested static-style classes for nested objects \u2014 are generated automatically with private fields and public getters/setters.",
+      "Copy the code or download it as a .java file.",
+    ],
+    features: [
+      "Infers Java types automatically: String, Integer, Double, Boolean, and List<T>.",
+      "Generates a separate class for every nested object in your JSON.",
+      "Produces idiomatic POJOs with encapsulated fields and standard getters/setters.",
+      "Custom root class naming.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does it use Jackson or Gson annotations?",
+        answer:
+          "No, the generated POJOs are plain Java classes with standard getters and setters. Most JSON libraries (Jackson, Gson) can map JSON to these classes automatically without any annotations, using field name matching.",
+      },
+      {
+        question: "What Java type is used for numbers?",
+        answer:
+          "Whole numbers become Integer and decimal numbers become Double. If you need long or BigDecimal precision, adjust the generated field types manually.",
+      },
+      {
+        question: "How are nested objects handled?",
+        answer:
+          "Each nested object becomes its own top-level class named after the JSON key (e.g. an \"address\" field becomes a class called Address), referenced from the parent class.",
+      },
+    ],
+  },
+
+  "json/to-csharp": {
+    howToUse: [
+      "Paste a sample JSON object into the input box.",
+      "Set the root class name (defaults to \"Root\").",
+      "C# classes with auto-implemented properties are generated for the root object and every nested object.",
+      "Copy the code or download it as a .cs file.",
+    ],
+    features: [
+      "Infers C# types automatically: string, int, double, bool, and List<T>.",
+      "Generates auto-property syntax (public string Name { get; set; }).",
+      "A dedicated class for every nested object.",
+      "Custom root class naming.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Will this work directly with System.Text.Json or Newtonsoft.Json?",
+        answer:
+          "Yes. Both libraries can deserialize JSON into these classes by default, matching properties by name (case-insensitively for System.Text.Json with the right options).",
+      },
+      {
+        question: "Are the properties nullable?",
+        answer:
+          "The generated properties use non-nullable value types (int, double, bool) by default. If a field can be null in your data, change the type to a nullable form (e.g. int?) manually.",
+      },
+      {
+        question: "How are JSON arrays represented?",
+        answer:
+          "Arrays are generated as List<T> from System.Collections.Generic, where T is the inferred element type (a primitive or another generated class).",
+      },
+    ],
+  },
+
+  "json/to-php": {
+    howToUse: [
+      "Paste your JSON into the input box on the left.",
+      "The equivalent native PHP array (using short array syntax) is generated automatically on the right.",
+      "Copy the code or download it as a .php file.",
+      "Paste the array directly into your PHP source, or adapt it into a function return value.",
+    ],
+    features: [
+      "Uses modern PHP short array syntax ([...]) instead of the older array(...) syntax.",
+      "Correctly handles nested arrays, associative arrays, strings, numbers, booleans, and null.",
+      "Properly escapes single quotes and backslashes in strings.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Does this generate PHP classes instead of arrays?",
+        answer:
+          "No \u2014 this tool converts JSON into a plain PHP array literal, which is the most common way to work with JSON data in PHP. If you need typed classes, use a PHP DTO generator or write them manually based on the structure.",
+      },
+      {
+        question: "Why short array syntax ([...]) instead of array(...)?",
+        answer:
+          "Short array syntax has been standard in PHP since 5.4 and is used almost universally in modern PHP code. It's more concise and equally valid.",
+      },
+      {
+        question: "Are JSON object keys preserved exactly?",
+        answer:
+          "Yes. JSON object keys become PHP associative array keys (as single-quoted strings), preserving the exact key names from your JSON.",
+      },
+    ],
+  },
+
+  "json/to-typescript": {
+    howToUse: [
+      "Paste a sample JSON object into the input box.",
+      "Set the root interface name (defaults to \"Root\").",
+      "TypeScript interfaces are generated for the root object and every nested object.",
+      "Copy the code or download it as a .ts file and import it into your project.",
+    ],
+    features: [
+      "Infers precise TypeScript types: string, number, boolean, and typed arrays.",
+      "Generates a separate, named interface for every nested object.",
+      "Exports every interface (export interface Root { ... }) for easy importing.",
+      "Custom root interface naming.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does this generate types or interfaces?",
+        answer:
+          "It generates interfaces (export interface Name { ... }). Interfaces and type aliases are largely interchangeable for object shapes in TypeScript, so you can convert them if your codebase prefers type aliases.",
+      },
+      {
+        question: "How are optional or nullable fields handled?",
+        answer:
+          "Fields that are null in your sample JSON are typed as null. If a field can sometimes be missing in real data, mark it optional manually (e.g. name?: string) after generating.",
+      },
+      {
+        question: "Can I use this output directly with fetch or axios responses?",
+        answer:
+          "Yes \u2014 paste a real API response as your sample JSON, and the generated interface can be used to type the response, e.g. const data: Root = await res.json().",
+      },
+    ],
+  },
+
+  "json/to-kotlin": {
+    howToUse: [
+      "Paste a sample JSON object into the input box.",
+      "Set the root data class name (defaults to \"Root\").",
+      "Kotlin data classes are generated for the root object and every nested object.",
+      "Copy the code or download it as a .kt file.",
+    ],
+    features: [
+      "Generates idiomatic Kotlin data class syntax with val properties.",
+      "Infers types: String, Int, Double, Boolean, and List<T>.",
+      "A dedicated data class for every nested object.",
+      "Custom root class naming.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Will this work with kotlinx.serialization or Gson?",
+        answer:
+          "Yes. Add the appropriate annotation (@Serializable for kotlinx.serialization) to each class if required by your library; Gson works with these plain data classes out of the box.",
+      },
+      {
+        question: "Why data class instead of a regular class?",
+        answer:
+          "Data classes automatically generate equals(), hashCode(), toString(), and copy(), which is exactly what you want for simple JSON model objects.",
+      },
+      {
+        question: "Are properties mutable (var) or immutable (val)?",
+        answer:
+          "Properties are generated as val (immutable), which is the idiomatic Kotlin default for data models. Change to var manually if you need to mutate them after creation.",
+      },
+    ],
+  },
+
+  "json/to-dart": {
+    howToUse: [
+      "Paste a sample JSON object into the input box.",
+      "Set the root class name (defaults to \"Root\").",
+      "Dart classes are generated with final fields, a constructor, and a fromJson factory for the root object and every nested object.",
+      "Copy the code or download it as a .dart file for your Flutter project.",
+    ],
+    features: [
+      "Generates final fields with a named constructor, matching common Flutter/Dart conventions.",
+      "Includes a fromJson factory constructor for decoding API responses.",
+      "Handles nested objects and lists of nested objects in fromJson.",
+      "Custom root class naming.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does this generate toJson() as well as fromJson()?",
+        answer:
+          "This tool generates the fromJson factory, which is what you need to decode API responses. Add a toJson() method manually if you also need to serialize instances back to JSON.",
+      },
+      {
+        question: "Will this work with Flutter's http package?",
+        answer:
+          "Yes \u2014 decode the response body with jsonDecode(), then pass the resulting Map to YourClass.fromJson() to get a typed Dart object.",
+      },
+      {
+        question: "How are lists of nested objects handled?",
+        answer:
+          "For a field that's an array of objects, fromJson generates a List<T>.from(json['key'].map((x) => T.fromJson(x))) call so nested items are decoded correctly too.",
+      },
+    ],
+  },
+
+  "json/escape-unescape": {
+    howToUse: [
+      "Choose \"Escape\" to convert raw text into a JSON-safe string literal, or \"Unescape\" to decode one back to plain text.",
+      "Type or paste your text into the input box.",
+      "The converted result appears instantly on the right.",
+      "Copy the output and paste it wherever you need \u2014 inside a JSON document, a config file, or your source code.",
+    ],
+    features: [
+      "Escape mode wraps and escapes raw text into a valid JSON string literal (handles quotes, backslashes, newlines, tabs).",
+      "Unescape mode decodes a JSON string literal back into readable plain text.",
+      "Works whether or not your escaped input includes the surrounding double quotes.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What does \"escaping\" a string actually do?",
+        answer:
+          "Escaping converts special characters (like quotes, backslashes, and newlines) into their backslash-prefixed JSON equivalents (\\\", \\\\, \\n) so the text can be safely embedded as a JSON string value.",
+      },
+      {
+        question: "Do I need to include the surrounding quotes when unescaping?",
+        answer:
+          "No \u2014 you can paste the escaped text with or without the surrounding double quotes; the tool detects and handles both cases automatically.",
+      },
+      {
+        question: "Is this the same as URL encoding?",
+        answer:
+          "No. JSON escaping only handles characters that are special within a JSON string literal (quotes, backslashes, control characters). For encoding text to be safely used inside a URL, use a URL Encode tool instead.",
+      },
+    ],
+  },
+
+  "xml/formatter": {
+    howToUse: [
+      "Paste your raw or minified XML into the input box on the left.",
+      "Click \"Format\" to re-indent it into clean, readable XML \u2014 or edit the input and click Format again anytime.",
+      "Choose 2 spaces, 4 spaces, or tabs for indentation.",
+      "Copy the formatted result or download it as an .xml file.",
+    ],
+    features: [
+      "Validates XML well-formedness and reports parser errors clearly.",
+      "Customizable indentation: 2 spaces, 4 spaces, or tabs.",
+      "One-click Minify to strip whitespace back out for production use.",
+      "Runs entirely in your browser \u2014 your XML never leaves your device.",
+      "Free, unlimited, and works on any device.",
+    ],
+    faq: [
+      {
+        question: "Is my XML data uploaded anywhere?",
+        answer:
+          "No. Formatting, validation, and minifying all happen locally in your browser using the built-in DOMParser \u2014 your XML is never sent over the network.",
+      },
+      {
+        question: "What does \"well-formed\" XML mean?",
+        answer:
+          "Well-formed XML has properly matched and nested tags, a single root element, correctly quoted attribute values, and valid character encoding \u2014 the baseline requirement before XML can even be parsed.",
+      },
+      {
+        question: "Can I format XML that includes a DOCTYPE or processing instructions?",
+        answer:
+          "Yes, standard XML declarations (<?xml ... ?>) and processing instructions are preserved and placed on their own line during formatting.",
+      },
+      {
+        question: "What's the difference between formatting and minifying?",
+        answer:
+          "Formatting adds indentation and line breaks for readability. Minifying removes all unnecessary whitespace between tags to produce the smallest possible file size for production use.",
+      },
+    ],
+  },
+
+  "xml/validator": {
+    howToUse: [
+      "Paste the XML you want to check into the input box.",
+      "Validation runs automatically as you type using the browser's built-in XML parser.",
+      "If it's valid, you'll see the total element count and maximum nesting depth.",
+      "If it's invalid, you'll see the parser's exact error message.",
+    ],
+    features: [
+      "Real-time well-formedness validation with no page reloads or uploads.",
+      "Uses the browser's native, standards-compliant XML parser.",
+      "Shows quick structural stats (element count, depth) for valid XML.",
+      "100% client-side \u2014 your data never leaves your browser.",
+      "Free with no rate limits or account required.",
+    ],
+    faq: [
+      {
+        question: "What does 'well-formed XML' mean?",
+        answer:
+          "Well-formed XML has a single root element, properly matched and nested opening/closing tags, correctly quoted attribute values, and valid escaping of special characters like & and <.",
+      },
+      {
+        question: "Does this check my XML against a schema (XSD/DTD)?",
+        answer:
+          "No, this validates well-formedness only \u2014 that the XML syntax itself is correct. It does not check the document against a specific schema or DTD.",
+      },
+      {
+        question: "Why does my XML fail even though it looks fine?",
+        answer:
+          "Common causes are unescaped & or < characters inside text content, mismatched or unclosed tags, and multiple root elements (XML requires exactly one).",
+      },
+    ],
+  },
+
+  "xml/minifier": {
+    howToUse: [
+      "Paste your formatted or readable XML into the input box.",
+      "The whitespace-free, single-line version appears instantly on the right.",
+      "Compare input vs. output byte size to see exactly how much you saved.",
+      "Copy the minified XML or download it as an .xml file.",
+    ],
+    features: [
+      "Strips all unnecessary whitespace between tags.",
+      "Shows exact byte size for both input and output so you can measure savings.",
+      "Validates your XML first so you know it's well-formed before minifying.",
+      "Runs entirely client-side \u2014 no server round-trip.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Does minifying XML change any data?",
+        answer:
+          "No. Minifying only removes whitespace between tags \u2014 it never changes element names, attributes, or text content.",
+      },
+      {
+        question: "Is whitespace inside text content preserved?",
+        answer:
+          "Yes. This minifier only removes whitespace that sits between tags (e.g. indentation and line breaks), not whitespace that's part of an element's actual text content.",
+      },
+      {
+        question: "Should I minify XML before sending it over an API?",
+        answer:
+          "If bandwidth or storage matters, yes \u2014 minified XML transmits and stores more efficiently than pretty-printed XML.",
+      },
+    ],
+  },
+
+  "xml/to-json": {
+    howToUse: [
+      "Paste your XML document into the input box on the left.",
+      "The equivalent JSON is generated automatically on the right.",
+      "Element attributes become @attribute keys, repeated child elements become arrays.",
+      "Copy the JSON or download it as a .json file.",
+    ],
+    features: [
+      "Automatic, predictable mapping from XML structure to JSON.",
+      "Handles attributes, nested elements, and repeated (array-like) elements.",
+      "Preserves mixed text content using a #text key when needed.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "How are XML attributes represented in the JSON output?",
+        answer:
+          "Each attribute becomes a key prefixed with @ (e.g. id=\"1\" becomes \"@id\": \"1\"), keeping attributes clearly distinguishable from child elements.",
+      },
+      {
+        question: "What happens with repeated elements, like multiple <item> tags?",
+        answer:
+          "When the same element name appears more than once under a parent, the converter automatically groups them into a JSON array instead of overwriting the value.",
+      },
+      {
+        question: "Is this conversion reversible?",
+        answer:
+          "The mapping is designed to be lossless for typical data-oriented XML (attributes, nested elements, repeated elements), so you can convert the JSON back to a similar XML structure if needed.",
+      },
+    ],
+  },
+
+  "xml/to-csv": {
+    howToUse: [
+      "Paste XML that contains a list of repeated elements (like multiple <employee> records) into the input box.",
+      "The converter finds the repeated element group and turns each one into a CSV row.",
+      "Copy the CSV or download it as a .csv file to open in Excel, Sheets, or any spreadsheet app.",
+    ],
+    features: [
+      "Automatically detects the repeated element group to use as table rows.",
+      "Flattens nested child elements and attributes into columns.",
+      "Properly escapes commas, quotes, and newlines per the CSV spec.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+    ],
+    faq: [
+      {
+        question: "What XML structure works best for this converter?",
+        answer:
+          "XML with a parent element containing several repeated child elements of the same name (e.g. a list of <employee> records) works best, since each repeated element becomes one CSV row.",
+      },
+      {
+        question: "What happens if there's no repeated element group?",
+        answer:
+          "If the XML doesn't contain any repeated elements, the tool falls back to exporting the document as a single-row CSV.",
+      },
+      {
+        question: "Are XML attributes included in the CSV columns?",
+        answer:
+          "Yes \u2014 attributes are included as their own columns (prefixed with @), alongside columns for child element values.",
+      },
+    ],
+  },
+
+  "xml/viewer": {
+    howToUse: [
+      "Paste any XML into the input box on the left.",
+      "A syntax-highlighted, indented view appears automatically on the right.",
+      "Toggle line wrapping to control how long lines are displayed.",
+      "Use this to visually review API responses, RSS feeds, or config files without editing them.",
+    ],
+    features: [
+      "Color-coded syntax highlighting for tags, attribute names, attribute values, and comments.",
+      "Automatic formatting for readability \u2014 no manual indentation needed.",
+      "Optional line wrapping for long values.",
+      "Runs entirely in your browser for privacy.",
+      "Free with no sign-up required.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between Viewer and Formatter?",
+        answer:
+          "The Formatter is an editing tool focused on producing a re-formatted output you'll copy or download. The Viewer is a read-only, syntax-highlighted display meant for quickly reading and visually scanning XML.",
+      },
+      {
+        question: "Can I edit the highlighted output?",
+        answer:
+          "The highlighted panel is read-only by design. Edit your XML in the input box on the left \u2014 the highlighted view updates automatically.",
+      },
+      {
+        question: "Does this work with XML comments and CDATA sections?",
+        answer:
+          "Comments (<!-- ... -->) are highlighted distinctly from tags. CDATA sections are preserved as part of the element's text content.",
+      },
+    ],
+  },
+
+  "xml/compare": {
+    howToUse: [
+      "Paste the original XML into the \"XML A\" box and the changed version into \"XML B\".",
+      "Both documents are parsed and compared recursively, element by element and attribute by attribute.",
+      "Each difference is listed with its exact path and whether it was added, removed, or changed.",
+      "Use this to review config changes, API response differences, or document revisions.",
+    ],
+    features: [
+      "Deep, recursive comparison based on parsed XML structure, not raw text.",
+      "Clearly labels each change as added, removed, or changed with its path.",
+      "Handles nested elements, attributes, and repeated elements.",
+      "Runs entirely in your browser for privacy.",
+      "Free with no file size limits beyond your browser's memory.",
+    ],
+    faq: [
+      {
+        question: "How is this different from a plain text diff?",
+        answer:
+          "A text diff compares line by line, which breaks down when XML is reformatted or attributes are reordered. This tool parses both documents into a structured form and compares the actual data, so formatting differences don't produce false positives.",
+      },
+      {
+        question: "Does attribute order matter?",
+        answer:
+          "No. Attributes are compared by name rather than by position, so reordering attributes on an element does not count as a difference.",
+      },
+      {
+        question: "Are XML comments included in the comparison?",
+        answer:
+          "No, comments are not part of the data model used for comparison \u2014 only elements, attributes, and text content are compared.",
+      },
+    ],
+  },
+
+  "xml/xpath-tester": {
+    howToUse: [
+      "Paste your XML document into the top box.",
+      "Type an XPath expression (e.g. //book/title) into the expression field.",
+      "Matching results appear instantly below as you type.",
+      "Refine your expression and watch the results update in real time.",
+    ],
+    features: [
+      "Uses the browser's native, standards-compliant XPath engine.",
+      "Supports element, attribute, string, number, and boolean XPath expressions.",
+      "Shows the exact number of matches and each matched node's markup.",
+      "Runs entirely in your browser \u2014 no data is uploaded.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What XPath version is supported?",
+        answer:
+          "This tool uses your browser's built-in XPath 1.0 engine (via the standard document.evaluate API), which covers the vast majority of everyday XPath expressions.",
+      },
+      {
+        question: "Can I select attributes with XPath?",
+        answer:
+          "Yes \u2014 use an expression like //book/@id to select the id attribute of every <book> element; results will show the attribute name and value.",
+      },
+      {
+        question: "Why does my expression return no results?",
+        answer:
+          "Double-check element names are case-sensitive and match your XML exactly, and that your XML doesn't use namespaces that require prefixing in the expression (this tool doesn't perform namespace resolution).",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {
