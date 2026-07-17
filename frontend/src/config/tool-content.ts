@@ -1048,6 +1048,229 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+  "csv/viewer": {
+    howToUse: [
+      "Paste your raw CSV data into the input box on the left.",
+      "The tool automatically parses it and renders a clean, scrollable table on the right.",
+      "Switch the delimiter to semicolon or tab if your file uses a different separator.",
+      "Use this to quickly inspect exported data, spreadsheet dumps, or API CSV responses without opening Excel.",
+    ],
+    features: [
+      "Handles quoted fields, embedded commas, and multi-line cells correctly (RFC 4180-compliant parsing).",
+      "Supports comma, semicolon, and tab delimiters for international and TSV-style files.",
+      "Shows row and column counts at a glance.",
+      "Runs 100% in your browser \u2014 your data never leaves your device.",
+      "Free, unlimited, and works on any device.",
+    ],
+    faq: [
+      {
+        question: "Can this tool handle CSV files with commas inside quoted fields?",
+        answer:
+          "Yes. The parser follows the RFC 4180 CSV standard, correctly handling quoted fields that contain commas, newlines, or escaped double quotes.",
+      },
+      {
+        question: "Does it support semicolon-separated or tab-separated files?",
+        answer:
+          "Yes. Use the delimiter selector to switch between comma, semicolon, and tab \u2014 useful for European CSV exports and TSV files.",
+      },
+      {
+        question: "Is there a row limit?",
+        answer:
+          "The viewer renders up to 200 rows in the preview table for performance, but parses your entire file, so row and column counts always reflect the full dataset.",
+      },
+    ],
+  },
+  "csv/formatter": {
+    howToUse: [
+      "Paste messy or inconsistently formatted CSV data into the input box.",
+      "Choose the input delimiter (comma, semicolon, or tab) that matches your source data.",
+      "Optionally enable whitespace trimming to clean up padded cells.",
+      "Choose your desired output delimiter and copy or download the reformatted CSV.",
+    ],
+    features: [
+      "Normalizes quoting \u2014 only wraps fields in quotes when required (commas, quotes, or newlines present).",
+      "Trims leading/trailing whitespace from every cell with one click.",
+      "Convert between comma, semicolon, and tab delimited formats in the same step.",
+      "Runs entirely client-side for instant results and full privacy.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Can I convert a semicolon-delimited CSV to comma-delimited?",
+        answer:
+          "Yes. Set the input delimiter to semicolon and the output delimiter to comma (or vice versa), and the tool rewrites every row using the new separator.",
+      },
+      {
+        question: "Will this remove extra spaces around values?",
+        answer:
+          "Yes, when the \"Trim whitespace\" option is enabled, leading and trailing spaces are stripped from every header and cell value.",
+      },
+      {
+        question: "Does it fix broken quoting?",
+        answer:
+          "The formatter re-serializes every field with correct, minimal quoting based on its content, which fixes most inconsistent or unnecessary quoting issues from the original file.",
+      },
+    ],
+  },
+  "csv/to-json": {
+    howToUse: [
+      "Paste your CSV data, using the first row as column headers.",
+      "The equivalent JSON array of objects is generated automatically on the right.",
+      "Select the delimiter that matches your CSV (comma, semicolon, or tab).",
+      "Copy the JSON or download it as a .json file for use in your app or API.",
+    ],
+    features: [
+      "Converts each CSV row into a JSON object keyed by the header row.",
+      "Automatically generates fallback keys (column1, column2, ...) for missing headers.",
+      "Supports comma, semicolon, and tab delimited source files.",
+      "Runs 100% client-side \u2014 your data is never uploaded.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What if my CSV doesn't have a header row?",
+        answer:
+          "The first row is always treated as headers. If your data has no header row, add a placeholder header row before converting, or the first data row will be used as keys.",
+      },
+      {
+        question: "Are numbers and booleans converted to their JSON types?",
+        answer:
+          "No, all CSV values are text by nature, so every field is output as a JSON string. You can further process the output if you need typed values.",
+      },
+      {
+        question: "Can I convert a TSV (tab-separated) file?",
+        answer: "Yes, select the Tab option in the delimiter dropdown before converting.",
+      },
+    ],
+  },
+  "csv/to-xml": {
+    howToUse: [
+      "Paste your CSV data into the input box, with headers on the first row.",
+      "The tool converts each row into a <row> element inside a <rows> root, with one child element per column.",
+      "Select the correct delimiter for your source file.",
+      "Copy or download the resulting XML document.",
+    ],
+    features: [
+      "Wraps each CSV row in its own XML element, using column headers as child tag names.",
+      "Escapes special XML characters (&, <, >, quotes) automatically.",
+      "Supports comma, semicolon, and tab delimited input.",
+      "Runs entirely in your browser for speed and privacy.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What XML structure does this produce?",
+        answer:
+          "The output wraps all rows in a <rows> root element, with each row rendered as a <row> element containing one child element per CSV column, named after the header.",
+      },
+      {
+        question: "What happens if a header isn't a valid XML tag name?",
+        answer:
+          "Headers with invalid characters are replaced with a generic <item> tag so the output always remains well-formed XML.",
+      },
+      {
+        question: "Is this safe for CSV exports containing special characters?",
+        answer:
+          "Yes, all values are automatically XML-escaped, so ampersands, angle brackets, and quotes in your data won't break the resulting document.",
+      },
+    ],
+  },
+  "csv/to-excel": {
+    howToUse: [
+      "Paste your CSV data into the input box on the left.",
+      "Preview the parsed table on the right to confirm it looks correct.",
+      "Select the delimiter that matches your source file if it isn't comma-separated.",
+      "Click \"Download Excel (.xlsx)\" to save it as a spreadsheet file.",
+    ],
+    features: [
+      "Generates a real .xlsx workbook using the industry-standard SheetJS library.",
+      "Live table preview before you download.",
+      "Supports comma, semicolon, and tab delimited CSV sources.",
+      "100% client-side conversion \u2014 no file is ever uploaded to a server.",
+      "Free and unlimited, with no row limits.",
+    ],
+    faq: [
+      {
+        question: "Does the downloaded file open in Microsoft Excel and Google Sheets?",
+        answer:
+          "Yes. The generated .xlsx file is a standard Excel Open XML workbook, fully compatible with Microsoft Excel, Google Sheets, LibreOffice Calc, and Apple Numbers.",
+      },
+      {
+        question: "Is my CSV data uploaded anywhere?",
+        answer:
+          "No. Both parsing and the .xlsx file generation happen entirely in your browser using JavaScript \u2014 your data never leaves your device.",
+      },
+      {
+        question: "Can I convert large CSV files?",
+        answer:
+          "Yes, though very large files (tens of thousands of rows) will take longer to render in the preview table depending on your device's performance. The conversion itself has no hard row limit.",
+      },
+    ],
+  },
+  "csv/cleaner": {
+    howToUse: [
+      "Paste your messy CSV data into the input box on the left.",
+      "Toggle \"Trim whitespace\" to strip padding from every cell.",
+      "Toggle \"Remove empty rows\" to drop rows where every cell is blank.",
+      "Toggle \"Remove duplicate rows\" to keep only the first occurrence of each unique row.",
+      "Copy or download the cleaned CSV, and check the summary for how many rows were removed.",
+    ],
+    features: [
+      "Removes fully empty rows in one click.",
+      "Deduplicates rows based on their full content.",
+      "Trims leading and trailing whitespace from every field.",
+      "Shows a before/after row count summary so you know exactly what changed.",
+      "Runs entirely client-side \u2014 your data is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "How does duplicate detection work?",
+        answer:
+          "A row is considered a duplicate if every cell value exactly matches a previously seen row (after trimming, if enabled). Only the first occurrence is kept.",
+      },
+      {
+        question: "Will this remove rows that are only partially empty?",
+        answer:
+          "No, \"Remove empty rows\" only removes rows where every single cell is empty. Rows with at least one non-empty cell are kept.",
+      },
+      {
+        question: "Can I clean tab-separated or semicolon-separated files?",
+        answer: "Yes, select the appropriate delimiter before cleaning \u2014 the same delimiter is used for the output.",
+      },
+    ],
+  },
+  "csv/diff": {
+    howToUse: [
+      "Paste the original CSV into the left box and the changed version into the right box.",
+      "Differences are calculated automatically, row by row and column by column.",
+      "Each difference shows whether a row was added, removed, or had a changed value, along with the old and new values.",
+      "Select the delimiter that matches your files if they aren't comma-separated.",
+    ],
+    features: [
+      "Row-level and cell-level diffing \u2014 pinpoints exactly which column changed in which row.",
+      "Clearly labels added, removed, and changed rows.",
+      "Supports comma, semicolon, and tab delimited files.",
+      "Runs 100% client-side for instant results and full privacy.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "How are rows matched between the two files?",
+        answer:
+          "Rows are compared by their position (row index) after parsing. If rows are reordered, they may show as changed rather than moved \u2014 sort both files consistently before comparing for best results.",
+      },
+      {
+        question: "What do \"added\" and \"removed\" mean here?",
+        answer:
+          "\"Added\" means a row or field exists in CSV B but not in CSV A. \"Removed\" means it existed in CSV A but is missing from CSV B. \"Changed\" means the same field has a different value in each file.",
+      },
+      {
+        question: "Can I compare CSVs with different column sets?",
+        answer:
+          "Yes. Columns that exist in one file but not the other will show up as added or removed fields in the diff results.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

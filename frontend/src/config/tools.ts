@@ -281,13 +281,55 @@ export const categories: Category[] = [
     icon: "\u{1F4CA}",
     description: "View, format, clean, compare, and convert CSV spreadsheets online.",
     tools: [
-      tool("viewer", "CSV Viewer", "View CSV files as a formatted table."),
-      tool("formatter", "CSV Formatter", "Format and clean up CSV data."),
-      tool("to-json", "CSV to JSON", "Convert CSV data into JSON."),
-      tool("to-xml", "CSV to XML", "Convert CSV data into XML."),
-      tool("to-excel", "CSV to Excel", "Convert CSV into an Excel workbook."),
-      tool("cleaner", "CSV Cleaner", "Clean and normalize messy CSV data."),
-      tool("diff", "CSV Diff", "Compare two CSV files and highlight differences."),
+      tool(
+        "viewer",
+        "CSV Viewer",
+        "View CSV files as a clean, sortable table right in your browser.",
+        "live",
+        ["csv viewer online", "view csv file", "csv table viewer"]
+      ),
+      tool(
+        "formatter",
+        "CSV Formatter",
+        "Reformat messy CSV data with consistent delimiters, quoting, and trimmed whitespace.",
+        "live",
+        ["csv formatter", "format csv online", "clean csv delimiters"]
+      ),
+      tool(
+        "to-json",
+        "CSV to JSON",
+        "Convert CSV data into a JSON array of objects instantly.",
+        "live",
+        ["csv to json converter", "convert csv to json"]
+      ),
+      tool(
+        "to-xml",
+        "CSV to XML",
+        "Convert CSV rows into well-formed XML documents.",
+        "live",
+        ["csv to xml converter", "convert csv to xml"]
+      ),
+      tool(
+        "to-excel",
+        "CSV to Excel",
+        "Convert CSV data into a downloadable Excel (.xlsx) workbook.",
+        "live",
+        ["csv to excel converter", "convert csv to xlsx"]
+      ),
+      tool(
+        "cleaner",
+        "CSV Cleaner",
+        "Trim whitespace, and remove empty or duplicate rows from messy CSV data.",
+        "live",
+        ["csv cleaner", "remove duplicate rows csv", "clean csv data"]
+      ),
+      tool(
+        "diff",
+        "CSV Diff",
+        "Compare two CSV files row by row and highlight every difference.",
+        "live",
+        ["csv diff", "compare csv files", "csv comparison tool"]
+      ),
     ],
   },
   {

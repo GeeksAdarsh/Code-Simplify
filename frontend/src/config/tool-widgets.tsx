@@ -28,6 +28,13 @@ import { XPathTesterTool } from "@/components/tools/xpath-tester-tool";
 import { YamlFormatterTool } from "@/components/tools/yaml-formatter-tool";
 import { YamlValidatorTool } from "@/components/tools/yaml-validator-tool";
 import { YamlToJsonTool } from "@/components/tools/yaml-to-json-tool";
+import { CsvViewerTool } from "@/components/tools/csv-viewer-tool";
+import { CsvFormatterTool } from "@/components/tools/csv-formatter-tool";
+import { CsvToJsonTool } from "@/components/tools/csv-to-json-tool";
+import { CsvToXmlTool } from "@/components/tools/csv-to-xml-tool";
+import { CsvToExcelTool } from "@/components/tools/csv-to-excel-tool";
+import { CsvCleanerTool } from "@/components/tools/csv-cleaner-tool";
+import { CsvDiffTool } from "@/components/tools/csv-diff-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -65,6 +72,13 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "yaml/validator": () => <YamlValidatorTool />,
   "yaml/to-json": () => <YamlToJsonTool />,
   "yaml/from-json": () => <JsonToYamlTool />,
+  "csv/viewer": () => <CsvViewerTool />,
+  "csv/formatter": () => <CsvFormatterTool />,
+  "csv/to-json": () => <CsvToJsonTool />,
+  "csv/to-xml": () => <CsvToXmlTool />,
+  "csv/to-excel": () => <CsvToExcelTool />,
+  "csv/cleaner": () => <CsvCleanerTool />,
+  "csv/diff": () => <CsvDiffTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {
