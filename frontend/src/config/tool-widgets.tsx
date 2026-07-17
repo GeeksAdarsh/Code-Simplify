@@ -62,6 +62,21 @@ import { GuidGeneratorTool } from "@/components/tools/guid-generator-tool";
 import { NanoIdTool } from "@/components/tools/nano-id-tool";
 import { RandomStringTool } from "@/components/tools/random-string-tool";
 import { RandomNumberTool } from "@/components/tools/random-number-tool";
+import { HtmlFormatterTool } from "@/components/tools/html-formatter-tool";
+import { HtmlMinifierTool } from "@/components/tools/html-minifier-tool";
+import { HtmlEncoderTool } from "@/components/tools/html-encoder-tool";
+import { HtmlDecoderTool } from "@/components/tools/html-decoder-tool";
+import { HtmlPreviewTool } from "@/components/tools/html-preview-tool";
+import { HtmlEscapeTool } from "@/components/tools/html-escape-tool";
+import { CssFormatterTool } from "@/components/tools/css-formatter-tool";
+import { CssMinifierTool } from "@/components/tools/css-minifier-tool";
+import { CssGridGeneratorTool } from "@/components/tools/css-grid-generator-tool";
+import { CssFlexboxGeneratorTool } from "@/components/tools/css-flexbox-generator-tool";
+import { CssBorderRadiusGeneratorTool } from "@/components/tools/css-border-radius-generator-tool";
+import { CssBoxShadowGeneratorTool } from "@/components/tools/css-box-shadow-generator-tool";
+import { CssTextShadowGeneratorTool } from "@/components/tools/css-text-shadow-generator-tool";
+import { CssGradientGeneratorTool } from "@/components/tools/css-gradient-generator-tool";
+import { CssClipPathGeneratorTool } from "@/components/tools/css-clip-path-generator-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -138,6 +153,22 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "ids/random-string": () => <RandomStringTool />,
   "ids/random-number": () => <RandomNumberTool />,
   "ids/random-password": () => <PasswordGeneratorTool />,
+  "html/formatter": () => <HtmlFormatterTool />,
+  "html/minifier": () => <HtmlMinifierTool />,
+  "html/encoder": () => <HtmlEncoderTool />,
+  "html/decoder": () => <HtmlDecoderTool />,
+  "html/preview": () => <HtmlPreviewTool />,
+  "html/escape": () => <HtmlEscapeTool />,
+  "css/formatter": () => <CssFormatterTool />,
+  "css/minifier": () => <CssMinifierTool />,
+  "css/beautifier": () => <CssFormatterTool />,
+  "css/grid-generator": () => <CssGridGeneratorTool />,
+  "css/flexbox-generator": () => <CssFlexboxGeneratorTool />,
+  "css/border-radius-generator": () => <CssBorderRadiusGeneratorTool />,
+  "css/box-shadow-generator": () => <CssBoxShadowGeneratorTool />,
+  "css/text-shadow-generator": () => <CssTextShadowGeneratorTool />,
+  "css/gradient-generator": () => <CssGradientGeneratorTool />,
+  "css/clip-path-generator": () => <CssClipPathGeneratorTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

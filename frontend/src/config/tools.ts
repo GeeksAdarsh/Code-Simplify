@@ -586,12 +586,48 @@ export const categories: Category[] = [
     icon: "\u{1F310}",
     description: "Format, minify, encode, decode, and preview HTML online.",
     tools: [
-      tool("formatter", "HTML Formatter", "Format and indent HTML markup."),
-      tool("minifier", "HTML Minifier", "Minify HTML by removing whitespace and comments."),
-      tool("encoder", "HTML Encoder", "Encode text into HTML entities."),
-      tool("decoder", "HTML Decoder", "Decode HTML entities back into text."),
-      tool("preview", "HTML Preview", "Live-preview rendered HTML."),
-      tool("escape", "HTML Escape", "Escape HTML special characters."),
+      tool(
+        "formatter",
+        "HTML Formatter",
+        "Format and indent HTML markup.",
+        "live",
+        ["html formatter", "format html online", "html beautifier", "indent html"]
+      ),
+      tool(
+        "minifier",
+        "HTML Minifier",
+        "Minify HTML by removing whitespace and comments.",
+        "live",
+        ["html minifier", "minify html online", "compress html"]
+      ),
+      tool(
+        "encoder",
+        "HTML Encoder",
+        "Encode text into HTML entities.",
+        "live",
+        ["html encoder", "html entity encoder", "encode html characters"]
+      ),
+      tool(
+        "decoder",
+        "HTML Decoder",
+        "Decode HTML entities back into text.",
+        "live",
+        ["html decoder", "html entity decoder", "decode html entities"]
+      ),
+      tool(
+        "preview",
+        "HTML Preview",
+        "Live-preview rendered HTML.",
+        "live",
+        ["html preview", "html viewer online", "live html editor"]
+      ),
+      tool(
+        "escape",
+        "HTML Escape",
+        "Escape HTML special characters.",
+        "live",
+        ["html escape", "escape html characters", "html special characters escape"]
+      ),
     ],
   },
   {
@@ -600,16 +636,76 @@ export const categories: Category[] = [
     icon: "\u{1F3A8}",
     description: "Format, minify, and generate CSS with visual tools.",
     tools: [
-      tool("formatter", "CSS Formatter", "Format and beautify CSS."),
-      tool("minifier", "CSS Minifier", "Minify CSS to reduce file size."),
-      tool("beautifier", "CSS Beautifier", "Beautify CSS with consistent style."),
-      tool("grid-generator", "CSS Grid Generator", "Visually design CSS Grid layouts."),
-      tool("flexbox-generator", "Flexbox Generator", "Visually design Flexbox layouts."),
-      tool("border-radius-generator", "Border Radius Generator", "Design custom border-radius shapes."),
-      tool("box-shadow-generator", "Box Shadow Generator", "Design CSS box shadows visually."),
-      tool("text-shadow-generator", "Text Shadow Generator", "Design CSS text shadows visually."),
-      tool("gradient-generator", "CSS Gradient Generator", "Design linear and radial CSS gradients."),
-      tool("clip-path-generator", "CSS Clip Path Generator", "Design custom CSS clip-path shapes."),
+      tool(
+        "formatter",
+        "CSS Formatter",
+        "Format and beautify CSS.",
+        "live",
+        ["css formatter", "format css online", "css beautifier", "indent css"]
+      ),
+      tool(
+        "minifier",
+        "CSS Minifier",
+        "Minify CSS to reduce file size.",
+        "live",
+        ["css minifier", "minify css online", "compress css"]
+      ),
+      tool(
+        "beautifier",
+        "CSS Beautifier",
+        "Beautify CSS with consistent style.",
+        "live",
+        ["css beautifier", "beautify css online", "pretty css"]
+      ),
+      tool(
+        "grid-generator",
+        "CSS Grid Generator",
+        "Visually design CSS Grid layouts.",
+        "live",
+        ["css grid generator", "css grid layout generator", "grid-template-columns generator"]
+      ),
+      tool(
+        "flexbox-generator",
+        "Flexbox Generator",
+        "Visually design Flexbox layouts.",
+        "live",
+        ["flexbox generator", "css flexbox playground", "flex layout generator"]
+      ),
+      tool(
+        "border-radius-generator",
+        "Border Radius Generator",
+        "Design custom border-radius shapes.",
+        "live",
+        ["border radius generator", "css border radius tool", "rounded corners generator"]
+      ),
+      tool(
+        "box-shadow-generator",
+        "Box Shadow Generator",
+        "Design CSS box shadows visually.",
+        "live",
+        ["box shadow generator", "css box shadow tool", "box-shadow css generator"]
+      ),
+      tool(
+        "text-shadow-generator",
+        "Text Shadow Generator",
+        "Design CSS text shadows visually.",
+        "live",
+        ["text shadow generator", "css text shadow tool", "text-shadow css generator"]
+      ),
+      tool(
+        "gradient-generator",
+        "CSS Gradient Generator",
+        "Design linear and radial CSS gradients.",
+        "live",
+        ["css gradient generator", "linear gradient generator", "radial gradient generator"]
+      ),
+      tool(
+        "clip-path-generator",
+        "CSS Clip Path Generator",
+        "Design custom CSS clip-path shapes.",
+        "live",
+        ["css clip path generator", "clip-path generator", "css shape generator"]
+      ),
     ],
   },
   {

@@ -2245,6 +2245,454 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+  "html/formatter": {
+    howToUse: [
+      "Paste minified or messy HTML markup into the input box, or load the sample.",
+      "Click \"Format\" to indent nested tags and place each element on its own line.",
+      "Choose 2 spaces, 4 spaces, or a tab as your indent style.",
+      "Copy the formatted output or download it as an .html file.",
+    ],
+    features: [
+      "Preserves the raw content of <script>, <style>, <pre>, and <textarea> tags exactly.",
+      "Automatically detects void elements (<br>, <img>, <input>, etc.) so they aren't given a false closing indent.",
+      "Supports doctype declarations and HTML comments.",
+      "Runs entirely in your browser \u2014 your markup is never uploaded anywhere.",
+    ],
+    faq: [
+      {
+        question: "Will formatting change how my page renders?",
+        answer:
+          "No, formatting only adds whitespace between tags for readability. Browsers ignore insignificant whitespace between elements, so the rendered page is unaffected.",
+      },
+      {
+        question: "Does it reformat JavaScript inside <script> tags?",
+        answer:
+          "No, content inside <script>, <style>, <pre>, and <textarea> is left untouched so you don't end up with broken indentation inside code blocks.",
+      },
+      {
+        question: "Can I switch straight to minified output?",
+        answer: "Yes, use the \"Minify\" button to instantly collapse the current input to a single compact line.",
+      },
+    ],
+  },
+  "html/minifier": {
+    howToUse: [
+      "Paste your HTML into the input box, or load the sample.",
+      "The minified output \u2014 with comments and unnecessary whitespace removed \u2014 appears instantly on the right.",
+      "Copy the result or download it as a ready-to-deploy .html file.",
+    ],
+    features: [
+      "Strips HTML comments while preserving conditional comments (<!--[if ...]-->).",
+      "Collapses whitespace between tags without breaking your markup.",
+      "Leaves <script>, <style>, <pre>, and <textarea> contents completely untouched.",
+      "Client-side only \u2014 nothing is ever sent to a server.",
+    ],
+    faq: [
+      {
+        question: "Will minifying break my layout?",
+        answer:
+          "Minifying only removes whitespace and comments that don't affect rendering. Content inside whitespace-sensitive tags like <pre> is preserved exactly.",
+      },
+      {
+        question: "How much smaller will my file get?",
+        answer:
+          "It depends on how much indentation and how many comments your source has \u2014 typically 10-30% smaller for hand-formatted markup.",
+      },
+      {
+        question: "Should I minify HTML in production?",
+        answer:
+          "Many sites do, since it slightly reduces page weight. For larger savings, pair it with gzip/Brotli compression on your server, which handles most of the heavy lifting.",
+      },
+    ],
+  },
+  "html/encoder": {
+    howToUse: [
+      "Type or paste plain text containing special characters, accents, or symbols.",
+      "The output shows the text with unsafe and non-ASCII characters converted to HTML entities.",
+      "Copy the encoded text and safely embed it inside HTML markup.",
+    ],
+    features: [
+      "Encodes the five HTML-unsafe characters (& < > \" ') as named entities.",
+      "Converts every non-ASCII character (accents, emoji, currency symbols, etc.) to a numeric entity (&#NNN;).",
+      "Correctly handles multi-byte Unicode characters and emoji using code-point iteration.",
+      "Free, unlimited, and entirely client-side.",
+    ],
+    faq: [
+      {
+        question: "How is this different from HTML Escape?",
+        answer:
+          "HTML Escape only converts the five reserved characters (& < > \" ') needed to safely embed text in HTML. HTML Encoder goes further and also converts every non-ASCII character to a numeric entity, which is useful for maximizing compatibility with older systems or strict encodings.",
+      },
+      {
+        question: "Will encoded text look different when rendered?",
+        answer:
+          "No, browsers decode HTML entities automatically when rendering, so encoded text displays identically to the original \u2014 it only differs in the raw source.",
+      },
+      {
+        question: "Can I encode emoji?",
+        answer: "Yes, the encoder iterates by Unicode code point, so emoji and other multi-byte characters are encoded correctly as a single numeric entity each.",
+      },
+    ],
+  },
+  "html/decoder": {
+    howToUse: [
+      "Paste text containing HTML entities, such as &amp;, &lt;, or &#233;.",
+      "The decoded, human-readable text appears instantly on the right.",
+      "Copy the plain text output for use elsewhere.",
+    ],
+    features: [
+      "Decodes both named entities (&amp;, &copy;, &hearts;, etc.) and numeric entities (&#233;, &#x2665;).",
+      "Uses the browser's own HTML parser for 100% accurate, spec-compliant decoding.",
+      "Handles hundreds of named entities without needing a manual lookup table.",
+      "Runs entirely on your device \u2014 no data is transmitted.",
+    ],
+    faq: [
+      {
+        question: "Does it support hexadecimal entities like &#x2665;?",
+        answer: "Yes, both decimal (&#9829;) and hexadecimal (&#x2665;) numeric entity formats are decoded correctly.",
+      },
+      {
+        question: "What if my text has no entities at all?",
+        answer: "It will pass through unchanged \u2014 the decoder only transforms recognizable entity patterns.",
+      },
+      {
+        question: "Is this safe to use on untrusted input?",
+        answer:
+          "The decoding itself only extracts text content and does not execute any embedded scripts, since it relies on setting textContent-equivalent HTML parsing rather than rendering the markup live.",
+      },
+    ],
+  },
+  "html/preview": {
+    howToUse: [
+      "Type or paste HTML (including inline <style> and <script>) into the editor on the left, or load the sample.",
+      "The live preview on the right updates instantly as you type.",
+      "Switch the viewport selector to preview at tablet or mobile widths.",
+      "On small screens, use the Code/Preview toggle to switch between editing and viewing.",
+    ],
+    features: [
+      "Renders full HTML documents, including embedded CSS and JavaScript, in a sandboxed iframe.",
+      "Instant, debounce-free live updates as you type.",
+      "Responsive viewport presets (full width, tablet, mobile) to check layouts quickly.",
+      "Nothing is uploaded \u2014 your HTML is rendered entirely inside your own browser.",
+    ],
+    faq: [
+      {
+        question: "Is it safe to preview HTML with <script> tags?",
+        answer:
+          "The preview renders in a sandboxed iframe that blocks access to your page's cookies, storage, and top-level navigation, so scripts in the preview run in an isolated context.",
+      },
+      {
+        question: "Can I preview a full page with CSS?",
+        answer: "Yes, paste a complete document including <head>, <style>, and <body> \u2014 the iframe renders it exactly as a browser would.",
+      },
+      {
+        question: "Does this send my HTML anywhere?",
+        answer: "No, the preview uses the iframe's srcDoc attribute to render locally; your markup never leaves your browser.",
+      },
+    ],
+  },
+  "html/escape": {
+    howToUse: [
+      "Type or paste raw text that may contain HTML-unsafe characters.",
+      "The output shows the text with & < > \" ' converted to their corresponding named entities.",
+      "Copy the escaped text and safely insert it into HTML attributes or content.",
+    ],
+    features: [
+      "Escapes exactly the five characters that are unsafe to place directly in HTML: & < > \" '.",
+      "Minimal, predictable output ideal for templating engines and server-side rendering.",
+      "Fast, lightweight, and processed entirely in your browser.",
+    ],
+    faq: [
+      {
+        question: "Why escape only five characters instead of everything?",
+        answer:
+          "These five characters are the only ones that are structurally unsafe in HTML \u2014 escaping them prevents markup injection while keeping the rest of your text (including accented letters) untouched and easy to read in the source.",
+      },
+      {
+        question: "Should I use this to prevent XSS?",
+        answer:
+          "Escaping these characters is a core part of XSS prevention when inserting untrusted text into HTML, but always use your framework's built-in escaping (e.g. templating auto-escape) for production code rather than a manual step.",
+      },
+      {
+        question: "How do I reverse this?",
+        answer: "Use the HTML Decoder tool to convert escaped entities back into their original characters.",
+      },
+    ],
+  },
+  "css/formatter": {
+    howToUse: [
+      "Paste minified or messy CSS into the input box, or load the sample.",
+      "Click \"Format\" to indent selectors, declarations, and nested at-rules like @media.",
+      "Choose your preferred indent size (2 spaces, 4 spaces, or a tab).",
+      "Copy the formatted output or download it as a .css file.",
+    ],
+    features: [
+      "Correctly handles nested rules such as @media and @supports blocks.",
+      "Preserves comments and string literals (e.g. content: \"a;b\") without corrupting them.",
+      "One-click Minify button to instantly collapse the current input.",
+      "Runs entirely client-side \u2014 your stylesheets are never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does formatting change how my styles apply?",
+        answer: "No, formatting only changes whitespace and indentation. The computed styles applied to your page are completely unaffected.",
+      },
+      {
+        question: "Can it handle SCSS or LESS syntax?",
+        answer:
+          "This formatter targets plain CSS. Nesting, variables, and mixins specific to SCSS/LESS may not format perfectly \u2014 compile to plain CSS first for best results.",
+      },
+      {
+        question: "Are comments preserved?",
+        answer: "Yes, /* ... */ comments are kept in place and printed on their own line at the correct indentation level.",
+      },
+    ],
+  },
+  "css/minifier": {
+    howToUse: [
+      "Paste your CSS into the input box, or load the sample.",
+      "The minified output \u2014 with comments and whitespace removed \u2014 appears instantly.",
+      "Copy the result or download it as a production-ready .css file.",
+    ],
+    features: [
+      "Strips comments and collapses all unnecessary whitespace.",
+      "Preserves string literals so content values and quoted URLs are never corrupted.",
+      "Removes trailing semicolons before closing braces for a slightly smaller output.",
+      "Client-side only \u2014 nothing is sent to a server.",
+    ],
+    faq: [
+      {
+        question: "Is minified CSS still valid?",
+        answer: "Yes, minifying only removes characters that don't affect how rules are parsed \u2014 the resulting CSS is fully valid.",
+      },
+      {
+        question: "Will this affect selectors with spaces, like descendant combinators?",
+        answer:
+          "The minifier focuses on whitespace around braces, colons, semicolons, and commas. As with most simple CSS minifiers, unusual selector spacing edge cases should be spot-checked after minifying.",
+      },
+      {
+        question: "Should I minify CSS for production?",
+        answer: "Yes, smaller CSS means faster page loads. Pair it with gzip/Brotli compression on your server for maximum savings.",
+      },
+    ],
+  },
+  "css/beautifier": {
+    howToUse: [
+      "Paste minified or inconsistent CSS into the input box.",
+      "Click \"Format\" to apply consistent indentation and line breaks.",
+      "Adjust the indent size to match your project's style guide.",
+    ],
+    features: [
+      "Identical formatting engine to the CSS Formatter, offered under the name most developers search for.",
+      "Consistent, readable output for style guides and code reviews.",
+      "Handles nested at-rules, comments, and string literals correctly.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between this and CSS Formatter?",
+        answer: "None \u2014 \"Beautifier\" and \"Formatter\" are the same underlying tool, listed separately since both terms are common search queries.",
+      },
+      {
+        question: "Can I go back to minified CSS afterward?",
+        answer: "Yes, use the CSS Minifier tool, or the Minify button inside this tool, to collapse the beautified CSS again.",
+      },
+    ],
+  },
+  "css/grid-generator": {
+    howToUse: [
+      "Set the number of columns and rows using the sliders.",
+      "Adjust column gap and row gap independently.",
+      "Choose justify-items and align-items to control how cells fill their tracks.",
+      "Copy the generated CSS and apply the .grid-container class to your markup.",
+    ],
+    features: [
+      "Live visual preview with numbered grid cells that update instantly.",
+      "Generates clean grid-template-columns / grid-template-rows using the repeat() shorthand.",
+      "Independent column-gap and row-gap control.",
+      "Covers the most common CSS Grid properties needed for everyday layouts.",
+    ],
+    faq: [
+      {
+        question: "Can I create asymmetric column widths, like 2fr 1fr?",
+        answer:
+          "This generator focuses on equal-width grids using repeat(n, 1fr) for simplicity. Once copied, you can manually edit the grid-template-columns value to use custom track sizes.",
+      },
+      {
+        question: "Does the generated CSS work in all modern browsers?",
+        answer: "Yes, CSS Grid is supported in all current versions of Chrome, Firefox, Safari, and Edge.",
+      },
+      {
+        question: "How do I control where a specific item goes?",
+        answer: "Add grid-column and grid-row properties to individual child elements once you've applied the generated container styles.",
+      },
+    ],
+  },
+  "css/flexbox-generator": {
+    howToUse: [
+      "Choose a flex-direction (row, row-reverse, column, or column-reverse).",
+      "Pick justify-content and align-items values to control spacing and alignment.",
+      "Adjust flex-wrap and gap, and preview with a variable number of items.",
+      "Copy the generated CSS and apply the .flex-container class to your markup.",
+    ],
+    features: [
+      "Live visual preview that reflows instantly as you change any option.",
+      "Covers all core flex container properties: direction, justify-content, align-items, wrap, and gap.",
+      "Adjustable item count so you can see how wrapping behaves with more or fewer children.",
+      "No frameworks required \u2014 pure, framework-agnostic CSS output.",
+    ],
+    faq: [
+      {
+        question: "Does this generate styles for the flex items too?",
+        answer:
+          "This generator focuses on the flex container. For individual items, add properties like flex-grow, flex-shrink, or flex-basis directly to your child elements as needed.",
+      },
+      {
+        question: "What's the difference between justify-content and align-items?",
+        answer:
+          "justify-content controls alignment along the main axis (horizontal for row, vertical for column), while align-items controls alignment along the cross axis.",
+      },
+      {
+        question: "Is Flexbox supported in older browsers?",
+        answer: "Yes, Flexbox has been supported in all major browsers since around 2015, making it safe to use in virtually any modern project.",
+      },
+    ],
+  },
+  "css/border-radius-generator": {
+    howToUse: [
+      "Drag the corner sliders to adjust each corner's radius, or link them to move together.",
+      "Pick a preview box color to visualize the shape clearly.",
+      "Copy the generated border-radius declaration into your stylesheet.",
+    ],
+    features: [
+      "Independent control over all four corners, or a single linked slider for uniform rounding.",
+      "Live preview box that updates in real time.",
+      "Supports radii up to 150px, enough to create fully circular or pill-shaped elements.",
+    ],
+    faq: [
+      {
+        question: "How do I make a perfect circle?",
+        answer: "Link all corners and set the radius to at least half of the element's width and height (e.g. 50% or a value \u2265 half the box size).",
+      },
+      {
+        question: "Can each corner have a different radius?",
+        answer: "Yes, uncheck \"Link all corners\" to adjust the top-left, top-right, bottom-right, and bottom-left radii independently.",
+      },
+      {
+        question: "Does border-radius work with border and box-shadow together?",
+        answer: "Yes, border-radius rounds the entire box including its border and any box-shadow, so they all follow the same curve.",
+      },
+    ],
+  },
+  "css/box-shadow-generator": {
+    howToUse: [
+      "Adjust offset-X, offset-Y, blur radius, and spread radius using the sliders.",
+      "Pick a shadow color and opacity, and toggle inset if you want an inner shadow.",
+      "Copy the generated box-shadow declaration into your stylesheet.",
+    ],
+    features: [
+      "Full control over offset, blur, spread, color, opacity, and inset shadows.",
+      "Live preview box with a checkerboard backdrop so semi-transparent shadows are easy to see.",
+      "Outputs a single, ready-to-use box-shadow value with an rgba() color.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between blur and spread?",
+        answer:
+          "Blur radius softens the shadow's edges the way a light diffuser would, while spread radius expands or contracts the shadow's size before blurring is applied.",
+      },
+      {
+        question: "How do I create a subtle card shadow?",
+        answer: "Try a small offset (2-4px), a moderate blur (12-20px), zero spread, and a low opacity (0.1-0.25) for a soft, realistic elevation effect.",
+      },
+      {
+        question: "Can I stack multiple shadows?",
+        answer: "This generator outputs one shadow layer at a time. Copy the value, then manually add a comma-separated second box-shadow value for layered effects.",
+      },
+    ],
+  },
+  "css/text-shadow-generator": {
+    howToUse: [
+      "Type your own preview text and adjust the font size.",
+      "Set offset-X, offset-Y, and blur radius for the shadow.",
+      "Pick a shadow color, opacity, and text color.",
+      "Copy the generated text-shadow declaration into your stylesheet.",
+    ],
+    features: [
+      "Live text preview with your own custom sample text.",
+      "Full control over offset, blur, color, and opacity.",
+      "Great for headings, glowing text effects, or subtle depth on light backgrounds.",
+    ],
+    faq: [
+      {
+        question: "Can I create a glow effect instead of a drop shadow?",
+        answer: "Yes, set offset-X and offset-Y to 0 and increase the blur radius \u2014 this produces an even glow around the text in every direction.",
+      },
+      {
+        question: "Does text-shadow affect layout or spacing?",
+        answer: "No, text-shadow is purely visual and never affects the text's box size or surrounding layout.",
+      },
+      {
+        question: "Can I apply multiple shadows to the same text?",
+        answer: "This generator outputs a single shadow layer. Copy the value and add additional comma-separated text-shadow values manually for layered effects like embossing.",
+      },
+    ],
+  },
+  "css/gradient-generator": {
+    howToUse: [
+      "Choose Linear or Radial gradient type.",
+      "For linear gradients, set the angle; for radial gradients, choose circle or ellipse.",
+      "Add, remove, and reposition color stops, adjusting each stop's color and position.",
+      "Copy the generated background declaration into your stylesheet.",
+    ],
+    features: [
+      "Supports both linear-gradient() and radial-gradient() with unlimited practical color stops (up to 5).",
+      "Live preview box that updates instantly as you adjust angle, shape, or stops.",
+      "Color stops are automatically sorted by position for a clean, predictable gradient.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between linear and radial gradients?",
+        answer:
+          "Linear gradients transition colors along a straight line at a chosen angle, while radial gradients transition colors outward from a center point in a circle or ellipse shape.",
+      },
+      {
+        question: "How many color stops can I add?",
+        answer: "You can add up to 5 color stops per gradient, and remove down to a minimum of 2.",
+      },
+      {
+        question: "Can I use this gradient as a text effect?",
+        answer:
+          "Yes, apply the generated gradient as a background, then add background-clip: text and color: transparent to your text element to create a gradient text effect.",
+      },
+    ],
+  },
+  "css/clip-path-generator": {
+    howToUse: [
+      "Choose a shape: adjustable circle, ellipse, and inset, or a fixed polygon preset (triangle, hexagon, star, and more).",
+      "For circle, ellipse, and inset, fine-tune the sliders to adjust size and position.",
+      "Copy the generated clip-path declaration into your stylesheet.",
+    ],
+    features: [
+      "Three fully adjustable shapes (circle, ellipse, inset) with live sliders.",
+      "Nine ready-made polygon presets, including triangle, hexagon, star, and a chat message bubble.",
+      "Live preview box that instantly reflects the current shape.",
+    ],
+    faq: [
+      {
+        question: "Which browsers support clip-path?",
+        answer: "clip-path is supported in all current versions of Chrome, Firefox, Safari, and Edge for the basic-shape values used by this generator.",
+      },
+      {
+        question: "Can I animate clip-path changes?",
+        answer:
+          "Yes, clip-path can be transitioned with CSS as long as both the before and after values use the same shape function (e.g. animating between two polygon() values with the same number of points).",
+      },
+      {
+        question: "Does clip-path affect layout space?",
+        answer: "No, clip-path only changes what's visible \u2014 the element's box model, margins, and layout footprint stay exactly the same.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {
