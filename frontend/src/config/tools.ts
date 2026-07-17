@@ -714,12 +714,48 @@ export const categories: Category[] = [
     icon: "\u26A1",
     description: "Format, minify, obfuscate, and run JavaScript online.",
     tools: [
-      tool("formatter", "JS Formatter", "Format and beautify JavaScript code."),
-      tool("minifier", "JS Minifier", "Minify JavaScript to reduce file size."),
-      tool("beautifier", "JS Beautifier", "Beautify minified JavaScript."),
-      tool("obfuscator", "JS Obfuscator", "Obfuscate JavaScript source code."),
-      tool("deobfuscator", "JS Deobfuscator", "Deobfuscate and clean up JavaScript."),
-      tool("playground", "JS Playground", "Run and test JavaScript in the browser."),
+      tool(
+        "formatter",
+        "JS Formatter",
+        "Format and beautify JavaScript code.",
+        "live",
+        ["javascript formatter", "format js online", "js beautifier", "prettier online"]
+      ),
+      tool(
+        "minifier",
+        "JS Minifier",
+        "Minify JavaScript to reduce file size.",
+        "live",
+        ["javascript minifier", "minify js online", "compress javascript"]
+      ),
+      tool(
+        "beautifier",
+        "JS Beautifier",
+        "Beautify minified JavaScript.",
+        "live",
+        ["js beautifier", "beautify javascript online", "unminify javascript"]
+      ),
+      tool(
+        "obfuscator",
+        "JS Obfuscator",
+        "Obfuscate JavaScript source code.",
+        "live",
+        ["javascript obfuscator", "obfuscate js online", "js code protection"]
+      ),
+      tool(
+        "deobfuscator",
+        "JS Deobfuscator",
+        "Deobfuscate and clean up JavaScript.",
+        "live",
+        ["javascript deobfuscator", "deobfuscate js online", "unpack minified js"]
+      ),
+      tool(
+        "playground",
+        "JS Playground",
+        "Run and test JavaScript in the browser.",
+        "live",
+        ["javascript playground", "run js online", "js code editor online"]
+      ),
     ],
   },
   {
@@ -728,9 +764,27 @@ export const categories: Category[] = [
     icon: "\u{1F7E8}",
     description: "Format, run, and convert TypeScript code online.",
     tools: [
-      tool("formatter", "TS Formatter", "Format and beautify TypeScript code."),
-      tool("playground", "TS Playground", "Run and test TypeScript in the browser."),
-      tool("to-js", "TS to JS", "Transpile TypeScript into JavaScript."),
+      tool(
+        "formatter",
+        "TS Formatter",
+        "Format and beautify TypeScript code.",
+        "live",
+        ["typescript formatter", "format ts online", "ts beautifier"]
+      ),
+      tool(
+        "playground",
+        "TS Playground",
+        "Run and test TypeScript in the browser.",
+        "live",
+        ["typescript playground", "run ts online", "typescript online compiler"]
+      ),
+      tool(
+        "to-js",
+        "TS to JS",
+        "Transpile TypeScript into JavaScript.",
+        "live",
+        ["typescript to javascript", "ts to js converter", "transpile typescript online"]
+      ),
     ],
   },
   {
@@ -739,9 +793,21 @@ export const categories: Category[] = [
     icon: "\u2615",
     description: "Format, run, and escape Java code online.",
     tools: [
-      tool("formatter", "Java Formatter", "Format and beautify Java code."),
+      tool(
+        "formatter",
+        "Java Formatter",
+        "Format and beautify Java code.",
+        "live",
+        ["java formatter", "format java online", "java code indenter"]
+      ),
       tool("playground", "Java Playground", "Run and test Java code in the browser."),
-      tool("escape-unescape", "Java Escape/Unescape", "Escape or unescape Java strings."),
+      tool(
+        "escape-unescape",
+        "Java Escape/Unescape",
+        "Escape or unescape Java strings.",
+        "live",
+        ["java string escape", "escape java string online", "unescape java string"]
+      ),
     ],
   },
   {

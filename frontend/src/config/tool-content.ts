@@ -2693,6 +2693,296 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+  "javascript/formatter": {
+    howToUse: [
+      "Paste minified or messy JavaScript into the input box, or load the sample.",
+      "The formatted output appears automatically as you type (with a short debounce).",
+      "Copy the formatted code or download it as a .js file.",
+    ],
+    features: [
+      "Powered by Prettier's official standalone build \u2014 the same formatter used by millions of JS projects.",
+      "Understands modern syntax: arrow functions, destructuring, async/await, classes, JSX-free ES modules, and more.",
+      "Produces consistent, opinionated formatting with 2-space indentation and double quotes.",
+      "Runs entirely in your browser via WebAssembly-free pure JS \u2014 nothing is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Is this the same as running Prettier locally?",
+        answer: "Yes, it uses prettier/standalone with the Babel parser plugin, so output matches what you'd get from Prettier's CLI or editor integration for plain JavaScript.",
+      },
+      {
+        question: "Does it support TypeScript syntax?",
+        answer: "No, use the TS Formatter tool for TypeScript \u2014 it uses TypeScript's own parser plugin for accurate type-aware formatting.",
+      },
+      {
+        question: "Why does formatting take a moment?",
+        answer: "The formatter loads a full JavaScript parser and pretty-printer on first use, so there's a small delay while it initializes and analyzes your code's syntax tree.",
+      },
+    ],
+  },
+  "javascript/minifier": {
+    howToUse: [
+      "Paste your JavaScript into the input box, or load the sample.",
+      "The minified output appears automatically, shrinking whitespace, comments, and local variable names.",
+      "Copy the result or download it as a production-ready .js file.",
+    ],
+    features: [
+      "Powered by Terser, the industry-standard minifier used by webpack, Vite, and Rollup.",
+      "Compresses logic (e.g. removing dead code, simplifying expressions) in addition to renaming variables.",
+      "Reports a clear syntax error message if your code can't be parsed.",
+      "Runs entirely client-side \u2014 your source code is never transmitted anywhere.",
+    ],
+    faq: [
+      {
+        question: "Will minifying break my code?",
+        answer: "Terser is designed to produce behaviorally identical output. As with any minifier, avoid relying on function/variable names via reflection (e.g. Function.prototype.name) since those may be renamed.",
+      },
+      {
+        question: "How much smaller will my file get?",
+        answer: "Typically 40-70% smaller than formatted source, depending on how much whitespace, comments, and long variable names your original code has.",
+      },
+      {
+        question: "Does this also obfuscate my code?",
+        answer: "It renames local variables and removes comments, which provides some obscurity, but for stronger obfuscation (top-level renaming and string encoding) use the JS Obfuscator tool.",
+      },
+    ],
+  },
+  "javascript/beautifier": {
+    howToUse: [
+      "Paste minified or inconsistently formatted JavaScript into the input box.",
+      "The beautified output appears automatically with consistent indentation and line breaks.",
+      "Copy the result or download it as a .js file.",
+    ],
+    features: [
+      "Identical formatting engine to the JS Formatter, offered under the name most developers search for.",
+      "Turns single-line minified code into fully readable, properly indented source.",
+      "Powered by Prettier's standalone build running entirely in your browser.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between this and JS Formatter?",
+        answer: "None \u2014 \"Beautifier\" and \"Formatter\" are the same underlying tool, listed separately since both terms are common search queries.",
+      },
+      {
+        question: "Can I re-minify afterward?",
+        answer: "Yes, use the JS Minifier tool to collapse the beautified code back down for production use.",
+      },
+    ],
+  },
+  "javascript/obfuscator": {
+    howToUse: [
+      "Paste your JavaScript source code into the input box, or load the sample.",
+      "The obfuscated output appears automatically \u2014 variable names are shortened, whitespace is removed, and string literals are hex-encoded.",
+      "Copy the result or download it as a .js file.",
+    ],
+    features: [
+      "Renames local and top-level variables/functions using Terser's mangler.",
+      "Encodes string literals as \\xNN / \\uNNNN escape sequences so text isn't visible at a glance.",
+      "Leaves template literals and comments-adjacent logic untouched to reduce the risk of breaking your code.",
+      "Runs entirely client-side \u2014 your source code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Is obfuscated code fully secure?",
+        answer: "No \u2014 obfuscation only deters casual reading and copying. Anyone with enough time and a JavaScript console can still deobfuscate, debug, or reverse-engineer the logic, since the code must still run in the browser.",
+      },
+      {
+        question: "Will this break code that other scripts depend on?",
+        answer: "It can \u2014 top-level function/variable names are renamed, so if other scripts call your functions by name (e.g. via a global object), test carefully after obfuscating or keep those specific names unchanged manually.",
+      },
+      {
+        question: "How do I reverse this?",
+        answer: "Use the JS Deobfuscator tool to reformat the code and decode the string literals back into readable text (variable names cannot be recovered, since that information is discarded).",
+      },
+    ],
+  },
+  "javascript/deobfuscator": {
+    howToUse: [
+      "Paste minified or lightly obfuscated JavaScript into the input box, or load the sample.",
+      "The tool decodes hex/unicode-escaped strings and reformats the code with proper indentation.",
+      "Copy the cleaned-up result or download it as a .js file.",
+    ],
+    features: [
+      "Decodes \\xNN and \\uNNNN escape sequences inside string literals back into readable text.",
+      "Reformats minified, single-line code into fully indented, readable source using Prettier.",
+      "Leaves template literals untouched to avoid corrupting embedded expressions.",
+      "Runs entirely client-side \u2014 your code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Can this undo any obfuscation tool?",
+        answer: "No \u2014 it's a best-effort readability tool. It reverses simple string-escaping and reformats layout, but it cannot recover original variable names or reverse control-flow flattening used by heavy-duty commercial obfuscators, since that information is permanently discarded.",
+      },
+      {
+        question: "Is this safe to run on untrusted code?",
+        answer: "The tool only parses and reformats text \u2014 it never executes the code you paste, so viewing obfuscated/malicious JavaScript source here is safe.",
+      },
+      {
+        question: "Does it work on code minified by Terser or UglifyJS?",
+        answer: "Yes, minified output from any standard JS minifier can be reformatted for readability, though renamed variables will remain short and non-descriptive.",
+      },
+    ],
+  },
+  "javascript/playground": {
+    howToUse: [
+      "Write or paste JavaScript code in the editor, or load the sample.",
+      "Click \"Run\" to execute it in a sandboxed environment.",
+      "View console.log/warn/error/info output in the console panel on the right.",
+      "Click \"Run\" again anytime to re-execute with a fresh, isolated environment.",
+    ],
+    features: [
+      "Executes your code inside a sandboxed iframe with no access to your page's cookies or storage.",
+      "Captures console.log, console.info, console.warn, and console.error output, including objects and errors.",
+      "Each run starts in a fresh execution context, so leftover global state never leaks between runs.",
+      "Nothing is sent to a server \u2014 your code runs entirely inside your own browser.",
+    ],
+    faq: [
+      {
+        question: "Is it safe to run untrusted code here?",
+        answer: "The code runs in a sandboxed iframe with a unique, isolated origin and no access to your top-level page, cookies, or local storage, which limits what it can affect.",
+      },
+      {
+        question: "What happens if my code has an infinite loop?",
+        answer: "The sandboxed frame may become unresponsive. Reload the page if this happens \u2014 always test loops with a bounded iteration count first.",
+      },
+      {
+        question: "Can I use modern syntax like async/await or classes?",
+        answer: "Yes, the code runs in a real browser JavaScript engine, so all modern ES features supported by your browser are available.",
+      },
+    ],
+  },
+  "typescript/formatter": {
+    howToUse: [
+      "Paste your TypeScript code into the input box, or load the sample.",
+      "The formatted output appears automatically as you type.",
+      "Copy the formatted code or download it as a .ts file.",
+    ],
+    features: [
+      "Powered by Prettier's TypeScript parser plugin, based on the official TypeScript compiler's parser.",
+      "Understands interfaces, generics, enums, decorators, and all modern TypeScript syntax.",
+      "Produces consistent, opinionated formatting with 2-space indentation.",
+      "Runs entirely in your browser \u2014 nothing is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does this check my types?",
+        answer: "No, this only formats syntax \u2014 it does not perform type-checking. Use your IDE or `tsc --noEmit` for full type validation.",
+      },
+      {
+        question: "Can I format .tsx files with JSX?",
+        answer: "This tool targets plain TypeScript syntax. JSX-heavy React components may format correctly in most cases, but for guaranteed accuracy, use a dedicated React/TSX formatter setup.",
+      },
+    ],
+  },
+  "typescript/playground": {
+    howToUse: [
+      "Write or paste TypeScript code in the editor, or load the sample.",
+      "Click \"Run\" to transpile it to JavaScript and execute it in a sandboxed environment.",
+      "View console output in the panel on the right, or see a transpilation error if your syntax is invalid.",
+    ],
+    features: [
+      "Transpiles TypeScript to JavaScript using the official TypeScript compiler, then runs it in a sandboxed iframe.",
+      "Supports interfaces, enums, generics, and type annotations (all stripped or compiled away before execution).",
+      "Captures console.log, console.warn, console.error, and console.info output.",
+      "Nothing is sent to a server \u2014 transpilation and execution both happen entirely in your browser.",
+    ],
+    faq: [
+      {
+        question: "Does this catch type errors?",
+        answer: "No, transpileModule performs no type-checking \u2014 it only strips types and compiles syntax down to JavaScript. Invalid types will still run if the resulting JavaScript is valid.",
+      },
+      {
+        question: "Is it safe to run untrusted code here?",
+        answer: "The transpiled code runs in a sandboxed iframe with a unique, isolated origin and no access to your top-level page, cookies, or local storage.",
+      },
+      {
+        question: "Can I use enums and decorators?",
+        answer: "Enums are fully supported. Decorators are experimental in the underlying compiler settings and may not transpile correctly in all cases.",
+      },
+    ],
+  },
+  "typescript/to-js": {
+    howToUse: [
+      "Paste your TypeScript code into the input box, or load the sample.",
+      "The equivalent JavaScript appears automatically, with type annotations stripped and modern syntax preserved.",
+      "Copy the result or download it as a .js file.",
+    ],
+    features: [
+      "Uses the official TypeScript compiler's transpileModule API for accurate, spec-compliant output.",
+      "Strips interfaces, type annotations, and generics while compiling enums and other runtime constructs correctly.",
+      "Targets modern ES2020 output by default, preserving template literals, arrow functions, and classes.",
+      "Runs entirely client-side \u2014 your source code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does this validate my TypeScript types first?",
+        answer: "No, transpileModule intentionally skips type-checking for speed \u2014 it only strips types and compiles syntax. Use the TS Playground or your IDE to catch type errors.",
+      },
+      {
+        question: "What JavaScript target does it compile to?",
+        answer: "ES2020 by default, which supports optional chaining, nullish coalescing, and other modern syntax supported by all current browsers and Node.js versions.",
+      },
+      {
+        question: "Are comments preserved?",
+        answer: "Yes, comments are preserved in the output by default so the transpiled code remains readable.",
+      },
+    ],
+  },
+  "java/formatter": {
+    howToUse: [
+      "Paste your Java code into the input box, or load the sample.",
+      "Click \"Convert\" (or just look at the output panel) to see it re-indented based on brace nesting.",
+      "Copy the formatted output or download it as a .java file.",
+    ],
+    features: [
+      "Re-indents code based on brace ({}), bracket ([]), and parenthesis (()) nesting depth.",
+      "Correctly skips over string literals, character literals, and both // and /* */ comments when counting nesting.",
+      "Preserves your original line breaks rather than aggressively reflowing every statement.",
+      "Runs entirely client-side \u2014 your source code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does this fully reformat my code like an IDE would?",
+        answer: "No, this is a lightweight re-indenter, not a full AST-based pretty-printer. It fixes indentation based on nesting depth but keeps your existing line breaks and statement layout as-is.",
+      },
+      {
+        question: "Does it handle nested classes and lambdas?",
+        answer: "Yes, since indentation is driven purely by brace/bracket/paren depth, nested classes, methods, and lambda bodies are indented correctly regardless of complexity.",
+      },
+      {
+        question: "What about Java 15+ text blocks (\"\"\"...\"\"\")?",
+        answer: "Multi-line text blocks are a known edge case and may not be indented perfectly, since the formatter treats quotes using traditional single-line string rules.",
+      },
+    ],
+  },
+  "java/escape-unescape": {
+    howToUse: [
+      "Switch between Escape and Unescape mode using the toggle.",
+      "In Escape mode, type or paste raw text to convert it into a valid Java string literal.",
+      "In Unescape mode, paste an escaped Java string to decode it back into raw text.",
+      "Copy the result for use in your Java source code.",
+    ],
+    features: [
+      "Escapes backslashes, double quotes, and whitespace control characters (\\n, \\r, \\t, \\b, \\f) exactly as javac expects.",
+      "Escapes other non-printable characters using \\uXXXX Unicode escapes.",
+      "Unescape mode understands all of the above plus single-quote escapes, and tolerates surrounding double quotes.",
+      "Fast, client-side, and works on strings of any length.",
+    ],
+    faq: [
+      {
+        question: "Can I paste a full \"quoted\" Java string to unescape it?",
+        answer: "Yes, surrounding double quotes are automatically detected and stripped before decoding, so you can paste the literal exactly as it appears in your source code.",
+      },
+      {
+        question: "Does the escaped output include the surrounding quotes?",
+        answer: "Yes, Escape mode wraps its output in double quotes so you can paste it directly into your Java source as a complete string literal.",
+      },
+      {
+        question: "Are Unicode characters like accents handled?",
+        answer: "Yes, characters outside the printable ASCII control range are preserved as literal Unicode text, matching how modern Java source files (UTF-8) typically handle non-ASCII content.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

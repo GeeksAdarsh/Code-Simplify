@@ -77,6 +77,16 @@ import { CssBoxShadowGeneratorTool } from "@/components/tools/css-box-shadow-gen
 import { CssTextShadowGeneratorTool } from "@/components/tools/css-text-shadow-generator-tool";
 import { CssGradientGeneratorTool } from "@/components/tools/css-gradient-generator-tool";
 import { CssClipPathGeneratorTool } from "@/components/tools/css-clip-path-generator-tool";
+import { JsFormatterTool } from "@/components/tools/js-formatter-tool";
+import { JsMinifierTool } from "@/components/tools/js-minifier-tool";
+import { JsObfuscatorTool } from "@/components/tools/js-obfuscator-tool";
+import { JsDeobfuscatorTool } from "@/components/tools/js-deobfuscator-tool";
+import { JsPlaygroundTool } from "@/components/tools/js-playground-tool";
+import { TsFormatterTool } from "@/components/tools/ts-formatter-tool";
+import { TsPlaygroundTool } from "@/components/tools/ts-playground-tool";
+import { TsToJsTool } from "@/components/tools/ts-to-js-tool";
+import { JavaFormatterTool } from "@/components/tools/java-formatter-tool";
+import { JavaEscapeUnescapeTool } from "@/components/tools/java-escape-unescape-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -169,6 +179,17 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "css/text-shadow-generator": () => <CssTextShadowGeneratorTool />,
   "css/gradient-generator": () => <CssGradientGeneratorTool />,
   "css/clip-path-generator": () => <CssClipPathGeneratorTool />,
+  "javascript/formatter": () => <JsFormatterTool />,
+  "javascript/minifier": () => <JsMinifierTool />,
+  "javascript/beautifier": () => <JsFormatterTool />,
+  "javascript/obfuscator": () => <JsObfuscatorTool />,
+  "javascript/deobfuscator": () => <JsDeobfuscatorTool />,
+  "javascript/playground": () => <JsPlaygroundTool />,
+  "typescript/formatter": () => <TsFormatterTool />,
+  "typescript/playground": () => <TsPlaygroundTool />,
+  "typescript/to-js": () => <TsToJsTool />,
+  "java/formatter": () => <JavaFormatterTool />,
+  "java/escape-unescape": () => <JavaEscapeUnescapeTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {
