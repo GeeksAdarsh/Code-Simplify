@@ -96,6 +96,17 @@ import { MarkdownPreviewTool } from "@/components/tools/markdown-preview-tool";
 import { MarkdownToHtmlTool } from "@/components/tools/markdown-to-html-tool";
 import { HtmlToMarkdownTool } from "@/components/tools/html-to-markdown-tool";
 import { MarkdownFormatterTool } from "@/components/tools/markdown-formatter-tool";
+import { EmailValidatorTool } from "@/components/tools/email-validator-tool";
+import { EmailHeaderAnalyzerTool } from "@/components/tools/email-header-analyzer-tool";
+import { EmailSignatureGeneratorTool } from "@/components/tools/email-signature-generator-tool";
+import { HttpHeaderViewerTool } from "@/components/tools/http-header-viewer-tool";
+import { UserAgentParserTool } from "@/components/tools/user-agent-parser-tool";
+import { IpLookupTool } from "@/components/tools/ip-lookup-tool";
+import { CidrCalculatorTool } from "@/components/tools/cidr-calculator-tool";
+import { SubnetCalculatorTool } from "@/components/tools/subnet-calculator-tool";
+import { PortLookupTool } from "@/components/tools/port-lookup-tool";
+import { DnsLookupTool } from "@/components/tools/dns-lookup-tool";
+import { WhoisLookupTool } from "@/components/tools/whois-lookup-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -209,6 +220,17 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "markdown/to-html": () => <MarkdownToHtmlTool />,
   "markdown/from-html": () => <HtmlToMarkdownTool />,
   "markdown/formatter": () => <MarkdownFormatterTool />,
+  "email/validator": () => <EmailValidatorTool />,
+  "email/header-analyzer": () => <EmailHeaderAnalyzerTool />,
+  "email/signature-generator": () => <EmailSignatureGeneratorTool />,
+  "networking/http-header-viewer": () => <HttpHeaderViewerTool />,
+  "networking/user-agent-parser": () => <UserAgentParserTool />,
+  "networking/ip-lookup": () => <IpLookupTool />,
+  "networking/cidr-calculator": () => <CidrCalculatorTool />,
+  "networking/subnet-calculator": () => <SubnetCalculatorTool />,
+  "networking/port-lookup": () => <PortLookupTool />,
+  "networking/dns-lookup": () => <DnsLookupTool />,
+  "networking/whois-lookup": () => <WhoisLookupTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

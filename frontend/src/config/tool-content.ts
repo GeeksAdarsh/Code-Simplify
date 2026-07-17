@@ -3237,6 +3237,304 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+  "email/validator": {
+    howToUse: [
+      "Type or paste an email address into the input box.",
+      "The tool validates it in real time and shows the local part, domain, and any issues found.",
+      "If the domain looks like a typo of a popular provider (e.g. \u201cgmial.com\u201d), a suggested correction is shown.",
+    ],
+    features: [
+      "Checks local-part and domain length limits, invalid characters, and consecutive/leading/trailing dots.",
+      "Validates domain labels and top-level domain format, including bracketed IP-literal domains.",
+      "Suggests corrections for common typos of popular email providers using edit-distance matching.",
+      "Runs entirely in your browser \u2014 addresses are never sent to a server.",
+    ],
+    faq: [
+      {
+        question: "Does this check if the email address actually exists?",
+        answer: "No. This validates syntax only \u2014 whether the address is well-formed per email format rules. Confirming a mailbox actually exists and accepts mail requires an SMTP verification step or sending a confirmation email, which this tool intentionally doesn't do.",
+      },
+      {
+        question: "Why does it flag some unusual-looking but technically valid addresses?",
+        answer: "The validator favors practical, real-world email formats. Some rarely used but technically legal constructs (e.g. certain quoted local parts) may be flagged \u2014 if in doubt, stick to letters, digits, dots, underscores, and hyphens before the @.",
+      },
+      {
+        question: "Is my email address uploaded anywhere?",
+        answer: "No, validation happens entirely with JavaScript in your browser and nothing is transmitted over the network.",
+      },
+    ],
+  },
+  "email/header-analyzer": {
+    howToUse: [
+      "In your email client, open the message and find \u201cShow Original\u201d, \u201cView Source\u201d, or \u201cShow Headers\u201d.",
+      "Copy the full raw header block (or the entire message source) and paste it into the box.",
+      "The tool extracts key fields, checks SPF/DKIM/DMARC results, and reconstructs the delivery path hop by hop.",
+    ],
+    features: [
+      "Extracts From, To, Subject, Date, Message-ID, and Reply-To at a glance.",
+      "Parses every \u201cReceived:\u201d header into a chronological hop-by-hop delivery path with per-hop delay.",
+      "Reads Authentication-Results / Received-SPF headers to show SPF, DKIM, and DMARC pass/fail status.",
+      "Handles folded (multi-line) headers correctly, just like a real mail parser.",
+      "Runs entirely in your browser \u2014 pasted headers are never sent to a server.",
+    ],
+    faq: [
+      {
+        question: "Where do I find raw email headers?",
+        answer: "Most webmail clients have a \u201cShow Original\u201d or \u201cView Source\u201d option in the message's \u2018\u2026\u2019 menu. Desktop clients like Outlook or Apple Mail usually call it \u201cView Source\u201d or \u201cShow Raw Message\u201d.",
+      },
+      {
+        question: "Why are there multiple \u201cReceived:\u201d headers?",
+        answer: "Each mail server that handles a message prepends its own Received header at the top, so the topmost header is the most recent hop and the bottommost is closest to the original sender. This tool reverses that order to show the path chronologically.",
+      },
+      {
+        question: "What does an SPF/DKIM/DMARC \u201cpass\u201d mean?",
+        answer: "SPF checks the sending server is authorized for the sender's domain, DKIM verifies a cryptographic signature wasn't tampered with, and DMARC ties both together with a domain policy. All three passing is a strong signal the message isn't spoofed \u2014 but their absence doesn't automatically mean a message is malicious.",
+      },
+    ],
+  },
+  "email/signature-generator": {
+    howToUse: [
+      "Fill in your name, title, company, and contact details on the left.",
+      "Optionally add social profile links, a logo/photo URL, and pick an accent color.",
+      "Preview updates live \u2014 copy the generated HTML into your email client's signature settings, or use the plain-text fallback.",
+    ],
+    features: [
+      "Generates an email-client-friendly, table-based HTML signature (no external CSS dependencies).",
+      "Live preview rendered exactly as the copied HTML will look.",
+      "Includes a plain-text fallback version for clients that don't render HTML signatures.",
+      "Optional logo/photo via URL \u2014 no uploads, so there's nothing to host yourself beyond the image.",
+      "Runs entirely in your browser \u2014 your details are never sent to a server.",
+    ],
+    faq: [
+      {
+        question: "Why does the logo need a URL instead of an upload?",
+        answer: "Email signatures reference images by URL; the image has to be hosted somewhere your recipients' mail clients can fetch it from. Uploading a file here wouldn't give you a stable public URL, so this tool asks for a URL to an image you already host (e.g. on your company website or an image host).",
+      },
+      {
+        question: "How do I install this signature in Gmail/Outlook/Apple Mail?",
+        answer: "Copy the HTML signature, then paste it into your client's signature editor (most support pasting rich text directly). In Gmail: Settings \u2192 General \u2192 Signature. In Outlook: File \u2192 Options \u2192 Mail \u2192 Signatures. In Apple Mail: Settings \u2192 Signatures (drag-and-drop paste works best there).",
+      },
+      {
+        question: "Will the signature look the same in every email client?",
+        answer: "It's built with an email-safe HTML table layout for broad compatibility, but rendering can still vary slightly between clients (especially older Outlook versions). Always send yourself a test email after installing it.",
+      },
+    ],
+  },
+  "networking/http-header-viewer": {
+    howToUse: [
+      "Enter a full URL, including https:// or http://, and click \u201cFetch headers\u201d.",
+      "The response status code, status text, and every response header are listed.",
+      "Redirects are shown (with their Location) but never automatically followed.",
+    ],
+    features: [
+      "Shows every response header returned by the server, including caching, security, and CDN headers.",
+      "Displays HTTP status code and status text at a glance.",
+      "Surfaces redirect targets without silently following them, so you can inspect each hop yourself.",
+      "Server-side fetch avoids browser CORS restrictions that would otherwise hide cross-origin headers.",
+    ],
+    faq: [
+      {
+        question: "Why can't this just run entirely in my browser?",
+        answer: "Browsers enforce CORS, which blocks JavaScript from reading most response headers for cross-origin requests unless the target server explicitly allows it. This tool's backend makes the request server-side instead, so it can read the full header set regardless of CORS.",
+      },
+      {
+        question: "Can I use this to probe internal or private servers?",
+        answer: "No. The backend resolves the target hostname and refuses to connect to loopback, private (RFC 1918), link-local, or multicast addresses \u2014 including cloud metadata endpoints \u2014 as a safety measure against misuse.",
+      },
+      {
+        question: "Does it follow redirects automatically?",
+        answer: "No, redirects are intentionally not auto-followed. If the response is a 3xx, the Location header is shown so you can decide whether to check that URL separately.",
+      },
+    ],
+  },
+  "networking/user-agent-parser": {
+    howToUse: [
+      "Your current browser's User-Agent string is loaded automatically \u2014 or paste any other User-Agent to parse it.",
+      "The tool extracts the browser, rendering engine, operating system, and device type.",
+      "Try the sample strings to see how mobile, desktop, and bot user agents differ.",
+    ],
+    features: [
+      "Detects major browsers (Chrome, Firefox, Safari, Edge, Opera, Samsung Internet, and more).",
+      "Identifies the rendering engine (Blink, Gecko, WebKit, Trident) and its version where available.",
+      "Detects operating system and version, including Windows build-to-name mapping.",
+      "Classifies device type as Desktop, Mobile, Tablet, or Bot/crawler.",
+      "Runs entirely in your browser \u2014 no User-Agent strings are sent anywhere.",
+    ],
+    faq: [
+      {
+        question: "Is User-Agent parsing 100% accurate?",
+        answer: "No parser can be perfectly accurate \u2014 User-Agent strings are inconsistent across vendors, frequently spoofed, and increasingly \u201cfrozen\u201d by browsers for privacy. This tool uses common, well-tested patterns that correctly handle the vast majority of real-world browsers.",
+      },
+      {
+        question: "Why does my browser show a generic or unexpected result?",
+        answer: "Some browsers (e.g. Chrome-based ones) intentionally reduce or freeze User-Agent details for privacy (User-Agent Reduction). Use the Sec-CH-UA client hints instead if you need precise browser detection in production code.",
+      },
+      {
+        question: "Can I trust User-Agent for security decisions?",
+        answer: "No \u2014 the header is fully client-controlled and trivially spoofable. Never use it as an access-control or security mechanism; it's only useful for analytics and progressive-enhancement decisions.",
+      },
+    ],
+  },
+  "networking/ip-lookup": {
+    howToUse: [
+      "Enter a public IPv4 or IPv6 address and click \u201cLookup\u201d.",
+      "The tool returns approximate geolocation, ISP, organization, and network (AS) information.",
+      "Private, loopback, and reserved addresses are rejected since they have no public geolocation.",
+    ],
+    features: [
+      "Returns country, region, city, ZIP/postal code, timezone, and approximate coordinates.",
+      "Shows the ISP, hosting organization, and autonomous system (AS) that owns the IP block.",
+      "Server-side lookup keeps the query off a third party from your browser's perspective.",
+      "Rejects private/internal addresses up front with a clear error message.",
+    ],
+    faq: [
+      {
+        question: "How accurate is IP geolocation?",
+        answer: "IP geolocation is generally accurate at the country level, usually accurate at the region/city level, but can be off by many miles \u2014 especially for mobile carriers, VPNs, and corporate networks where many users share a small pool of IPs.",
+      },
+      {
+        question: "Can this be used to find someone's exact home address?",
+        answer: "No. IP geolocation only approximates the location of the ISP's network infrastructure that assigned the address, not the physical location of a specific device or person.",
+      },
+      {
+        question: "Why was my IP address rejected?",
+        answer: "Private (10.x, 172.16\u201331.x, 192.168.x), loopback (127.x), and link-local (169.254.x) addresses aren't routable on the public internet and have no meaningful geolocation, so the lookup refuses them.",
+      },
+    ],
+  },
+  "networking/cidr-calculator": {
+    howToUse: [
+      "Enter an IPv4 address with a CIDR prefix, e.g. 192.168.1.0/24.",
+      "The tool instantly computes the network address, broadcast address, usable host range, and more.",
+      "Change the prefix length to see how the address space shrinks or grows.",
+    ],
+    features: [
+      "Calculates network address, broadcast address, subnet mask, and wildcard mask.",
+      "Shows the first and last usable host address and total/usable address counts.",
+      "Classifies the address by legacy IP class and flags RFC 1918 private ranges.",
+      "Runs entirely in your browser \u2014 instant results with no network calls.",
+    ],
+    faq: [
+      {
+        question: "What does the \u201c/24\u201d in an address mean?",
+        answer: "The number after the slash is the CIDR prefix length \u2014 the number of leading bits that make up the network portion of the address. A /24 means the first 24 bits (three octets) identify the network, leaving 8 bits (256 addresses) for hosts.",
+      },
+      {
+        question: "Why are there no usable hosts for /31 and /32?",
+        answer: "A /32 is a single host address with no room for a network/broadcast pair. A /31 is a special case (RFC 3021) used for point-to-point links where both addresses are usable as host addresses without a separate broadcast address \u2014 this tool reports 0 usable hosts for both for simplicity.",
+      },
+      {
+        question: "Does this support IPv6?",
+        answer: "Not yet \u2014 this calculator currently supports IPv4 CIDR notation only.",
+      },
+    ],
+  },
+  "networking/subnet-calculator": {
+    howToUse: [
+      "Enter an IPv4 address, then provide either a CIDR prefix (e.g. 24) or a dotted subnet mask (e.g. 255.255.255.0).",
+      "Review the network details \u2014 network/broadcast address, usable range, and total hosts.",
+      "Optionally split the network into equal subnets by count or by hosts needed per subnet.",
+    ],
+    features: [
+      "Accepts either CIDR prefix notation or a dotted-decimal subnet mask as input.",
+      "Calculates network address, broadcast address, subnet/wildcard masks, and usable host range.",
+      "Splits a network into N equal subnets, or automatically sizes subnets to fit a target host count (VLSM-style).",
+      "Lists every resulting subnet with its network, broadcast, and usable range in a table.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between this and the CIDR Calculator?",
+        answer: "The CIDR Calculator analyzes a single network block. The Subnet Calculator adds the ability to split that block into multiple smaller subnets \u2014 either an exact count or sized to fit a target number of hosts per subnet.",
+      },
+      {
+        question: "How does \u201chosts needed per subnet\u201d work?",
+        answer: "Enter the number of usable host addresses each subnet must support, and the tool finds the smallest subnet size (largest prefix) that can accommodate that many hosts, then splits your network into that many equal-sized subnets.",
+      },
+      {
+        question: "Is there a limit to how many subnets can be listed?",
+        answer: "Yes, the table caps at a few thousand rows to keep the page responsive. If you need an extremely large number of tiny subnets, consider working with a larger base prefix.",
+      },
+    ],
+  },
+  "networking/port-lookup": {
+    howToUse: [
+      "Type a port number (e.g. 443) or a service/keyword (e.g. \u201cssh\u201d, \u201cdatabase\u201d) into the search box.",
+      "Matching entries from the well-known and commonly used ports list appear instantly.",
+      "Clear the search to browse the full reference table.",
+    ],
+    features: [
+      "Covers well-known ports (0\u20131023) plus many commonly used registered ports for popular software.",
+      "Search by exact port number or by service name/keyword.",
+      "Shows protocol (TCP/UDP/both) and a short description for each entry.",
+      "Purely a reference lookup \u2014 it never scans, probes, or connects to any live host.",
+    ],
+    faq: [
+      {
+        question: "Does this scan my network or a remote host?",
+        answer: "No. This is a static reference table of what each port number conventionally means \u2014 it makes no network connections at all. For scanning open ports on a real host you'd need a dedicated port-scanning tool (and permission to scan that host).",
+      },
+      {
+        question: "What's the difference between a well-known and a registered port?",
+        answer: "Well-known ports (0\u20131023) are reserved by IANA for common core protocols like HTTP and SSH. Registered ports (1024\u201349151) are assigned to specific applications on request but aren't restricted to privileged processes \u2014 this table includes common examples of both.",
+      },
+      {
+        question: "Why do some ports list both TCP and UDP?",
+        answer: "Some protocols, like DNS, use UDP for typical queries but fall back to TCP for larger responses or zone transfers, so both protocols are commonly associated with the same port number.",
+      },
+    ],
+  },
+  "networking/dns-lookup": {
+    howToUse: [
+      "Enter a domain name and choose a DNS record type (A, AAAA, MX, TXT, NS, CNAME, SOA, or CAA).",
+      "Click \u201cLookup\u201d to query that record type directly from DNS.",
+      "Results show every matching record along with its TTL (time-to-live in seconds).",
+    ],
+    features: [
+      "Supports the most commonly needed record types: A, AAAA, MX, TXT, NS, CNAME, SOA, and CAA.",
+      "Shows each record's TTL so you can see how long resolvers will cache it.",
+      "Server-side resolution using a real DNS client library, not a cached or approximate result.",
+    ],
+    faq: [
+      {
+        question: "Why can't this run entirely in my browser?",
+        answer: "Browsers have no API for making raw DNS queries \u2014 all DNS resolution a browser does is handled invisibly by the operating system for the page's own requests. This tool's backend performs a real DNS query using a dedicated DNS client library.",
+      },
+      {
+        question: "Why do I see no results for a record type?",
+        answer: "An empty result means that domain has no records of the selected type \u2014 for example, most domains have no CAA or TXT records unless explicitly configured. This isn't necessarily an error.",
+      },
+      {
+        question: "What does TTL mean?",
+        answer: "TTL (time-to-live) is the number of seconds a DNS resolver is allowed to cache that record before re-querying the authoritative server. Lower TTLs mean changes propagate faster but increase query load.",
+      },
+    ],
+  },
+  "networking/whois-lookup": {
+    howToUse: [
+      "Enter a domain name (including its TLD, e.g. example.com) and click \u201cLookup\u201d.",
+      "The tool queries the appropriate WHOIS server for that TLD and displays the raw registration record.",
+      "For some TLDs, it automatically follows a referral to a more specific registry/registrar WHOIS server.",
+    ],
+    features: [
+      "Automatically resolves which WHOIS server to query for a given TLD, with an IANA-referral fallback for TLDs not in the built-in list.",
+      "Follows one referral hop (e.g. from a thin registry to the sponsoring registrar) when present.",
+      "Shows registrar, creation/expiry/update dates, name servers, and domain status codes as returned by the registry.",
+    ],
+    faq: [
+      {
+        question: "Why can't this run entirely in my browser?",
+        answer: "WHOIS (RFC 3912) is a plain-text protocol over a raw TCP socket on port 43 \u2014 there's no HTTP/JSON API and browsers have no way to open arbitrary raw sockets. This tool's backend opens that socket connection server-side.",
+      },
+      {
+        question: "Why is some information missing or redacted?",
+        answer: "Many registrars redact registrant contact details (name, address, email) by default under privacy regulations like GDPR, replacing them with a privacy proxy service or omitting them entirely. This is normal and not a limitation of this tool.",
+      },
+      {
+        question: "Why does the result look different for .com versus other TLDs?",
+        answer: "Each domain registry runs its own WHOIS server with its own output format \u2014 there's no single standardized WHOIS response format across TLDs, so field names and structure can vary noticeably between registries.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

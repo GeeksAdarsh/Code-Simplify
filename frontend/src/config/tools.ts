@@ -939,9 +939,27 @@ export const categories: Category[] = [
     icon: "\u{1F4E7}",
     description: "Validate email addresses and analyze email headers online.",
     tools: [
-      tool("validator", "Email Validator", "Validate email address syntax."),
-      tool("header-analyzer", "Email Header Analyzer", "Analyze raw email headers for routing and spam info."),
-      tool("signature-generator", "Email Signature Generator", "Design a professional email signature."),
+      tool(
+        "validator",
+        "Email Validator",
+        "Validate email address syntax and catch common typos in domain names.",
+        "live",
+        ["email validator", "validate email address", "check email syntax", "email format checker"]
+      ),
+      tool(
+        "header-analyzer",
+        "Email Header Analyzer",
+        "Analyze raw email headers to trace delivery hops and check SPF/DKIM/DMARC results.",
+        "live",
+        ["email header analyzer", "analyze email headers", "spf dkim dmarc checker", "email trace"]
+      ),
+      tool(
+        "signature-generator",
+        "Email Signature Generator",
+        "Design a professional HTML email signature with live preview.",
+        "live",
+        ["email signature generator", "html email signature", "create email signature", "signature maker"]
+      ),
     ],
   },
   {
@@ -950,14 +968,62 @@ export const categories: Category[] = [
     icon: "\u{1F310}",
     description: "Look up IPs, DNS, WHOIS, subnets, and analyze HTTP headers and user agents.",
     tools: [
-      tool("http-header-viewer", "HTTP Header Viewer", "Inspect HTTP response headers for any URL."),
-      tool("user-agent-parser", "User Agent Parser", "Parse a User-Agent string into browser/OS/device info."),
-      tool("ip-lookup", "IP Lookup", "Look up geolocation and ownership info for an IP address."),
-      tool("cidr-calculator", "CIDR Calculator", "Calculate CIDR ranges and subnet details."),
-      tool("subnet-calculator", "Subnet Calculator", "Calculate subnet masks and host ranges."),
-      tool("port-lookup", "Port Lookup", "Look up common services for a network port."),
-      tool("dns-lookup", "DNS Lookup", "Query DNS records for a domain."),
-      tool("whois-lookup", "WHOIS Lookup", "Look up domain registration/WHOIS info."),
+      tool(
+        "http-header-viewer",
+        "HTTP Header Viewer",
+        "Inspect HTTP response headers for any URL, including redirects and security headers.",
+        "live",
+        ["http header viewer", "check response headers", "http headers checker", "view website headers"]
+      ),
+      tool(
+        "user-agent-parser",
+        "User Agent Parser",
+        "Parse a User-Agent string into browser, engine, OS, and device info.",
+        "live",
+        ["user agent parser", "ua string parser", "browser detector", "parse user agent online"]
+      ),
+      tool(
+        "ip-lookup",
+        "IP Lookup",
+        "Look up geolocation, ISP, and organization info for any public IP address.",
+        "live",
+        ["ip lookup", "ip geolocation", "find ip location", "what is this ip address"]
+      ),
+      tool(
+        "cidr-calculator",
+        "CIDR Calculator",
+        "Calculate network, broadcast, and usable host ranges from a CIDR block.",
+        "live",
+        ["cidr calculator", "cidr to ip range", "network address calculator", "cidr notation calculator"]
+      ),
+      tool(
+        "subnet-calculator",
+        "Subnet Calculator",
+        "Calculate subnet masks, host ranges, and split a network into equal subnets.",
+        "live",
+        ["subnet calculator", "ip subnet calculator", "subnet mask calculator", "vlsm calculator"]
+      ),
+      tool(
+        "port-lookup",
+        "Port Lookup",
+        "Look up the standard service and protocol for any well-known network port.",
+        "live",
+        ["port lookup", "port number lookup", "well known ports list", "what service uses this port"]
+      ),
+      tool(
+        "dns-lookup",
+        "DNS Lookup",
+        "Query A, AAAA, MX, TXT, NS, CNAME, SOA, and CAA records for any domain.",
+        "live",
+        ["dns lookup", "dns record checker", "mx record lookup", "check dns records online"]
+      ),
+      tool(
+        "whois-lookup",
+        "WHOIS Lookup",
+        "Look up domain registration, registrar, and name server info.",
+        "live",
+        ["whois lookup", "domain whois checker", "who owns this domain", "domain registration lookup"]
+      ),
       tool("ping-tool", "Ping Tool", "Check host reachability and latency."),
       tool("traceroute", "Traceroute", "Trace the network path to a host."),
     ],
