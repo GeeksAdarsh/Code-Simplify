@@ -87,6 +87,15 @@ import { TsPlaygroundTool } from "@/components/tools/ts-playground-tool";
 import { TsToJsTool } from "@/components/tools/ts-to-js-tool";
 import { JavaFormatterTool } from "@/components/tools/java-formatter-tool";
 import { JavaEscapeUnescapeTool } from "@/components/tools/java-escape-unescape-tool";
+import { PythonFormatterTool } from "@/components/tools/python-formatter-tool";
+import { PythonMinifierTool } from "@/components/tools/python-minifier-tool";
+import { PhpFormatterTool } from "@/components/tools/php-formatter-tool";
+import { RustFormatterTool } from "@/components/tools/rust-formatter-tool";
+import { GoFormatterTool } from "@/components/tools/go-formatter-tool";
+import { MarkdownPreviewTool } from "@/components/tools/markdown-preview-tool";
+import { MarkdownToHtmlTool } from "@/components/tools/markdown-to-html-tool";
+import { HtmlToMarkdownTool } from "@/components/tools/html-to-markdown-tool";
+import { MarkdownFormatterTool } from "@/components/tools/markdown-formatter-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -190,6 +199,16 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "typescript/to-js": () => <TsToJsTool />,
   "java/formatter": () => <JavaFormatterTool />,
   "java/escape-unescape": () => <JavaEscapeUnescapeTool />,
+  "python/formatter": () => <PythonFormatterTool />,
+  "python/minifier": () => <PythonMinifierTool />,
+  "php/formatter": () => <PhpFormatterTool />,
+  "php/beautifier": () => <PhpFormatterTool />,
+  "rust/formatter": () => <RustFormatterTool />,
+  "go/formatter": () => <GoFormatterTool />,
+  "markdown/preview": () => <MarkdownPreviewTool />,
+  "markdown/to-html": () => <MarkdownToHtmlTool />,
+  "markdown/from-html": () => <HtmlToMarkdownTool />,
+  "markdown/formatter": () => <MarkdownFormatterTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

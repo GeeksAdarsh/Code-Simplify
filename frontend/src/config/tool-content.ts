@@ -2983,6 +2983,260 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+  "python/formatter": {
+    howToUse: [
+      "Paste your Python code into the input box, or load the sample.",
+      "The formatted output appears automatically, with consistent 4-space indentation.",
+      "Copy the result or download it as a .py file.",
+    ],
+    features: [
+      "Uses the same indentation-stack algorithm Python's own tokenizer relies on to determine nesting depth.",
+      "Fixes mixed tabs/spaces and inconsistent indent widths (e.g. 2-space and 3-space blocks in the same file).",
+      "Leaves content inside triple-quoted strings (docstrings) completely untouched.",
+      "Runs entirely client-side \u2014 your source code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Is this the same as Black or autopep8?",
+        answer: "No, this is a lightweight indentation normalizer, not a full AST-based formatter. It fixes tabs/spaces and indent-width inconsistencies but doesn't reformat operator spacing, line length, or quote style the way Black does.",
+      },
+      {
+        question: "Will it break my docstrings?",
+        answer: "No, lines inside triple-quoted strings (''' or \"\"\") are detected and copied through completely unchanged, so multi-line docstrings and text blocks are always preserved exactly.",
+      },
+      {
+        question: "What if my file mixes tabs and spaces inconsistently?",
+        answer: "Tabs are expanded to a fixed width (8 columns, the Python convention) purely for measuring relative indentation, then every level is re-emitted using clean 4-space indents.",
+      },
+    ],
+  },
+  "python/minifier": {
+    howToUse: [
+      "Paste your Python code into the input box, or load the sample.",
+      "The minified output appears automatically \u2014 comments and blank lines removed, indentation shrunk to 1 space per level.",
+      "Copy the result or download it as a .py file.",
+    ],
+    features: [
+      "Strips # comments and blank lines while correctly leaving string literals containing '#' untouched.",
+      "Shrinks every indentation level down to a single space, since Python only requires consistent relative nesting.",
+      "Preserves triple-quoted strings (docstrings) exactly, without stripping their content.",
+      "Runs entirely client-side \u2014 nothing is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Why can't this put everything on one line like a JS minifier?",
+        answer: "Python uses indentation, not braces, to define code blocks, so removing line breaks would destroy the program's structure. Shrinking indentation width is the safe equivalent of minifying whitespace for Python.",
+      },
+      {
+        question: "Is the output still valid, runnable Python?",
+        answer: "Yes, since only the width of each indentation level changes (not the relative nesting), the resulting file behaves identically to the original.",
+      },
+      {
+        question: "Are docstrings removed?",
+        answer: "No, only # comments are stripped. Triple-quoted string literals (including docstrings) are real Python expressions and are preserved so runtime behavior doesn't change.",
+      },
+    ],
+  },
+  "php/formatter": {
+    howToUse: [
+      "Paste your PHP code into the input box, or load the sample.",
+      "The formatted output appears automatically, re-indented based on brace nesting depth.",
+      "Copy the result or download it as a .php file.",
+    ],
+    features: [
+      "Re-indents code based on brace/bracket/parenthesis nesting (4-space indent).",
+      "Correctly skips over single- and double-quoted strings and both // and /* */ comments when counting nesting.",
+      "Preserves your existing line breaks rather than aggressively reflowing every statement.",
+      "Runs entirely client-side \u2014 your source code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does this fully reformat my code like PHP-CS-Fixer would?",
+        answer: "No, this is a lightweight re-indenter, not a full AST-based pretty-printer. It fixes indentation based on nesting depth but keeps your existing statement layout as-is.",
+      },
+      {
+        question: "Are heredoc/nowdoc blocks supported?",
+        answer: "Heredoc (<<<EOT ... EOT;) and nowdoc syntax are a known edge case and may not be indented perfectly, since the formatter uses simple quote-based string detection rather than full PHP lexing.",
+      },
+      {
+        question: "Does it work on files with mixed HTML and PHP?",
+        answer: "The formatter processes the entire file as text, so HTML outside <?php ?> tags is preserved as-is (it has no braces to affect indentation depth).",
+      },
+    ],
+  },
+  "php/beautifier": {
+    howToUse: [
+      "Paste your PHP code into the input box, or load the sample.",
+      "The beautified output appears automatically with consistent indentation.",
+      "Copy the result or download it as a .php file.",
+    ],
+    features: [
+      "Identical formatting engine to the PHP Formatter, offered under the name most developers search for.",
+      "Turns inconsistently indented PHP into cleanly nested, readable source.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between this and PHP Formatter?",
+        answer: "None \u2014 \"Beautifier\" and \"Formatter\" are the same underlying tool, listed separately since both terms are common search queries.",
+      },
+    ],
+  },
+  "rust/formatter": {
+    howToUse: [
+      "Paste your Rust code into the input box, or load the sample.",
+      "The formatted output appears automatically, re-indented based on brace nesting depth.",
+      "Copy the result or download it as a .rs file.",
+    ],
+    features: [
+      "Re-indents code based on brace/bracket/parenthesis nesting (4-space indent, matching rustfmt's default).",
+      "Distinguishes char literals ('a', '\\n', '\\u{1F600}') from lifetime annotations ('a, 'static) so lifetimes are never mistaken for unterminated strings.",
+      "Correctly skips over double-quoted strings and both // and /* */ comments when counting nesting.",
+      "Runs entirely client-side \u2014 your source code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Is this a replacement for rustfmt?",
+        answer: "No, this is a lightweight brace-based re-indenter, not a full syntax-aware formatter. For canonical Rust formatting, always run rustfmt locally or in CI \u2014 use this tool for quick cleanup when you don't have a Rust toolchain handy.",
+      },
+      {
+        question: "Are raw strings (r\"...\") handled correctly?",
+        answer: "Raw strings and byte strings are a known edge case, since the formatter uses simplified quote-scanning rather than full Rust lexing. Double-check output involving raw strings before committing.",
+      },
+      {
+        question: "How does it tell lifetimes apart from char literals?",
+        answer: "It looks ahead for a closing quote a few characters after any single quote \u2014 char literals like 'a' or '\\n' have one nearby, while lifetimes like 'a or 'static don't, so they're left alone.",
+      },
+    ],
+  },
+  "go/formatter": {
+    howToUse: [
+      "Paste your Go code into the input box, or load the sample.",
+      "The formatted output appears automatically, re-indented based on brace nesting depth.",
+      "Copy the result or download it as a .go file.",
+    ],
+    features: [
+      "Re-indents code based on brace/bracket/parenthesis nesting depth.",
+      "Correctly skips over string and char literals and both // and /* */ comments when counting nesting.",
+      "Runs entirely client-side \u2014 your source code is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Is this the same as gofmt?",
+        answer: "No, gofmt is a full syntax-aware formatter that also uses tabs for indentation by default. This tool is a lightweight, space-based re-indenter for quick cleanup when you don't have a Go toolchain handy \u2014 always run gofmt before committing Go code.",
+      },
+      {
+        question: "Does it handle backtick raw strings?",
+        answer: "Yes, content inside backtick-delimited raw string literals is skipped over and left untouched when counting brace depth.",
+      },
+    ],
+  },
+  "markdown/preview": {
+    howToUse: [
+      "Type or paste Markdown into the editor, or load the sample.",
+      "The rendered preview on the right updates instantly as you type.",
+      "Supports headings, bold/italic, lists, links, images, code fences, blockquotes, and tables (GitHub-flavored Markdown).",
+    ],
+    features: [
+      "Powered by the marked library for fast, spec-compliant Markdown parsing.",
+      "Renders in a sandboxed iframe with scripts disabled, so embedded HTML in your Markdown can't execute code.",
+      "Includes a clean, readable default stylesheet for headings, code blocks, tables, and blockquotes.",
+      "Nothing is uploaded \u2014 rendering happens entirely inside your browser.",
+    ],
+    faq: [
+      {
+        question: "Does it support GitHub-flavored Markdown (tables, task lists)?",
+        answer: "Yes, GFM extensions like tables and fenced code blocks are supported via marked's built-in GFM mode.",
+      },
+      {
+        question: "Can I preview Markdown with embedded HTML?",
+        answer: "Raw HTML in your Markdown is parsed and rendered, but the preview frame has scripts disabled, so any embedded <script> tags will not execute.",
+      },
+      {
+        question: "Can I export the rendered result?",
+        answer: "Use the Markdown to HTML tool to get a copyable/downloadable HTML file instead of just a live preview.",
+      },
+    ],
+  },
+  "markdown/to-html": {
+    howToUse: [
+      "Paste your Markdown into the input box, or load the sample.",
+      "The equivalent HTML appears automatically as you type.",
+      "Copy the result or download it as an .html file.",
+    ],
+    features: [
+      "Powered by the marked library, supporting GitHub-flavored Markdown (tables, fenced code blocks, etc.).",
+      "Produces clean, semantic HTML output ready to drop into a page or CMS.",
+      "Runs entirely client-side \u2014 your Markdown is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "Is the output sanitized?",
+        answer: "No, raw HTML embedded in your Markdown is passed through as-is. If you plan to render untrusted user-submitted Markdown on a live site, sanitize the output with a library like DOMPurify first.",
+      },
+      {
+        question: "Does it support tables and task lists?",
+        answer: "Yes, GitHub-flavored Markdown tables and other GFM extensions are enabled by default.",
+      },
+      {
+        question: "Can I convert the HTML back to Markdown later?",
+        answer: "Yes, use the HTML to Markdown tool to convert it back, though minor formatting differences (like exact whitespace) may not round-trip perfectly.",
+      },
+    ],
+  },
+  "markdown/from-html": {
+    howToUse: [
+      "Paste your HTML into the input box, or load the sample.",
+      "The equivalent Markdown appears automatically.",
+      "Copy the result or download it as a .md file.",
+    ],
+    features: [
+      "Powered by Turndown, a well-tested HTML-to-Markdown converter used across many open-source tools.",
+      "Uses ATX-style headings (#), dash (-) bullets, and fenced code blocks for clean, consistent output.",
+      "Handles nested lists, links, images, blockquotes, and inline formatting (bold, italic, code).",
+      "Runs entirely client-side using your browser's own HTML parser \u2014 nothing is uploaded.",
+    ],
+    faq: [
+      {
+        question: "Does it handle complex nested HTML like tables?",
+        answer: "Yes, common structures including tables, nested lists, and blockquotes are converted, though highly complex or non-semantic HTML (e.g. div-based layouts) may not always translate perfectly to Markdown.",
+      },
+      {
+        question: "What happens to inline styles and classes?",
+        answer: "They're dropped, since Markdown has no equivalent \u2014 only the semantic structure and text content are preserved.",
+      },
+      {
+        question: "Can I convert a full webpage?",
+        answer: "Yes, paste the page's HTML (e.g. from 'View Source' or dev tools) \u2014 the converter processes the entire input, though extremely large documents may take a moment.",
+      },
+    ],
+  },
+  "markdown/formatter": {
+    howToUse: [
+      "Paste your Markdown into the input box, or load the sample.",
+      "The cleaned-up output appears automatically \u2014 consistent bullets, spaced headings, and no extra blank lines.",
+      "Copy the result or download it as a .md file.",
+    ],
+    features: [
+      "Normalizes unordered list bullets (*, +) to a consistent \u201c-\u201d marker.",
+      "Ensures exactly one space after ATX heading hashes (##Title \u2192 ## Title).",
+      "Strips trailing whitespace and collapses multiple consecutive blank lines down to one.",
+      "Leaves fenced code blocks (``` or ~~~) completely untouched, so code samples are never altered.",
+    ],
+    faq: [
+      {
+        question: "Will this change my code blocks?",
+        answer: "No, content between fenced code block markers is detected and passed through completely unchanged, even if it looks like a list or heading.",
+      },
+      {
+        question: "Does it reformat tables or reflow paragraph text?",
+        answer: "No, this tool focuses on whitespace and marker consistency \u2014 it doesn't realign table columns or wrap/reflow paragraph text.",
+      },
+      {
+        question: "Why normalize bullets to a dash?",
+        answer: "Mixing *, +, and - bullet markers in the same list can render as separate lists in some Markdown renderers. Standardizing on one marker avoids that pitfall.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

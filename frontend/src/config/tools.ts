@@ -816,8 +816,20 @@ export const categories: Category[] = [
     icon: "\u{1F40D}",
     description: "Format and minify Python code online.",
     tools: [
-      tool("formatter", "Python Formatter", "Format and beautify Python code."),
-      tool("minifier", "Python Minifier", "Minify Python source code."),
+      tool(
+        "formatter",
+        "Python Formatter",
+        "Format and beautify Python code.",
+        "live",
+        ["python formatter", "format python online", "python code indenter"]
+      ),
+      tool(
+        "minifier",
+        "Python Minifier",
+        "Minify Python source code.",
+        "live",
+        ["python minifier", "minify python online", "compress python code"]
+      ),
     ],
   },
   {
@@ -826,8 +838,20 @@ export const categories: Category[] = [
     icon: "\u{1F418}",
     description: "Format and beautify PHP code online.",
     tools: [
-      tool("formatter", "PHP Formatter", "Format and beautify PHP code."),
-      tool("beautifier", "PHP Beautifier", "Beautify PHP with consistent style."),
+      tool(
+        "formatter",
+        "PHP Formatter",
+        "Format and beautify PHP code.",
+        "live",
+        ["php formatter", "format php online", "php code indenter"]
+      ),
+      tool(
+        "beautifier",
+        "PHP Beautifier",
+        "Beautify PHP with consistent style.",
+        "live",
+        ["php beautifier", "beautify php online"]
+      ),
     ],
   },
   {
@@ -835,14 +859,30 @@ export const categories: Category[] = [
     title: "Rust",
     icon: "\u{1F980}",
     description: "Format Rust source code online.",
-    tools: [tool("formatter", "Rust Formatter", "Format and beautify Rust code.")],
+    tools: [
+      tool(
+        "formatter",
+        "Rust Formatter",
+        "Format and beautify Rust code.",
+        "live",
+        ["rust formatter", "format rust online", "rust code indenter"]
+      ),
+    ],
   },
   {
     slug: "go",
     title: "Go",
     icon: "\u{1F439}",
     description: "Format Go source code online.",
-    tools: [tool("formatter", "Go Formatter", "Format and beautify Go code.")],
+    tools: [
+      tool(
+        "formatter",
+        "Go Formatter",
+        "Format and beautify Go code.",
+        "live",
+        ["go formatter", "golang formatter online", "format go code"]
+      ),
+    ],
   },
   {
     slug: "markdown",
@@ -850,10 +890,34 @@ export const categories: Category[] = [
     icon: "\u{1F9FE}",
     description: "Preview, format, and convert Markdown documents online.",
     tools: [
-      tool("preview", "Markdown Preview", "Live-preview rendered Markdown."),
-      tool("to-html", "Markdown to HTML", "Convert Markdown into HTML."),
-      tool("from-html", "HTML to Markdown", "Convert HTML into Markdown."),
-      tool("formatter", "Markdown Formatter", "Format and clean up Markdown."),
+      tool(
+        "preview",
+        "Markdown Preview",
+        "Live-preview rendered Markdown.",
+        "live",
+        ["markdown preview", "markdown viewer online", "live markdown editor"]
+      ),
+      tool(
+        "to-html",
+        "Markdown to HTML",
+        "Convert Markdown into HTML.",
+        "live",
+        ["markdown to html", "convert markdown to html", "md to html converter"]
+      ),
+      tool(
+        "from-html",
+        "HTML to Markdown",
+        "Convert HTML into Markdown.",
+        "live",
+        ["html to markdown", "convert html to markdown", "html to md converter"]
+      ),
+      tool(
+        "formatter",
+        "Markdown Formatter",
+        "Format and clean up Markdown.",
+        "live",
+        ["markdown formatter", "format markdown online", "clean up markdown"]
+      ),
     ],
   },
   {
