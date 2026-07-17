@@ -25,6 +25,9 @@ import { XmlToCsvTool } from "@/components/tools/xml-to-csv-tool";
 import { XmlViewerTool } from "@/components/tools/xml-viewer-tool";
 import { XmlCompareTool } from "@/components/tools/xml-compare-tool";
 import { XPathTesterTool } from "@/components/tools/xpath-tester-tool";
+import { YamlFormatterTool } from "@/components/tools/yaml-formatter-tool";
+import { YamlValidatorTool } from "@/components/tools/yaml-validator-tool";
+import { YamlToJsonTool } from "@/components/tools/yaml-to-json-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -58,6 +61,10 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "xml/viewer": () => <XmlViewerTool />,
   "xml/compare": () => <XmlCompareTool />,
   "xml/xpath-tester": () => <XPathTesterTool />,
+  "yaml/formatter": () => <YamlFormatterTool />,
+  "yaml/validator": () => <YamlValidatorTool />,
+  "yaml/to-json": () => <YamlToJsonTool />,
+  "yaml/from-json": () => <JsonToYamlTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

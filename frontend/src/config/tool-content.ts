@@ -916,6 +916,138 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+
+  "yaml/formatter": {
+    howToUse: [
+      "Paste your YAML into the input box on the left.",
+      "Click \"Format\" to re-indent it with consistent spacing, or just keep editing \u2014 the output updates live.",
+      "Choose 2 or 4 spaces for indentation, and optionally switch to compact (flow) style for a more JSON-like layout.",
+      "Copy the formatted result or download it as a .yaml file.",
+    ],
+    features: [
+      "Instantly restores consistent indentation to messy or hand-edited YAML.",
+      "Toggle between standard block style and compact flow style.",
+      "Customizable indentation: 2 or 4 spaces.",
+      "Validates YAML syntax and reports precise error locations.",
+      "Runs entirely in your browser \u2014 your YAML never leaves your device.",
+    ],
+    faq: [
+      {
+        question: "Is my YAML data uploaded anywhere?",
+        answer:
+          "No. Parsing and formatting happen locally in your browser using the js-yaml library \u2014 your data is never sent over the network.",
+      },
+      {
+        question: "What's the difference between block style and flow style?",
+        answer:
+          "Block style is the familiar indentation-based YAML layout most config files use. Flow style is a more compact, JSON-like syntax using [] and {} \u2014 useful when you want a denser representation of the same data.",
+      },
+      {
+        question: "Will formatting change my data or comments?",
+        answer:
+          "Formatting re-serializes the parsed data, so the underlying values are preserved exactly, but YAML comments are not preserved since they aren't part of the parsed data model.",
+      },
+    ],
+  },
+
+  "yaml/validator": {
+    howToUse: [
+      "Paste the YAML you want to check into the input box.",
+      "Validation runs automatically as you type using the js-yaml parser.",
+      "If it's valid, you'll see a summary of its type, key count, and depth.",
+      "If it's invalid, you'll see the exact line and column where parsing failed.",
+    ],
+    features: [
+      "Real-time validation with no page reloads or uploads.",
+      "Pinpoints the exact line and column of syntax errors.",
+      "Shows quick structural stats (keys, items, depth) for valid YAML.",
+      "100% client-side \u2014 your data never leaves your browser.",
+      "Free with no rate limits or account required.",
+    ],
+    faq: [
+      {
+        question: "Why does my YAML fail validation even though it looks correct?",
+        answer:
+          "The most common cause is inconsistent indentation \u2014 YAML is whitespace-sensitive, so mixing tabs and spaces, or misaligning list items under a key, will cause a parse error.",
+      },
+      {
+        question: "Does this support multiple YAML documents in one file (separated by ---)?",
+        answer:
+          "This validator checks the first document in the input. For files with multiple --- separated documents, validate each one individually for the clearest results.",
+      },
+      {
+        question: "Are tabs allowed in YAML?",
+        answer:
+          "No \u2014 the YAML specification disallows tab characters for indentation. Use spaces only, which is what this validator (and the Formatter's indentation options) expect.",
+      },
+    ],
+  },
+
+  "yaml/to-json": {
+    howToUse: [
+      "Paste your YAML into the input box on the left.",
+      "The equivalent JSON is generated automatically on the right.",
+      "Copy the JSON or download it as a .json file.",
+      "Use this when migrating config files from YAML to JSON, or to feed YAML-based config into a JSON-only tool.",
+    ],
+    features: [
+      "Accurate conversion powered by the widely-used js-yaml parser.",
+      "Correctly handles nested mappings, sequences, strings, numbers, booleans, and null.",
+      "Great for converting YAML config/data files into JSON for tools that prefer it.",
+      "Runs entirely client-side \u2014 no data leaves your browser.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Does this support YAML anchors and aliases (&/*)?",
+        answer:
+          "Yes \u2014 the underlying parser resolves anchors and aliases, so the resulting JSON contains the fully expanded data with any referenced values inlined.",
+      },
+      {
+        question: "What happens to YAML comments?",
+        answer:
+          "Comments are discarded during conversion, since JSON has no equivalent concept and comments aren't part of the parsed data.",
+      },
+      {
+        question: "Can I convert a YAML file with multiple documents?",
+        answer:
+          "This tool converts the first document in the input. Split multi-document YAML files (separated by ---) and convert each one separately if you need all of them as JSON.",
+      },
+    ],
+  },
+
+  "yaml/from-json": {
+    howToUse: [
+      "Paste your JSON into the input box on the left.",
+      "The equivalent YAML is generated automatically on the right.",
+      "Copy the YAML or download it as a .yaml file.",
+      "Use this when writing config files for tools that expect YAML \u2014 Kubernetes, Docker Compose, GitHub Actions, Ansible, and more.",
+    ],
+    features: [
+      "Clean, properly indented YAML output powered by the widely-used js-yaml library.",
+      "Correctly handles nested objects, arrays, strings, numbers, booleans, and null.",
+      "Same reliable conversion engine as our JSON to YAML tool, presented here for YAML-first workflows.",
+      "Runs entirely client-side \u2014 no data leaves your browser.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Why would I write my config as JSON first and convert to YAML?",
+        answer:
+          "JSON is often easier to generate programmatically or paste from an API response. Converting to YAML afterward gives you a config file in the format your deployment tool expects, without hand-writing YAML indentation.",
+      },
+      {
+        question: "Is the output guaranteed to be valid YAML?",
+        answer:
+          "Yes \u2014 the output is generated by a standards-compliant YAML serializer, so as long as your input is valid JSON, the resulting YAML will always be valid.",
+      },
+      {
+        question: "Does this preserve number and boolean types?",
+        answer:
+          "Yes. Numbers, booleans, and null are emitted as native YAML types (not quoted strings), so the round-tripped data matches your original JSON's types exactly.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

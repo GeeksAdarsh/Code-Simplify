@@ -245,10 +245,34 @@ export const categories: Category[] = [
     icon: "\u{1F4D8}",
     description: "Format, validate, and convert YAML configuration files online.",
     tools: [
-      tool("formatter", "YAML Formatter", "Format and beautify YAML documents."),
-      tool("validator", "YAML Validator", "Validate YAML syntax."),
-      tool("to-json", "YAML to JSON", "Convert YAML into JSON."),
-      tool("from-json", "JSON to YAML", "Convert JSON into YAML."),
+      tool(
+        "formatter",
+        "YAML Formatter",
+        "Format and beautify YAML documents with consistent indentation.",
+        "live",
+        ["yaml formatter", "format yaml online", "yaml beautifier"]
+      ),
+      tool(
+        "validator",
+        "YAML Validator",
+        "Validate YAML syntax instantly and get precise line and column error locations.",
+        "live",
+        ["yaml validator", "validate yaml online", "yaml syntax checker"]
+      ),
+      tool(
+        "to-json",
+        "YAML to JSON",
+        "Convert YAML documents into JSON instantly, right in your browser.",
+        "live",
+        ["yaml to json converter", "convert yaml to json"]
+      ),
+      tool(
+        "from-json",
+        "JSON to YAML",
+        "Convert JSON data into clean, properly indented YAML.",
+        "live",
+        ["json to yaml converter", "convert json to yaml"]
+      ),
     ],
   },
   {
