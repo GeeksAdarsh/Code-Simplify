@@ -1547,6 +1547,704 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+  "security/base64-encode": {
+    howToUse: [
+      "Type or paste any text into the input box on the left.",
+      "The Base64-encoded result appears instantly on the right.",
+      "Copy the result or download it as a text file.",
+      "Works with Unicode text, emoji, and special characters, not just plain ASCII.",
+    ],
+    features: [
+      "Correctly handles Unicode text (emoji, accented characters, non-Latin scripts) via UTF-8 encoding.",
+      "Runs entirely client-side using the browser's native btoa API \u2014 nothing is uploaded.",
+      "Instant, real-time encoding as you type.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What is Base64 encoding used for?",
+        answer:
+          "Base64 converts binary or text data into an ASCII string, commonly used for embedding data in JSON, URLs, email attachments, and HTTP Basic Auth headers.",
+      },
+      {
+        question: "Does this handle emoji and non-English text correctly?",
+        answer:
+          "Yes, the input is first converted to UTF-8 bytes before Base64 encoding, so emoji and international characters round-trip correctly.",
+      },
+      {
+        question: "Is Base64 the same as encryption?",
+        answer:
+          "No. Base64 is an encoding scheme, not encryption \u2014 anyone can decode it instantly. Never use it to protect sensitive data.",
+      },
+    ],
+  },
+  "security/base64-decode": {
+    howToUse: [
+      "Paste your Base64-encoded string into the input box on the left.",
+      "The decoded, human-readable text appears instantly on the right.",
+      "Copy the result or download it as a text file.",
+      "Invalid or malformed Base64 shows a clear error message.",
+    ],
+    features: [
+      "Correctly decodes UTF-8 text, including emoji and international characters.",
+      "Handles both padded and unpadded Base64 strings, and strips accidental whitespace.",
+      "Clear error messages for invalid input.",
+      "Runs entirely in your browser \u2014 free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What happens if I paste invalid Base64?",
+        answer: "You'll see a clear error message explaining that the input isn't valid Base64, instead of garbled output.",
+      },
+      {
+        question: "Can this decode Base64 that was encoded elsewhere (not by this tool)?",
+        answer: "Yes, it decodes any standard Base64 string, regardless of what tool or language originally encoded it.",
+      },
+      {
+        question: "Does it support Base64URL (with - and _ instead of + and /)?",
+        answer:
+          "This decoder expects standard Base64 with +/ characters. For Base64URL-encoded tokens like JWTs, use our JWT Decoder tool instead.",
+      },
+    ],
+  },
+  "security/url-encode": {
+    howToUse: [
+      "Type or paste text \u2014 or a full URL \u2014 into the input box.",
+      "The percent-encoded result appears instantly on the right.",
+      "Toggle \"Encode as full URL\" to keep structural characters like :/?# untouched (encodeURI behavior) instead of encoding everything (encodeURIComponent behavior).",
+      "Copy the encoded result for use in query strings, form data, or API requests.",
+    ],
+    features: [
+      "Two encoding modes: full-string component encoding, or URL-safe encoding that preserves URL structure.",
+      "Correctly handles spaces, symbols, and Unicode characters.",
+      "Runs entirely in your browser using native JavaScript encoding functions.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between the two encoding modes?",
+        answer:
+          "Component encoding (default) escapes every special character, ideal for encoding a single query parameter value. Full URL encoding preserves characters like :, /, ?, and # so an entire URL still works as a URL.",
+      },
+      {
+        question: "Why do spaces become %20 or +?",
+        answer:
+          "Percent-encoding represents a space as %20. Some systems (like HTML form submissions) use + instead \u2014 this tool follows the standard %20 convention used in URIs.",
+      },
+      {
+        question: "Can I encode an entire URL with query parameters?",
+        answer:
+          "Yes, enable \"Encode as full URL\" to encode special characters in the text while leaving the URL's structural characters intact.",
+      },
+    ],
+  },
+  "security/url-decode": {
+    howToUse: [
+      "Paste a percent-encoded string (containing %XX sequences) into the input box.",
+      "The decoded, human-readable text appears instantly on the right.",
+      "Copy the result for use elsewhere.",
+      "Malformed percent-encoding shows a clear error message.",
+    ],
+    features: [
+      "Decodes any valid percent-encoded (URI-encoded) string.",
+      "Handles Unicode characters encoded as multi-byte UTF-8 sequences.",
+      "Clear error messages for malformed %XX sequences.",
+      "Runs entirely client-side \u2014 free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What does a %XX sequence mean?",
+        answer:
+          "Each %XX is a hexadecimal byte value \u2014 for example, %20 represents a space character and %26 represents an ampersand (&).",
+      },
+      {
+        question: "Can this decode a full URL with a query string?",
+        answer: "Yes, paste the entire URL and any percent-encoded segments within it will be decoded back to readable text.",
+      },
+      {
+        question: "What if the input has a malformed %XX sequence?",
+        answer: "You'll see an error message indicating the percent-encoding is invalid, rather than silently producing incorrect output.",
+      },
+    ],
+  },
+  "security/jwt-decoder": {
+    howToUse: [
+      "Paste your JSON Web Token (header.payload.signature) into the input box.",
+      "The decoded header and payload appear instantly as formatted JSON.",
+      "Common claims like iat, nbf, and exp are translated into human-readable dates, with an expired/not-expired indicator.",
+      "Optionally enter the HMAC secret to verify the token's signature (for HS256/HS384/HS512 tokens).",
+    ],
+    features: [
+      "Instantly decodes the header and payload without needing the secret key.",
+      "Optional client-side signature verification for HMAC-signed tokens.",
+      "Human-readable timestamps for iat, nbf, and exp claims, with expiry status.",
+      "Runs 100% in your browser \u2014 your tokens and secrets are never sent anywhere.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Do I need the secret key to decode a JWT?",
+        answer:
+          "No. The header and payload of a JWT are just Base64URL-encoded JSON, not encrypted, so they can be decoded without any secret. The secret is only needed to verify the signature.",
+      },
+      {
+        question: "Is my secret key sent to a server when I verify a signature?",
+        answer: "No, signature verification uses your browser's built-in Web Crypto API and happens entirely locally.",
+      },
+      {
+        question: "Why does it say the token is expired?",
+        answer:
+          "If the token's exp claim (a Unix timestamp) is earlier than the current time, the tool flags it as expired \u2014 this is a standard JWT expiration check.",
+      },
+    ],
+  },
+  "security/jwt-generator": {
+    howToUse: [
+      "Edit the JSON payload with your desired claims (e.g. sub, name, role).",
+      "Choose an algorithm (HS256, HS384, or HS512) and an expiry duration.",
+      "Enter your secret key.",
+      "The signed JWT is generated instantly \u2014 copy it for use in your application or API testing.",
+    ],
+    features: [
+      "Supports HS256, HS384, and HS512 HMAC signing algorithms.",
+      "Automatically adds iat (issued at) and exp (expiry) claims based on your settings.",
+      "Real-time signing using the Web Crypto API \u2014 no server round-trip.",
+      "Free and unlimited, with your secret never leaving your browser.",
+    ],
+    faq: [
+      {
+        question: "Is this safe to use with real production secrets?",
+        answer:
+          "The signing happens entirely in your browser and nothing is transmitted over the network, but as a best practice, avoid pasting production secrets into any online tool \u2014 use a placeholder secret for testing when possible.",
+      },
+      {
+        question: "Can I generate RS256 (RSA-signed) tokens?",
+        answer:
+          "This generator currently supports HMAC-based algorithms (HS256/384/512) only. RSA and ECDSA signing require key pair management and are not yet supported.",
+      },
+      {
+        question: "What claims should I include in my payload?",
+        answer:
+          "Common claims include sub (subject/user ID), name, role, iat (issued at), and exp (expiry). You're free to add any custom claims your application needs.",
+      },
+    ],
+  },
+  "security/md5": {
+    howToUse: [
+      "Type or paste any text into the input box.",
+      "The MD5 hash is computed instantly and shown below.",
+      "Switch between hex and Base64 encoding, and toggle uppercase hex output.",
+      "Copy the hash for use in checksums, cache keys, or legacy system compatibility.",
+    ],
+    features: [
+      "Pure JavaScript MD5 implementation, computed entirely in your browser.",
+      "Supports hex and Base64 output encoding.",
+      "Instant, real-time hashing as you type.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Is MD5 secure for passwords?",
+        answer:
+          "No. MD5 is cryptographically broken and far too fast to compute, making it unsuitable for password storage. Use bcrypt for passwords \u2014 MD5 is only appropriate for non-security checksums like detecting accidental file corruption.",
+      },
+      {
+        question: "Why isn't MD5 available in the browser's native Web Crypto API?",
+        answer:
+          "Web Crypto intentionally omits MD5 and SHA-1 for signing/security use because they're considered broken. This tool implements the MD5 algorithm directly in JavaScript for compatibility and legacy use cases.",
+      },
+      {
+        question: "Will the same input always produce the same MD5 hash?",
+        answer: "Yes, MD5 is deterministic \u2014 identical input always produces an identical 128-bit hash.",
+      },
+    ],
+  },
+  "security/sha1": {
+    howToUse: [
+      "Type or paste any text into the input box.",
+      "The SHA-1 hash is computed instantly using your browser's native Web Crypto API.",
+      "Switch between hex and Base64 encoding, and toggle uppercase hex output.",
+      "Copy the hash for checksums or legacy compatibility (e.g. Git object hashes).",
+    ],
+    features: [
+      "Computed using the browser's native, hardware-accelerated Web Crypto API.",
+      "Supports hex and Base64 output encoding.",
+      "Instant, real-time hashing as you type.",
+      "Free and unlimited, fully client-side.",
+    ],
+    faq: [
+      {
+        question: "Is SHA-1 secure?",
+        answer:
+          "SHA-1 is considered cryptographically weak for security-critical applications (collisions have been demonstrated) and has been deprecated for digital signatures and TLS certificates. It's still fine for non-adversarial checksums and is used internally by Git.",
+      },
+      {
+        question: "What should I use instead of SHA-1 for security purposes?",
+        answer: "Use SHA-256 or SHA-512 for security-sensitive hashing, and bcrypt specifically for password storage.",
+      },
+      {
+        question: "How long is a SHA-1 hash?",
+        answer: "SHA-1 produces a 160-bit (20-byte) digest, shown as 40 hex characters or its Base64 equivalent.",
+      },
+    ],
+  },
+  "security/sha256": {
+    howToUse: [
+      "Type or paste any text into the input box.",
+      "The SHA-256 hash is computed instantly using your browser's native Web Crypto API.",
+      "Switch between hex and Base64 encoding, and toggle uppercase hex output.",
+      "Copy the hash for checksums, data integrity verification, or blockchain-style applications.",
+    ],
+    features: [
+      "Computed using the browser's native, hardware-accelerated Web Crypto API.",
+      "Supports hex and Base64 output encoding.",
+      "Instant, real-time hashing as you type.",
+      "Free and unlimited, fully client-side \u2014 your text is never uploaded.",
+    ],
+    faq: [
+      {
+        question: "What is SHA-256 commonly used for?",
+        answer:
+          "SHA-256 is widely used for data integrity checksums, digital signatures, certificate fingerprints, password hashing (combined with salting), and blockchain proof-of-work (e.g. Bitcoin).",
+      },
+      {
+        question: "How long is a SHA-256 hash?",
+        answer: "SHA-256 produces a 256-bit (32-byte) digest, shown as 64 hex characters or its Base64 equivalent.",
+      },
+      {
+        question: "Should I use SHA-256 to hash passwords directly?",
+        answer:
+          "No, plain SHA-256 is too fast and lacks built-in salting, making it vulnerable to brute-force and rainbow table attacks. Use bcrypt for password storage instead.",
+      },
+    ],
+  },
+  "security/sha512": {
+    howToUse: [
+      "Type or paste any text into the input box.",
+      "The SHA-512 hash is computed instantly using your browser's native Web Crypto API.",
+      "Switch between hex and Base64 encoding, and toggle uppercase hex output.",
+      "Copy the hash for high-security checksums or data integrity verification.",
+    ],
+    features: [
+      "Computed using the browser's native, hardware-accelerated Web Crypto API.",
+      "Supports hex and Base64 output encoding.",
+      "Produces a longer, higher-security digest than SHA-256.",
+      "Free and unlimited, fully client-side.",
+    ],
+    faq: [
+      {
+        question: "How is SHA-512 different from SHA-256?",
+        answer:
+          "SHA-512 produces a longer 512-bit (64-byte) digest and generally performs faster on 64-bit systems, offering a larger security margin at the cost of a longer output.",
+      },
+      {
+        question: "Which should I use, SHA-256 or SHA-512?",
+        answer:
+          "Both are currently considered secure. SHA-256 is more common and produces a shorter hash, while SHA-512 offers extra headroom for very long-term security requirements.",
+      },
+      {
+        question: "Is SHA-512 suitable for hashing passwords?",
+        answer:
+          "Not on its own \u2014 like SHA-256, it's too fast for password storage without proper salting and iteration. Use bcrypt for passwords instead.",
+      },
+    ],
+  },
+  "security/hmac": {
+    howToUse: [
+      "Enter the message you want to sign and your secret key.",
+      "Choose the underlying hash algorithm (SHA-1, SHA-256, SHA-384, or SHA-512).",
+      "The HMAC signature is computed instantly and shown in hex or Base64.",
+      "Use this to verify webhook payloads, sign API requests, or generate message authentication codes.",
+    ],
+    features: [
+      "Supports HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, and HMAC-SHA512.",
+      "Computed using the browser's native Web Crypto API for speed and correctness.",
+      "Hex and Base64 output encoding.",
+      "Your message and secret never leave your browser.",
+    ],
+    faq: [
+      {
+        question: "What is HMAC used for?",
+        answer:
+          "HMAC (Hash-based Message Authentication Code) combines a secret key with a hash function to verify both the integrity and authenticity of a message \u2014 commonly used to verify webhook signatures (e.g. Stripe, GitHub) and sign API requests.",
+      },
+      {
+        question: "Which HMAC algorithm should I use?",
+        answer:
+          "HMAC-SHA256 is the most widely used and is a safe default. Use whichever algorithm matches what the service or API you're integrating with expects.",
+      },
+      {
+        question: "Is my secret key exposed to any server?",
+        answer: "No, the HMAC computation runs entirely in your browser using the Web Crypto API.",
+      },
+    ],
+  },
+  "security/bcrypt": {
+    howToUse: [
+      "Enter a password and choose the number of salt rounds (higher is slower but more secure).",
+      "Click \"Generate hash\" to compute the bcrypt hash.",
+      "Use the verify section to check whether a plain-text password matches an existing bcrypt hash.",
+      "Copy the generated hash for storing in your database's password column.",
+    ],
+    features: [
+      "Full bcrypt implementation (via the widely-used bcryptjs library) running entirely in your browser.",
+      "Adjustable salt rounds (cost factor) from 4 to 14.",
+      "Built-in password verification against an existing hash.",
+      "Your password is never sent to a server \u2014 hashing happens locally.",
+    ],
+    faq: [
+      {
+        question: "Why does bcrypt take longer than MD5 or SHA-256?",
+        answer:
+          "Bcrypt is intentionally slow and configurable (via salt rounds) to make brute-force and dictionary attacks impractical \u2014 this is exactly why it's the recommended choice for password storage.",
+      },
+      {
+        question: "What salt rounds value should I use?",
+        answer:
+          "10-12 rounds is a common default for production systems in 2026, balancing security and server load. Higher values are more secure but slower to compute on every login.",
+      },
+      {
+        question: "Does bcrypt include the salt in the output hash?",
+        answer:
+          "Yes, a bcrypt hash string encodes the algorithm version, cost factor, and salt together, so you only need to store the single hash string \u2014 no separate salt column required.",
+      },
+    ],
+  },
+  "security/password-generator": {
+    howToUse: [
+      "Adjust the length slider and toggle which character sets to include (uppercase, lowercase, numbers, symbols).",
+      "Optionally exclude ambiguous characters (i, l, 1, L, o, 0, O) for easier manual transcription.",
+      "A new password is generated automatically as you change any option, or click \"Generate new password\" for a fresh one.",
+      "Copy the password, and check its strength meter for a quick sanity check.",
+    ],
+    features: [
+      "Uses your browser's cryptographically secure random number generator (crypto.getRandomValues), not Math.random.",
+      "Fully customizable length (6-64 characters) and character sets.",
+      "Optional exclusion of visually ambiguous characters.",
+      "Built-in strength indicator with entropy estimate.",
+      "Free, unlimited, and generated entirely on your device.",
+    ],
+    faq: [
+      {
+        question: "Are these passwords truly random and secure?",
+        answer:
+          "Yes, passwords are generated using the Web Crypto API's cryptographically secure random number generator, the same class of randomness used for cryptographic keys \u2014 not the weaker Math.random().",
+      },
+      {
+        question: "What password length is recommended?",
+        answer:
+          "12-16 characters with all character sets enabled is a strong baseline for most accounts in 2026. Use 20+ characters for highly sensitive accounts like your password manager master password.",
+      },
+      {
+        question: "Are generated passwords stored anywhere?",
+        answer: "No, passwords are generated and displayed entirely in your browser and are never transmitted or stored on any server.",
+      },
+    ],
+  },
+  "security/password-strength": {
+    howToUse: [
+      "Type a password into the input field \u2014 click \"Show\" to reveal it as you type.",
+      "The strength meter, label, and estimated entropy update in real time.",
+      "Review the feedback list for specific suggestions to improve the password.",
+      "Check the estimated offline crack time for a concrete sense of how strong (or weak) the password is.",
+    ],
+    features: [
+      "Real-time entropy calculation based on character set diversity and length.",
+      "Detects common passwords, repeated characters, and sequential/keyboard patterns.",
+      "Estimated crack time under a realistic offline brute-force scenario.",
+      "Actionable, specific feedback rather than a vague score.",
+      "Your password is analyzed entirely in your browser and never transmitted anywhere.",
+    ],
+    faq: [
+      {
+        question: "How is the strength score calculated?",
+        answer:
+          "The tool estimates entropy (bits of randomness) based on password length and character variety, then reduces that estimate when it detects common passwords, repeated characters, or predictable sequences like \"1234\" or \"qwerty\".",
+      },
+      {
+        question: "Is my password sent anywhere for analysis?",
+        answer: "No, all analysis happens locally in your browser using JavaScript \u2014 your password is never transmitted or logged.",
+      },
+      {
+        question: "What does the estimated crack time mean?",
+        answer:
+          "It's a rough estimate of how long an offline attacker with significant computing power (10 billion guesses per second) would take to brute-force your password, assuming no other information about it.",
+      },
+    ],
+  },
+  "security/random-token": {
+    howToUse: [
+      "Choose your desired token length and output format (hex, Base64, Base64 URL-safe, alphanumeric, or numeric PIN).",
+      "Select how many tokens to generate at once.",
+      "Tokens are generated instantly \u2014 copy an individual token or copy all of them at once.",
+      "Use these for API keys, session tokens, password reset links, or verification codes.",
+    ],
+    features: [
+      "Uses your browser's cryptographically secure random number generator (crypto.getRandomValues).",
+      "Five output formats: hex, Base64, URL-safe Base64, alphanumeric, and numeric-only (for PINs/OTPs).",
+      "Generate multiple tokens at once, with individual or bulk copy.",
+      "Free, unlimited, and generated entirely on your device.",
+    ],
+    faq: [
+      {
+        question: "Are these tokens suitable for use as API keys or session identifiers?",
+        answer:
+          "Yes, tokens are generated with a cryptographically secure random source, making them suitable for API keys, session tokens, CSRF tokens, and similar security-sensitive identifiers.",
+      },
+      {
+        question: "What format should I use for a URL-safe token (e.g. in a password reset link)?",
+        answer:
+          "Use the \"Base64 (URL-safe)\" format \u2014 it avoids characters like + and / that need extra encoding when placed directly in a URL.",
+      },
+      {
+        question: "Can I generate a numeric one-time password (OTP)?",
+        answer: "Yes, select the \"Numeric (PIN)\" format and set the length to 6 for a typical 6-digit OTP code.",
+      },
+    ],
+  },
+  "ids/uuid-v1": {
+    howToUse: [
+      "Choose how many UUIDs you want to generate and your formatting preferences.",
+      "UUID v1 identifiers are generated instantly, combining the current timestamp with a random node ID.",
+      "Copy an individual UUID or copy the entire batch at once.",
+      "Toggle uppercase or remove hyphens if your target system requires a different format.",
+    ],
+    features: [
+      "RFC 4122-compliant UUID v1 structure with a 60-bit timestamp component.",
+      "Uses a random, privacy-preserving node ID (with the multicast bit set) instead of your real MAC address.",
+      "Batch generation with individual or bulk copy.",
+      "Runs entirely in your browser \u2014 free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Does this use my computer's real MAC address?",
+        answer:
+          "No. For privacy, this generator uses a randomly generated 48-bit node ID with the multicast bit set, which is the standard approach used by modern UUID v1 implementations instead of exposing your real network hardware address.",
+      },
+      {
+        question: "When should I use UUID v1 instead of UUID v4?",
+        answer:
+          "UUID v1 embeds a timestamp, so UUIDs generated later sort after ones generated earlier (roughly), which can be useful for legacy systems that expect this behavior. For most new applications, UUID v4 or UUID v7 is recommended.",
+      },
+      {
+        question: "Are UUID v1 values generated here unique?",
+        answer:
+          "Yes, the combination of a millisecond-precision timestamp, a random clock sequence, and a random node ID makes collisions astronomically unlikely.",
+      },
+    ],
+  },
+  "ids/uuid-v4": {
+    howToUse: [
+      "Choose how many UUIDs you want to generate.",
+      "UUID v4 identifiers \u2014 128-bit random values \u2014 are generated instantly.",
+      "Copy an individual UUID or copy the entire batch at once.",
+      "Toggle uppercase or remove hyphens if your target system requires a different format.",
+    ],
+    features: [
+      "Uses the browser's native, cryptographically secure crypto.randomUUID() API where available.",
+      "RFC 4122-compliant version and variant bits.",
+      "Batch generation with individual or bulk copy.",
+      "Free, unlimited, and generated entirely on your device.",
+    ],
+    faq: [
+      {
+        question: "How unique is a UUID v4?",
+        answer:
+          "A UUID v4 has 122 random bits, giving roughly 5.3 x 10^36 possible values. Collisions are so unlikely that they're not a practical concern even at massive scale.",
+      },
+      {
+        question: "Is UUID v4 suitable for database primary keys?",
+        answer:
+          "Yes, UUID v4 is a very common choice for primary keys, especially in distributed systems where IDs need to be generated independently without a central counter. If insertion order/index locality matters, consider UUID v7 instead.",
+      },
+      {
+        question: "Are these UUIDs generated securely?",
+        answer:
+          "Yes, they use the Web Crypto API's cryptographically secure random number generator, not Math.random(), so they're suitable for security-sensitive use cases too.",
+      },
+    ],
+  },
+  "ids/uuid-v7": {
+    howToUse: [
+      "Choose how many UUIDs you want to generate.",
+      "UUID v7 identifiers are generated instantly, combining a millisecond-precision timestamp with random bits.",
+      "Copy an individual UUID or copy the entire batch at once.",
+      "Generate a few in a row and notice how they sort in increasing order \u2014 that's the key benefit of v7.",
+    ],
+    features: [
+      "RFC 9562-compliant UUID v7 structure with a 48-bit big-endian millisecond timestamp.",
+      "Time-ordered: UUIDs generated later always sort after ones generated earlier.",
+      "Better database index locality than UUID v4 while still being globally unique.",
+      "Runs entirely in your browser \u2014 free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Why would I use UUID v7 instead of UUID v4?",
+        answer:
+          "UUID v7 embeds a timestamp in its most significant bits, so IDs are naturally sortable by creation time. This gives much better B-tree index locality in databases compared to the fully random UUID v4, reducing index fragmentation.",
+      },
+      {
+        question: "Does UUID v7 leak sensitive information?",
+        answer:
+          "It embeds the creation timestamp (to millisecond precision), which is slightly more information than UUID v4 reveals. This is rarely a concern, but worth knowing if your IDs are ever exposed publicly.",
+      },
+      {
+        question: "Is UUID v7 an official standard?",
+        answer:
+          "Yes, UUID v7 is defined in RFC 9562 (published 2024), which also formally deprecated some older guidance and codified UUID v6, v7, and v8.",
+      },
+    ],
+  },
+  "ids/guid": {
+    howToUse: [
+      "Choose how many GUIDs you want to generate.",
+      "Toggle uppercase, braces {}, and hyphen formatting to match your target platform's conventions.",
+      "GUIDs are generated instantly using the same secure random process as UUID v4.",
+      "Copy an individual GUID or copy the entire batch at once.",
+    ],
+    features: [
+      "Supports Microsoft-style formatting with braces, e.g. {3F2504E0-4F89-11D3-9A0C-0305E82C3301}.",
+      "Optional uppercase output and hyphen removal for other platform conventions.",
+      "Uses the same cryptographically secure random generation as UUID v4 \u2014 GUID and UUID v4 are the same underlying format.",
+      "Free, unlimited, and generated entirely in your browser.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between a GUID and a UUID?",
+        answer:
+          "They're the same underlying 128-bit format \u2014 \"GUID\" (Globally Unique Identifier) is Microsoft's terminology, while \"UUID\" (Universally Unique Identifier) is the term used in RFC 4122 and most other ecosystems.",
+      },
+      {
+        question: "Why would I want braces around my GUID?",
+        answer:
+          "Some Windows APIs and .NET's Guid.ToString(\"B\") format expect GUIDs wrapped in curly braces \u2014 enable the braces option to match that convention exactly.",
+      },
+      {
+        question: "Can I generate a GUID without hyphens?",
+        answer: "Yes, disable \"Include hyphens\" to get a compact 32-character hexadecimal string with no separators.",
+      },
+    ],
+  },
+  "ids/nano-id": {
+    howToUse: [
+      "Adjust the length slider (default 21 characters, matching the standard Nano ID size).",
+      "Optionally enable a custom alphabet if you need to restrict output to specific characters.",
+      "Nano IDs are generated instantly using a cryptographically secure random source.",
+      "Copy an individual ID or copy the entire batch at once.",
+    ],
+    features: [
+      "Powered by the widely-used, security-audited nanoid library.",
+      "URL-safe by default (uses A-Z, a-z, 0-9, _, and - \u2014 no encoding needed in URLs).",
+      "Customizable length and alphabet.",
+      "Much shorter than a UUID while maintaining a comparably low collision probability.",
+    ],
+    faq: [
+      {
+        question: "How does Nano ID compare to UUID?",
+        answer:
+          "The default 21-character Nano ID has a collision probability comparable to a 36-character UUID v4, but is roughly 40% shorter and uses a URL-safe character set by default \u2014 no encoding needed when used in URLs.",
+      },
+      {
+        question: "Is Nano ID cryptographically secure?",
+        answer:
+          "Yes, it uses your browser's Web Crypto API (crypto.getRandomValues) as its random source, the same class of randomness used for cryptographic keys.",
+      },
+      {
+        question: "Can I use my own set of characters?",
+        answer: "Yes, enable \"Custom alphabet\" and enter exactly the characters you want IDs to be built from.",
+      },
+    ],
+  },
+  "ids/random-string": {
+    howToUse: [
+      "Choose the length and character set (letters, numbers, hex, or a custom set of characters).",
+      "Random strings are generated instantly using a cryptographically secure random source.",
+      "Copy an individual string or copy the entire batch at once.",
+      "Use this for test data, temporary identifiers, verification codes, or placeholder values.",
+    ],
+    features: [
+      "Five built-in character set presets, plus fully custom character pools.",
+      "Adjustable length from 1 to 128 characters.",
+      "Uses your browser's cryptographically secure random number generator.",
+      "Free, unlimited, and generated entirely on your device.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between this and the Password Generator?",
+        answer:
+          "Both use secure randomness, but this tool is aimed at general-purpose strings (test data, IDs, codes) with simpler character-set presets, while the Password Generator is tuned specifically for strong, memorable-length passwords with symbol options.",
+      },
+      {
+        question: "Can I restrict output to only certain characters?",
+        answer: "Yes, select \"Custom characters\" and enter exactly the set of characters you want the generator to pick from.",
+      },
+      {
+        question: "Are duplicate characters allowed within a single string?",
+        answer: "Yes, each character position is chosen independently, so the same character can appear multiple times in one string.",
+      },
+    ],
+  },
+  "ids/random-number": {
+    howToUse: [
+      "Enter your desired minimum and maximum values (inclusive).",
+      "Choose how many numbers to generate.",
+      "Enable \"No duplicates\" if you need a unique set of numbers, such as for a lottery draw or randomized sample.",
+      "Copy an individual number or copy the entire batch at once.",
+    ],
+    features: [
+      "Uses your browser's cryptographically secure random number generator, not Math.random().",
+      "Optional no-duplicates mode using an unbiased Fisher-Yates shuffle.",
+      "Supports negative ranges and any integer bounds.",
+      "Free, unlimited, and generated entirely on your device.",
+    ],
+    faq: [
+      {
+        question: "Is Math.random() used anywhere in this tool?",
+        answer:
+          "No, all randomness comes from the Web Crypto API's crypto.getRandomValues(), which is designed to be unpredictable and suitable for security-sensitive use cases.",
+      },
+      {
+        question: "What happens if I ask for more unique numbers than fit in my range?",
+        answer:
+          "The tool detects this and shows a warning, since a range like [1, 10] can only produce 10 unique values \u2014 reduce the count or widen the range to proceed.",
+      },
+      {
+        question: "Can I generate negative numbers?",
+        answer: "Yes, enter a negative minimum value \u2014 the tool correctly handles ranges that span negative to positive numbers.",
+      },
+    ],
+  },
+  "ids/random-password": {
+    howToUse: [
+      "Adjust the length slider and toggle which character sets to include.",
+      "A new password is generated automatically as you change any option.",
+      "Copy the password and check its strength meter for a quick sanity check.",
+      "Use the \"Recent passwords\" list if you need to generate and compare a few options quickly.",
+    ],
+    features: [
+      "Uses your browser's cryptographically secure random number generator (crypto.getRandomValues).",
+      "Fully customizable length (6-64 characters) and character sets.",
+      "Optional exclusion of visually ambiguous characters (i, l, 1, L, o, 0, O).",
+      "Built-in strength indicator with entropy estimate.",
+      "Free, unlimited, and generated entirely on your device.",
+    ],
+    faq: [
+      {
+        question: "Is this the same as the Password Generator in the Security category?",
+        answer:
+          "Yes, it's the identical secure generator, listed here under the IDs category as well since \"random password\" is a common way people search for this exact tool.",
+      },
+      {
+        question: "What password length is recommended?",
+        answer:
+          "12-16 characters with all character sets enabled is a strong baseline for most accounts. Use 20+ characters for highly sensitive accounts like a password manager's master password.",
+      },
+      {
+        question: "Are generated passwords stored anywhere?",
+        answer: "No, passwords are generated and displayed entirely in your browser and are never transmitted or stored on any server.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

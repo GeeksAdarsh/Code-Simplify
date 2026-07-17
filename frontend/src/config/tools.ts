@@ -409,21 +409,111 @@ export const categories: Category[] = [
     icon: "\u{1F510}",
     description: "Encode, decode, hash, and generate secure tokens and passwords online.",
     tools: [
-      tool("base64-encode", "Base64 Encode", "Encode text or files into Base64."),
-      tool("base64-decode", "Base64 Decode", "Decode Base64 back into text or files."),
-      tool("url-encode", "URL Encode", "Percent-encode text for safe use in URLs."),
-      tool("url-decode", "URL Decode", "Decode percent-encoded URL strings."),
-      tool("jwt-decoder", "JWT Decoder", "Decode and inspect JSON Web Tokens."),
-      tool("jwt-generator", "JWT Generator", "Generate signed JSON Web Tokens."),
-      tool("md5", "MD5 Generator", "Generate MD5 hashes from text."),
-      tool("sha1", "SHA1 Generator", "Generate SHA-1 hashes from text."),
-      tool("sha256", "SHA256 Generator", "Generate SHA-256 hashes from text."),
-      tool("sha512", "SHA512 Generator", "Generate SHA-512 hashes from text."),
-      tool("hmac", "HMAC Generator", "Generate HMAC signatures with a secret key."),
-      tool("bcrypt", "Bcrypt Generator", "Hash passwords using bcrypt."),
-      tool("password-generator", "Password Generator", "Generate strong, random passwords."),
-      tool("password-strength", "Password Strength Checker", "Check how strong a password is."),
-      tool("random-token", "Random Token Generator", "Generate cryptographically random tokens."),
+      tool(
+        "base64-encode",
+        "Base64 Encode",
+        "Encode any text (including Unicode and emoji) into Base64.",
+        "live",
+        ["base64 encode online", "encode text to base64", "base64 encoder"]
+      ),
+      tool(
+        "base64-decode",
+        "Base64 Decode",
+        "Decode Base64 back into readable UTF-8 text.",
+        "live",
+        ["base64 decode online", "decode base64 to text", "base64 decoder"]
+      ),
+      tool(
+        "url-encode",
+        "URL Encode",
+        "Percent-encode text or full URLs for safe use in query strings and links.",
+        "live",
+        ["url encode online", "percent encode text", "uri encode"]
+      ),
+      tool(
+        "url-decode",
+        "URL Decode",
+        "Decode percent-encoded (%XX) URL strings back into plain text.",
+        "live",
+        ["url decode online", "percent decode", "uri decode"]
+      ),
+      tool(
+        "jwt-decoder",
+        "JWT Decoder",
+        "Decode and inspect JSON Web Tokens, with optional HMAC signature verification.",
+        "live",
+        ["jwt decoder online", "decode jwt token", "jwt.io alternative"]
+      ),
+      tool(
+        "jwt-generator",
+        "JWT Generator",
+        "Generate signed JSON Web Tokens with custom claims, expiry, and HMAC secret.",
+        "live",
+        ["jwt generator online", "create jwt token", "sign jwt hmac"]
+      ),
+      tool(
+        "md5",
+        "MD5 Generator",
+        "Generate MD5 hashes from text, computed entirely in your browser.",
+        "live",
+        ["md5 hash generator", "md5 online", "generate md5 checksum"]
+      ),
+      tool(
+        "sha1",
+        "SHA1 Generator",
+        "Generate SHA-1 hashes from text using the Web Crypto API.",
+        "live",
+        ["sha1 hash generator", "sha1 online", "generate sha1 checksum"]
+      ),
+      tool(
+        "sha256",
+        "SHA256 Generator",
+        "Generate SHA-256 hashes from text using the Web Crypto API.",
+        "live",
+        ["sha256 hash generator", "sha256 online", "generate sha256 checksum"]
+      ),
+      tool(
+        "sha512",
+        "SHA512 Generator",
+        "Generate SHA-512 hashes from text using the Web Crypto API.",
+        "live",
+        ["sha512 hash generator", "sha512 online", "generate sha512 checksum"]
+      ),
+      tool(
+        "hmac",
+        "HMAC Generator",
+        "Generate HMAC-SHA1/256/384/512 signatures from a message and secret key.",
+        "live",
+        ["hmac generator online", "hmac sha256 online", "generate hmac signature"]
+      ),
+      tool(
+        "bcrypt",
+        "Bcrypt Generator",
+        "Hash passwords using bcrypt with adjustable salt rounds, and verify existing hashes.",
+        "live",
+        ["bcrypt generator online", "bcrypt hash password", "bcrypt online"]
+      ),
+      tool(
+        "password-generator",
+        "Password Generator",
+        "Generate strong, cryptographically random passwords with customizable rules.",
+        "live",
+        ["password generator online", "random password generator", "strong password generator"]
+      ),
+      tool(
+        "password-strength",
+        "Password Strength Checker",
+        "Check how strong a password is, with entropy estimate and crack-time analysis.",
+        "live",
+        ["password strength checker", "check password strength online", "password entropy calculator"]
+      ),
+      tool(
+        "random-token",
+        "Random Token Generator",
+        "Generate cryptographically secure random tokens in hex, Base64, or alphanumeric format.",
+        "live",
+        ["random token generator", "secure token generator", "api key generator"]
+      ),
     ],
   },
   {
@@ -432,14 +522,62 @@ export const categories: Category[] = [
     icon: "\u{1F194}",
     description: "Generate UUIDs, GUIDs, and random identifiers online.",
     tools: [
-      tool("uuid-v1", "UUID v1", "Generate time-based UUID v1 identifiers."),
-      tool("uuid-v4", "UUID v4", "Generate random UUID v4 identifiers."),
-      tool("uuid-v7", "UUID v7", "Generate sortable, time-ordered UUID v7 identifiers."),
-      tool("guid", "GUID Generator", "Generate GUIDs."),
-      tool("nano-id", "Nano ID", "Generate compact, URL-safe Nano IDs."),
-      tool("random-string", "Random String", "Generate random strings."),
-      tool("random-number", "Random Number", "Generate random numbers within a range."),
-      tool("random-password", "Random Password", "Generate random secure passwords."),
+      tool(
+        "uuid-v1",
+        "UUID v1",
+        "Generate time-based UUID v1 identifiers with a random node ID.",
+        "live",
+        ["uuid v1 generator", "generate uuid v1 online", "time-based uuid"]
+      ),
+      tool(
+        "uuid-v4",
+        "UUID v4",
+        "Generate random, cryptographically secure UUID v4 identifiers.",
+        "live",
+        ["uuid v4 generator", "generate uuid online", "random uuid generator"]
+      ),
+      tool(
+        "uuid-v7",
+        "UUID v7",
+        "Generate sortable, time-ordered UUID v7 identifiers (RFC 9562).",
+        "live",
+        ["uuid v7 generator", "time ordered uuid", "sortable uuid"]
+      ),
+      tool(
+        "guid",
+        "GUID Generator",
+        "Generate GUIDs with optional uppercase, braces, and hyphen formatting.",
+        "live",
+        ["guid generator online", "generate guid", "microsoft guid format"]
+      ),
+      tool(
+        "nano-id",
+        "Nano ID",
+        "Generate compact, URL-safe Nano IDs with a custom length or alphabet.",
+        "live",
+        ["nanoid generator", "url safe unique id", "short unique id generator"]
+      ),
+      tool(
+        "random-string",
+        "Random String",
+        "Generate cryptographically random strings with a custom length and character set.",
+        "live",
+        ["random string generator", "generate random string online"]
+      ),
+      tool(
+        "random-number",
+        "Random Number",
+        "Generate random numbers within a range, with an optional no-duplicates mode.",
+        "live",
+        ["random number generator", "generate random number online"]
+      ),
+      tool(
+        "random-password",
+        "Random Password",
+        "Generate strong, random, cryptographically secure passwords.",
+        "live",
+        ["random password generator", "generate secure password online"]
+      ),
     ],
   },
   {

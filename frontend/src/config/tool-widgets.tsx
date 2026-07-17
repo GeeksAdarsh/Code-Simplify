@@ -42,6 +42,26 @@ import { SqlQueryBuilderTool } from "@/components/tools/sql-query-builder-tool";
 import { SqlKeywordCaseTool } from "@/components/tools/sql-keyword-case-tool";
 import { SqlToJsonTool } from "@/components/tools/sql-to-json-tool";
 import { JsonToSqlTool } from "@/components/tools/json-to-sql-tool";
+import { Base64EncodeTool } from "@/components/tools/base64-encode-tool";
+import { Base64DecodeTool } from "@/components/tools/base64-decode-tool";
+import { UrlEncodeTool } from "@/components/tools/url-encode-tool";
+import { UrlDecodeTool } from "@/components/tools/url-decode-tool";
+import { JwtDecoderTool } from "@/components/tools/jwt-decoder-tool";
+import { JwtGeneratorTool } from "@/components/tools/jwt-generator-tool";
+import { Md5GeneratorTool } from "@/components/tools/md5-generator-tool";
+import { Sha1GeneratorTool } from "@/components/tools/sha1-generator-tool";
+import { Sha256GeneratorTool } from "@/components/tools/sha256-generator-tool";
+import { Sha512GeneratorTool } from "@/components/tools/sha512-generator-tool";
+import { HmacGeneratorTool } from "@/components/tools/hmac-generator-tool";
+import { BcryptGeneratorTool } from "@/components/tools/bcrypt-generator-tool";
+import { PasswordGeneratorTool } from "@/components/tools/password-generator-tool";
+import { PasswordStrengthTool } from "@/components/tools/password-strength-tool";
+import { RandomTokenGeneratorTool } from "@/components/tools/random-token-generator-tool";
+import { UuidGeneratorTool } from "@/components/tools/uuid-generator-tool";
+import { GuidGeneratorTool } from "@/components/tools/guid-generator-tool";
+import { NanoIdTool } from "@/components/tools/nano-id-tool";
+import { RandomStringTool } from "@/components/tools/random-string-tool";
+import { RandomNumberTool } from "@/components/tools/random-number-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -95,6 +115,29 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "sql/lowercase": () => <SqlKeywordCaseTool targetCase="lower" />,
   "sql/to-json": () => <SqlToJsonTool />,
   "sql/from-json": () => <JsonToSqlTool />,
+  "security/base64-encode": () => <Base64EncodeTool />,
+  "security/base64-decode": () => <Base64DecodeTool />,
+  "security/url-encode": () => <UrlEncodeTool />,
+  "security/url-decode": () => <UrlDecodeTool />,
+  "security/jwt-decoder": () => <JwtDecoderTool />,
+  "security/jwt-generator": () => <JwtGeneratorTool />,
+  "security/md5": () => <Md5GeneratorTool />,
+  "security/sha1": () => <Sha1GeneratorTool />,
+  "security/sha256": () => <Sha256GeneratorTool />,
+  "security/sha512": () => <Sha512GeneratorTool />,
+  "security/hmac": () => <HmacGeneratorTool />,
+  "security/bcrypt": () => <BcryptGeneratorTool />,
+  "security/password-generator": () => <PasswordGeneratorTool />,
+  "security/password-strength": () => <PasswordStrengthTool />,
+  "security/random-token": () => <RandomTokenGeneratorTool />,
+  "ids/uuid-v1": () => <UuidGeneratorTool version="v1" />,
+  "ids/uuid-v4": () => <UuidGeneratorTool version="v4" />,
+  "ids/uuid-v7": () => <UuidGeneratorTool version="v7" />,
+  "ids/guid": () => <GuidGeneratorTool />,
+  "ids/nano-id": () => <NanoIdTool />,
+  "ids/random-string": () => <RandomStringTool />,
+  "ids/random-number": () => <RandomNumberTool />,
+  "ids/random-password": () => <PasswordGeneratorTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

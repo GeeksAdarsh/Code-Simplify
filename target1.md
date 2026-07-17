@@ -166,6 +166,52 @@
 - Ping Tool
 - Traceroute
 
+
+ #DevOps
+Docker Compose Validator
+Dockerfile Linter
+Kubernetes YAML Validator
+Kubernetes Manifest Generator
+Helm Values Formatter
+Nginx Config Tester
+Apache Config Formatter
+
+
+ #☁️ Cloud
+AWS ARN Parser
+AWS IAM Policy Formatter
+AWS Cron Converter
+S3 URL Parser
+
+
+  #🔑 Authentication
+OAuth URL Builder
+PKCE Generator
+TOTP Generator
+API Key Generator
+
+
+ #🌍 Web Development
+HTTP Status Code Lookup
+MIME Type Lookup
+MIME Detector
+CSP Generator
+CORS Header Generator
+CSP Validator
+🗃 Database
+MongoDB Query Formatter
+MongoDB ObjectId Generator
+Redis Command Builder
+PostgreSQL Formatter
+
+
+ #🧠 AI
+Prompt Formatter
+Prompt Token Counter
+OpenAI JSON Schema Validator
+Embedding Token Counter
+
+
 > _Note: Some of these require a backend or external APIs._
 
 ## 🎨 Colors
