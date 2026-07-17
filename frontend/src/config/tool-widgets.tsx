@@ -35,6 +35,13 @@ import { CsvToXmlTool } from "@/components/tools/csv-to-xml-tool";
 import { CsvToExcelTool } from "@/components/tools/csv-to-excel-tool";
 import { CsvCleanerTool } from "@/components/tools/csv-cleaner-tool";
 import { CsvDiffTool } from "@/components/tools/csv-diff-tool";
+import { SqlFormatterTool } from "@/components/tools/sql-formatter-tool";
+import { SqlMinifierTool } from "@/components/tools/sql-minifier-tool";
+import { SqlValidatorTool } from "@/components/tools/sql-validator-tool";
+import { SqlQueryBuilderTool } from "@/components/tools/sql-query-builder-tool";
+import { SqlKeywordCaseTool } from "@/components/tools/sql-keyword-case-tool";
+import { SqlToJsonTool } from "@/components/tools/sql-to-json-tool";
+import { JsonToSqlTool } from "@/components/tools/json-to-sql-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -79,6 +86,15 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "csv/to-excel": () => <CsvToExcelTool />,
   "csv/cleaner": () => <CsvCleanerTool />,
   "csv/diff": () => <CsvDiffTool />,
+  "sql/formatter": () => <SqlFormatterTool />,
+  "sql/beautifier": () => <SqlFormatterTool />,
+  "sql/minifier": () => <SqlMinifierTool />,
+  "sql/validator": () => <SqlValidatorTool />,
+  "sql/query-builder": () => <SqlQueryBuilderTool />,
+  "sql/uppercase": () => <SqlKeywordCaseTool targetCase="upper" />,
+  "sql/lowercase": () => <SqlKeywordCaseTool targetCase="lower" />,
+  "sql/to-json": () => <SqlToJsonTool />,
+  "sql/from-json": () => <JsonToSqlTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

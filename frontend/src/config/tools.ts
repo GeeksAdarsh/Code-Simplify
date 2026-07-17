@@ -338,15 +338,69 @@ export const categories: Category[] = [
     icon: "\u{1F5C4}",
     description: "Format, minify, validate, and convert SQL queries online.",
     tools: [
-      tool("formatter", "SQL Formatter", "Format and beautify SQL queries."),
-      tool("minifier", "SQL Minifier", "Minify SQL by removing whitespace and comments."),
-      tool("beautifier", "SQL Beautifier", "Beautify SQL with consistent style."),
-      tool("validator", "SQL Validator", "Validate SQL syntax."),
-      tool("query-builder", "SQL Query Builder", "Build SQL queries visually."),
-      tool("uppercase", "SQL Keywords Uppercase", "Convert SQL keywords to uppercase."),
-      tool("lowercase", "SQL Keywords Lowercase", "Convert SQL keywords to lowercase."),
-      tool("to-json", "SQL to JSON", "Convert SQL result sets into JSON."),
-      tool("from-json", "JSON to SQL", "Generate SQL insert statements from JSON."),
+      tool(
+        "formatter",
+        "SQL Formatter",
+        "Format and beautify SQL queries with proper indentation across MySQL, PostgreSQL, SQL Server, and more.",
+        "live",
+        ["sql formatter online", "format sql query", "beautify sql"]
+      ),
+      tool(
+        "minifier",
+        "SQL Minifier",
+        "Minify SQL by stripping comments, line breaks, and extra whitespace.",
+        "live",
+        ["sql minifier", "minify sql query", "compress sql"]
+      ),
+      tool(
+        "beautifier",
+        "SQL Beautifier",
+        "Beautify messy SQL into clean, readable, consistently indented queries.",
+        "live",
+        ["sql beautifier", "sql pretty print"]
+      ),
+      tool(
+        "validator",
+        "SQL Validator",
+        "Validate SQL syntax and catch parse errors before you run your query.",
+        "live",
+        ["sql validator", "validate sql syntax", "sql syntax checker"]
+      ),
+      tool(
+        "query-builder",
+        "SQL Query Builder",
+        "Visually build SELECT queries with columns, WHERE conditions, sorting, and limits.",
+        "live",
+        ["sql query builder", "visual sql builder", "build select query"]
+      ),
+      tool(
+        "uppercase",
+        "SQL Keywords Uppercase",
+        "Convert all SQL keywords to UPPERCASE while preserving your original layout.",
+        "live",
+        ["sql keywords uppercase", "sql to uppercase"]
+      ),
+      tool(
+        "lowercase",
+        "SQL Keywords Lowercase",
+        "Convert all SQL keywords to lowercase while preserving your original layout.",
+        "live",
+        ["sql keywords lowercase", "sql to lowercase"]
+      ),
+      tool(
+        "to-json",
+        "SQL to JSON",
+        "Convert SQL INSERT statements into a clean JSON array of objects.",
+        "live",
+        ["sql to json converter", "convert sql insert to json"]
+      ),
+      tool(
+        "from-json",
+        "JSON to SQL",
+        "Generate SQL INSERT statements from a JSON object or array.",
+        "live",
+        ["json to sql converter", "generate insert statements from json"]
+      ),
     ],
   },
   {

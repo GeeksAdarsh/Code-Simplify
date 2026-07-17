@@ -1271,6 +1271,282 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+  "sql/formatter": {
+    howToUse: [
+      "Paste your raw or minified SQL query into the input box on the left.",
+      "Choose your SQL dialect (MySQL, PostgreSQL, SQL Server, BigQuery, SQLite, or standard SQL).",
+      "Pick a keyword case (UPPERCASE, lowercase, or preserve as-is) and indent width.",
+      "Copy the formatted query or download it as a .sql file.",
+    ],
+    features: [
+      "Powered by the widely-used sql-formatter engine, supporting 6+ major SQL dialects.",
+      "Consistent indentation for SELECT, JOIN, WHERE, GROUP BY, and subqueries.",
+      "Configurable keyword casing and indent width.",
+      "Runs 100% in your browser \u2014 your queries never leave your device.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Which SQL dialects are supported?",
+        answer:
+          "Standard SQL, MySQL, PostgreSQL, SQLite, SQL Server (T-SQL), and BigQuery are available in the dialect selector, each with dialect-specific syntax handling.",
+      },
+      {
+        question: "Will formatting change the meaning of my query?",
+        answer:
+          "No. Formatting only changes whitespace, indentation, and optionally keyword casing \u2014 the query logic and results are completely unaffected.",
+      },
+      {
+        question: "Can it format multiple statements at once?",
+        answer: "Yes, paste multiple semicolon-separated statements and each will be formatted with proper spacing between them.",
+      },
+    ],
+  },
+  "sql/minifier": {
+    howToUse: [
+      "Paste your formatted SQL query into the input box.",
+      "The tool strips comments, line breaks, and extra whitespace automatically.",
+      "Copy the minified query or download it as a .sql file.",
+      "Use this to shrink SQL embedded in application code, migration scripts, or command-line tools.",
+    ],
+    features: [
+      "Removes single-line (--) and block (/* */) comments.",
+      "Collapses all whitespace and line breaks while keeping string literals intact.",
+      "Preserves query correctness \u2014 only formatting is affected, not logic.",
+      "Runs entirely client-side for instant results.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Does minifying remove content inside string literals?",
+        answer:
+          "No. The minifier is comment- and string-aware, so whitespace collapsing never touches the contents of quoted string values.",
+      },
+      {
+        question: "Why would I minify a SQL query?",
+        answer:
+          "Minified SQL is easier to embed as a single-line string in application code, environment variables, or CLI commands where multi-line strings are inconvenient.",
+      },
+      {
+        question: "Is this safe to use on production queries?",
+        answer: "Yes, minifying only affects whitespace and comments \u2014 the executed query logic remains identical.",
+      },
+    ],
+  },
+  "sql/beautifier": {
+    howToUse: [
+      "Paste your raw or minified SQL query into the input box on the left.",
+      "Choose your SQL dialect, keyword case, and indent width.",
+      "The beautified query updates instantly on the right.",
+      "Copy the result or download it as a .sql file.",
+    ],
+    features: [
+      "Same reliable formatting engine as our SQL Formatter, tuned for readability.",
+      "Supports MySQL, PostgreSQL, SQL Server, BigQuery, SQLite, and standard SQL.",
+      "Configurable keyword casing and indentation.",
+      "Runs 100% client-side \u2014 nothing is uploaded.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between the Formatter and Beautifier tools?",
+        answer:
+          "They use the same underlying engine and produce identical results \u2014 both names are offered since developers search for either term when looking to clean up SQL.",
+      },
+      {
+        question: "Can I beautify deeply nested subqueries?",
+        answer: "Yes, nested subqueries, CTEs (WITH clauses), and JOINs are all indented consistently based on their nesting depth.",
+      },
+      {
+        question: "Is my SQL sent to a server?",
+        answer: "No, all beautification happens locally in your browser using JavaScript.",
+      },
+    ],
+  },
+  "sql/validator": {
+    howToUse: [
+      "Paste your SQL query into the input box.",
+      "The validator parses it instantly and reports whether it's syntactically valid.",
+      "If invalid, you'll see a precise error message describing the problem.",
+      "If valid, you'll see the statement count and keyword count for a quick sanity check.",
+    ],
+    features: [
+      "Full grammar-based SQL parsing, not just simple pattern matching.",
+      "Detects unmatched parentheses, missing clauses, and malformed syntax.",
+      "Shows statement and keyword counts for valid queries.",
+      "Runs 100% in your browser for instant feedback and full privacy.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Does this check if tables and columns actually exist?",
+        answer:
+          "No, this is a syntax validator only \u2014 it checks that your SQL is grammatically well-formed, not whether referenced tables or columns exist in a real database.",
+      },
+      {
+        question: "Which SQL grammar does it validate against?",
+        answer: "It validates against standard SQL grammar, which covers the vast majority of common query syntax across dialects.",
+      },
+      {
+        question: "Can I validate multiple statements separated by semicolons?",
+        answer: "Yes, paste as many semicolon-terminated statements as you like \u2014 the statement count reflects how many were found.",
+      },
+    ],
+  },
+  "sql/query-builder": {
+    howToUse: [
+      "Enter your table name and the columns you want to select.",
+      "Add one or more WHERE conditions using the column, operator, and value fields, joined with AND/OR.",
+      "Optionally set an ORDER BY column and direction, and a row LIMIT.",
+      "The generated, properly formatted SQL SELECT statement updates live on the right \u2014 copy or download it.",
+    ],
+    features: [
+      "No SQL knowledge required \u2014 build valid SELECT queries entirely through form fields.",
+      "Supports DISTINCT, multiple WHERE conditions with AND/OR, IN lists, IS NULL checks, ORDER BY, and LIMIT.",
+      "Automatically quotes string values and leaves numbers/booleans unquoted.",
+      "Output is auto-formatted for readability.",
+      "Free and unlimited, runs entirely in your browser.",
+    ],
+    faq: [
+      {
+        question: "Can I build queries with multiple WHERE conditions?",
+        answer: "Yes, click \"Add condition\" to add as many conditions as needed, each joined to the previous one with AND or OR.",
+      },
+      {
+        question: "Does it support JOINs or subqueries?",
+        answer:
+          "The visual builder currently focuses on single-table SELECT queries. For JOINs or subqueries, write the SQL directly and use our SQL Formatter to clean it up.",
+      },
+      {
+        question: "Are values automatically escaped?",
+        answer: "Yes, text values are wrapped in quotes with embedded quotes escaped, while numbers and booleans are left unquoted.",
+      },
+    ],
+  },
+  "sql/uppercase": {
+    howToUse: [
+      "Paste your SQL query into the input box, in any keyword case.",
+      "Every reserved SQL keyword (SELECT, FROM, WHERE, JOIN, ORDER BY, and 100+ others) is converted to UPPERCASE automatically.",
+      "Table names, column names, string literals, and comments are left completely untouched.",
+      "Copy the result or download it as a .sql file.",
+    ],
+    features: [
+      "Recognizes 100+ reserved SQL keywords across common dialects.",
+      "String- and comment-aware \u2014 never modifies quoted values or comment text.",
+      "Preserves your original query layout and indentation exactly.",
+      "Runs entirely client-side for instant results.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Will this change my table or column names?",
+        answer:
+          "No, only reserved SQL keywords are affected. Identifiers like table and column names keep their original casing, even if they happen to match a keyword-like word.",
+      },
+      {
+        question: "Does it reformat indentation too?",
+        answer:
+          "No, this tool only changes keyword casing and leaves all whitespace, line breaks, and indentation exactly as you wrote them. Use the SQL Formatter if you also want reflowed indentation.",
+      },
+      {
+        question: "Are string literals affected?",
+        answer: "No, the tool is string- and comment-aware, so text inside quotes or comments is never modified.",
+      },
+    ],
+  },
+  "sql/lowercase": {
+    howToUse: [
+      "Paste your SQL query into the input box, in any keyword case.",
+      "Every reserved SQL keyword is converted to lowercase automatically.",
+      "Table names, column names, string literals, and comments are left completely untouched.",
+      "Copy the result or download it as a .sql file.",
+    ],
+    features: [
+      "Recognizes 100+ reserved SQL keywords across common dialects.",
+      "String- and comment-aware \u2014 never modifies quoted values or comment text.",
+      "Preserves your original query layout and indentation exactly.",
+      "Runs entirely client-side for instant results.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "Why would I want lowercase SQL keywords?",
+        answer:
+          "Many style guides (and personal preferences) favor lowercase keywords for a cleaner, less shouty look \u2014 this tool converts existing queries to match that style instantly.",
+      },
+      {
+        question: "Will this affect data type names like VARCHAR or INT?",
+        answer: "Yes, common data type keywords are included in the recognized keyword list and will be lowercased along with clause keywords.",
+      },
+      {
+        question: "Is my query data sent anywhere?",
+        answer: "No, the conversion happens entirely in your browser using JavaScript.",
+      },
+    ],
+  },
+  "sql/to-json": {
+    howToUse: [
+      "Paste one or more INSERT INTO ... VALUES statements into the input box.",
+      "The tool extracts the column names and every value tuple automatically.",
+      "The equivalent JSON array of objects is generated on the right.",
+      "Copy the JSON or download it as a .json file.",
+    ],
+    features: [
+      "Supports multiple VALUES tuples in a single INSERT statement, and multiple INSERT statements at once.",
+      "Automatically converts SQL NULL, TRUE/FALSE, numbers, and quoted strings into their native JSON types.",
+      "Handles escaped quotes inside string literals correctly.",
+      "Runs 100% client-side \u2014 your SQL never leaves your browser.",
+      "Free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What SQL statement formats are supported?",
+        answer:
+          "This tool parses standard INSERT INTO table (col1, col2) VALUES (...), (...); statements, including multiple statements and multiple value tuples per statement.",
+      },
+      {
+        question: "Can it convert SELECT query results?",
+        answer:
+          "No, it's designed for INSERT statements specifically. If you have tabular SELECT results, export them as CSV and use our CSV to JSON tool instead.",
+      },
+      {
+        question: "How are NULL and boolean values handled?",
+        answer: "SQL NULL becomes JSON null, and TRUE/FALSE become native JSON booleans, matching their actual data types.",
+      },
+    ],
+  },
+  "sql/from-json": {
+    howToUse: [
+      "Paste a JSON object or array of objects into the input box.",
+      "Enter your target table name in the toolbar.",
+      "One INSERT INTO statement is generated per JSON object, using all keys found across the array as columns.",
+      "Copy the SQL or download it as a .sql file to run against your database.",
+    ],
+    features: [
+      "Generates one INSERT statement per JSON object, safe for running individually or in a batch.",
+      "Automatically escapes single quotes in string values to prevent broken syntax.",
+      "Converts JSON null, true/false, and numbers into their correct SQL literal forms.",
+      "Union of all keys across the array is used as the column list, so missing fields become NULL.",
+      "Runs entirely client-side \u2014 free and unlimited.",
+    ],
+    faq: [
+      {
+        question: "What happens if some objects are missing certain fields?",
+        answer:
+          "The column list is built from the union of every key found across all objects. Objects missing a given key will have NULL inserted for that column.",
+      },
+      {
+        question: "Are nested objects or arrays supported as values?",
+        answer:
+          "Nested objects and arrays are serialized to a JSON string literal so the INSERT statement remains valid \u2014 consider flattening your data first for structured columns.",
+      },
+      {
+        question: "Does this run the INSERT statements against a database?",
+        answer:
+          "No, this tool only generates the SQL text. Copy the output and run it using your own database client, migration tool, or ORM.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {
