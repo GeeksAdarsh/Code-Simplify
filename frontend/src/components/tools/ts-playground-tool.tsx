@@ -44,7 +44,7 @@ function buildSrcDoc(jsCode: string): string {
         if (typeof a === "object" && a !== null) { try { return JSON.stringify(a, null, 2); } catch (e) { return String(a); } }
         return String(a);
       }).join(" ");
-      parent.postMessage({ source: "devtoolbox-ts-playground", level: level, text: text }, "*");
+      parent.postMessage({ source: "codesimplify-ts-playground", level: level, text: text }, "*");
     } catch (e) {}
   }
   ["log", "info", "warn", "error"].forEach(function (level) {
@@ -77,7 +77,7 @@ export function TsPlaygroundTool() {
 
   const handleMessage = useCallback((event: MessageEvent) => {
     const data = event.data as { source?: string; level?: LogEntry["level"]; text?: string } | undefined;
-    if (!data || data.source !== "devtoolbox-ts-playground" || !data.level) return;
+    if (!data || data.source !== "codesimplify-ts-playground" || !data.level) return;
     setLogs((prev) => [...prev, { level: data.level as LogEntry["level"], text: data.text ?? "" }]);
   }, []);
 

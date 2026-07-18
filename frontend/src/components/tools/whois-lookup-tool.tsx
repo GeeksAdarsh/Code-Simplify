@@ -67,7 +67,7 @@ export function WhoisLookupTool() {
       )}
 
       <p className="mt-3 text-xs text-muted">
-        WHOIS is queried server-side over a raw socket by the DevToolbox backend (browsers can&apos;t open raw TCP
+        WHOIS is queried server-side over a raw socket by the CodeSimplify backend (browsers can&apos;t open raw TCP
         sockets) and requires the backend server to be running. Some registries return limited data for privacy
         reasons.
       </p>

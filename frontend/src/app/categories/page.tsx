@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { categories, siteConfig, toolHref } from "@/config/tools";
+import { siteConfig, toolHref, getLiveCategories } from "@/config/tools";
 
 export const metadata: Metadata = {
   title: "All Tools",
@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function CategoriesPage() {
+  const categories = getLiveCategories();
+
   return (
     <div className="container-page py-12">
       <h1 className="text-3xl font-semibold tracking-tight">All tools</h1>
@@ -37,7 +39,6 @@ export default function CategoriesPage() {
                   className="badge gap-1.5 rounded-lg px-3 py-1.5 text-xs font-normal normal-case tracking-normal transition-colors hover:border-foreground"
                 >
                   {tool.title}
-                  {tool.status === "soon" && <span className="text-muted">&middot; soon</span>}
                 </Link>
               ))}
             </div>

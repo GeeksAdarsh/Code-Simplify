@@ -5,7 +5,7 @@ import { ConvertTool, type ConvertResult } from "@/components/tools/shared/conve
 import { byteSize, parseJson } from "@/lib/json-utils";
 
 const SAMPLE_JSON = `{
-  "name": "DevToolbox",
+  "name": "CodeSimplify",
   "version": 1.0,
   "active": true,
   "tags": ["json", "developer", "tools"],

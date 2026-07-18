@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { byteSize } from "@/lib/json-utils";
 import { formatHtml, minifyHtml } from "@/lib/html-utils";
 
-const SAMPLE_HTML = `<!DOCTYPE html><html><head><title>DevToolbox</title><style>body{font-family:sans-serif}</style></head><body><div class="card"><h1>Hello, world!</h1><p>This is a <b>sample</b> HTML document formatted by DevToolbox.</p><ul><li>Fast</li><li>Free</li><li>Client-side</li></ul></div></body></html>`;
+const SAMPLE_HTML = `<!DOCTYPE html><html><head><title>CodeSimplify</title><style>body{font-family:sans-serif}</style></head><body><div class="card"><h1>Hello, world!</h1><p>This is a <b>sample</b> HTML document formatted by CodeSimplify.</p><ul><li>Fast</li><li>Free</li><li>Client-side</li></ul></div></body></html>`;
 
 type IndentOption = "2" | "4" | "tab";
 

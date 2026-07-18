@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ToolSearch } from "@/components/tool-search";
 import { siteConfig } from "@/config/tools";
@@ -7,9 +8,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-2 font-mono text-lg font-semibold tracking-tight">
-          <span className="flex h-7 w-7 items-center justify-center rounded bg-foreground text-background">
-            &lt;/&gt;
-          </span>
+          <Image src="/logo.png" alt={`${siteConfig.name} logo`} width={28} height={28} className="h-7 w-7 rounded" priority />
           {siteConfig.name}
         </Link>
 

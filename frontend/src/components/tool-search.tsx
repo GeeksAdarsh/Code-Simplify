@@ -8,7 +8,7 @@ export function ToolSearch() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const allTools = useMemo(() => getAllTools(), []);
+  const allTools = useMemo(() => getAllTools().filter((t) => t.status === "live"), []);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -73,7 +73,6 @@ export function ToolSearch() {
                 <span className="font-medium">{t.title}</span>
                 <span className="ml-2 text-xs text-muted">{t.categoryTitle}</span>
               </span>
-              {t.status === "soon" && <span className="badge shrink-0">Soon</span>}
             </Link>
           ))}
         </div>

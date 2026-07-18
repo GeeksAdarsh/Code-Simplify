@@ -23,7 +23,7 @@ export function ToolPageLayout({
   features,
   faq,
 }: ToolPageLayoutProps) {
-  const relatedTools = category.tools.filter((t) => t.slug !== tool.slug).slice(0, 6);
+  const relatedTools = category.tools.filter((t) => t.slug !== tool.slug && t.status === "live").slice(0, 6);
 
   return (
     <div className="container-page py-8">
@@ -89,28 +89,29 @@ export function ToolPageLayout({
           {faq && faq.length > 0 && <FaqSection items={faq} toolName={tool.title} />}
         </div>
 
-        <aside>
-          <h2 className="text-sm font-semibold text-muted">More {category.title} tools</h2>
-          <ul className="mt-4 space-y-2">
-            {relatedTools.map((t) => (
-              <li key={t.slug}>
-                <Link
-                  href={toolHref(category.slug, t.slug)}
-                  className="flex items-center justify-between gap-2 text-sm hover:underline"
-                >
-                  {t.title}
-                  {t.status === "soon" && <span className="badge shrink-0">Soon</span>}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href={`/${category.slug}`}
-            className="mt-4 inline-block text-sm font-medium text-foreground hover:underline"
-          >
-            View all {category.title} tools &rarr;
-          </Link>
-        </aside>
+        {relatedTools.length > 0 && (
+          <aside>
+            <h2 className="text-sm font-semibold text-muted">More {category.title} tools</h2>
+            <ul className="mt-4 space-y-2">
+              {relatedTools.map((t) => (
+                <li key={t.slug}>
+                  <Link
+                    href={toolHref(category.slug, t.slug)}
+                    className="flex items-center justify-between gap-2 text-sm hover:underline"
+                  >
+                    {t.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={`/${category.slug}`}
+              className="mt-4 inline-block text-sm font-medium text-foreground hover:underline"
+            >
+              View all {category.title} tools &rarr;
+            </Link>
+          </aside>
+        )}
       </div>
     </div>
   );

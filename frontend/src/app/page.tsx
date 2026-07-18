@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { categories, siteConfig, toolHref, getAllTools } from "@/config/tools";
+import { siteConfig, toolHref, getAllTools, getLiveCategories } from "@/config/tools";
 
 export default function Home() {
   const allTools = getAllTools();
   const liveTools = allTools.filter((t) => t.status === "live");
-  const totalTools = allTools.length;
+  const totalTools = liveTools.length;
+  const liveCategories = getLiveCategories();
 
   return (
     <div>
@@ -41,8 +42,7 @@ export default function Home() {
                 href={toolHref(t.categorySlug, t.slug)}
                 className="card group p-5 transition-colors hover:border-foreground"
               >
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="badge border-foreground text-foreground">Live</span>
+                <div className="mb-2 flex items-center justify-end">
                   <span className="text-muted transition-transform group-hover:translate-x-1">&rarr;</span>
                 </div>
                 <h3 className="font-medium">{t.title}</h3>
@@ -61,7 +61,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category) => (
+          {liveCategories.map((category) => (
             <Link
               key={category.slug}
               href={`/${category.slug}`}

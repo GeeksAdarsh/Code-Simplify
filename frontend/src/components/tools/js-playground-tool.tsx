@@ -30,7 +30,7 @@ function buildSrcDoc(code: string): string {
         if (typeof a === "object" && a !== null) { try { return JSON.stringify(a, null, 2); } catch (e) { return String(a); } }
         return String(a);
       }).join(" ");
-      parent.postMessage({ source: "devtoolbox-js-playground", level: level, text: text }, "*");
+      parent.postMessage({ source: "codesimplify-js-playground", level: level, text: text }, "*");
     } catch (e) {}
   }
   ["log", "info", "warn", "error"].forEach(function (level) {
@@ -62,7 +62,7 @@ export function JsPlaygroundTool() {
 
   const handleMessage = useCallback((event: MessageEvent) => {
     const data = event.data as { source?: string; level?: LogEntry["level"]; text?: string } | undefined;
-    if (!data || data.source !== "devtoolbox-js-playground" || !data.level) return;
+    if (!data || data.source !== "codesimplify-js-playground" || !data.level) return;
     setLogs((prev) => [...prev, { level: data.level as LogEntry["level"], text: data.text ?? "" }]);
   }, []);
 

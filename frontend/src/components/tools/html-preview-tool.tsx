@@ -15,7 +15,7 @@ const SAMPLE_HTML = `<!DOCTYPE html>
     </style>
   </head>
   <body>
-    <span class="badge">DevToolbox</span>
+    <span class="badge">CodeSimplify</span>
     <h1>Live HTML Preview</h1>
     <p>Edit the HTML on the left and watch this preview update instantly \u2014 all rendering happens locally in your browser.</p>
     <button onclick="alert('Hello from your preview!')">Click me</button>

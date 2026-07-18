@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { byteSize, countNodes, jsonTypeOf, parseJson } from "@/lib/json-utils";
 
-const SAMPLE_JSON = `{"name":"DevToolbox","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
+const SAMPLE_JSON = `{"name":"CodeSimplify","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
 
 export function JsonValidatorTool() {
   const [input, setInput] = useState("");

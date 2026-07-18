@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { highlightJson } from "@/lib/json-highlight";
 import { byteSize, parseJson } from "@/lib/json-utils";
 
-const SAMPLE_JSON = `{"name":"DevToolbox","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
+const SAMPLE_JSON = `{"name":"CodeSimplify","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
 
 export function JsonViewerTool() {
   const [input, setInput] = useState("");

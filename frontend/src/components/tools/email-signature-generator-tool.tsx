@@ -13,7 +13,7 @@ type FieldKey = keyof SignatureFields;
 const TEXT_FIELDS: { key: FieldKey; label: string; placeholder: string }[] = [
   { key: "name", label: "Full name", placeholder: "Jordan Lee" },
   { key: "jobTitle", label: "Job title", placeholder: "Senior Software Engineer" },
-  { key: "company", label: "Company", placeholder: "DevToolbox Inc." },
+  { key: "company", label: "Company", placeholder: "CodeSimplify Inc." },
   { key: "email", label: "Email", placeholder: "jordan.lee@example.com" },
   { key: "phone", label: "Phone", placeholder: "+1 (555) 123-4567" },
   { key: "website", label: "Website", placeholder: "example.com" },

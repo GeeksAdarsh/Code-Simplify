@@ -1,4 +1,4 @@
-# DevToolbox
+# CodeSimplify
 
 A free, fast collection of online developer tools (JSON, XML, YAML, CSV, SQL, security, text, and more) — inspired by sites like [CodeBeautify](https://codebeautify.org/), built to scale to hundreds of tools and millions of users.
 

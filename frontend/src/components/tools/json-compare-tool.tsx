@@ -6,14 +6,14 @@ import { parseJson } from "@/lib/json-utils";
 
 const SAMPLE_A = `{
   "id": 101,
-  "name": "DevToolbox",
+  "name": "CodeSimplify",
   "plan": "free",
   "seats": 1
 }`;
 
 const SAMPLE_B = `{
   "id": 101,
-  "name": "DevToolbox",
+  "name": "CodeSimplify",
   "plan": "pro",
   "seats": 5
 }`;

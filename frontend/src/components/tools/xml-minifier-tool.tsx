@@ -12,7 +12,7 @@ const SAMPLE_XML = `<?xml version="1.0" encoding="UTF-8"?>
     <price>29.99</price>
   </book>
   <book id="2">
-    <title>DevToolbox Guide</title>
+    <title>CodeSimplify Guide</title>
     <author>Dev Team</author>
     <price>19.99</price>
   </book>

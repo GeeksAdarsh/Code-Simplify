@@ -1034,16 +1034,76 @@ export const categories: Category[] = [
     icon: "\u{1F3A8}",
     description: "Pick, convert, and generate color palettes and gradients online.",
     tools: [
-      tool("picker", "Color Picker", "Pick colors and get their codes in multiple formats."),
-      tool("hex-rgb", "HEX \u2194 RGB", "Convert between HEX and RGB color formats."),
-      tool("rgb-hsl", "RGB \u2194 HSL", "Convert between RGB and HSL color formats."),
-      tool("rgb-cmyk", "RGB \u2194 CMYK", "Convert between RGB and CMYK color formats."),
-      tool("hex-cmyk", "HEX \u2194 CMYK", "Convert between HEX and CMYK color formats."),
-      tool("hex-hsv", "HEX \u2194 HSV", "Convert between HEX and HSV color formats."),
-      tool("gradient-generator", "Gradient Generator", "Design custom color gradients."),
-      tool("palette-generator", "Palette Generator", "Generate harmonious color palettes."),
-      tool("contrast-checker", "Contrast Checker", "Check color contrast ratios for accessibility."),
-      tool("color-blindness-simulator", "Color Blindness Simulator", "Preview colors as seen with color blindness."),
+      tool(
+        "picker",
+        "Color Picker",
+        "Pick a color visually or from your screen and get its HEX, RGB, HSL, HSV, and CMYK codes instantly.",
+        "live",
+        ["color picker online", "html color picker", "eyedropper tool online", "pick color from screen"]
+      ),
+      tool(
+        "hex-rgb",
+        "HEX to RGB Converter",
+        "Convert colors between HEX and RGB formats instantly, both ways.",
+        "live",
+        ["hex to rgb", "rgb to hex", "hex to rgb converter", "convert hex color to rgb"]
+      ),
+      tool(
+        "rgb-hsl",
+        "RGB to HSL Converter",
+        "Convert colors between RGB and HSL formats instantly, both ways.",
+        "live",
+        ["rgb to hsl", "hsl to rgb", "rgb to hsl converter", "convert rgb color to hsl"]
+      ),
+      tool(
+        "rgb-cmyk",
+        "RGB to CMYK Converter",
+        "Convert colors between RGB and CMYK formats for screen and print design.",
+        "live",
+        ["rgb to cmyk", "cmyk to rgb", "rgb to cmyk converter", "convert rgb to cmyk for print"]
+      ),
+      tool(
+        "hex-cmyk",
+        "HEX to CMYK Converter",
+        "Convert colors between HEX and CMYK formats for screen and print design.",
+        "live",
+        ["hex to cmyk", "cmyk to hex", "hex to cmyk converter", "convert hex color to cmyk"]
+      ),
+      tool(
+        "hex-hsv",
+        "HEX to HSV Converter",
+        "Convert colors between HEX and HSV (HSB) formats instantly, both ways.",
+        "live",
+        ["hex to hsv", "hsv to hex", "hex to hsb converter", "convert hex color to hsv"]
+      ),
+      tool(
+        "gradient-generator",
+        "Gradient Generator",
+        "Design custom linear and radial CSS gradients with live preview and multi-color stops.",
+        "live",
+        ["css gradient generator", "linear gradient generator", "radial gradient generator", "gradient maker online"]
+      ),
+      tool(
+        "palette-generator",
+        "Palette Generator",
+        "Generate complementary, analogous, triadic, and monochromatic color palettes from any base color.",
+        "live",
+        ["color palette generator", "color scheme generator", "generate color palette from color", "complementary color generator"]
+      ),
+      tool(
+        "contrast-checker",
+        "Contrast Checker",
+        "Check the WCAG contrast ratio between two colors and see if it passes AA or AAA accessibility standards.",
+        "live",
+        ["color contrast checker", "wcag contrast checker", "contrast ratio calculator", "accessibility color checker"]
+      ),
+      tool(
+        "color-blindness-simulator",
+        "Color Blindness Simulator",
+        "Preview colors and images as seen with protanopia, deuteranopia, tritanopia, or achromatopsia.",
+        "live",
+        ["color blindness simulator", "color vision deficiency simulator", "colorblind test image", "protanopia deuteranopia simulator"]
+      ),
     ],
   },
   {
@@ -1097,12 +1157,48 @@ export const categories: Category[] = [
     icon: "\u{1F4F1}",
     description: "Generate and scan QR codes and barcodes online.",
     tools: [
-      tool("qr-generator", "QR Code Generator", "Generate a QR code from text, a URL, or contact info."),
-      tool("qr-scanner", "QR Scanner", "Scan and decode QR codes from an image."),
-      tool("wifi-qr", "Wi-Fi QR Generator", "Generate a QR code that connects to a Wi-Fi network."),
-      tool("vcard-qr", "vCard QR Generator", "Generate a QR code containing vCard contact info."),
-      tool("barcode-generator", "Barcode Generator", "Generate common barcode formats."),
-      tool("barcode-reader", "Barcode Reader", "Decode barcodes from an image."),
+      tool(
+        "qr-generator",
+        "QR Code Generator",
+        "Generate a QR code from any text, URL, or content with adjustable error correction and instant PNG download.",
+        "live",
+        ["qr code generator", "generate qr code online", "url to qr code", "free qr code generator"]
+      ),
+      tool(
+        "qr-scanner",
+        "QR Scanner",
+        "Scan and decode QR codes from an uploaded image directly in your browser \u2014 no app or camera required.",
+        "live",
+        ["qr code scanner online", "decode qr code from image", "read qr code online", "qr code reader"]
+      ),
+      tool(
+        "wifi-qr",
+        "Wi-Fi QR Generator",
+        "Generate a QR code that lets phones join a Wi-Fi network instantly by scanning, without typing the password.",
+        "live",
+        ["wifi qr code generator", "wifi password qr code", "create wifi qr code", "share wifi with qr code"]
+      ),
+      tool(
+        "vcard-qr",
+        "vCard QR Generator",
+        "Generate a QR code containing vCard contact info that phones can scan to save directly to contacts.",
+        "live",
+        ["vcard qr code generator", "contact qr code", "business card qr code", "digital business card qr"]
+      ),
+      tool(
+        "barcode-generator",
+        "Barcode Generator",
+        "Generate Code 128, EAN-13, EAN-8, UPC-A, ITF-14, Codabar, and other common 1D barcode formats online.",
+        "live",
+        ["barcode generator online", "generate barcode", "code 128 generator", "ean-13 barcode generator"]
+      ),
+      tool(
+        "barcode-reader",
+        "Barcode Reader",
+        "Decode Code 128, EAN, UPC, and other barcode formats from an uploaded image directly in your browser.",
+        "live",
+        ["barcode reader online", "decode barcode from image", "read barcode online", "barcode scanner online"]
+      ),
     ],
   },
   {
@@ -1111,13 +1207,55 @@ export const categories: Category[] = [
     icon: "\u{1F4C5}",
     description: "Convert timestamps, calculate date differences, and work with cron schedules online.",
     tools: [
-      tool("unix-timestamp", "Unix Timestamp", "Convert between Unix timestamps and human-readable dates."),
-      tool("date-difference", "Date Difference", "Calculate the difference between two dates."),
-      tool("age-calculator", "Age Calculator", "Calculate exact age from a birth date."),
-      tool("timezone-converter", "Time Zone Converter", "Convert times between time zones."),
-      tool("cron-generator", "Cron Generator", "Build cron expressions visually."),
-      tool("cron-parser", "Cron Parser", "Parse and explain cron expressions in plain English."),
-      tool("leap-year-checker", "Leap Year Checker", "Check whether a year is a leap year."),
+      tool(
+        "unix-timestamp",
+        "Unix Timestamp",
+        "Convert between Unix timestamps and human-readable dates, in seconds or milliseconds, with a live current timestamp.",
+        "live",
+        ["unix timestamp converter", "epoch converter", "timestamp to date", "current unix timestamp"]
+      ),
+      tool(
+        "date-difference",
+        "Date Difference",
+        "Calculate the exact difference between two dates in years, months, days, hours, and total days or weeks.",
+        "live",
+        ["date difference calculator", "days between dates", "date calculator", "calculate difference between two dates"]
+      ),
+      tool(
+        "age-calculator",
+        "Age Calculator",
+        "Calculate your exact age in years, months, and days from your birth date, plus days until your next birthday.",
+        "live",
+        ["age calculator", "calculate age from date of birth", "how old am i", "birthday countdown calculator"]
+      ),
+      tool(
+        "timezone-converter",
+        "Time Zone Converter",
+        "Convert a date and time between any IANA time zones and compare across multiple cities at once.",
+        "live",
+        ["time zone converter", "convert time zones online", "world clock converter", "utc to local time converter"]
+      ),
+      tool(
+        "cron-generator",
+        "Cron Generator",
+        "Visually build cron expressions with presets, a plain-English description, and the next 5 run times.",
+        "live",
+        ["cron expression generator", "cron job generator", "build cron expression", "crontab generator"]
+      ),
+      tool(
+        "cron-parser",
+        "Cron Parser",
+        "Parse any cron expression into a plain-English description and see its next 5 scheduled run times.",
+        "live",
+        ["cron expression parser", "explain cron expression", "crontab parser", "what does this cron expression mean"]
+      ),
+      tool(
+        "leap-year-checker",
+        "Leap Year Checker",
+        "Check whether any year is a leap year with a clear explanation, plus list all leap years in a range.",
+        "live",
+        ["leap year checker", "is this a leap year", "leap year calculator", "list of leap years"]
+      ),
     ],
   },
   {
@@ -1126,17 +1264,83 @@ export const categories: Category[] = [
     icon: "\u{1F4DD}",
     description: "Count, clean, diff, and transform text online.",
     tools: [
-      tool("word-counter", "Word Counter", "Count words in a block of text."),
-      tool("character-counter", "Character Counter", "Count characters in a block of text."),
-      tool("line-counter", "Line Counter", "Count lines in a block of text."),
-      tool("duplicate-line-remover", "Duplicate Line Remover", "Remove duplicate lines from text."),
-      tool("diff", "Text Diff", "Compare two blocks of text and highlight differences."),
-      tool("case-converter", "Case Converter", "Convert text between upper, lower, title, and camel case."),
-      tool("reverse-text", "Reverse Text", "Reverse the characters or words in text."),
-      tool("slug-generator", "Slug Generator", "Generate a URL-friendly slug from text."),
-      tool("lorem-ipsum", "Lorem Ipsum", "Generate placeholder Lorem Ipsum text."),
-      tool("remove-extra-spaces", "Remove Extra Spaces", "Remove extra whitespace from text."),
-      tool("text-sorter", "Text Sorter", "Sort lines of text alphabetically or numerically."),
+      tool(
+        "word-counter",
+        "Word Counter",
+        "Count words, characters, sentences, and paragraphs in any text, with estimated reading and speaking time.",
+        "live",
+        ["word counter online", "count words in text", "word count tool", "reading time calculator"]
+      ),
+      tool(
+        "character-counter",
+        "Character Counter",
+        "Count characters in your text with a live limit tracker and a full breakdown of letters, digits, and spaces.",
+        "live",
+        ["character counter online", "count characters in text", "character count tool", "letter counter"]
+      ),
+      tool(
+        "line-counter",
+        "Line Counter",
+        "Count total, empty, and non-empty lines in a block of text, plus find the longest line and average line length.",
+        "live",
+        ["line counter online", "count lines in text", "count lines of text", "line count tool"]
+      ),
+      tool(
+        "duplicate-line-remover",
+        "Duplicate Line Remover",
+        "Remove duplicate lines from any list or text block, with case-sensitivity and whitespace-trimming options.",
+        "live",
+        ["remove duplicate lines", "duplicate line remover online", "delete duplicate lines", "unique lines tool"]
+      ),
+      tool(
+        "diff",
+        "Text Diff",
+        "Compare two blocks of text side by side and highlight added, removed, and unchanged lines instantly.",
+        "live",
+        ["text diff tool", "compare two texts online", "text comparison tool", "diff checker online"]
+      ),
+      tool(
+        "case-converter",
+        "Case Converter",
+        "Convert text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, and more.",
+        "live",
+        ["case converter online", "text case converter", "camel case converter", "convert to title case"]
+      ),
+      tool(
+        "reverse-text",
+        "Reverse Text",
+        "Reverse the characters, word order, or line order of any text instantly.",
+        "live",
+        ["reverse text online", "reverse text generator", "flip text online", "backwards text generator"]
+      ),
+      tool(
+        "slug-generator",
+        "Slug Generator",
+        "Convert any title or text into a clean, URL-friendly slug with hyphens or underscores.",
+        "live",
+        ["slug generator online", "url slug generator", "text to slug", "generate url friendly slug"]
+      ),
+      tool(
+        "lorem-ipsum",
+        "Lorem Ipsum",
+        "Generate placeholder Lorem Ipsum text by words, sentences, or paragraphs for mockups and designs.",
+        "live",
+        ["lorem ipsum generator", "generate placeholder text", "dummy text generator", "lorem ipsum text"]
+      ),
+      tool(
+        "remove-extra-spaces",
+        "Remove Extra Spaces",
+        "Remove extra spaces, tabs, and blank lines from text, collapsing whitespace into clean, readable content.",
+        "live",
+        ["remove extra spaces online", "remove whitespace from text", "clean up text spacing", "trim extra spaces"]
+      ),
+      tool(
+        "text-sorter",
+        "Text Sorter",
+        "Sort lines of text alphabetically, numerically, or by length, with options to remove duplicates and blanks.",
+        "live",
+        ["sort lines of text", "text sorter online", "alphabetize list online", "sort list alphabetically"]
+      ),
     ],
   },
   {
@@ -1145,16 +1349,76 @@ export const categories: Category[] = [
     icon: "\u{1F4B0}",
     description: "Calculate percentages, convert number bases, and run everyday numeric calculators online.",
     tools: [
-      tool("percentage-calculator", "Percentage Calculator", "Calculate percentages of a value."),
-      tool("percentage-difference", "Percentage Difference", "Calculate the percentage difference between two numbers."),
-      tool("scientific-calculator", "Scientific Calculator", "Perform advanced scientific calculations."),
-      tool("bmi-calculator", "BMI Calculator", "Calculate your Body Mass Index."),
-      tool("unit-converter", "Unit Converter", "Convert between common units of measurement."),
-      tool("currency-converter", "Currency Converter", "Convert between world currencies using live exchange rates."),
-      tool("decimal-binary", "Decimal \u2194 Binary", "Convert between decimal and binary."),
-      tool("decimal-hex", "Decimal \u2194 Hex", "Convert between decimal and hexadecimal."),
-      tool("decimal-octal", "Decimal \u2194 Octal", "Convert between decimal and octal."),
-      tool("roman-numeral", "Roman Numeral Converter", "Convert between numbers and Roman numerals."),
+      tool(
+        "percentage-calculator",
+        "Percentage Calculator",
+        "Calculate percentages, find what percent one number is of another, or calculate percentage increase/decrease.",
+        "live",
+        ["percentage calculator", "calculate percentage online", "percentage increase calculator", "what percent is x of y"]
+      ),
+      tool(
+        "percentage-difference",
+        "Percentage Difference",
+        "Calculate the percentage difference and percentage change between any two numbers.",
+        "live",
+        ["percentage difference calculator", "percent change calculator", "calculate percentage difference between two numbers", "percentage variance calculator"]
+      ),
+      tool(
+        "scientific-calculator",
+        "Scientific Calculator",
+        "A full scientific calculator with trigonometric, logarithmic, and power functions, plus calculation history.",
+        "live",
+        ["scientific calculator online", "online calculator with functions", "free scientific calculator", "trigonometry calculator online"]
+      ),
+      tool(
+        "bmi-calculator",
+        "BMI Calculator",
+        "Calculate your Body Mass Index (BMI) from your height and weight in metric or imperial units.",
+        "live",
+        ["bmi calculator", "calculate body mass index", "bmi calculator online", "healthy weight calculator"]
+      ),
+      tool(
+        "unit-converter",
+        "Unit Converter",
+        "Convert between units of length, weight, temperature, volume, area, and speed instantly.",
+        "live",
+        ["unit converter online", "convert units of measurement", "metric to imperial converter", "length weight temperature converter"]
+      ),
+      tool(
+        "currency-converter",
+        "Currency Converter",
+        "Convert between world currencies using live, daily-updated exchange rates from the European Central Bank.",
+        "live",
+        ["currency converter online", "live exchange rate converter", "convert currency online", "foreign exchange calculator"]
+      ),
+      tool(
+        "decimal-binary",
+        "Decimal \u2194 Binary",
+        "Convert numbers between decimal (base 10) and binary (base 2) instantly, both directions.",
+        "live",
+        ["decimal to binary converter", "binary to decimal converter", "convert decimal to binary", "binary converter online"]
+      ),
+      tool(
+        "decimal-hex",
+        "Decimal \u2194 Hex",
+        "Convert numbers between decimal (base 10) and hexadecimal (base 16) instantly, both directions.",
+        "live",
+        ["decimal to hex converter", "hex to decimal converter", "convert decimal to hexadecimal", "hexadecimal converter online"]
+      ),
+      tool(
+        "decimal-octal",
+        "Decimal \u2194 Octal",
+        "Convert numbers between decimal (base 10) and octal (base 8) instantly, both directions.",
+        "live",
+        ["decimal to octal converter", "octal to decimal converter", "convert decimal to octal", "octal converter online"]
+      ),
+      tool(
+        "roman-numeral",
+        "Roman Numeral Converter",
+        "Convert numbers to Roman numerals and Roman numerals back to numbers, from 1 to 3999.",
+        "live",
+        ["roman numeral converter", "convert to roman numerals", "roman numeral to number", "roman numeral generator"]
+      ),
     ],
   },
   {
@@ -1198,6 +1462,257 @@ export const categories: Category[] = [
       tool("screen-resolution-checker", "Screen Resolution Checker", "Check your current screen resolution."),
     ],
   },
+  {
+    slug: "devops",
+    title: "DevOps",
+    icon: "\u{1F6E0}\u{FE0F}",
+    description: "Validate and generate Docker, Kubernetes, Nginx, and Apache configuration files online.",
+    tools: [
+      tool(
+        "docker-compose-validator",
+        "Docker Compose Validator",
+        "Validate a docker-compose.yml file's structure, services, ports, and volumes.",
+        "live",
+        ["docker compose validator", "validate docker-compose.yml", "docker compose syntax checker", "compose file linter"]
+      ),
+      tool(
+        "dockerfile-linter",
+        "Dockerfile Linter",
+        "Lint a Dockerfile for common mistakes, security issues, and best-practice violations.",
+        "live",
+        ["dockerfile linter", "dockerfile best practices checker", "docker build linter", "hadolint alternative online"]
+      ),
+      tool(
+        "kubernetes-yaml-validator",
+        "Kubernetes YAML Validator",
+        "Validate Kubernetes manifests for required fields, selector/label matching, and resource formats.",
+        "live",
+        ["kubernetes yaml validator", "k8s manifest validator", "validate kubernetes yaml online", "kubectl dry run alternative"]
+      ),
+      tool(
+        "kubernetes-manifest-generator",
+        "Kubernetes Manifest Generator",
+        "Generate Deployment, Service, ConfigMap, and Secret YAML manifests from a simple form.",
+        "live",
+        ["kubernetes manifest generator", "generate k8s yaml", "deployment yaml generator", "kubernetes service yaml generator"]
+      ),
+      tool(
+        "helm-values-formatter",
+        "Helm Values Formatter",
+        "Format and re-indent a Helm values.yaml file consistently.",
+        "live",
+        ["helm values formatter", "format values.yaml", "helm yaml formatter", "helm chart values beautifier"]
+      ),
+      tool(
+        "nginx-config-tester",
+        "Nginx Config Tester",
+        "Check an nginx configuration for brace, semicolon, and common directive mistakes.",
+        "live",
+        ["nginx config tester", "nginx config syntax checker", "validate nginx.conf online", "nginx -t alternative"]
+      ),
+      tool(
+        "apache-config-formatter",
+        "Apache Config Formatter",
+        "Format Apache httpd.conf and .htaccess files with consistent block indentation.",
+        "live",
+        ["apache config formatter", "format httpd.conf", "htaccess formatter", "apache virtualhost formatter"]
+      ),
+    ],
+  },
+  {
+    slug: "cloud",
+    title: "Cloud",
+    icon: "\u2601\u{FE0F}",
+    description: "Parse and generate AWS ARNs, IAM policies, cron schedules, and S3 URLs online.",
+    tools: [
+      tool(
+        "aws-arn-parser",
+        "AWS ARN Parser",
+        "Break an AWS ARN down into partition, service, region, account ID, and resource.",
+        "live",
+        ["aws arn parser", "parse arn online", "aws resource name breakdown", "arn format checker"]
+      ),
+      tool(
+        "aws-iam-policy-formatter",
+        "AWS IAM Policy Formatter",
+        "Format an IAM policy document and check statements for common mistakes.",
+        "live",
+        ["aws iam policy formatter", "iam policy validator", "format iam policy json", "aws policy checker"]
+      ),
+      tool(
+        "aws-cron-converter",
+        "AWS Cron Converter",
+        "Convert between standard Unix cron and AWS's 6-field EventBridge/CloudWatch cron format.",
+        "live",
+        ["aws cron converter", "cloudwatch cron expression", "eventbridge cron format", "unix cron to aws cron"]
+      ),
+      tool(
+        "s3-url-parser",
+        "S3 URL Parser",
+        "Parse S3 URLs into bucket, key, and region, or build S3 URLs from bucket and key.",
+        "live",
+        ["s3 url parser", "parse s3 bucket url", "s3 url generator", "s3 path style vs virtual hosted"]
+      ),
+    ],
+  },
+  {
+    slug: "authentication",
+    title: "Authentication",
+    icon: "\u{1F511}",
+    description: "Build OAuth URLs and generate PKCE pairs, TOTP codes, and API keys online.",
+    tools: [
+      tool(
+        "oauth-url-builder",
+        "OAuth URL Builder",
+        "Build an OAuth 2.0 authorization URL with client ID, scope, state, and PKCE parameters.",
+        "live",
+        ["oauth url builder", "oauth 2.0 authorization url generator", "build oauth login url", "oauth query params generator"]
+      ),
+      tool(
+        "pkce-generator",
+        "PKCE Generator",
+        "Generate a PKCE code_verifier and code_challenge pair for OAuth 2.0 authorization code flow.",
+        "live",
+        ["pkce generator", "code verifier code challenge generator", "oauth pkce online", "generate code challenge s256"]
+      ),
+      tool(
+        "totp-generator",
+        "TOTP Generator",
+        "Generate live, time-based one-time passwords (RFC 6238) from a Base32 secret.",
+        "live",
+        ["totp generator", "time based one time password generator", "google authenticator code generator online", "2fa code generator"]
+      ),
+      tool(
+        "api-key-generator",
+        "API Key Generator",
+        "Generate cryptographically random API keys with a custom prefix and length.",
+        "live",
+        ["api key generator", "generate secret key online", "random api key generator", "sk_live key generator"]
+      ),
+    ],
+  },
+  {
+    slug: "webdev",
+    title: "Web Development",
+    icon: "\u{1F30D}",
+    description: "Look up HTTP status codes and MIME types, and generate CSP and CORS headers online.",
+    tools: [
+      tool(
+        "http-status-lookup",
+        "HTTP Status Code Lookup",
+        "Look up the meaning of any HTTP status code, from 100 to 511.",
+        "live",
+        ["http status code lookup", "http status codes list", "what does status code 404 mean", "http response code reference"]
+      ),
+      tool(
+        "mime-type-lookup",
+        "MIME Type Lookup",
+        "Look up the MIME type for a file extension, or the extension for a MIME type.",
+        "live",
+        ["mime type lookup", "file extension to mime type", "content-type lookup", "mime types list"]
+      ),
+      tool(
+        "mime-detector",
+        "MIME Detector",
+        "Detect a file's real MIME type from its content (magic bytes), not just its extension.",
+        "live",
+        ["mime detector", "detect file type from content", "magic bytes checker", "file signature lookup"]
+      ),
+      tool(
+        "csp-generator",
+        "CSP Generator",
+        "Build a Content-Security-Policy header with a form for each directive.",
+        "live",
+        ["csp generator", "content security policy generator", "build csp header", "csp header builder online"]
+      ),
+      tool(
+        "cors-header-generator",
+        "CORS Header Generator",
+        "Generate Access-Control-Allow-Origin and related CORS response headers.",
+        "live",
+        ["cors header generator", "access-control-allow-origin generator", "generate cors headers", "cors config builder"]
+      ),
+      tool(
+        "csp-validator",
+        "CSP Validator",
+        "Validate a Content-Security-Policy header and flag unsafe or misconfigured directives.",
+        "live",
+        ["csp validator", "content security policy checker", "validate csp header online", "csp header analyzer"]
+      ),
+    ],
+  },
+  {
+    slug: "database",
+    title: "Database",
+    icon: "\u{1F5C3}\u{FE0F}",
+    description: "Format MongoDB queries and PostgreSQL SQL, generate ObjectIds, and build Redis commands online.",
+    tools: [
+      tool(
+        "mongodb-query-formatter",
+        "MongoDB Query Formatter",
+        "Pretty-print MongoDB shell queries, filters, and aggregation pipelines.",
+        "live",
+        ["mongodb query formatter", "format mongo query online", "mongodb pretty print", "aggregation pipeline formatter"]
+      ),
+      tool(
+        "mongodb-objectid-generator",
+        "MongoDB ObjectId Generator",
+        "Generate valid MongoDB ObjectIds and decode their embedded creation timestamp.",
+        "live",
+        ["mongodb objectid generator", "generate objectid online", "decode objectid timestamp", "bson objectid generator"]
+      ),
+      tool(
+        "redis-command-builder",
+        "Redis Command Builder",
+        "Build common Redis CLI commands like SET, HSET, LPUSH, and ZADD from a form.",
+        "live",
+        ["redis command builder", "redis cli command generator", "build redis command online", "redis syntax helper"]
+      ),
+      tool(
+        "postgresql-formatter",
+        "PostgreSQL Formatter",
+        "Format PostgreSQL queries with proper indentation and keyword casing.",
+        "live",
+        ["postgresql formatter", "format postgres query", "postgresql sql beautifier", "pretty print postgresql"]
+      ),
+    ],
+  },
+  {
+    slug: "ai",
+    title: "AI",
+    icon: "\u{1F9E0}",
+    description: "Clean up prompts, count GPT tokens, and validate OpenAI structured output schemas online.",
+    tools: [
+      tool(
+        "prompt-formatter",
+        "Prompt Formatter",
+        "Clean up LLM prompts by trimming whitespace, collapsing blank lines, and normalizing smart quotes.",
+        "live",
+        ["prompt formatter", "clean up chatgpt prompt", "format llm prompt online", "prompt cleanup tool"]
+      ),
+      tool(
+        "prompt-token-counter",
+        "Prompt Token Counter",
+        "Count the exact number of GPT tokens in a prompt using OpenAI's real tokenizer.",
+        "live",
+        ["prompt token counter", "gpt token counter", "count openai tokens", "chatgpt token calculator"]
+      ),
+      tool(
+        "openai-schema-validator",
+        "OpenAI JSON Schema Validator",
+        "Validate a JSON Schema against OpenAI's structured outputs and strict function-calling constraints.",
+        "live",
+        ["openai json schema validator", "structured outputs validator", "openai strict mode schema checker", "function calling schema validator"]
+      ),
+      tool(
+        "embedding-token-counter",
+        "Embedding Token Counter",
+        "Count tokens for OpenAI embedding models and check against the 8,191-token input limit.",
+        "live",
+        ["embedding token counter", "text-embedding-3 token limit", "openai embedding token count", "embedding input limit checker"]
+      ),
+    ],
+  },
 ];
 
 export function getAllTools() {
@@ -1208,6 +1723,13 @@ export function getAllTools() {
 
 export function getCategory(categorySlug: string) {
   return categories.find((c) => c.slug === categorySlug);
+}
+
+/** Categories with only their live tools, skipping any category that has no live tools yet. */
+export function getLiveCategories(): Category[] {
+  return categories
+    .map((c) => ({ ...c, tools: c.tools.filter((t) => t.status === "live") }))
+    .filter((c) => c.tools.length > 0);
 }
 
 export function getTool(categorySlug: string, toolSlug: string) {
@@ -1221,9 +1743,9 @@ export function toolHref(categorySlug: string, toolSlug: string) {
 }
 
 export const siteConfig = {
-  name: "DevToolbox",
+  name: "CodeSimplify",
   tagline: "Free online developer tools",
   description:
-    "DevToolbox is a free collection of online developer tools \u2014 format, validate, convert, and generate JSON, XML, YAML, CSV, SQL, and more, all in your browser.",
-  url: "https://devtoolbox.example.com",
+    "CodeSimplify is a free collection of online developer tools \u2014 format, validate, convert, and generate JSON, XML, YAML, CSV, SQL, and more, all in your browser.",
+  url: "https://codesimplify.example.com",
 };

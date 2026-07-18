@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { byteSize } from "@/lib/json-utils";
 import { markdownToHtml } from "@/lib/markdown-utils";
 
-const SAMPLE_MD = `# DevToolbox
+const SAMPLE_MD = `# CodeSimplify
 
 A **fast**, _free_, and privacy-friendly toolbox for developers.
 
@@ -17,12 +17,12 @@ A **fast**, _free_, and privacy-friendly toolbox for developers.
 ## Example
 
 \`\`\`js
-console.log("Hello, DevToolbox!");
+console.log("Hello, CodeSimplify!");
 \`\`\`
 
 > Built for developers, by developers.
 
-[Visit DevToolbox](https://example.com)
+[Visit CodeSimplify](https://example.com)
 `;
 
 const PREVIEW_STYLES = `

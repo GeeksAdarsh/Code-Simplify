@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { categories, getCategory, toolHref } from "@/config/tools";
+import { getCategory, getLiveCategories, toolHref } from "@/config/tools";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export function generateStaticParams() {
-  return categories.map((c) => ({ category: c.slug }));
+  return getLiveCategories().map((c) => ({ category: c.slug }));
 }
 
 export async function generateMetadata({
@@ -30,7 +30,8 @@ export default async function CategoryPage({
 }) {
   const { category: categorySlug } = await params;
   const category = getCategory(categorySlug);
-  if (!category) notFound();
+  const liveTools = category?.tools.filter((t) => t.status === "live") ?? [];
+  if (!category || liveTools.length === 0) notFound();
 
   return (
     <div className="container-page py-10">
@@ -42,17 +43,12 @@ export default async function CategoryPage({
       <p className="mt-3 max-w-2xl text-muted">{category.description}</p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {category.tools.map((tool) => (
+        {liveTools.map((tool) => (
           <Link
             key={tool.slug}
             href={toolHref(category.slug, tool.slug)}
             className="card p-5 transition-colors hover:border-foreground"
           >
-            <div className="mb-2 flex items-center justify-between">
-              <span className={`badge ${tool.status === "live" ? "border-foreground text-foreground" : ""}`}>
-                {tool.status === "live" ? "Live" : "Coming soon"}
-              </span>
-            </div>
             <h2 className="font-medium">{tool.title}</h2>
             <p className="mt-1 text-sm text-muted">{tool.description}</p>
           </Link>

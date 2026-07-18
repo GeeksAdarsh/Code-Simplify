@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { ConvertTool, type ConvertResult } from "@/components/tools/shared/convert-tool";
 import { decodeHtmlEntities } from "@/lib/html-utils";
 
-const SAMPLE_ENTITIES = `&lt;p&gt;Caf&#233; &amp; &quot;The DevToolbox&quot; &mdash; 100% free &hearts;&lt;/p&gt;`;
+const SAMPLE_ENTITIES = `&lt;p&gt;Caf&#233; &amp; &quot;The CodeSimplify&quot; &mdash; 100% free &hearts;&lt;/p&gt;`;
 
 export function HtmlDecoderTool() {
   const convert = useCallback((input: string): ConvertResult => {

@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { ConvertTool, type ConvertResult } from "@/components/tools/shared/convert-tool";
 import { htmlToMarkdown } from "@/lib/markdown-utils";
 
-const SAMPLE_HTML = `<h1>DevToolbox</h1>
+const SAMPLE_HTML = `<h1>CodeSimplify</h1>
 <p>A <strong>fast</strong>, <em>free</em>, and privacy-friendly toolbox for developers.</p>
 <h2>Features</h2>
 <ul>
@@ -13,7 +13,7 @@ const SAMPLE_HTML = `<h1>DevToolbox</h1>
   <li>Clean, modern design</li>
 </ul>
 <blockquote><p>Built for developers, by developers.</p></blockquote>
-<p><a href="https://example.com">Visit DevToolbox</a></p>`;
+<p><a href="https://example.com">Visit CodeSimplify</a></p>`;
 
 export function HtmlToMarkdownTool() {
   const convert = useCallback((input: string): ConvertResult => {

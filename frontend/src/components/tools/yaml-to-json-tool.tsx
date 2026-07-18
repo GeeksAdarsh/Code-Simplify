@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { ConvertTool, type ConvertResult } from "@/components/tools/shared/convert-tool";
 import { parseYaml } from "@/lib/yaml-utils";
 
-const SAMPLE_YAML = `name: DevToolbox
+const SAMPLE_YAML = `name: CodeSimplify
 version: 1.0
 active: true
 tags:

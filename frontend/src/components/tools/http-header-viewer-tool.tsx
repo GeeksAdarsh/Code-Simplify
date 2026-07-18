@@ -66,7 +66,7 @@ export function HttpHeaderViewerTool() {
       )}
 
       <p className="mt-3 text-xs text-muted">
-        Headers are fetched server-side by the DevToolbox backend (browsers can&apos;t read cross-origin response
+        Headers are fetched server-side by the CodeSimplify backend (browsers can&apos;t read cross-origin response
         headers due to CORS) and requires the backend server to be running. Redirects are shown but never followed
         automatically.
       </p>

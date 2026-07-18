@@ -297,7 +297,7 @@ export interface SignatureFields {
 export const DEFAULT_SIGNATURE_FIELDS: SignatureFields = {
   name: "Jordan Lee",
   jobTitle: "Senior Software Engineer",
-  company: "DevToolbox Inc.",
+  company: "CodeSimplify Inc.",
   email: "jordan.lee@example.com",
   phone: "+1 (555) 123-4567",
   website: "https://example.com",

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { byteSize, countNodes, jsonTypeOf } from "@/lib/json-utils";
 import { parseYaml } from "@/lib/yaml-utils";
 
-const SAMPLE_YAML = `name: DevToolbox
+const SAMPLE_YAML = `name: CodeSimplify
 version: 1.0
 active: true
 tags:
@@ -14,7 +14,7 @@ author:
   name: Dev Team
   url: https://example.com`;
 
-const SAMPLE_INVALID_YAML = `name: DevToolbox
+const SAMPLE_INVALID_YAML = `name: CodeSimplify
 tags: [json, developer
 active: true`;
 

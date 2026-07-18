@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { ConvertTool, type ConvertResult } from "@/components/tools/shared/convert-tool";
 import { encodeUrl } from "@/lib/base64-utils";
 
-const SAMPLE_TEXT = "https://devtoolbox.example.com/search?q=json formatter & validator";
+const SAMPLE_TEXT = "https://codesimplify.example.com/search?q=json formatter & validator";
 
 export function UrlEncodeTool() {
   const [fullUrl, setFullUrl] = useState(false);

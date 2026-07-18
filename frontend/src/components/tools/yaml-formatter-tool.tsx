@@ -5,7 +5,7 @@ import { dump } from "js-yaml";
 import { byteSize } from "@/lib/json-utils";
 import { parseYaml } from "@/lib/yaml-utils";
 
-const SAMPLE_YAML = `name: DevToolbox
+const SAMPLE_YAML = `name: CodeSimplify
 version: 1.0
 active: true
 tags:

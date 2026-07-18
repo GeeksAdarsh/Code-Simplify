@@ -6,7 +6,7 @@ import { jsonToPhpArray } from "@/lib/json-convert";
 import { parseJson } from "@/lib/json-utils";
 
 const SAMPLE_JSON = `{
-  "name": "DevToolbox",
+  "name": "CodeSimplify",
   "active": true,
   "tags": ["json", "php"],
   "author": { "name": "Dev Team" }

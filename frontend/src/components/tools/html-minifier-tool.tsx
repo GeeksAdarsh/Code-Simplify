@@ -7,7 +7,7 @@ import { minifyHtml } from "@/lib/html-utils";
 const SAMPLE_HTML = `<!DOCTYPE html>
 <html>
   <head>
-    <title>DevToolbox</title>
+    <title>CodeSimplify</title>
   </head>
   <body>
     <!-- main content -->

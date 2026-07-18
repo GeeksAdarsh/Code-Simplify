@@ -5,14 +5,14 @@ import { diffJson, stringifyValue, type DiffEntry } from "@/lib/json-diff";
 import { parseJson } from "@/lib/json-utils";
 
 const SAMPLE_A = `{
-  "name": "DevToolbox",
+  "name": "CodeSimplify",
   "version": 1.0,
   "active": true,
   "tags": ["json", "tools"]
 }`;
 
 const SAMPLE_B = `{
-  "name": "DevToolbox Pro",
+  "name": "CodeSimplify Pro",
   "version": 2.0,
   "active": true,
   "tags": ["json", "tools", "yaml"],

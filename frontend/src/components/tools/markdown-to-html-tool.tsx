@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { AsyncConvertTool, type ConvertResult } from "@/components/tools/shared/async-convert-tool";
 import { markdownToHtml } from "@/lib/markdown-utils";
 
-const SAMPLE_MD = `# DevToolbox
+const SAMPLE_MD = `# CodeSimplify
 
 A **fast**, _free_, and privacy-friendly toolbox for developers.
 
@@ -15,12 +15,12 @@ A **fast**, _free_, and privacy-friendly toolbox for developers.
 - Clean, modern design
 
 \`\`\`js
-console.log("Hello, DevToolbox!");
+console.log("Hello, CodeSimplify!");
 \`\`\`
 
 > Built for developers, by developers.
 
-[Visit DevToolbox](https://example.com)
+[Visit CodeSimplify](https://example.com)
 `;
 
 export function MarkdownToHtmlTool() {

@@ -62,7 +62,7 @@ export function IpLookupTool() {
       )}
 
       <p className="mt-3 text-xs text-muted">
-        Geolocation lookups are performed server-side by the DevToolbox backend and require the backend server to be
+        Geolocation lookups are performed server-side by the CodeSimplify backend and require the backend server to be
         running. Results are approximate (city/ISP-level) and provided for informational purposes only.
       </p>
     </div>

@@ -39,7 +39,7 @@ public class HttpHeaderService {
         try {
             HttpRequest request = HttpRequest.newBuilder(uri)
                     .timeout(Duration.ofSeconds(10))
-                    .header("User-Agent", "Mozilla/5.0 (compatible; DevToolbox-HttpHeaderViewer/1.0)")
+                    .header("User-Agent", "Mozilla/5.0 (compatible; CodeSimplify-HttpHeaderViewer/1.0)")
                     .GET()
                     .build();
 

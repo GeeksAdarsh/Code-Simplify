@@ -5,13 +5,13 @@ import { diffJson, stringifyValue } from "@/lib/json-diff";
 import { xmlToJsObject } from "@/lib/xml-utils";
 
 const SAMPLE_A = `<config>
-  <name>DevToolbox</name>
+  <name>CodeSimplify</name>
   <plan>free</plan>
   <seats>1</seats>
 </config>`;
 
 const SAMPLE_B = `<config>
-  <name>DevToolbox</name>
+  <name>CodeSimplify</name>
   <plan>pro</plan>
   <seats>5</seats>
 </config>`;

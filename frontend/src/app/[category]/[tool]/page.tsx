@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { categories, getTool, siteConfig, toolHref } from "@/config/tools";
+import { getLiveCategories, getTool, siteConfig, toolHref } from "@/config/tools";
 import { getToolWidget } from "@/config/tool-widgets";
 import { getToolContent } from "@/config/tool-content";
 import { ToolPageLayout } from "@/components/tool-page-layout";
 
 export function generateStaticParams() {
-  return categories.flatMap((category) =>
+  return getLiveCategories().flatMap((category) =>
     category.tools.map((tool) => ({ category: category.slug, tool: tool.slug }))
   );
 }
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { category: categorySlug, tool: toolSlug } = await params;
   const found = getTool(categorySlug, toolSlug);
-  if (!found?.category) return {};
+  if (!found?.category || found.tool.status !== "live") return {};
   const { tool, category } = found;
   const canonical = toolHref(category.slug, tool.slug);
   const title = `${tool.title} \u2014 Free Online ${category.title} Tool`;
@@ -50,7 +50,7 @@ export default async function ToolPage({
 }) {
   const { category: categorySlug, tool: toolSlug } = await params;
   const found = getTool(categorySlug, toolSlug);
-  if (!found?.category) notFound();
+  if (!found?.category || found.tool.status !== "live") notFound();
   const { tool, category } = found;
 
   const widget = getToolWidget(category.slug, tool.slug);

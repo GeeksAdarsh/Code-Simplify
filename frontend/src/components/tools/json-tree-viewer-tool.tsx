@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { parseJson } from "@/lib/json-utils";
 
 const SAMPLE_JSON = `{
-  "name": "DevToolbox",
+  "name": "CodeSimplify",
   "version": 1.0,
   "active": true,
   "tags": ["json", "developer", "tools"],

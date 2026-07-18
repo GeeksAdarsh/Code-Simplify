@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { byteSize } from "@/lib/json-utils";
 import { formatXml, minifyXml, validateXml } from "@/lib/xml-utils";
 
-const SAMPLE_XML = `<?xml version="1.0" encoding="UTF-8"?><catalog><book id="1"><title>Learning XML</title><author>Jane Doe</author><price>29.99</price></book><book id="2"><title>DevToolbox Guide</title><author>Dev Team</author><price>19.99</price></book></catalog>`;
+const SAMPLE_XML = `<?xml version="1.0" encoding="UTF-8"?><catalog><book id="1"><title>Learning XML</title><author>Jane Doe</author><price>29.99</price></book><book id="2"><title>CodeSimplify Guide</title><author>Dev Team</author><price>19.99</price></book></catalog>`;
 
 type IndentOption = "2" | "4" | "tab";
 

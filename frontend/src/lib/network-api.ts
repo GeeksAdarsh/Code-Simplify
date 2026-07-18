@@ -62,7 +62,7 @@ async function getJson<T>(path: string): Promise<T> {
     response = await fetch(path);
   } catch {
     throw new Error(
-      "Could not reach the DevToolbox backend. Make sure the Spring Boot server is running (see the project README)."
+      "Could not reach the CodeSimplify backend. Make sure the Spring Boot server is running (see the project README)."
     );
   }
 

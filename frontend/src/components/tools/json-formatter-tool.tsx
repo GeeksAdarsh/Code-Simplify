@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-const SAMPLE_JSON = `{"name":"DevToolbox","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
+const SAMPLE_JSON = `{"name":"CodeSimplify","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
 
 type IndentOption = "2" | "4" | "tab";
 

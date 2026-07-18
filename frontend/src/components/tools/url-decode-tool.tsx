@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { ConvertTool, type ConvertResult } from "@/components/tools/shared/convert-tool";
 import { decodeUrl } from "@/lib/base64-utils";
 
-const SAMPLE_TEXT = "https%3A%2F%2Fdevtoolbox.example.com%2Fsearch%3Fq%3Djson%20formatter%20%26%20validator";
+const SAMPLE_TEXT = "https%3A%2F%2Fcodesimplify.example.com%2Fsearch%3Fq%3Djson%20formatter%20%26%20validator";
 
 export function UrlDecodeTool() {
   const convert = useCallback((input: string): ConvertResult => {

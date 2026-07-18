@@ -80,7 +80,7 @@ export function DnsLookupTool() {
       )}
 
       <p className="mt-3 text-xs text-muted">
-        DNS resolution is performed server-side by the DevToolbox backend (browsers can&apos;t make raw DNS queries)
+        DNS resolution is performed server-side by the CodeSimplify backend (browsers can&apos;t make raw DNS queries)
         and requires the backend server to be running.
       </p>
     </div>

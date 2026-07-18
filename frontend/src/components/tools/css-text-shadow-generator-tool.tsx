@@ -19,7 +19,7 @@ export function CssTextShadowGeneratorTool() {
   const [opacity, setOpacity] = useState(0.5);
   const [textColor, setTextColor] = useState("#111111");
   const [fontSize, setFontSize] = useState(40);
-  const [text, setText] = useState("DevToolbox");
+  const [text, setText] = useState("CodeSimplify");
 
   const shadowColor = useMemo(() => {
     const [r, g, b] = hexToRgb(color);
@@ -78,7 +78,7 @@ export function CssTextShadowGeneratorTool() {
           className="px-4 text-center font-bold"
           style={{ textShadow: shadowValue, color: textColor, fontSize: `${fontSize}px` }}
         >
-          {text || "DevToolbox"}
+          {text || "CodeSimplify"}
         </p>
       }
     />
