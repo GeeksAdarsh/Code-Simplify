@@ -26,7 +26,7 @@ data "aws_ami" "al2023" {
 
 resource "aws_security_group" "app" {
   name        = "${var.project_name}-sg"
-  description = "SSH restricted to one CIDR, HTTP/HTTPS open for Caddy and ACME"
+  description = "SSH restricted to one CIDR, HTTP open for the app"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
@@ -38,17 +38,9 @@ resource "aws_security_group" "app" {
   }
 
   ingress {
-    description = "HTTP (also used for ACME challenge)"
+    description = "HTTP"
     from_port   = 80
     to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "HTTPS"
-    from_port   = 443
-    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -96,16 +88,6 @@ resource "aws_eip" "app" {
   tags   = { Name = "${var.project_name}-eip" }
 }
 
-locals {
-  # sslip.io resolves "<ip-with-dashes>.sslip.io" straight back to that IP, so
-  # Caddy can get a real Let's Encrypt certificate with no domain purchase.
-  # Falls back to var.domain_name once you own a real domain.
-  computed_domain = "${replace(aws_eip.app.public_ip, ".", "-")}.sslip.io"
-  domain          = var.domain_name != "" ? var.domain_name : local.computed_domain
-  # Caddy's "email" directive errors on an empty value, so always fall back.
-  acme_email = var.acme_email != "" ? var.acme_email : "admin@example.com"
-}
-
 resource "aws_instance" "app" {
   ami                    = data.aws_ami.al2023.id
   instance_type          = var.instance_type
@@ -120,8 +102,6 @@ resource "aws_instance" "app" {
   }
 
   user_data = templatefile("${path.module}/templates/user_data.sh.tpl", {
-    domain       = local.domain
-    acme_email   = local.acme_email
     git_repo_url = var.git_repo_url
   })
   user_data_replace_on_change = true

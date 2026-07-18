@@ -33,18 +33,6 @@ variable "root_volume_gb" {
   default     = 30
 }
 
-variable "domain_name" {
-  description = "Optional real domain to serve on (e.g. app.example.com). Leave empty to automatically use a free '<elastic-ip>.sslip.io' hostname instead, which still gets a real Let's Encrypt certificate."
-  type        = string
-  default     = ""
-}
-
-variable "acme_email" {
-  description = "Email address Caddy registers with Let's Encrypt for certificate notices. Leave empty to skip (Caddy will still issue certs, just without an account email)."
-  type        = string
-  default     = ""
-}
-
 variable "git_repo_url" {
   description = "HTTPS clone URL the instance uses to pull source and build images directly on the box."
   type        = string

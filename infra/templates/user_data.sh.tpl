@@ -32,11 +32,6 @@ else
   cd /opt/codesimplify
 fi
 
-cat > .env <<ENV
-DOMAIN=${domain}
-ACME_EMAIL=${acme_email}
-ENV
-
 cat > redeploy.sh <<'REDEPLOY'
 #!/bin/bash
 set -euxo pipefail

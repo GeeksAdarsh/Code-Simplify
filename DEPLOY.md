@@ -1,12 +1,13 @@
 # Deploying CodeSimplify to AWS (Docker + Terraform, Free Tier)
 
 **Architecture:** one `t3.micro` EC2 instance (Free Tier eligible in
-`eu-north-1`) runs three containers via Docker Compose — `frontend`
-(Next.js), `backend` (Spring Boot), and `caddy` (reverse proxy + automatic
-HTTPS via Let's Encrypt, using a free `sslip.io` hostname derived from the
-instance's Elastic IP since no domain is configured yet). The instance
-`git clone`s this repo itself and builds both images from source on the
-box (`docker-compose.prod.yml`) — no image registry, no CI/CD involved.
+`eu-north-1`) runs two containers via Docker Compose — `frontend`
+(Next.js, published on port 80) and `backend` (Spring Boot, internal only —
+the frontend proxies `/api/*` to it server-side, so it's never exposed to
+the internet). Plain HTTP for now; TLS/domain is handled externally later
+(e.g. Cloudflare in front of the instance's IP). The instance `git clone`s
+this repo itself and builds both images from source on the box
+(`docker-compose.prod.yml`) — no image registry, no CI/CD involved.
 Redeploys are a manual `ssh` + `git pull && docker compose build && up -d`
 via `scripts/redeploy-remote.ps1`.
 
@@ -37,7 +38,7 @@ curl.exe -s https://checkip.amazonaws.com
 ```powershell
 cd infra
 copy terraform.tfvars.example terraform.tfvars
-notepad terraform.tfvars   # fill in key_name, ssh_ingress_cidr, acme_email
+notepad terraform.tfvars   # fill in key_name, ssh_ingress_cidr
 ```
 
 ## 2. Provision AWS infrastructure with Terraform
@@ -49,7 +50,7 @@ terraform plan    # review what will be created
 terraform apply   # type "yes" to confirm
 ```
 
-This creates: a security group (22 restricted to you, 80/443 open), the
+This creates: a security group (22 restricted to you, 80 open), the
 EC2 instance + Elastic IP, and an IAM instance role (SSM only). Nothing
 here has a fixed monthly cost as long as you stay within Free Tier limits
 (see "Costs" below).
@@ -57,10 +58,9 @@ here has a fixed monthly cost as long as you stay within Free Tier limits
 The instance's own boot script (`infra/templates/user_data.sh.tpl`)
 installs Docker + git, adds a 2 GB swapfile (the instance only has 1 GB
 RAM — needed as headroom for building Next.js + Maven on-box), clones
-this repo to `/opt/codesimplify`, writes a `.env` with the computed
-domain/ACME email, and runs `redeploy.sh`, which does the actual
-`git pull && docker compose -f docker-compose.prod.yml build && up -d`.
-First boot takes several minutes (cloning + building both images on a
+this repo to `/opt/codesimplify`, and runs `redeploy.sh`, which does the
+actual `git pull && docker compose -f docker-compose.prod.yml build && up
+-d`. First boot takes several minutes (cloning + building both images on a
 small instance) — this is normal.
 
 Copy the outputs:
@@ -75,8 +75,7 @@ You'll see `site_url`, `instance_id`, and `instance_public_ip`.
 
 No local build/push step needed — the instance builds from source itself
 on boot. Give it 5-10 minutes after `terraform apply` completes, then open
-the `site_url` from the Terraform output in your browser. First HTTPS
-request may take a few extra seconds while Caddy obtains its certificate.
+the `site_url` from the Terraform output in your browser.
 
 To watch progress or debug, SSM into the instance (no SSH key needed):
 
@@ -128,9 +127,9 @@ terraform destroy
   (one small EC2 instance + EIP), since ECS Fargate/Elastic Beanstalk were
   intentionally avoided.
 
-## Getting a real domain later
+## Adding your domain + HTTPS later (e.g. Cloudflare)
 
-Once you own a domain, point an `A` record at the `instance_public_ip`
-output, set `domain_name` in `infra/terraform.tfvars` to that domain, and
-re-run `terraform apply` — Caddy will request a certificate for the new
-domain on next boot/redeploy.
+Point your domain at the `instance_public_ip` output (an `A` record), then
+put it behind Cloudflare (or similar) for TLS termination — set Cloudflare's
+SSL mode to "Flexible" so it talks plain HTTP to the origin (port 80),
+matching this setup. No changes needed on the instance side for that.

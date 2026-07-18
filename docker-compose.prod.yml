@@ -1,6 +1,5 @@
-# Used on the EC2 instance: builds images from source on the box itself and
-# fronts them with Caddy for automatic HTTPS. DOMAIN/ACME_EMAIL come from a
-# .env file written by infra/templates/user_data.sh.tpl (not committed).
+# Used on the EC2 instance: builds images from source on the box itself.
+# Plain HTTP for now - TLS/domain is handled externally later (e.g. Cloudflare).
 # Local testing should use ./docker-compose.yml instead.
 
 services:
@@ -8,8 +7,6 @@ services:
     build:
       context: ./backend
     restart: unless-stopped
-    environment:
-      APP_CORS_ALLOWED_ORIGINS: https://${DOMAIN}
     expose:
       - "8080"
 
@@ -19,28 +16,7 @@ services:
     restart: unless-stopped
     environment:
       BACKEND_URL: http://backend:8080
-    expose:
-      - "3000"
-    depends_on:
-      - backend
-
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
-    environment:
-      DOMAIN: ${DOMAIN}
-      ACME_EMAIL: ${ACME_EMAIL}
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
+      - "80:3000"
     depends_on:
-      - frontend
       - backend
-
-volumes:
-  caddy_data:
-  caddy_config:

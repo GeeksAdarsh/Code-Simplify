@@ -1,6 +1,6 @@
 output "site_url" {
-  description = "Public HTTPS URL of the deployed app"
-  value       = "https://${local.domain}"
+  description = "Public URL of the deployed app (plain HTTP for now)"
+  value       = "http://${aws_eip.app.public_ip}"
 }
 
 output "instance_id" {
