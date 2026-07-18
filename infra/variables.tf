@@ -45,11 +45,6 @@ variable "acme_email" {
   default     = ""
 }
 
-variable "github_repo" {
-  description = "GitHub repo allowed to assume the CI/CD deploy role via OIDC, formatted 'owner/repo'."
-  type        = string
-}
-
 variable "git_repo_url" {
   description = "HTTPS clone URL the instance uses to pull source and build images directly on the box."
   type        = string

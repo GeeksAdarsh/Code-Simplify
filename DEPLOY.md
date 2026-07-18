@@ -6,10 +6,9 @@
 HTTPS via Let's Encrypt, using a free `sslip.io` hostname derived from the
 instance's Elastic IP since no domain is configured yet). The instance
 `git clone`s this repo itself and builds both images from source on the
-box (`docker-compose.prod.yml`) — no image registry involved. GitHub
-Actions (once set up) just triggers a `git pull && docker compose build &&
-up -d` on the instance via SSM — no long-lived AWS keys stored in GitHub
-(uses OIDC), no SSH key distribution needed for day-to-day deploys.
+box (`docker-compose.prod.yml`) — no image registry, no CI/CD involved.
+Redeploys are a manual `ssh` + `git pull && docker compose build && up -d`
+via `scripts/redeploy-remote.ps1`.
 
 ## 0. Rotate your AWS credentials first
 
@@ -38,7 +37,7 @@ curl.exe -s https://checkip.amazonaws.com
 ```powershell
 cd infra
 copy terraform.tfvars.example terraform.tfvars
-notepad terraform.tfvars   # fill in key_name, ssh_ingress_cidr, acme_email, github_repo
+notepad terraform.tfvars   # fill in key_name, ssh_ingress_cidr, acme_email
 ```
 
 ## 2. Provision AWS infrastructure with Terraform
@@ -51,9 +50,9 @@ terraform apply   # type "yes" to confirm
 ```
 
 This creates: a security group (22 restricted to you, 80/443 open), the
-EC2 instance + Elastic IP, an IAM instance role (SSM), and a GitHub OIDC
-IAM role for future CI/CD. Nothing here has a fixed monthly cost as long
-as you stay within Free Tier limits (see "Costs" below).
+EC2 instance + Elastic IP, and an IAM instance role (SSM only). Nothing
+here has a fixed monthly cost as long as you stay within Free Tier limits
+(see "Costs" below).
 
 The instance's own boot script (`infra/templates/user_data.sh.tpl`)
 installs Docker + git, adds a 2 GB swapfile (the instance only has 1 GB
@@ -70,7 +69,7 @@ Copy the outputs:
 terraform output
 ```
 
-You'll see `site_url`, `instance_id`, and `github_actions_role_arn`.
+You'll see `site_url`, `instance_id`, and `instance_public_ip`.
 
 ## 3. Watch the first deploy finish, then check the site
 
@@ -94,27 +93,7 @@ Once it's up, every subsequent deploy is just:
 
 which SSHes in and re-runs `cd /opt/codesimplify && sudo ./redeploy.sh`.
 
-## 4. Set up GitHub Actions CI/CD (so `git push` auto-deploys)
-
-In your GitHub repo → **Settings → Secrets and variables → Actions →
-Variables**, add these repository variables (values from
-`terraform output`):
-
-| Variable         | Value                             |
-| ---------------- | ---------------------------------- |
-| `AWS_ROLE_ARN`    | `github_actions_role_arn` output   |
-| `AWS_REGION`      | `eu-north-1`                       |
-| `EC2_INSTANCE_ID` | `instance_id` output               |
-
-No secrets (access keys) needed — `.github/workflows/deploy.yml` assumes
-the OIDC role directly.
-
-From then on, every push to `main` touching `frontend/**` or `backend/**`
-triggers `redeploy.sh` on the instance via SSM (`git pull` + rebuild +
-restart), automatically. You can also trigger it manually from the
-Actions tab (`workflow_dispatch`).
-
-## 5. Day-to-day operations
+## 4. Day-to-day operations
 
 ```powershell
 # Interactive shell on the instance, no SSH/keys needed
@@ -129,7 +108,7 @@ aws ssm send-command --instance-ids <instance_id> --document-name "AWS-RunShellS
   --parameters 'commands=["cd /opt/codesimplify && docker compose ps"]'
 ```
 
-## 6. Tearing everything down
+## 5. Tearing everything down
 
 ```powershell
 cd infra
