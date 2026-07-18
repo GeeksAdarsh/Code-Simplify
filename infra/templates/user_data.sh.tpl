@@ -14,6 +14,15 @@ curl -sSL https://github.com/docker/compose/releases/latest/download/docker-comp
   -o /usr/local/lib/docker/cli-plugins/docker-compose
 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
+# `docker compose build` shells out to buildx - the plain "docker" dnf package
+# doesn't ship it, and buildx's GitHub releases use versioned filenames (no
+# fixed "latest" asset name), so resolve the tag via the API first.
+BUILDX_VERSION=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest \
+  | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p' | head -1)
+curl -sSL "https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.linux-amd64" \
+  -o /usr/local/lib/docker/cli-plugins/docker-buildx
+chmod +x /usr/local/lib/docker/cli-plugins/docker-buildx
+
 # t3.micro has only 1GB RAM; building Next.js + Maven on it needs real swap headroom.
 if [ ! -f /swapfile ]; then
   fallocate -l 2G /swapfile
