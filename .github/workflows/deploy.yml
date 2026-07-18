@@ -17,29 +17,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
 
-      - name: Login to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v2
-
-      - name: Build and push backend image
-        run: |
-          docker build -t "${{ vars.ECR_BACKEND_URL }}:latest" -t "${{ vars.ECR_BACKEND_URL }}:${{ github.sha }}" ./backend
-          docker push "${{ vars.ECR_BACKEND_URL }}:latest"
-          docker push "${{ vars.ECR_BACKEND_URL }}:${{ github.sha }}"
-
-      - name: Build and push frontend image
-        run: |
-          docker build -t "${{ vars.ECR_FRONTEND_URL }}:latest" -t "${{ vars.ECR_FRONTEND_URL }}:${{ github.sha }}" ./frontend
-          docker push "${{ vars.ECR_FRONTEND_URL }}:latest"
-          docker push "${{ vars.ECR_FRONTEND_URL }}:${{ github.sha }}"
-
+      # The instance builds images from source itself (git pull + docker
+      # compose build), so this job just has to trigger that via SSM - no
+      # image build/push from CI needed.
       - name: Redeploy on EC2 via SSM (no SSH needed)
         run: |
           set -euo pipefail

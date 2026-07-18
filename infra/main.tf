@@ -26,7 +26,7 @@ data "aws_ami" "al2023" {
 
 resource "aws_security_group" "app" {
   name        = "${var.project_name}-sg"
-  description = "SSH restricted to one CIDR, HTTP/HTTPS open for Caddy + Let's Encrypt"
+  description = "SSH restricted to one CIDR, HTTP/HTTPS open for Caddy and ACME"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
@@ -160,6 +160,8 @@ locals {
   # Falls back to var.domain_name once you own a real domain.
   computed_domain = "${replace(aws_eip.app.public_ip, ".", "-")}.sslip.io"
   domain          = var.domain_name != "" ? var.domain_name : local.computed_domain
+  # Caddy's "email" directive errors on an empty value, so always fall back.
+  acme_email = var.acme_email != "" ? var.acme_email : "admin@example.com"
 }
 
 resource "aws_instance" "app" {
@@ -176,11 +178,9 @@ resource "aws_instance" "app" {
   }
 
   user_data = templatefile("${path.module}/templates/user_data.sh.tpl", {
-    domain             = local.domain
-    caddy_global_block = var.acme_email == "" ? "" : "{\n\temail ${var.acme_email}\n}\n"
-    aws_region         = var.aws_region
-    ecr_frontend_repo  = aws_ecr_repository.frontend.repository_url
-    ecr_backend_repo   = aws_ecr_repository.backend.repository_url
+    domain       = local.domain
+    acme_email   = local.acme_email
+    git_repo_url = var.git_repo_url
   })
   user_data_replace_on_change = true
 

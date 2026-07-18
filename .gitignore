@@ -1,0 +1,2 @@
+# Written on the EC2 instance by infra/templates/user_data.sh.tpl - never commit.
+.env

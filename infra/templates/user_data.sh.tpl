@@ -5,7 +5,7 @@
 set -euxo pipefail
 
 dnf update -y
-dnf install -y docker
+dnf install -y docker git
 systemctl enable --now docker
 usermod -aG docker ec2-user
 
@@ -14,76 +14,37 @@ curl -sSL https://github.com/docker/compose/releases/latest/download/docker-comp
   -o /usr/local/lib/docker/cli-plugins/docker-compose
 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
-# t3.micro has only 1GB RAM; a 1GB swapfile gives Next.js/Spring Boot/Caddy headroom.
+# t3.micro has only 1GB RAM; building Next.js + Maven on it needs real swap headroom.
 if [ ! -f /swapfile ]; then
-  fallocate -l 1G /swapfile
+  fallocate -l 2G /swapfile
   chmod 600 /swapfile
   mkswap /swapfile
   swapon /swapfile
   echo '/swapfile none swap sw 0 0' >> /etc/fstab
 fi
 
-mkdir -p /opt/codesimplify
-cd /opt/codesimplify
+if [ -d /opt/codesimplify/.git ]; then
+  cd /opt/codesimplify
+  git pull origin main
+else
+  rm -rf /opt/codesimplify
+  git clone ${git_repo_url} /opt/codesimplify
+  cd /opt/codesimplify
+fi
 
-cat > Caddyfile <<'CADDY'
-${caddy_global_block}
-${domain} {
-	encode gzip
-	handle /api/* {
-		reverse_proxy backend:8080
-	}
-	handle {
-		reverse_proxy frontend:3000
-	}
-}
-CADDY
-
-cat > docker-compose.yml <<COMPOSE
-services:
-  caddy:
-    image: caddy:2-alpine
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - frontend
-      - backend
-
-  frontend:
-    image: ${ecr_frontend_repo}:latest
-    restart: always
-    expose:
-      - "3000"
-    environment:
-      - NODE_ENV=production
-
-  backend:
-    image: ${ecr_backend_repo}:latest
-    restart: always
-    expose:
-      - "8080"
-    environment:
-      - APP_CORS_ALLOWED_ORIGINS=https://${domain}
-
-volumes:
-  caddy_data:
-  caddy_config:
-COMPOSE
+cat > .env <<ENV
+DOMAIN=${domain}
+ACME_EMAIL=${acme_email}
+ENV
 
 cat > redeploy.sh <<'REDEPLOY'
 #!/bin/bash
 set -euxo pipefail
 cd /opt/codesimplify
-REGISTRY=$(echo "${ecr_frontend_repo}" | cut -d/ -f1)
-aws ecr get-login-password --region ${aws_region} | docker login --username AWS --password-stdin "$REGISTRY"
-docker compose pull
-docker compose up -d
+git pull origin main
+docker compose -f docker-compose.prod.yml build backend
+docker compose -f docker-compose.prod.yml build frontend
+docker compose -f docker-compose.prod.yml up -d
 docker image prune -f
 REDEPLOY
 chmod +x redeploy.sh

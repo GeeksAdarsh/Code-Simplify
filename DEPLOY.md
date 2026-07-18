@@ -4,10 +4,12 @@
 `eu-north-1`) runs three containers via Docker Compose — `frontend`
 (Next.js), `backend` (Spring Boot), and `caddy` (reverse proxy + automatic
 HTTPS via Let's Encrypt, using a free `sslip.io` hostname derived from the
-instance's Elastic IP since no domain is configured yet). Images live in
-two ECR repos. GitHub Actions builds/pushes images and redeploys via SSM —
-no long-lived AWS keys stored in GitHub (uses OIDC), no SSH key
-distribution needed for day-to-day deploys.
+instance's Elastic IP since no domain is configured yet). The instance
+`git clone`s this repo itself and builds both images from source on the
+box (`docker-compose.prod.yml`) — no image registry involved. GitHub
+Actions (once set up) just triggers a `git pull && docker compose build &&
+up -d` on the instance via SSM — no long-lived AWS keys stored in GitHub
+(uses OIDC), no SSH key distribution needed for day-to-day deploys.
 
 ## 0. Rotate your AWS credentials first
 
@@ -49,14 +51,18 @@ terraform apply   # type "yes" to confirm
 ```
 
 This creates: a security group (22 restricted to you, 80/443 open), the
-EC2 instance + Elastic IP, two ECR repos with a 5-image retention policy,
-an IAM instance role (ECR pull + SSM), and a GitHub OIDC IAM role for
-CI/CD. Nothing here has a fixed monthly cost as long as you stay within
-Free Tier limits (see "Costs" below). The instance's own boot script
-(`templates/user_data.sh.tpl`) installs Docker, adds a 1 GB swapfile
-(the instance only has 1 GB RAM), writes the Caddyfile + compose file, and
-starts the stack — but the images don't exist in ECR yet, so it'll be
-crash-looping until step 3.
+EC2 instance + Elastic IP, an IAM instance role (SSM), and a GitHub OIDC
+IAM role for future CI/CD. Nothing here has a fixed monthly cost as long
+as you stay within Free Tier limits (see "Costs" below).
+
+The instance's own boot script (`infra/templates/user_data.sh.tpl`)
+installs Docker + git, adds a 2 GB swapfile (the instance only has 1 GB
+RAM — needed as headroom for building Next.js + Maven on-box), clones
+this repo to `/opt/codesimplify`, writes a `.env` with the computed
+domain/ACME email, and runs `redeploy.sh`, which does the actual
+`git pull && docker compose -f docker-compose.prod.yml build && up -d`.
+First boot takes several minutes (cloning + building both images on a
+small instance) — this is normal.
 
 Copy the outputs:
 
@@ -64,25 +70,29 @@ Copy the outputs:
 terraform output
 ```
 
-You'll see `site_url`, `instance_id`, `ecr_frontend_url`, `ecr_backend_url`,
-and `github_actions_role_arn`.
+You'll see `site_url`, `instance_id`, and `github_actions_role_arn`.
 
-## 3. First image build & push
+## 3. Watch the first deploy finish, then check the site
 
-```powershell
-cd ..
-./scripts/deploy.ps1 -AwsRegion eu-north-1 -ProjectName codesimplify
-```
+No local build/push step needed — the instance builds from source itself
+on boot. Give it 5-10 minutes after `terraform apply` completes, then open
+the `site_url` from the Terraform output in your browser. First HTTPS
+request may take a few extra seconds while Caddy obtains its certificate.
 
-This builds both Docker images locally and pushes them to ECR. Then
-redeploy on the instance:
+To watch progress or debug, SSM into the instance (no SSH key needed):
 
 ```powershell
-./scripts/redeploy-remote.ps1 -InstanceIp <instance_public_ip output> -KeyPath .\codesimplify.pem
+aws ssm start-session --target <instance_id>
+sudo cat /var/log/cloud-init-output.log   # boot script log
 ```
 
-Then open the `site_url` from the Terraform output in your browser. First
-HTTPS request may take a few seconds while Caddy obtains its certificate.
+Once it's up, every subsequent deploy is just:
+
+```powershell
+./scripts/redeploy-remote.ps1 -InstanceIp <instance_public_ip> -KeyPath <path-to-codesimplify.pem>
+```
+
+which SSHes in and re-runs `cd /opt/codesimplify && sudo ./redeploy.sh`.
 
 ## 4. Set up GitHub Actions CI/CD (so `git push` auto-deploys)
 
@@ -90,20 +100,18 @@ In your GitHub repo → **Settings → Secrets and variables → Actions →
 Variables**, add these repository variables (values from
 `terraform output`):
 
-| Variable          | Value                           |
-| ----------------- | -------------------------------- |
-| `AWS_ROLE_ARN`     | `github_actions_role_arn` output |
-| `AWS_REGION`       | `eu-north-1`                     |
-| `EC2_INSTANCE_ID`  | `instance_id` output             |
-| `ECR_FRONTEND_URL` | `ecr_frontend_url` output        |
-| `ECR_BACKEND_URL`  | `ecr_backend_url` output         |
+| Variable         | Value                             |
+| ---------------- | ---------------------------------- |
+| `AWS_ROLE_ARN`    | `github_actions_role_arn` output   |
+| `AWS_REGION`      | `eu-north-1`                       |
+| `EC2_INSTANCE_ID` | `instance_id` output               |
 
 No secrets (access keys) needed — `.github/workflows/deploy.yml` assumes
 the OIDC role directly.
 
 From then on, every push to `main` touching `frontend/**` or `backend/**`
-builds both images, pushes them to ECR, and runs `redeploy.sh` on the
-instance via SSM automatically. You can also trigger it manually from the
+triggers `redeploy.sh` on the instance via SSM (`git pull` + rebuild +
+restart), automatically. You can also trigger it manually from the
 Actions tab (`workflow_dispatch`).
 
 ## 5. Day-to-day operations
@@ -132,12 +140,10 @@ terraform destroy
 
 - **EC2 `t3.micro`**: 750 hrs/month free for 12 months — one instance
   running 24/7 uses ~720 hrs/month, so you're covered.
-- **EBS**: 30 GB/month free; the root volume here is 20 GB.
+- **EBS**: 30 GB/month free; the root volume here is 30 GB.
 - **Elastic IP**: free while attached to a *running* instance.
   `terraform destroy` releases it, which is the safe path when not in use
   (an idle/unattached EIP is billed hourly).
-- **ECR**: 500 MB-month free for 12 months; the lifecycle policy keeps only
-  the last 5 images per repo.
 - **Data transfer**: 100 GB/month outbound free for 12 months.
 - After the 12-month Free Tier window, this setup costs roughly $7–9/month
   (one small EC2 instance + EIP), since ECS Fargate/Elastic Beanstalk were

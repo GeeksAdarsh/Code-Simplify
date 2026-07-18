@@ -28,9 +28,9 @@ variable "ssh_ingress_cidr" {
 }
 
 variable "root_volume_gb" {
-  description = "Root EBS volume size in GB (30 GB/month is free tier)."
+  description = "Root EBS volume size in GB. Must be >= 30 (the AL2023 AMI snapshot requires it), which is exactly the free tier limit."
   type        = number
-  default     = 20
+  default     = 30
 }
 
 variable "domain_name" {
@@ -48,4 +48,10 @@ variable "acme_email" {
 variable "github_repo" {
   description = "GitHub repo allowed to assume the CI/CD deploy role via OIDC, formatted 'owner/repo'."
   type        = string
+}
+
+variable "git_repo_url" {
+  description = "HTTPS clone URL the instance uses to pull source and build images directly on the box."
+  type        = string
+  default     = "https://github.com/GeeksAdarsh/Code-Simplify.git"
 }

@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
-  SSHes into the EC2 instance and pulls the latest images pushed to ECR.
-  Run this after ./scripts/deploy.ps1 has pushed new images.
+  SSHes into the EC2 instance and re-runs redeploy.sh: git pull + rebuild the
+  Docker images on the box itself + restart the stack.
 
 .EXAMPLE
-  ./scripts/redeploy-remote.ps1 -InstanceIp 13.51.xx.xx -KeyPath C:\keys\my-key.pem
+  ./scripts/redeploy-remote.ps1 -InstanceIp 16.192.95.202 -KeyPath ~/.ssh/codesimplify.pem
 #>
 param(
     [Parameter(Mandatory = $true)][string]$InstanceIp,
