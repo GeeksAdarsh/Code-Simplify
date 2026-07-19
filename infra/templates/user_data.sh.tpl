@@ -19,7 +19,7 @@ chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 # fixed "latest" asset name), so resolve the tag via the API first.
 BUILDX_VERSION=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest \
   | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p' | head -1)
-curl -sSL "https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.linux-amd64" \
+curl -sSL "https://github.com/docker/buildx/releases/download/$${BUILDX_VERSION}/buildx-$${BUILDX_VERSION}.linux-amd64" \
   -o /usr/local/lib/docker/cli-plugins/docker-buildx
 chmod +x /usr/local/lib/docker/cli-plugins/docker-buildx
 

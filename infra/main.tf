@@ -38,11 +38,11 @@ resource "aws_security_group" "app" {
   }
 
   ingress {
-    description = "HTTP"
+    description = "HTTP - restricted to Cloudflare's edge IPs so the raw instance IP isn't publicly reachable"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.http_ingress_cidrs
   }
 
   egress {
