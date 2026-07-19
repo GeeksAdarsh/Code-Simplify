@@ -5,6 +5,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/tools";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { JsonLd } from "@/components/json-ld";
 
 const GA_MEASUREMENT_ID = "G-S1S7JLX46K";
 const CLARITY_PROJECT_ID = "xokv9ay8zz";
@@ -39,11 +40,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} \u2014 ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [{ url: "/logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} \u2014 ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -62,6 +65,24 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: siteConfig.name,
+            url: siteConfig.url,
+            description: siteConfig.description,
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: siteConfig.name,
+            url: siteConfig.url,
+            logo: `${siteConfig.url}/logo.png`,
+          }}
+        />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"

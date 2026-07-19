@@ -34,11 +34,13 @@ export async function generateMetadata({
       url: canonical,
       siteName: siteConfig.name,
       type: "website",
+      images: [{ url: "/logo.png" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: tool.description,
+      images: ["/logo.png"],
     },
   };
 }

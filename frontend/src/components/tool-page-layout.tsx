@@ -2,8 +2,9 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqSection, type FaqItem } from "@/components/faq-section";
+import { JsonLd } from "@/components/json-ld";
 import type { Category, Tool } from "@/config/tools";
-import { toolHref } from "@/config/tools";
+import { siteConfig, toolHref } from "@/config/tools";
 
 interface ToolPageLayoutProps {
   category: Category;
@@ -24,9 +25,38 @@ export function ToolPageLayout({
   faq,
 }: ToolPageLayoutProps) {
   const relatedTools = category.tools.filter((t) => t.slug !== tool.slug && t.status === "live").slice(0, 6);
+  const toolUrl = `${siteConfig.url}${toolHref(category.slug, tool.slug)}`;
 
   return (
     <div className="container-page py-8">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: tool.title,
+          description: tool.description,
+          url: toolUrl,
+          applicationCategory: "DeveloperApplication",
+          operatingSystem: "Any (runs in browser)",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: category.title,
+              item: `${siteConfig.url}/${category.slug}`,
+            },
+            { "@type": "ListItem", position: 3, name: tool.title, item: toolUrl },
+          ],
+        }}
+      />
       <Breadcrumbs
         items={[
           { label: category.title, href: `/${category.slug}` },

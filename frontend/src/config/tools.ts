@@ -1747,5 +1747,5 @@ export const siteConfig = {
   tagline: "Free online developer tools",
   description:
     "CodeSimplify is a free collection of online developer tools \u2014 format, validate, convert, and generate JSON, XML, YAML, CSV, SQL, and more, all in your browser.",
-  url: "https://codesimplify.example.com",
+  url: "https://codesimplify.org",
 };
