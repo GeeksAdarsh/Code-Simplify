@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { categories, siteConfig, toolHref } from "@/config/tools";
+import { categories, getLiveCategories, siteConfig, toolHref } from "@/config/tools";
 
 const companyLinks = [
   { label: "About", href: "/about" },
@@ -22,7 +22,7 @@ const communityLinks: { label: string; href: string; external?: boolean }[] = [
 ];
 
 export function SiteFooter() {
-  const featured = categories.slice(0, 6);
+  const featured = getLiveCategories().slice(0, 6);
   const featuredCategories = featuredCategorySlugs
     .map((slug) => categories.find((c) => c.slug === slug))
     .filter((c): c is (typeof categories)[number] => Boolean(c));
@@ -128,7 +128,7 @@ export function SiteFooter() {
           &copy; {new Date().getFullYear()} {siteConfig.name}. All tools run free, forever.
         </p>
         <Link href="/categories" className="hover:text-foreground">
-          Browse all {categories.reduce((n, c) => n + c.tools.length, 0)}+ tools
+          Browse all {getLiveCategories().reduce((n, c) => n + c.tools.length, 0)}+ tools
         </Link>
       </div>
     </footer>
