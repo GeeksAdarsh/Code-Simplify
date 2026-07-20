@@ -3,7 +3,15 @@ export interface FaqItem {
   answer: string;
 }
 
-export function FaqSection({ items, toolName }: { items: FaqItem[]; toolName: string }) {
+export function FaqSection({
+  items,
+  toolName,
+  heading,
+}: {
+  items: FaqItem[];
+  toolName?: string;
+  heading?: string;
+}) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -17,11 +25,15 @@ export function FaqSection({ items, toolName }: { items: FaqItem[]; toolName: st
     })),
   };
 
+  const resolvedHeading = heading ?? (toolName ? `Frequently asked questions about the ${toolName}` : null);
+
   return (
-    <section aria-labelledby="faq-heading">
-      <h2 id="faq-heading" className="text-xl font-semibold">
-        Frequently asked questions about the {toolName}
-      </h2>
+    <section aria-labelledby={resolvedHeading ? "faq-heading" : undefined}>
+      {resolvedHeading && (
+        <h2 id="faq-heading" className="text-xl font-semibold">
+          {resolvedHeading}
+        </h2>
+      )}
       <div className="mt-4 divide-y divide-border border-t border-border">
         {items.map((item) => (
           <details key={item.question} className="group py-4">
