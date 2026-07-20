@@ -16,9 +16,9 @@ const resourceLinks = [
 
 const featuredCategorySlugs = ["json", "xml", "csv", "sql"];
 
-const communityLinks = [
-  { label: "X / Twitter", href: "https://x.com/AdarshKuma84627" },
-  { label: "Buy me a coffee", href: "https://ko-fi.com/codesimplify" },
+const communityLinks: { label: string; href: string; external?: boolean }[] = [
+  { label: "X / Twitter", href: "https://x.com/AdarshKuma84627", external: true },
+  { label: "Buy me a coffee", href: "/support" },
 ];
 
 export function SiteFooter() {
@@ -99,18 +99,26 @@ export function SiteFooter() {
         <div>
           <h3 className="mb-3 text-sm font-semibold">Community</h3>
           <ul className="space-y-2">
-            {communityLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted transition-colors hover:text-foreground"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {communityLinks.map((link) =>
+              link.external ? (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ) : (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-muted transition-colors hover:text-foreground">
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            )}
           </ul>
         </div>
       </div>
