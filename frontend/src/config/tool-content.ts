@@ -5525,6 +5525,313 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+
+  "text/random-word": {
+    howToUse: [
+      "Choose how many words you want to generate.",
+      "Click Regenerate to get a fresh batch of random words.",
+      "Click any word, or Copy all, to copy it to your clipboard.",
+    ],
+    features: [
+      "Draws from a curated list of everyday English words.",
+      "Generate 1 to 20 words at once.",
+      "One click to copy a single word or the entire batch.",
+      "Runs 100% in your browser \u2014 no server round-trip.",
+    ],
+    faq: [
+      {
+        question: "What can I use a random word generator for?",
+        answer: "Common uses include word games (Scrabble, word association), creative brainstorming, naming projects or variables, and generating placeholder content for mockups.",
+      },
+      {
+        question: "Is the word list curated or does it include offensive words?",
+        answer: "The word list is a curated set of neutral, everyday English words \u2014 no offensive or inappropriate content.",
+      },
+    ],
+  },
+
+  "text/random-letter": {
+    howToUse: [
+      "Choose uppercase, lowercase, or mixed case.",
+      "Click Regenerate for a new batch of random letters.",
+      "Copy any letter, or all of them, with one click.",
+    ],
+    features: [
+      "Picks uniformly from A to Z on every generation.",
+      "Uppercase, lowercase, or mixed case output.",
+      "Generate up to 20 letters at once.",
+    ],
+    faq: [
+      {
+        question: "What is a random letter generator used for?",
+        answer: "Common uses include classroom games, deciding random turn order, word games like Hangman, and generating test input for programs that process single characters.",
+      },
+      {
+        question: "Is every letter equally likely to appear?",
+        answer: "Yes, each of the 26 letters (A-Z) has an equal chance of being picked on every generation.",
+      },
+    ],
+  },
+
+  "colors/random-color": {
+    howToUse: [
+      "Choose how many random colors to generate.",
+      "Click Regenerate for a fresh set of colors.",
+      "Click any swatch to copy its HEX code to your clipboard.",
+    ],
+    features: [
+      "Generates fully random HEX colors, with the RGB equivalent shown alongside.",
+      "Visual swatch preview for every color.",
+      "One click to copy any color's HEX code.",
+      "Runs entirely in your browser.",
+    ],
+    faq: [
+      {
+        question: "Are these colors from a curated palette?",
+        answer: "No, colors are fully random across the entire RGB color space, unlike the Palette Generator tool which builds harmonious color schemes from a base color.",
+      },
+      {
+        question: "Can I get the RGB value instead of HEX?",
+        answer: "Yes, the RGB equivalent is shown under each color swatch alongside its HEX code.",
+      },
+    ],
+  },
+
+  "networking/random-ip": {
+    howToUse: [
+      "Choose IPv4 or IPv6.",
+      "Click Regenerate for a new batch of random addresses.",
+      "Copy any address, or all of them, with one click.",
+    ],
+    features: [
+      "Supports both random IPv4 and IPv6 address generation.",
+      "Generate 1 to 20 addresses at once.",
+      "Useful for populating test data, documentation examples, and demo UIs.",
+    ],
+    faq: [
+      {
+        question: "Are these real, working IP addresses?",
+        answer: "No. Addresses are generated fully at random and are not checked against real-world allocation, so they may occasionally fall within private or reserved ranges. Use them for test data and documentation, not for real network configuration.",
+      },
+      {
+        question: "Can I use these to look up a location?",
+        answer: "No, these are randomly generated and don't correspond to any real device or location. Use the IP Lookup tool if you need to look up a real IP address.",
+      },
+    ],
+  },
+
+  "networking/random-mac-address": {
+    howToUse: [
+      "Optionally toggle uppercase formatting.",
+      "Click Regenerate for a new batch of MAC addresses.",
+      "Copy any address, or all of them, with one click.",
+    ],
+    features: [
+      "Sets the locally-administered bit so generated addresses never collide with real vendor-assigned hardware.",
+      "Optional uppercase or lowercase hex formatting.",
+      "Generate 1 to 20 addresses at once.",
+    ],
+    faq: [
+      {
+        question: "Can these MAC addresses conflict with a real device?",
+        answer: "It's extremely unlikely. The generator sets the locally-administered bit on every address, which is the standard convention for marking an address as non-vendor-assigned, so it won't match a real manufacturer's registered MAC range.",
+      },
+      {
+        question: "What is a MAC address used for in testing?",
+        answer: "Random MAC addresses are commonly used for testing network configuration UIs, populating demo device lists, and documentation examples without exposing real hardware identifiers.",
+      },
+    ],
+  },
+
+  "date-time/random-date": {
+    howToUse: [
+      "Set the year range you want to generate dates within.",
+      "Click Regenerate for a new batch of random dates.",
+      "Copy any date, or all of them, with one click.",
+    ],
+    features: [
+      "Custom year range, from any start year to any end year.",
+      "Dates are picked uniformly at random across the full range.",
+      "Output in ISO YYYY-MM-DD format.",
+    ],
+    faq: [
+      {
+        question: "Can I generate dates in the past or future?",
+        answer: "Yes, set any start and end year \u2014 past, present, or future \u2014 and dates will be picked uniformly at random within that range.",
+      },
+      {
+        question: "What format are the dates in?",
+        answer: "Dates are shown in ISO 8601 format (YYYY-MM-DD), which is easy to parse in most programming languages and spreadsheet tools.",
+      },
+    ],
+  },
+
+  "date-time/random-time": {
+    howToUse: [
+      "Choose 24-hour or 12-hour (AM/PM) format.",
+      "Click Regenerate for a new batch of random times.",
+      "Copy any time, or all of them, with one click.",
+    ],
+    features: [
+      "Uniformly random across all 24 hours of the day.",
+      "24-hour or 12-hour AM/PM display format.",
+      "Includes seconds for precise test values.",
+    ],
+    faq: [
+      {
+        question: "Does this generate a date too, or just a time?",
+        answer: "Just a time of day. Use the Random Date Generator alongside it if you need a full random date and time.",
+      },
+    ],
+  },
+
+  "random-generators/random-name": {
+    howToUse: [
+      "Choose how many names to generate.",
+      "Click Regenerate for a fresh batch of random names.",
+      "Copy any name, or all of them, with one click.",
+    ],
+    features: [
+      "Combines random first and last names from large curated lists.",
+      "Generate 1 to 20 names at once.",
+      "Useful for mock user data, placeholder content, and demo UIs.",
+    ],
+    faq: [
+      {
+        question: "Are these real people's names?",
+        answer: "No. Names are randomly combined from common first- and last-name lists purely for placeholder and testing purposes. Any resemblance to a real person is coincidental.",
+      },
+    ],
+  },
+
+  "random-generators/random-username": {
+    howToUse: [
+      "Click Regenerate for a fresh batch of random usernames.",
+      "Copy any username, or all of them, with one click.",
+    ],
+    features: [
+      "Combines a random adjective, noun, and number into a unique-sounding username.",
+      "Generate 1 to 20 usernames at once.",
+      "Useful for test accounts, demo data, and sign-up form placeholders.",
+    ],
+    faq: [
+      {
+        question: "Are these usernames guaranteed to be available on real platforms?",
+        answer: "No, availability isn't checked against any real platform. They're designed to look plausible for mock data and testing, not for guaranteed real-world uniqueness.",
+      },
+    ],
+  },
+
+  "random-generators/random-nickname": {
+    howToUse: [
+      "Click Regenerate for a fresh batch of random nicknames.",
+      "Copy any nickname, or all of them, with one click.",
+    ],
+    features: [
+      "Combines a playful adjective with an animal name.",
+      "Generate 1 to 20 nicknames at once.",
+      "Great for gamertags, avatars, and demo profiles.",
+    ],
+    faq: [
+      {
+        question: "Can I use these as a gamertag?",
+        answer: "Yes, they're designed to sound catchy and playful, making them a good starting point for a gamertag or online handle \u2014 just check availability on your platform of choice.",
+      },
+    ],
+  },
+
+  "random-generators/random-emoji": {
+    howToUse: [
+      "Choose how many emoji to generate.",
+      "Click Regenerate for a fresh batch.",
+      "Click any emoji, or Copy all, to copy it to your clipboard.",
+    ],
+    features: [
+      "Draws from a curated set of faces, animals, food, activities, and objects.",
+      "Generate 1 to 40 emoji at once.",
+      "One click to copy any emoji or the whole batch.",
+    ],
+    faq: [
+      {
+        question: "Will the emoji display the same on every device?",
+        answer: "Emoji rendering depends on your operating system and browser, so the exact appearance may vary slightly between devices, even though the underlying character is identical.",
+      },
+    ],
+  },
+
+  "random-generators/random-credit-card": {
+    howToUse: [
+      "Choose a card network (Visa, Mastercard, Amex, or Discover).",
+      "Choose how many test numbers to generate.",
+      "Copy any card number to use in your test environment.",
+    ],
+    features: [
+      "Generates Luhn-checksum-valid numbers, just like real card numbers, so they pass basic format validation.",
+      "Correct prefix and length per card network.",
+      "Includes a random future expiry date and CVC.",
+      "Clearly labeled as fake test data \u2014 not usable for real purchases.",
+    ],
+    faq: [
+      {
+        question: "Can these numbers be used to make a real purchase?",
+        answer: "No. These are randomly generated numbers that only satisfy the Luhn checksum formula used for basic format validation. They are not issued by any bank, are not linked to any real account, and cannot be used for an actual transaction.",
+      },
+      {
+        question: "Why generate fake credit card numbers at all?",
+        answer: "Developers use Luhn-valid fake numbers to test checkout flows, payment form validation, and card-type detection logic without using real financial data.",
+      },
+      {
+        question: "Is this legal to use?",
+        answer: "Yes, generating and using fake numbers purely for software testing purposes is standard practice (the same technique payment processors like Stripe use for their own published test card numbers). Do not attempt to use them for any real transaction.",
+      },
+    ],
+  },
+
+  "random-generators/random-phone-number": {
+    howToUse: [
+      "Choose a country / format.",
+      "Click Regenerate for a fresh batch of fake numbers.",
+      "Copy any number, or all of them, with one click.",
+    ],
+    features: [
+      "US numbers use the 555 exchange, officially reserved by the NANP for fictional use.",
+      "Also supports UK, India, and generic international formats.",
+      "Useful for test data and form validation testing.",
+    ],
+    faq: [
+      {
+        question: "Could a generated US number reach a real person?",
+        answer: "No. The 555 exchange (e.g. 555-0100 through 555-0199 and similar) is officially reserved by the North American Numbering Plan specifically so media and software can use fictional numbers without risk of reaching a real subscriber.",
+      },
+      {
+        question: "Are the UK, India, and generic numbers guaranteed unreachable?",
+        answer: "They're generated to look plausible for format-validation testing, but unlike the US 555 exchange, there's no universal reserved-for-fiction range in every country, so treat all generated numbers as test data only and never attempt to contact them.",
+      },
+    ],
+  },
+
+  "random-generators/random-address": {
+    howToUse: [
+      "Choose how many addresses to generate.",
+      "Click Regenerate for a fresh batch.",
+      "Copy any address, or all of them, with one click.",
+    ],
+    features: [
+      "Combines a random house number, street name, city, state, and ZIP code.",
+      "Generate 1 to 20 addresses at once.",
+      "Useful for testing shipping forms, checkout flows, and mock data sets.",
+    ],
+    faq: [
+      {
+        question: "Are these real addresses?",
+        answer: "No. Street names, cities, and house numbers are randomly combined from generic lists and don't correspond to any real property. Any resemblance to a real address is coincidental.",
+      },
+      {
+        question: "Can I use these for shipping something?",
+        answer: "No, these are for testing form validation and UI only. Do not use generated addresses for actual shipping or any real-world purpose.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

@@ -179,6 +179,20 @@ import { DecimalBinaryTool } from "@/components/tools/decimal-binary-tool";
 import { DecimalHexTool } from "@/components/tools/decimal-hex-tool";
 import { DecimalOctalTool } from "@/components/tools/decimal-octal-tool";
 import { RomanNumeralTool } from "@/components/tools/roman-numeral-tool";
+import { RandomWordTool } from "@/components/tools/random-word-tool";
+import { RandomLetterTool } from "@/components/tools/random-letter-tool";
+import { RandomColorTool } from "@/components/tools/random-color-tool";
+import { RandomIpTool } from "@/components/tools/random-ip-tool";
+import { RandomMacAddressTool } from "@/components/tools/random-mac-address-tool";
+import { RandomDateTool } from "@/components/tools/random-date-tool";
+import { RandomTimeTool } from "@/components/tools/random-time-tool";
+import { RandomNameTool } from "@/components/tools/random-name-tool";
+import { RandomUsernameTool } from "@/components/tools/random-username-tool";
+import { RandomNicknameTool } from "@/components/tools/random-nickname-tool";
+import { RandomEmojiTool } from "@/components/tools/random-emoji-tool";
+import { RandomCreditCardTool } from "@/components/tools/random-credit-card-tool";
+import { RandomPhoneNumberTool } from "@/components/tools/random-phone-number-tool";
+import { RandomAddressTool } from "@/components/tools/random-address-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -376,6 +390,20 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "numbers/decimal-hex": () => <DecimalHexTool />,
   "numbers/decimal-octal": () => <DecimalOctalTool />,
   "numbers/roman-numeral": () => <RomanNumeralTool />,
+  "text/random-word": () => <RandomWordTool />,
+  "text/random-letter": () => <RandomLetterTool />,
+  "colors/random-color": () => <RandomColorTool />,
+  "networking/random-ip": () => <RandomIpTool />,
+  "networking/random-mac-address": () => <RandomMacAddressTool />,
+  "date-time/random-date": () => <RandomDateTool />,
+  "date-time/random-time": () => <RandomTimeTool />,
+  "random-generators/random-name": () => <RandomNameTool />,
+  "random-generators/random-username": () => <RandomUsernameTool />,
+  "random-generators/random-nickname": () => <RandomNicknameTool />,
+  "random-generators/random-emoji": () => <RandomEmojiTool />,
+  "random-generators/random-credit-card": () => <RandomCreditCardTool />,
+  "random-generators/random-phone-number": () => <RandomPhoneNumberTool />,
+  "random-generators/random-address": () => <RandomAddressTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

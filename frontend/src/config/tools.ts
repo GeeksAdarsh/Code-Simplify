@@ -1026,6 +1026,20 @@ export const categories: Category[] = [
       ),
       tool("ping-tool", "Ping Tool", "Check host reachability and latency."),
       tool("traceroute", "Traceroute", "Trace the network path to a host."),
+      tool(
+        "random-ip",
+        "Random IP Generator",
+        "Generate random IPv4 or IPv6 addresses for test data, demos, and documentation.",
+        "live",
+        ["random ip generator", "generate random ip address", "fake ip generator", "random ipv4 generator"]
+      ),
+      tool(
+        "random-mac-address",
+        "Random MAC Address Generator",
+        "Generate random MAC addresses with the locally-administered bit set, safe for test and demo use.",
+        "live",
+        ["random mac address generator", "generate random mac address", "fake mac address generator", "mac address generator online"]
+      ),
     ],
   },
   {
@@ -1103,6 +1117,13 @@ export const categories: Category[] = [
         "Preview colors and images as seen with protanopia, deuteranopia, tritanopia, or achromatopsia.",
         "live",
         ["color blindness simulator", "color vision deficiency simulator", "colorblind test image", "protanopia deuteranopia simulator"]
+      ),
+      tool(
+        "random-color",
+        "Random Color Generator",
+        "Generate random HEX colors instantly, with the matching RGB value, one click to copy.",
+        "live",
+        ["random color generator", "random hex color generator", "generate random color", "random color picker"]
       ),
     ],
   },
@@ -1256,6 +1277,20 @@ export const categories: Category[] = [
         "live",
         ["leap year checker", "is this a leap year", "leap year calculator", "list of leap years"]
       ),
+      tool(
+        "random-date",
+        "Random Date Generator",
+        "Generate a random date within any year range, useful for test data and scheduling mockups.",
+        "live",
+        ["random date generator", "generate random date", "random date picker", "random date between two years"]
+      ),
+      tool(
+        "random-time",
+        "Random Time Generator",
+        "Generate a random time of day in 24-hour or 12-hour AM/PM format.",
+        "live",
+        ["random time generator", "generate random time", "random clock time generator", "random time of day"]
+      ),
     ],
   },
   {
@@ -1340,6 +1375,20 @@ export const categories: Category[] = [
         "Sort lines of text alphabetically, numerically, or by length, with options to remove duplicates and blanks.",
         "live",
         ["sort lines of text", "text sorter online", "alphabetize list online", "sort list alphabetically"]
+      ),
+      tool(
+        "random-word",
+        "Random Word Generator",
+        "Generate random English words instantly \u2014 useful for word games, brainstorming, and test data.",
+        "live",
+        ["random word generator", "generate random word", "random word picker", "word generator online"]
+      ),
+      tool(
+        "random-letter",
+        "Random Letter Generator",
+        "Generate a random letter from A to Z, in uppercase, lowercase, or mixed case.",
+        "live",
+        ["random letter generator", "generate random letter", "random alphabet generator", "pick random letter a-z"]
       ),
     ],
   },
@@ -1710,6 +1759,63 @@ export const categories: Category[] = [
         "Count tokens for OpenAI embedding models and check against the 8,191-token input limit.",
         "live",
         ["embedding token counter", "text-embedding-3 token limit", "openai embedding token count", "embedding input limit checker"]
+      ),
+    ],
+  },
+  {
+    slug: "random-generators",
+    title: "Random Generators",
+    icon: "\u{1F3B2}",
+    description: "Generate random names, usernames, emoji, and fake test data for mockups, demos, and testing.",
+    tools: [
+      tool(
+        "random-name",
+        "Random Name Generator",
+        "Generate random fictional full names for mock data, placeholders, and test accounts.",
+        "live",
+        ["random name generator", "fake name generator", "generate random name", "random full name generator"]
+      ),
+      tool(
+        "random-username",
+        "Random Username Generator",
+        "Generate unique-sounding random usernames by combining adjectives, nouns, and numbers.",
+        "live",
+        ["random username generator", "generate random username", "unique username generator", "username idea generator"]
+      ),
+      tool(
+        "random-nickname",
+        "Random Nickname Generator",
+        "Generate playful random nicknames and gamertags by combining adjectives with animal names.",
+        "live",
+        ["random nickname generator", "gamertag generator", "generate random nickname", "cool nickname generator"]
+      ),
+      tool(
+        "random-emoji",
+        "Random Emoji Generator",
+        "Generate random emoji from a curated set of faces, animals, food, and objects.",
+        "live",
+        ["random emoji generator", "generate random emoji", "random emoji picker", "emoji generator online"]
+      ),
+      tool(
+        "random-credit-card",
+        "Random Credit Card Number Generator",
+        "Generate fake, Luhn-valid credit card numbers for testing checkout forms and payment validators. Not real, not usable for purchases.",
+        "live",
+        ["random credit card generator", "fake credit card generator", "test credit card number generator", "luhn valid card number generator"]
+      ),
+      tool(
+        "random-phone-number",
+        "Random Phone Number Generator",
+        "Generate fake phone numbers for testing, using officially reserved fictional ranges where available.",
+        "live",
+        ["random phone number generator", "fake phone number generator", "generate random phone number", "test phone number generator"]
+      ),
+      tool(
+        "random-address",
+        "Random Address Generator",
+        "Generate fake street addresses for testing forms and mock data. Not real locations.",
+        "live",
+        ["random address generator", "fake address generator", "generate random address", "test address generator"]
       ),
     ],
   },
