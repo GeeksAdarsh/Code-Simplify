@@ -208,6 +208,29 @@ import { RandomPokemonTool } from "@/components/tools/random-pokemon-tool";
 import { RandomDinosaurTool } from "@/components/tools/random-dinosaur-tool";
 import { RandomBirdTool } from "@/components/tools/random-bird-tool";
 import { RandomFlagTool } from "@/components/tools/random-flag-tool";
+import { SpinWheelTool } from "@/components/tools/spin-wheel-tool";
+import { YesOrNoTool } from "@/components/tools/yes-or-no-tool";
+import { CoinFlipTool } from "@/components/tools/coin-flip-tool";
+import { DiceRollerTool } from "@/components/tools/dice-roller-tool";
+import { NumberPickerTool } from "@/components/tools/number-picker-tool";
+import { TeamGeneratorTool } from "@/components/tools/team-generator-tool";
+import { RandomPickerTool } from "@/components/tools/random-picker-tool";
+import { SecretSantaTool } from "@/components/tools/secret-santa-tool";
+import { LoanEmiTool } from "@/components/tools/loan-emi-tool";
+import { LoanEligibilityTool } from "@/components/tools/loan-eligibility-tool";
+import { LoanAffordabilityTool } from "@/components/tools/loan-affordability-tool";
+import { LoanComparisonTool } from "@/components/tools/loan-comparison-tool";
+import { LoanPrepaymentTool } from "@/components/tools/loan-prepayment-tool";
+import { SipCalculatorTool } from "@/components/tools/sip-calculator-tool";
+import { SwpCalculatorTool } from "@/components/tools/swp-calculator-tool";
+import { LumpsumCalculatorTool } from "@/components/tools/lumpsum-calculator-tool";
+import { StepUpSipTool } from "@/components/tools/step-up-sip-tool";
+import { CagrCalculatorTool } from "@/components/tools/cagr-calculator-tool";
+import { XirrCalculatorTool } from "@/components/tools/xirr-calculator-tool";
+import { IrrCalculatorTool } from "@/components/tools/irr-calculator-tool";
+import { RoiCalculatorTool } from "@/components/tools/roi-calculator-tool";
+import { MutualFundReturnsTool } from "@/components/tools/mutual-fund-returns-tool";
+import { StockAveragePriceTool } from "@/components/tools/stock-average-price-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -434,6 +457,44 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "fun/random-dinosaur": () => <RandomDinosaurTool />,
   "fun/random-bird": () => <RandomBirdTool />,
   "fun/random-flag": () => <RandomFlagTool />,
+  "decision-tools/spin-wheel": () => <SpinWheelTool />,
+  "decision-tools/yes-or-no": () => <YesOrNoTool />,
+  "decision-tools/coin-flip": () => <CoinFlipTool />,
+  "decision-tools/dice-roller": () => <DiceRollerTool />,
+  "decision-tools/number-picker": () => <NumberPickerTool />,
+  "decision-tools/team-generator": () => <TeamGeneratorTool />,
+  "decision-tools/random-picker": () => <RandomPickerTool />,
+  "decision-tools/secret-santa-generator": () => <SecretSantaTool />,
+  "loan-calculators/emi-calculator": () => <LoanEmiTool defaultAmount={2000000} defaultRate={9.5} defaultTenureYears={20} />,
+  "loan-calculators/loan-eligibility": () => <LoanEligibilityTool />,
+  "loan-calculators/loan-affordability": () => <LoanAffordabilityTool />,
+  "loan-calculators/loan-comparison": () => <LoanComparisonTool />,
+  "loan-calculators/loan-prepayment": () => <LoanPrepaymentTool />,
+  "loan-calculators/car-loan": () => (
+    <LoanEmiTool amountLabel="Car price" defaultAmount={1000000} defaultRate={9} defaultTenureYears={7} maxTenureYears={10} showDownPayment />
+  ),
+  "loan-calculators/bike-loan": () => (
+    <LoanEmiTool amountLabel="Bike price" defaultAmount={120000} defaultRate={11} defaultTenureYears={3} maxTenureYears={6} showDownPayment />
+  ),
+  "loan-calculators/home-loan": () => (
+    <LoanEmiTool amountLabel="Home loan amount" defaultAmount={4000000} defaultRate={8.5} defaultTenureYears={20} maxTenureYears={30} />
+  ),
+  "loan-calculators/education-loan": () => (
+    <LoanEmiTool amountLabel="Education loan amount" defaultAmount={1000000} defaultRate={10} defaultTenureYears={10} maxTenureYears={15} showMoratorium />
+  ),
+  "loan-calculators/personal-loan": () => (
+    <LoanEmiTool amountLabel="Personal loan amount" defaultAmount={500000} defaultRate={13} defaultTenureYears={5} maxTenureYears={7} />
+  ),
+  "investment-calculators/sip-calculator": () => <SipCalculatorTool />,
+  "investment-calculators/swp-calculator": () => <SwpCalculatorTool />,
+  "investment-calculators/lumpsum-calculator": () => <LumpsumCalculatorTool />,
+  "investment-calculators/step-up-sip": () => <StepUpSipTool />,
+  "investment-calculators/cagr-calculator": () => <CagrCalculatorTool />,
+  "investment-calculators/xirr-calculator": () => <XirrCalculatorTool />,
+  "investment-calculators/irr-calculator": () => <IrrCalculatorTool />,
+  "investment-calculators/roi-calculator": () => <RoiCalculatorTool />,
+  "investment-calculators/mutual-fund-returns": () => <MutualFundReturnsTool />,
+  "investment-calculators/stock-average-price": () => <StockAveragePriceTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {

@@ -6013,6 +6013,546 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+
+  "decision-tools/spin-wheel": {
+    howToUse: [
+      "Type your own options into the text box, one per line (at least 2).",
+      "Click Spin the Wheel and watch it spin to a random stop.",
+      "The winning option is shown below the wheel once it stops.",
+    ],
+    features: [
+      "Fully customizable options \u2014 type anything, from food choices to raffle entries.",
+      "Smooth animated spin with a color-coded wheel and pointer.",
+      "Each spin lands on a genuinely random segment, weighted equally regardless of label length.",
+    ],
+    faq: [
+      {
+        question: "Is every option equally likely to be picked?",
+        answer: "Yes, every segment on the wheel is the same size (360\u00b0 divided evenly by the number of options) and the landing segment is chosen with a uniform random number, so every option has an equal chance.",
+      },
+      {
+        question: "Is there a limit to how many options I can add?",
+        answer: "There's no hard limit, but wheels with a very large number of options will have smaller, harder-to-read labels. It works best with roughly 2 to 20 options.",
+      },
+    ],
+  },
+
+  "decision-tools/yes-or-no": {
+    howToUse: ["Click Ask the Question.", "The tool instantly reveals a random Yes or No.", "Your answer history and tally are tracked below."],
+    features: ["Simple 50/50 random Yes or No decision.", "Running tally of Yes vs. No and total questions asked.", "Visual history of your last 20 answers."],
+    faq: [
+      {
+        question: "Is it really a 50/50 chance?",
+        answer: "Yes, each answer is chosen with an unbiased random pick between exactly two outcomes, so Yes and No each have a 50% chance on every question.",
+      },
+      {
+        question: "Can I use this for serious decisions?",
+        answer: "It's designed for fun, lighthearted decision-making \u2014 use your own judgment for anything important.",
+      },
+    ],
+  },
+
+  "decision-tools/coin-flip": {
+    howToUse: ["Click Flip Coin.", "Watch the animated flip.", "The result (Heads or Tails) is shown once it lands, with a running tally below."],
+    features: ["Animated 3D-style coin flip.", "Running heads/tails tally and flip history.", "Genuinely random outcome on every flip, not just alternating."],
+    faq: [
+      {
+        question: "Is the coin flip truly random?",
+        answer: "Yes, each flip uses your browser's random number generator to pick heads or tails independently every time, just like a real unbiased coin.",
+      },
+      {
+        question: "Can I flip multiple times quickly?",
+        answer: "Yes, just click Flip Coin again once the animation finishes \u2014 each flip is tracked in the history below so you can see your streak.",
+      },
+    ],
+  },
+
+  "decision-tools/dice-roller": {
+    howToUse: ["Choose a die type (D4 to D20) and how many dice to roll.", "Click Roll.", "See each die's result plus the total if rolling more than one."],
+    features: ["Supports standard tabletop die types: D4, D6, D8, D10, D12, and D20.", "Roll up to 6 dice at once.", "Automatic total for multi-dice rolls, handy for board games and tabletop RPGs."],
+    faq: [
+      {
+        question: "Can I use this for tabletop RPGs like D&D?",
+        answer: "Yes, it supports all the standard polyhedral dice used in tabletop RPGs (D4, D6, D8, D10, D12, D20) and adds up the total automatically when rolling multiple dice.",
+      },
+      {
+        question: "Is each die roll independent?",
+        answer: "Yes, every die is rolled independently with an equal chance of landing on any face, just like physical dice.",
+      },
+    ],
+  },
+
+  "decision-tools/number-picker": {
+    howToUse: ["Set your min and max range.", "Optionally enable 'Avoid recent repeats'.", "Click Pick a Number to reveal a single random number."],
+    features: ["Custom min/max range.", "Optional avoid-repeats mode using your recent pick history.", "Recent picks list shown below for quick reference."],
+    faq: [
+      {
+        question: "How is this different from the Random Number Generator?",
+        answer: "This tool is built for a single quick decision \u2014 one big number, one click \u2014 while the Random Number Generator (in the IDs & Passwords category) is built for generating a batch of multiple numbers at once.",
+      },
+      {
+        question: "What does 'avoid recent repeats' do?",
+        answer: "When enabled, the tool tries to avoid picking a number that appears in your recent pick history, as long as your range is large enough to still have unpicked values left.",
+      },
+    ],
+  },
+
+  "decision-tools/team-generator": {
+    howToUse: ["Enter participant names, one per line.", "Choose how many teams to create.", "Click Generate Teams to randomly and evenly split everyone into teams."],
+    features: ["Splits any list of names into a chosen number of teams as evenly as possible.", "Fully random shuffling on every generation \u2014 click again for a new split.", "Works for classroom groups, sports teams, work groups, and game nights."],
+    faq: [
+      {
+        question: "Will the teams always be the same size?",
+        answer: "Teams are as balanced as possible \u2014 if the number of names doesn't divide evenly, some teams will have one more member than others.",
+      },
+      {
+        question: "Can I regenerate if I don't like the split?",
+        answer: "Yes, click Generate Teams again for a completely fresh random shuffle at any time.",
+      },
+    ],
+  },
+
+  "decision-tools/random-picker": {
+    howToUse: ["Enter your options, one per line.", "Optionally enable 'Remove option after it's picked'.", "Click Pick One to randomly select a single item."],
+    features: ["Works with any custom list \u2014 names, prizes, chores, raffle entries, and more.", "Optional no-repeat mode that removes each pick from the pool, like drawing raffle tickets.", "Reset button to restore the full list at any time."],
+    faq: [
+      {
+        question: "How is this different from the Spin Wheel?",
+        answer: "Both pick a random item from your list with equal probability. The Random Picker gives an instant text result, while the Spin Wheel adds a visual animated spinning wheel for more suspense \u2014 use whichever fits the moment.",
+      },
+      {
+        question: "Can I draw multiple winners without repeats?",
+        answer: "Yes, enable 'Remove option after it's picked' and each pick is removed from the pool, so repeated clicks act like drawing raffle tickets without replacement.",
+      },
+    ],
+  },
+
+  "decision-tools/secret-santa-generator": {
+    howToUse: [
+      "Enter each participant's name on its own line (at least 2, all unique).",
+      "Click Generate Secret Santa Pairs.",
+      "Pass the device around \u2014 each person taps only their own card to privately reveal who they're buying a gift for, then taps again to hide it before passing it on.",
+    ],
+    features: [
+      "Guarantees no one is ever assigned to gift themselves.",
+      "With 3 or more participants, also avoids mutual pairs so two people can't immediately guess each other's match.",
+      "Tap-to-reveal cards let one device be shared without spoiling anyone's assignment.",
+    ],
+    faq: [
+      {
+        question: "Does this keep the pairings secret from me, the organizer?",
+        answer: "No. Since everything runs in your browser, whoever generates the list can see all the pairs on screen. To keep it a surprise even from the organizer, generate the pairs and immediately hand the device to participants one at a time without looking at the results yourself.",
+      },
+      {
+        question: "What if I have people who shouldn't be paired together (like couples)?",
+        answer: "This tool generates a fully random derangement without exclusion rules, so it doesn't currently support excluding specific pairings \u2014 you may need to regenerate and manually check, or swap two assignments yourself if a pairing doesn't work.",
+      },
+      {
+        question: "What's a 'mutual pair' and why does it matter?",
+        answer: "A mutual pair is when person A gifts person B, and person B also gifts person A. With 3 or more participants, the generator actively avoids this so that neither person can deduce the other's assignment just by knowing their own.",
+      },
+    ],
+  },
+
+  "loan-calculators/emi-calculator": {
+    howToUse: [
+      "Enter your loan amount, interest rate, and tenure using the sliders or input fields.",
+      "Your EMI, total interest, and total payment update instantly.",
+      "Click 'Show yearly amortization schedule' to see a year-by-year principal vs. interest breakdown.",
+    ],
+    features: [
+      "Uses the standard reducing-balance EMI formula that banks and NBFCs use.",
+      "Full yearly amortization schedule showing principal, interest, and remaining balance.",
+      "Works for any currency and any loan type.",
+    ],
+    faq: [
+      {
+        question: "What formula does this use?",
+        answer: "EMI = P \u00d7 r \u00d7 (1+r)^n / ((1+r)^n \u2212 1), where P is the principal, r is the monthly interest rate, and n is the number of monthly installments. This is the standard reducing-balance formula used by virtually all lenders.",
+      },
+      {
+        question: "Why is my actual EMI slightly different from the lender's?",
+        answer: "Lenders may round the EMI differently, apply processing fees, use a slightly different day-count convention, or charge a floating rate that changes over the loan term \u2014 this calculator assumes a fixed rate for the full tenure.",
+      },
+    ],
+  },
+
+  "loan-calculators/loan-eligibility": {
+    howToUse: [
+      "Enter your net monthly income and any existing EMIs or financial obligations.",
+      "Adjust the FOIR (max EMI-to-income ratio) if you know your lender's specific limit.",
+      "See your estimated maximum EMI and loan eligibility instantly.",
+    ],
+    features: [
+      "Uses the FOIR (Fixed Obligation to Income Ratio) method most lenders use to assess eligibility.",
+      "Accounts for your existing EMIs and obligations, not just gross income.",
+      "Adjustable interest rate and tenure to see how they affect your eligibility.",
+    ],
+    faq: [
+      {
+        question: "What is FOIR?",
+        answer: "FOIR (Fixed Obligation to Income Ratio) is the percentage of your net monthly income that lenders allow to go toward all fixed obligations combined (existing EMIs plus the new loan's EMI). Most lenders cap this between 40% and 60%.",
+      },
+      {
+        question: "Will I definitely get approved for this amount?",
+        answer: "No, this is an estimate based on income alone. Actual approval also depends on your credit score, employment stability, existing relationship with the lender, and their specific underwriting policies.",
+      },
+    ],
+  },
+
+  "loan-calculators/loan-affordability": {
+    howToUse: [
+      "Enter the monthly EMI amount you're comfortable paying.",
+      "Set your expected interest rate and desired tenure.",
+      "See the maximum loan amount that fits your budget.",
+    ],
+    features: [
+      "Works backwards from your EMI budget instead of forwards from a loan amount.",
+      "Instantly recalculates as you adjust rate or tenure.",
+      "Shows a resulting-EMI check so you can confirm the numbers line up.",
+    ],
+    faq: [
+      {
+        question: "How is this different from the Loan Eligibility Calculator?",
+        answer: "Loan Eligibility estimates what a lender might approve based on your income using the FOIR method. Loan Affordability instead starts from an EMI amount you personally choose to budget, regardless of what a lender might approve \u2014 useful for personal financial planning.",
+      },
+    ],
+  },
+
+  "loan-calculators/loan-comparison": {
+    howToUse: [
+      "Enter the loan amount, interest rate, and tenure for each offer (up to 4).",
+      "Click '+ Add another offer' to compare more than two.",
+      "The table below shows EMI, total interest, and total payment for each, with a checkmark on the cheapest.",
+    ],
+    features: [
+      "Compare up to 4 loan offers side by side.",
+      "Instantly recalculates all offers as you adjust any field.",
+      "Highlights the offer with the lowest total repayment.",
+    ],
+    faq: [
+      {
+        question: "Should I always choose the offer with the lowest EMI?",
+        answer: "Not necessarily \u2014 a lower EMI often means a longer tenure, which can mean paying significantly more total interest. Compare the 'Total payment' column, not just the EMI, to see the true cost of each offer.",
+      },
+    ],
+  },
+
+  "loan-calculators/loan-prepayment": {
+    howToUse: [
+      "Enter your outstanding loan amount, interest rate, and remaining tenure.",
+      "Enter your prepayment amount and the month you plan to make it.",
+      "See your new tenure, interest saved, and revised total interest.",
+    ],
+    features: [
+      "Simulates a one-time lump-sum prepayment applied directly to your principal.",
+      "Shows exactly how many months of tenure and how much interest you'll save.",
+      "Assumes your EMI stays the same, so your loan simply finishes earlier.",
+    ],
+    faq: [
+      {
+        question: "Does prepayment always reduce my tenure, not my EMI?",
+        answer: "Most lenders let you choose either outcome. This calculator models the 'reduce tenure' option, which usually saves more total interest than reducing the EMI instead, assuming you can comfortably continue paying the same EMI.",
+      },
+      {
+        question: "Are there any prepayment charges?",
+        answer: "This calculator doesn't include prepayment/foreclosure fees, which some lenders charge (especially on fixed-rate loans). Check your loan agreement for any applicable charges before making a prepayment.",
+      },
+    ],
+  },
+
+  "loan-calculators/car-loan": {
+    howToUse: [
+      "Enter the car's price and adjust the down payment percentage.",
+      "Set your interest rate and loan tenure.",
+      "See your monthly EMI, total interest, and total payment based on the remaining loan amount.",
+    ],
+    features: [
+      "Built-in down payment slider \u2014 the loan amount automatically adjusts.",
+      "Full amortization schedule available on demand.",
+      "Sensible default ranges for typical car loan amounts and tenures.",
+    ],
+    faq: [
+      {
+        question: "Should I make a larger down payment?",
+        answer: "A larger down payment reduces your loan amount, which lowers both your EMI and total interest paid \u2014 try adjusting the down payment slider to see the trade-off for your specific numbers.",
+      },
+    ],
+  },
+
+  "loan-calculators/bike-loan": {
+    howToUse: [
+      "Enter the bike's price and adjust the down payment percentage.",
+      "Set your interest rate and loan tenure.",
+      "See your monthly EMI, total interest, and total payment.",
+    ],
+    features: [
+      "Built-in down payment slider sized for typical two-wheeler prices.",
+      "Shorter default tenure range that matches how bike loans are typically structured.",
+      "Full amortization schedule available on demand.",
+    ],
+    faq: [
+      {
+        question: "Why is the default interest rate higher than a car loan?",
+        answer: "Two-wheeler loans typically carry a higher interest rate than car or home loans since bikes depreciate faster and loan amounts are smaller, making the loan relatively less profitable for lenders per rupee/dollar lent \u2014 adjust the rate to match your actual offer.",
+      },
+    ],
+  },
+
+  "loan-calculators/home-loan": {
+    howToUse: [
+      "Enter your home loan amount, interest rate, and tenure.",
+      "See your EMI, total interest, and total payment instantly.",
+      "Click 'Show yearly amortization schedule' to see how your principal and interest split changes every year over the loan.",
+    ],
+    features: [
+      "Supports long tenures up to 30 years, typical for home loans.",
+      "Full yearly amortization schedule \u2014 essential for understanding a home loan's long-term interest cost.",
+      "Works with any currency for international home loan planning.",
+    ],
+    faq: [
+      {
+        question: "Why does so much of my early EMI go toward interest?",
+        answer: "With reducing-balance EMIs, interest is calculated on the outstanding balance each month. Early in a long-tenure loan, the balance is highest, so a larger share of each EMI covers interest \u2014 check the amortization schedule to see this shift toward principal over time.",
+      },
+      {
+        question: "Does this account for tax benefits on home loans?",
+        answer: "No, this calculator only computes the EMI and interest breakdown. Tax deductions on home loan interest and principal vary by country and current tax law, so check with a tax advisor separately.",
+      },
+    ],
+  },
+
+  "loan-calculators/education-loan": {
+    howToUse: [
+      "Enter your education loan amount, interest rate, and repayment tenure.",
+      "Set a moratorium (grace) period in months if your loan includes one \u2014 typically your course duration plus 6-12 months.",
+      "See your post-moratorium EMI, which accounts for interest that accrued during the moratorium.",
+    ],
+    features: [
+      "Models the moratorium period most education loans include, where interest accrues but no EMI is due.",
+      "Automatically adds accrued moratorium interest to your principal before calculating the post-moratorium EMI.",
+      "Full amortization schedule available for the repayment period.",
+    ],
+    faq: [
+      {
+        question: "What is a moratorium period?",
+        answer: "A moratorium (or grace period) is the time during your course (plus often a few months after) when you're not required to pay EMIs. Interest usually still accrues during this period and is added to your principal once repayment begins, which is what this calculator simulates.",
+      },
+      {
+        question: "Can I pay interest during the moratorium to reduce my EMI later?",
+        answer: "Many lenders allow this, and it typically results in a lower post-moratorium EMI since the accrued interest won't be capitalized into your principal. This calculator assumes you don't pay during the moratorium \u2014 treat the result as the higher-EMI scenario.",
+      },
+    ],
+  },
+
+  "loan-calculators/personal-loan": {
+    howToUse: [
+      "Enter your personal loan amount, interest rate, and tenure.",
+      "See your monthly EMI, total interest, and total payment instantly.",
+    ],
+    features: [
+      "Default ranges sized for typical unsecured personal loan amounts and shorter tenures.",
+      "Full amortization schedule available on demand.",
+    ],
+    faq: [
+      {
+        question: "Why are personal loan interest rates usually higher?",
+        answer: "Personal loans are typically unsecured (no collateral), which means higher risk for the lender, resulting in higher interest rates compared to secured loans like home or car loans.",
+      },
+    ],
+  },
+
+  "investment-calculators/sip-calculator": {
+    howToUse: [
+      "Enter your planned monthly SIP amount.",
+      "Set your expected annual rate of return and investment duration.",
+      "See your projected future value, total invested amount, and wealth gained.",
+    ],
+    features: [
+      "Uses the standard SIP future-value formula assuming monthly compounding.",
+      "Visual bar showing the split between invested capital and investment growth.",
+      "Works for any currency and duration up to 40 years.",
+    ],
+    faq: [
+      {
+        question: "Is the expected return guaranteed?",
+        answer: "No. This calculator projects a future value assuming a constant annual return you specify, but actual mutual fund and market returns fluctuate significantly year to year and are never guaranteed.",
+      },
+      {
+        question: "Does this account for expense ratios or exit loads?",
+        answer: "No, this is a gross-return projection. Actual returns on real mutual fund investments will be reduced by fund expense ratios and any applicable exit loads or taxes.",
+      },
+    ],
+  },
+
+  "investment-calculators/swp-calculator": {
+    howToUse: [
+      "Enter your starting investment corpus and desired monthly withdrawal amount.",
+      "Set your expected annual return and the number of years to simulate.",
+      "See your remaining balance after that period, or when your corpus would run out if withdrawals exceed growth.",
+    ],
+    features: [
+      "Month-by-month simulation of growth and withdrawals, not just a simplified formula.",
+      "Clearly flags if your withdrawal rate isn't sustainable at the given return rate.",
+      "Useful for retirement income planning from a lumpsum corpus.",
+    ],
+    faq: [
+      {
+        question: "What is an SWP?",
+        answer: "A Systematic Withdrawal Plan (SWP) is the reverse of a SIP \u2014 instead of investing a fixed amount every month, you withdraw a fixed amount every month from an existing investment corpus, commonly used for generating regular income from mutual fund investments in retirement.",
+      },
+      {
+        question: "What happens if my corpus runs out?",
+        answer: "The calculator shows exactly which month your corpus would be depleted at your chosen withdrawal rate and return assumption, so you can adjust your withdrawal amount or increase your starting corpus accordingly.",
+      },
+    ],
+  },
+
+  "investment-calculators/lumpsum-calculator": {
+    howToUse: [
+      "Enter your one-time investment amount.",
+      "Set your expected annual rate of return and investment duration.",
+      "See your projected future value and wealth gained.",
+    ],
+    features: ["Uses standard annual compounding.", "Simple, fast way to project a one-time investment's growth."],
+    faq: [
+      {
+        question: "How is this different from the SIP Calculator?",
+        answer: "This calculator projects a single one-time investment growing over time, while the SIP Calculator projects a series of monthly investments \u2014 use whichever matches how you're actually investing.",
+      },
+    ],
+  },
+
+  "investment-calculators/step-up-sip": {
+    howToUse: [
+      "Enter your starting monthly SIP amount and the annual percentage you plan to increase it by.",
+      "Set your expected annual return and investment duration.",
+      "See your projected future value compared to a flat SIP of the same starting amount.",
+    ],
+    features: [
+      "Models a monthly SIP that increases by a fixed percentage every 12 months.",
+      "Simulated month-by-month for accuracy, not a simplified approximation.",
+      "Useful for planning around expected salary increments over time.",
+    ],
+    faq: [
+      {
+        question: "Why would I use a step-up SIP instead of a flat SIP?",
+        answer: "If your income is likely to grow over time, a step-up SIP lets you start with a comfortable, lower amount today while automatically increasing your investment each year \u2014 typically building meaningfully more wealth than a flat SIP of the same starting amount.",
+      },
+    ],
+  },
+
+  "investment-calculators/cagr-calculator": {
+    howToUse: [
+      "Enter your investment's initial and final value.",
+      "Set the number of years between them.",
+      "See the Compound Annual Growth Rate (CAGR).",
+    ],
+    features: ["Simple, direct CAGR calculation.", "Works for any asset \u2014 stocks, mutual funds, real estate, or business revenue."],
+    faq: [
+      {
+        question: "What's the difference between CAGR and average annual return?",
+        answer: "A simple average of yearly returns can be misleading because it ignores compounding and volatility. CAGR shows the single steady annual growth rate that would take your initial value to your final value over the period, which better reflects actual compounded growth.",
+      },
+    ],
+  },
+
+  "investment-calculators/xirr-calculator": {
+    howToUse: [
+      "Add each cash flow with its date \u2014 use negative amounts for money invested and positive amounts for money received back.",
+      "Add as many cash flows as you need (top-ups, partial withdrawals, final redemption).",
+      "See your annualized XIRR based on the exact dates entered.",
+    ],
+    features: [
+      "Handles cash flows at any irregular dates and amounts.",
+      "Solved numerically (bisection method on the NPV equation) for accuracy.",
+      "Ideal for SIPs with varying amounts, top-ups, or partial withdrawals.",
+    ],
+    faq: [
+      {
+        question: "Why do I need at least one negative and one positive cash flow?",
+        answer: "XIRR calculates the rate of return that makes the net present value of all cash flows equal zero, which requires both money going out (invested, negative) and money coming back (returned, positive) to be mathematically solvable.",
+      },
+      {
+        question: "What if the calculator shows no result?",
+        answer: "This can happen if there's no valid interest rate between -99% and 1000% that solves the equation for your specific cash flows \u2014 double check your amounts and signs are correct.",
+      },
+    ],
+  },
+
+  "investment-calculators/irr-calculator": {
+    howToUse: [
+      "Enter your cash flow for each period, starting with your initial investment as a negative number.",
+      "Add as many periods as needed using '+ Add period'.",
+      "See the calculated Internal Rate of Return.",
+    ],
+    features: [
+      "Solved numerically (bisection method) for cash flows at regular intervals.",
+      "Useful for evaluating projects, business investments, or any series of periodic cash flows.",
+    ],
+    faq: [
+      {
+        question: "When should I use IRR instead of XIRR?",
+        answer: "Use IRR when your cash flows happen at regular, evenly-spaced intervals (like once a year). Use XIRR when your cash flows happen on irregular, specific dates \u2014 XIRR accounts for the exact time between each cash flow.",
+      },
+    ],
+  },
+
+  "investment-calculators/roi-calculator": {
+    howToUse: [
+      "Enter your initial investment and final (or current) value.",
+      "Optionally enable the annualized return option and enter your holding period.",
+      "See your gain/loss, ROI percentage, and annualized return.",
+    ],
+    features: ["Quick, simple ROI calculation for any investment or purchase.", "Optional annualized (CAGR-based) return calculation."],
+    faq: [
+      {
+        question: "Does ROI account for how long I held the investment?",
+        answer: "Basic ROI does not \u2014 a 20% ROI over 1 month is very different from a 20% ROI over 5 years. Enable the annualized return option and enter your holding period to get a time-adjusted comparison.",
+      },
+    ],
+  },
+
+  "investment-calculators/mutual-fund-returns": {
+    howToUse: [
+      "Enter the number of units you hold, your purchase NAV, and the current NAV (from your fund statement or app).",
+      "Optionally enable annualized return and enter your holding period.",
+      "See your invested value, current value, absolute return, and annualized return.",
+    ],
+    features: [
+      "Works directly with units and NAV, matching how mutual fund statements report your holdings.",
+      "Shows both absolute return and annualized (CAGR) return.",
+    ],
+    faq: [
+      {
+        question: "Where do I find my NAV and units?",
+        answer: "Your purchase NAV, current NAV, and units held are all shown on your mutual fund account statement or in your investment app/broker portal for each fund you hold.",
+      },
+    ],
+  },
+
+  "investment-calculators/stock-average-price": {
+    howToUse: [
+      "Add each buy transaction (quantity and price per share) using '+ Add buy transaction'.",
+      "Optionally enable the current market price to see your profit or loss.",
+      "See your total quantity, average buy price, and total invested amount.",
+    ],
+    features: [
+      "Handles any number of buy transactions across different prices and dates.",
+      "Optional live profit/loss calculation against a current market price you enter.",
+      "Useful when averaging up or down on a position over multiple purchases.",
+    ],
+    faq: [
+      {
+        question: "Does this include brokerage fees or taxes?",
+        answer: "No, this calculates the average price based purely on quantity and price per share you enter. Add your brokerage fees to the price per share manually if you want them reflected in your average cost.",
+      },
+      {
+        question: "Can I use this for selling too?",
+        answer: "This calculator is built for tracking your average buy (cost) price across purchases. It doesn't currently model partial sells reducing your quantity \u2014 for that, you'd need to manually adjust the remaining quantity after a sale.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

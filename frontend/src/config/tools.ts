@@ -1932,6 +1932,226 @@ export const categories: Category[] = [
       ),
     ],
   },
+  {
+    slug: "decision-tools",
+    title: "Decision Tools",
+    icon: "\u{1F3AF}",
+    description: "Spin a wheel, flip a coin, roll dice, or generate teams and Secret Santa pairs \u2014 quick tools for making decisions.",
+    tools: [
+      tool(
+        "spin-wheel",
+        "Spin Wheel",
+        "Create a custom spinning wheel from your own list of options and let it randomly pick a winner.",
+        "live",
+        ["spin the wheel", "random wheel spinner", "wheel of names", "decision wheel online"]
+      ),
+      tool(
+        "yes-or-no",
+        "Yes or No Generator",
+        "Get an instant random Yes or No answer to any question \u2014 with a running history and tally.",
+        "live",
+        ["yes or no generator", "random yes or no", "yes no wheel", "decision maker yes or no"]
+      ),
+      tool(
+        "coin-flip",
+        "Coin Flip",
+        "Flip a virtual coin online with an animated flip, plus a running heads/tails tally.",
+        "live",
+        ["coin flip online", "flip a coin", "heads or tails generator", "virtual coin flip"]
+      ),
+      tool(
+        "dice-roller",
+        "Dice Roller",
+        "Roll one or more virtual dice online \u2014 D4, D6, D8, D10, D12, or D20, with an automatic total.",
+        "live",
+        ["dice roller online", "roll a dice", "virtual dice roller", "roll dice online"]
+      ),
+      tool(
+        "number-picker",
+        "Number Picker",
+        "Pick a single random number from any range \u2014 a quick decision-maker with an option to avoid recent repeats.",
+        "live",
+        ["random number picker", "pick a random number", "number picker wheel", "spin a number generator"]
+      ),
+      tool(
+        "team-generator",
+        "Team Generator",
+        "Randomly split a list of names into balanced teams for games, classrooms, or work groups.",
+        "live",
+        ["random team generator", "team generator online", "split into random teams", "group generator online"]
+      ),
+      tool(
+        "random-picker",
+        "Random Picker",
+        "Pick one random item from your own custom list, with an option to remove picks so nothing repeats.",
+        "live",
+        ["random picker online", "pick random item from list", "random choice generator", "random name picker"]
+      ),
+      tool(
+        "secret-santa-generator",
+        "Secret Santa Generator",
+        "Generate random Secret Santa gift-giving pairs from a list of names, with private tap-to-reveal cards.",
+        "live",
+        ["secret santa generator", "secret santa name picker", "secret santa pairing generator", "gift exchange generator"]
+      ),
+    ],
+  },
+  {
+    slug: "loan-calculators",
+    title: "Loan Calculators",
+    icon: "\u{1F3E6}",
+    description: "Calculate EMI, check loan eligibility, compare offers, and plan prepayments for home, car, education, and personal loans.",
+    tools: [
+      tool(
+        "emi-calculator",
+        "EMI Calculator",
+        "Calculate your monthly loan EMI, total interest, and total payment using the standard reducing-balance formula.",
+        "live",
+        ["emi calculator", "loan emi calculator", "calculate emi online", "monthly installment calculator"]
+      ),
+      tool(
+        "loan-eligibility",
+        "Loan Eligibility Calculator",
+        "Estimate how much loan you're eligible for based on your income, existing EMIs, and the lender's FOIR limit.",
+        "live",
+        ["loan eligibility calculator", "how much loan can i get", "loan eligibility check", "max loan amount calculator"]
+      ),
+      tool(
+        "loan-affordability",
+        "Loan Affordability Calculator",
+        "Work backwards from your monthly EMI budget to see how much loan you can comfortably afford.",
+        "live",
+        ["loan affordability calculator", "how much loan can i afford", "affordable loan amount calculator", "emi budget calculator"]
+      ),
+      tool(
+        "loan-comparison",
+        "Loan Comparison Calculator",
+        "Compare two or more loan offers side by side by EMI, total interest, and total repayment.",
+        "live",
+        ["loan comparison calculator", "compare loan offers", "compare emi rates", "best loan offer calculator"]
+      ),
+      tool(
+        "loan-prepayment",
+        "Loan Prepayment Calculator",
+        "See how much time and interest a lump-sum loan prepayment can save you.",
+        "live",
+        ["loan prepayment calculator", "part payment calculator", "prepayment interest saved calculator", "foreclosure calculator"]
+      ),
+      tool(
+        "car-loan",
+        "Car Loan Calculator",
+        "Calculate your car loan EMI including down payment, with a full amortization schedule.",
+        "live",
+        ["car loan calculator", "car loan emi calculator", "auto loan calculator", "vehicle loan emi calculator"]
+      ),
+      tool(
+        "bike-loan",
+        "Bike Loan Calculator",
+        "Calculate your two-wheeler loan EMI including down payment, with a full amortization schedule.",
+        "live",
+        ["bike loan calculator", "bike loan emi calculator", "two wheeler loan calculator", "motorcycle loan calculator"]
+      ),
+      tool(
+        "home-loan",
+        "Home Loan Calculator",
+        "Calculate your home loan EMI, total interest, and a full yearly amortization schedule.",
+        "live",
+        ["home loan calculator", "home loan emi calculator", "mortgage emi calculator", "housing loan calculator"]
+      ),
+      tool(
+        "education-loan",
+        "Education Loan Calculator",
+        "Calculate your education loan EMI, including an optional moratorium (grace) period during your studies.",
+        "live",
+        ["education loan calculator", "student loan emi calculator", "education loan emi with moratorium", "study loan calculator"]
+      ),
+      tool(
+        "personal-loan",
+        "Personal Loan Calculator",
+        "Calculate your personal loan EMI, total interest, and total payment.",
+        "live",
+        ["personal loan calculator", "personal loan emi calculator", "calculate personal loan emi", "unsecured loan calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "investment-calculators",
+    title: "Investment Calculators",
+    icon: "\u{1F4C8}",
+    description: "Project SIP and lumpsum returns, calculate CAGR, XIRR, IRR, and ROI, and track mutual fund and stock gains.",
+    tools: [
+      tool(
+        "sip-calculator",
+        "SIP Calculator",
+        "Estimate the future value of a monthly SIP investment based on your expected rate of return.",
+        "live",
+        ["sip calculator", "sip return calculator", "mutual fund sip calculator", "monthly sip calculator"]
+      ),
+      tool(
+        "swp-calculator",
+        "SWP Calculator",
+        "See how long your investment corpus will last with a Systematic Withdrawal Plan, or your balance after N years.",
+        "live",
+        ["swp calculator", "systematic withdrawal plan calculator", "swp return calculator", "monthly withdrawal plan calculator"]
+      ),
+      tool(
+        "lumpsum-calculator",
+        "Lumpsum Calculator",
+        "Estimate the future value of a one-time lumpsum investment at a given rate of return.",
+        "live",
+        ["lumpsum calculator", "lumpsum investment calculator", "lumpsum return calculator", "one time investment calculator"]
+      ),
+      tool(
+        "step-up-sip",
+        "Step-up SIP Calculator",
+        "Estimate SIP returns when you increase your monthly investment by a fixed percentage every year.",
+        "live",
+        ["step up sip calculator", "top up sip calculator", "increasing sip calculator", "annual step up sip calculator"]
+      ),
+      tool(
+        "cagr-calculator",
+        "CAGR Calculator",
+        "Calculate the Compound Annual Growth Rate between an initial and final investment value.",
+        "live",
+        ["cagr calculator", "compound annual growth rate calculator", "calculate cagr online", "annual growth rate calculator"]
+      ),
+      tool(
+        "xirr-calculator",
+        "XIRR Calculator",
+        "Calculate the annualized return (XIRR) of investments with irregular cash flows and dates.",
+        "live",
+        ["xirr calculator", "xirr calculator online", "calculate xirr", "irregular cash flow return calculator"]
+      ),
+      tool(
+        "irr-calculator",
+        "IRR Calculator",
+        "Calculate the Internal Rate of Return for a series of regular periodic cash flows.",
+        "live",
+        ["irr calculator", "internal rate of return calculator", "calculate irr online", "irr calculator online"]
+      ),
+      tool(
+        "roi-calculator",
+        "ROI Calculator",
+        "Calculate your Return on Investment, with an optional annualized return based on your holding period.",
+        "live",
+        ["roi calculator", "return on investment calculator", "calculate roi online", "roi percentage calculator"]
+      ),
+      tool(
+        "mutual-fund-returns",
+        "Mutual Fund Returns Calculator",
+        "Calculate your mutual fund's absolute and annualized returns from units held and NAV values.",
+        "live",
+        ["mutual fund returns calculator", "mutual fund return calculator", "nav return calculator", "mutual fund profit calculator"]
+      ),
+      tool(
+        "stock-average-price",
+        "Stock Average Price Calculator",
+        "Calculate your average buy price across multiple stock purchases, plus profit or loss at the current price.",
+        "live",
+        ["stock average price calculator", "average share price calculator", "average down calculator stocks", "stock cost average calculator"]
+      ),
+    ],
+  },
 ];
 
 export function getAllTools() {
