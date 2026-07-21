@@ -5832,6 +5832,187 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+
+  "fun/random-animal": {
+    howToUse: ["Choose how many animals to generate.", "Click Regenerate for a fresh batch.", "Copy any animal name, or all of them, with one click."],
+    features: ["Draws from 50 wild and domestic animal species.", "Generate 1 to 20 at once.", "No repeats logic \u2014 pure random pick every time."],
+    faq: [
+      {
+        question: "What can I use a random animal generator for?",
+        answer: "It's popular for classroom icebreakers, drawing prompts, charades and guessing games, and deciding a theme for a project.",
+      },
+    ],
+  },
+
+  "fun/random-country": {
+    howToUse: ["Choose how many countries to generate.", "Click Regenerate for a fresh batch.", "Copy any result, or all of them, with one click."],
+    features: ["Includes the country's flag emoji alongside its name.", "Covers roughly 50 countries across every continent.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "How many countries are in the list?",
+        answer: "The generator picks from around 50 well-known countries spanning every continent, not the full list of all 195 UN member states.",
+      },
+      {
+        question: "What can I use this for?",
+        answer: "Great for travel bucket lists, \"pick my next trip\" decisions, geography quizzes, and classroom games.",
+      },
+    ],
+  },
+
+  "fun/random-city": {
+    howToUse: ["Choose how many cities to generate.", "Click Regenerate for a fresh batch.", "Copy any city, or all of them, with one click."],
+    features: ["Draws from major cities across every continent.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "What can I use a random city generator for?",
+        answer: "It's a fun way to get travel inspiration, pick a theme for trivia night, or practice world geography.",
+      },
+    ],
+  },
+
+  "fun/random-food": {
+    howToUse: ["Choose how many dishes to generate.", "Click Regenerate for a fresh batch.", "Copy any dish, or all of them, with one click."],
+    features: ["Draws from dishes across many world cuisines.", "Generate 1 to 20 at once.", "A quick way to break decision paralysis over what to eat."],
+    faq: [
+      {
+        question: "Can this suggest a recipe too?",
+        answer: "No, it only suggests a dish name for inspiration. You'll need to look up a recipe separately once you've picked something.",
+      },
+    ],
+  },
+
+  "fun/random-fruit": {
+    howToUse: ["Choose how many fruits to generate.", "Click Regenerate for a fresh batch.", "Copy any fruit, or all of them, with one click."],
+    features: ["Draws from 35 common and exotic fruits.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "What can I use this for?",
+        answer: "Handy for classroom games, smoothie or fruit-salad inspiration, and grocery-list ideas.",
+      },
+    ],
+  },
+
+  "fun/random-vegetable": {
+    howToUse: ["Choose how many vegetables to generate.", "Click Regenerate for a fresh batch.", "Copy any vegetable, or all of them, with one click."],
+    features: ["Draws from a wide variety of common vegetables.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "What can I use this for?",
+        answer: "Great for meal planning, healthy-eating challenges, and classroom nutrition games.",
+      },
+    ],
+  },
+
+  "fun/random-drink": {
+    howToUse: ["Choose how many drinks to generate.", "Click Regenerate for a fresh batch.", "Copy any drink, or all of them, with one click."],
+    features: ["All suggestions are non-alcoholic beverages.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "Does this include alcoholic drinks?",
+        answer: "No, every suggestion in the list is a non-alcoholic beverage \u2014 coffees, teas, juices, smoothies, and similar drinks.",
+      },
+    ],
+  },
+
+  "fun/random-movie": {
+    howToUse: ["Choose how many movies to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
+    features: ["Draws from a curated list of well-known, highly-rated films across genres and decades.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "Is this list personalized to my taste?",
+        answer: "No, it's a fixed curated list of broadly popular films, not a personalized recommendation engine \u2014 it's meant to break decision paralysis, not replace a streaming service's algorithm.",
+      },
+      {
+        question: "Does it tell me where to watch the movie?",
+        answer: "No, it only suggests a title. You'll need to check your own streaming services to see where it's available.",
+      },
+    ],
+  },
+
+  "fun/random-tv-show": {
+    howToUse: ["Choose how many shows to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
+    features: ["Draws from a curated list of popular, well-reviewed series across genres.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "Is this list personalized to my taste?",
+        answer: "No, it's a fixed curated list of broadly popular shows, meant to help you discover something new when you're not sure what to watch next.",
+      },
+    ],
+  },
+
+  "fun/random-book": {
+    howToUse: ["Choose how many books to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
+    features: ["Draws from a curated list of classic and popular titles across genres.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "Does this include the author's name?",
+        answer: "No, only the title is generated. You can search the title to find the author and more details.",
+      },
+    ],
+  },
+
+  "fun/random-game": {
+    howToUse: ["Choose how many games to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
+    features: ["Draws from a curated list of popular video games across genres and platforms.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "Does this check which platform I own?",
+        answer: "No, it just suggests a title from a curated list \u2014 you'll need to check availability on your own platform of choice.",
+      },
+    ],
+  },
+
+  "fun/random-pokemon": {
+    howToUse: ["Choose how many Pok\u00e9mon to generate.", "Click Regenerate for a fresh batch.", "Copy any name, or all of them, with one click."],
+    features: ["Draws from the original 65+ Generation I Pok\u00e9mon lineup.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "Is this an official Pok\u00e9mon tool?",
+        answer: "No, this is an independent, unofficial fan-made generator that simply picks a name from the original Generation I roster for fun. It is not affiliated with, endorsed by, or associated with Nintendo, Game Freak, or The Pok\u00e9mon Company.",
+      },
+      {
+        question: "What can I use this for?",
+        answer: "It's a popular way to pick a random starter, settle a debate on which Pok\u00e9mon to catch next, or generate a random team for a challenge run.",
+      },
+    ],
+  },
+
+  "fun/random-dinosaur": {
+    howToUse: ["Choose how many dinosaurs to generate.", "Click Regenerate for a fresh batch.", "Copy any name, or all of them, with one click."],
+    features: ["Draws from well-known dinosaur species names.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "What can I use this for?",
+        answer: "Popular for classroom science projects, trivia nights, and dinosaur-themed drawing or writing prompts.",
+      },
+    ],
+  },
+
+  "fun/random-bird": {
+    howToUse: ["Choose how many birds to generate.", "Click Regenerate for a fresh batch.", "Copy any name, or all of them, with one click."],
+    features: ["Draws from a wide variety of well-known bird species.", "Generate 1 to 20 at once."],
+    faq: [
+      {
+        question: "What can I use this for?",
+        answer: "Great for birdwatching checklists, classroom science games, and trivia nights.",
+      },
+    ],
+  },
+
+  "fun/random-flag": {
+    howToUse: ["Choose how many flags to generate.", "Click Regenerate for a fresh batch of flags with their country names."],
+    features: ["Displays each country's flag as a large emoji alongside its name.", "Generate 1 to 20 flags at once.", "Great for a quick flag-guessing game with friends."],
+    faq: [
+      {
+        question: "Why do the flags look slightly different than expected?",
+        answer: "Flags are rendered using your device's built-in Unicode flag emoji, so their exact appearance can vary slightly between operating systems and browsers.",
+      },
+      {
+        question: "What can I use this for?",
+        answer: "It's a fun way to test your geography knowledge \u2014 generate a flag, guess the country before revealing the name, and see how many you get right.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

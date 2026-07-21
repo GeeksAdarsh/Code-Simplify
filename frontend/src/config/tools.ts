@@ -1819,6 +1819,119 @@ export const categories: Category[] = [
       ),
     ],
   },
+  {
+    slug: "fun",
+    title: "Fun & Trivia",
+    icon: "\u{1F389}",
+    description: "Fun random generators for animals, countries, movies, games, and more \u2014 great for icebreakers, trivia, and deciding what's next.",
+    tools: [
+      tool(
+        "random-animal",
+        "Random Animal Generator",
+        "Generate a random animal from a list of 50 wild and domestic species \u2014 fun for games and icebreakers.",
+        "live",
+        ["random animal generator", "generate random animal", "random animal picker", "animal name generator"]
+      ),
+      tool(
+        "random-country",
+        "Random Country Generator",
+        "Generate a random country complete with its flag emoji \u2014 great for travel inspiration and geography quizzes.",
+        "live",
+        ["random country generator", "generate random country", "random country picker", "pick a random country"]
+      ),
+      tool(
+        "random-city",
+        "Random City Generator",
+        "Generate a random major city from around the world for travel ideas and geography practice.",
+        "live",
+        ["random city generator", "generate random city", "random city picker", "pick a random city"]
+      ),
+      tool(
+        "random-food",
+        "Random Food Generator",
+        "Can't decide what to eat? Generate a random dish from around the world for dinner inspiration.",
+        "live",
+        ["random food generator", "what should i eat generator", "generate random food", "random meal generator"]
+      ),
+      tool(
+        "random-fruit",
+        "Random Fruit Generator",
+        "Generate a random fruit from a list of 35 fruits from around the world.",
+        "live",
+        ["random fruit generator", "generate random fruit", "random fruit picker", "fruit name generator"]
+      ),
+      tool(
+        "random-vegetable",
+        "Random Vegetable Generator",
+        "Generate a random vegetable \u2014 handy for meal planning and healthy-eating challenges.",
+        "live",
+        ["random vegetable generator", "generate random vegetable", "random vegetable picker", "vegetable name generator"]
+      ),
+      tool(
+        "random-drink",
+        "Random Drink Generator",
+        "Generate a random non-alcoholic drink or beverage idea in seconds.",
+        "live",
+        ["random drink generator", "generate random drink", "random beverage generator", "what should i drink generator"]
+      ),
+      tool(
+        "random-movie",
+        "Random Movie Generator",
+        "Generate a random movie from a curated list of well-known films across genres \u2014 perfect for deciding what to watch.",
+        "live",
+        ["random movie generator", "what movie should i watch generator", "generate random movie", "movie picker online"]
+      ),
+      tool(
+        "random-tv-show",
+        "Random TV Show Generator",
+        "Generate a random TV show from a curated list of popular series across genres \u2014 great for your next binge.",
+        "live",
+        ["random tv show generator", "what show should i watch generator", "generate random tv show", "tv show picker online"]
+      ),
+      tool(
+        "random-book",
+        "Random Book Generator",
+        "Generate a random book from a curated list of classic and popular titles \u2014 a fun way to find your next read.",
+        "live",
+        ["random book generator", "what book should i read generator", "generate random book", "book picker online"]
+      ),
+      tool(
+        "random-game",
+        "Random Game Generator",
+        "Generate a random video game from a curated list across genres and platforms \u2014 great for deciding what to play.",
+        "live",
+        ["random game generator", "what game should i play generator", "generate random video game", "game picker online"]
+      ),
+      tool(
+        "random-pokemon",
+        "Random Pokemon Generator",
+        "Generate a random Pokemon from the original Generation I lineup \u2014 a fun, unofficial fan tool.",
+        "live",
+        ["random pokemon generator", "generate random pokemon", "random pokemon picker", "pokemon name generator"]
+      ),
+      tool(
+        "random-dinosaur",
+        "Random Dinosaur Generator",
+        "Generate a random dinosaur species name \u2014 fun for classroom projects and trivia nights.",
+        "live",
+        ["random dinosaur generator", "generate random dinosaur", "random dinosaur picker", "dinosaur name generator"]
+      ),
+      tool(
+        "random-bird",
+        "Random Bird Generator",
+        "Generate a random bird species name \u2014 great for birdwatching lists and trivia games.",
+        "live",
+        ["random bird generator", "generate random bird", "random bird picker", "bird name generator"]
+      ),
+      tool(
+        "random-flag",
+        "Random Flag Generator",
+        "Generate random country flags with their names \u2014 fun for geography quizzes and flag-guessing games.",
+        "live",
+        ["random flag generator", "generate random flag", "random country flag generator", "flag guessing game"]
+      ),
+    ],
+  },
 ];
 
 export function getAllTools() {

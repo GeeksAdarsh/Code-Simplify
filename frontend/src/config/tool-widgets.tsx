@@ -193,6 +193,21 @@ import { RandomEmojiTool } from "@/components/tools/random-emoji-tool";
 import { RandomCreditCardTool } from "@/components/tools/random-credit-card-tool";
 import { RandomPhoneNumberTool } from "@/components/tools/random-phone-number-tool";
 import { RandomAddressTool } from "@/components/tools/random-address-tool";
+import { RandomAnimalTool } from "@/components/tools/random-animal-tool";
+import { RandomCountryTool } from "@/components/tools/random-country-tool";
+import { RandomCityTool } from "@/components/tools/random-city-tool";
+import { RandomFoodTool } from "@/components/tools/random-food-tool";
+import { RandomFruitTool } from "@/components/tools/random-fruit-tool";
+import { RandomVegetableTool } from "@/components/tools/random-vegetable-tool";
+import { RandomDrinkTool } from "@/components/tools/random-drink-tool";
+import { RandomMovieTool } from "@/components/tools/random-movie-tool";
+import { RandomTvShowTool } from "@/components/tools/random-tv-show-tool";
+import { RandomBookTool } from "@/components/tools/random-book-tool";
+import { RandomGameTool } from "@/components/tools/random-game-tool";
+import { RandomPokemonTool } from "@/components/tools/random-pokemon-tool";
+import { RandomDinosaurTool } from "@/components/tools/random-dinosaur-tool";
+import { RandomBirdTool } from "@/components/tools/random-bird-tool";
+import { RandomFlagTool } from "@/components/tools/random-flag-tool";
 
 /**
  * Maps "category/tool" slugs to their interactive widget component.
@@ -404,6 +419,21 @@ export const toolWidgets: Record<string, () => ReactNode> = {
   "random-generators/random-credit-card": () => <RandomCreditCardTool />,
   "random-generators/random-phone-number": () => <RandomPhoneNumberTool />,
   "random-generators/random-address": () => <RandomAddressTool />,
+  "fun/random-animal": () => <RandomAnimalTool />,
+  "fun/random-country": () => <RandomCountryTool />,
+  "fun/random-city": () => <RandomCityTool />,
+  "fun/random-food": () => <RandomFoodTool />,
+  "fun/random-fruit": () => <RandomFruitTool />,
+  "fun/random-vegetable": () => <RandomVegetableTool />,
+  "fun/random-drink": () => <RandomDrinkTool />,
+  "fun/random-movie": () => <RandomMovieTool />,
+  "fun/random-tv-show": () => <RandomTvShowTool />,
+  "fun/random-book": () => <RandomBookTool />,
+  "fun/random-game": () => <RandomGameTool />,
+  "fun/random-pokemon": () => <RandomPokemonTool />,
+  "fun/random-dinosaur": () => <RandomDinosaurTool />,
+  "fun/random-bird": () => <RandomBirdTool />,
+  "fun/random-flag": () => <RandomFlagTool />,
 };
 
 export function getToolWidget(categorySlug: string, toolSlug: string): ReactNode | undefined {
