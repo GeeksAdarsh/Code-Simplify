@@ -55,7 +55,7 @@ export function SecretSantaTool() {
       {pairs.length > 0 && (
         <>
           <p className="mt-4 text-center text-xs text-muted">
-            Pass the device around \u2014 each person taps only their own card to reveal who they're gifting, then taps again to hide it.
+            Pass the device around \u2014 each person taps only their own card to reveal who they&apos;re gifting, then taps again to hide it.
           </p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {pairs.map((pair, i) => {

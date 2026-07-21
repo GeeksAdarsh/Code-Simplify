@@ -6553,6 +6553,930 @@ export const toolContent: Record<string, ToolContent> = {
       },
     ],
   },
+
+  "savings-calculators/fd-calculator": {
+    howToUse: [
+      "Enter the amount you want to deposit and the interest rate offered by your bank.",
+      "Choose your compounding frequency (most Indian banks compound FDs quarterly).",
+      "Set your tenure in years using the slider.",
+      "See your maturity value and total interest earned update instantly.",
+    ],
+    features: [
+      "Supports annual, half-yearly, quarterly, and monthly compounding.",
+      "Instant maturity value and interest breakdown.",
+      "Works in any currency for international fixed deposit comparisons.",
+      "100% client-side \u2014 no data leaves your browser.",
+      "Free with no sign-up required.",
+    ],
+    faq: [
+      { question: "How is FD interest calculated?", answer: "FD interest is calculated using standard compound interest: Maturity value = Principal \u00D7 (1 + rate/compoundings)^(compoundings \u00D7 years). Most Indian banks compound FD interest quarterly." },
+      { question: "Is FD interest taxable?", answer: "Yes, in India, interest earned on FDs is fully taxable as per your income tax slab, and banks deduct TDS if annual interest exceeds the prescribed threshold." },
+      { question: "What's the difference between cumulative and non-cumulative FDs?", answer: "A cumulative FD reinvests interest and pays it all at maturity (what this calculator models). A non-cumulative FD pays out interest periodically (monthly/quarterly) instead of compounding it." },
+      { question: "Can I withdraw an FD before maturity?", answer: "Most banks allow premature withdrawal with a penalty (usually 0.5\u20131% reduction in interest rate). Check your bank's specific terms." },
+    ],
+  },
+
+  "savings-calculators/rd-calculator": {
+    howToUse: [
+      "Enter your fixed monthly deposit amount.",
+      "Set the interest rate offered by your bank.",
+      "Choose your tenure in months using the slider.",
+      "View your estimated maturity value, total deposits, and interest earned.",
+    ],
+    features: [
+      "Models monthly compounding on a fixed recurring deposit.",
+      "Shows total deposited vs. interest earned separately.",
+      "Flexible tenure from 3 months to 10 years.",
+      "Instant, real-time calculation as you adjust inputs.",
+      "Free and works entirely in your browser.",
+    ],
+    faq: [
+      { question: "How is RD maturity value calculated?", answer: "This calculator compounds your fixed monthly deposit at a monthly rate over your chosen tenure. Banks typically use quarterly compounding for RDs, so your actual maturity value may differ slightly." },
+      { question: "What's the minimum and maximum RD tenure?", answer: "Most Indian banks offer RD tenures from 6 months to 10 years, with monthly deposit amounts starting as low as \u20B9100\u2013500." },
+      { question: "Is RD better than SIP?", answer: "RDs offer fixed, guaranteed returns and are lower risk, while SIPs in mutual funds offer potentially higher but market-linked, variable returns. Choose based on your risk appetite and goals." },
+      { question: "Can I close an RD early?", answer: "Yes, but premature closure usually attracts a lower interest rate or penalty, similar to fixed deposits." },
+    ],
+  },
+
+  "savings-calculators/ppf-calculator": {
+    howToUse: [
+      "Enter your planned yearly PPF contribution (up to \u20B91.5 lakh per year).",
+      "Set the current PPF interest rate (revised quarterly by the government).",
+      "Adjust the tenure \u2014 minimum 15 years, extendable in blocks of 5.",
+      "View your projected maturity value, total deposits, and interest earned.",
+    ],
+    features: [
+      "Models the standard PPF annual compounding structure.",
+      "Supports the full 15-year lock-in plus extensions.",
+      "Shows a clear breakdown of principal vs. interest.",
+      "Useful for long-term retirement and tax-saving planning.",
+      "Free, instant, and fully private \u2014 no data is stored.",
+    ],
+    faq: [
+      { question: "What is the current PPF interest rate?", answer: "The PPF interest rate is set by the Government of India and revised quarterly. Check the current rate on the India Post or your bank's website, then enter it here for an accurate projection." },
+      { question: "Is PPF interest taxable?", answer: "No. PPF falls under the EEE (Exempt-Exempt-Exempt) tax category in India \u2014 contributions, interest earned, and maturity proceeds are all tax-free." },
+      { question: "Can I withdraw from PPF before 15 years?", answer: "Partial withdrawals are allowed from the 7th financial year onwards, subject to certain limits. Full withdrawal is only allowed at maturity (15 years) or on extension anniversaries." },
+      { question: "What is the PPF contribution limit?", answer: "You can contribute a minimum of \u20B9500 and a maximum of \u20B91.5 lakh per financial year across all your PPF accounts." },
+    ],
+  },
+
+  "savings-calculators/epf-calculator": {
+    howToUse: [
+      "Enter your current monthly basic salary + DA and existing EPF balance.",
+      "Set your employee and employer contribution percentages (typically 12% each).",
+      "Enter the current EPF interest rate and your expected annual salary increment.",
+      "See your projected EPF corpus at retirement, along with total contributions and interest earned.",
+    ],
+    features: [
+      "Accounts for salary increments compounding your contributions over time.",
+      "Combines employee + employer contributions in one projection.",
+      "Adjustable interest rate to match the latest EPFO notification.",
+      "Clear breakdown of contributions vs. interest earned.",
+      "Free, private, and instant \u2014 runs entirely in your browser.",
+    ],
+    faq: [
+      { question: "What is the current EPF interest rate?", answer: "The EPFO announces the EPF interest rate annually, typically in the 8\u20139% range. Check the latest rate on the EPFO website and enter it here." },
+      { question: "Is EPF withdrawal taxable?", answer: "EPF withdrawal is tax-free if made after 5 years of continuous service. Withdrawals before that may attract TDS and be added to taxable income, with some exceptions." },
+      { question: "What happens to EPF if I change jobs?", answer: "You should transfer your EPF account to your new employer using the UAN (Universal Account Number) portal to keep your continuous service record and avoid tax implications." },
+      { question: "Does this include EPS (pension scheme) contributions?", answer: "This is a simplified estimate that combines employee and employer EPF contributions. In practice, a portion of the employer's contribution (8.33%) is diverted to the EPS pension scheme, which isn't modeled separately here." },
+    ],
+  },
+
+  "savings-calculators/nps-calculator": {
+    howToUse: [
+      "Enter your planned monthly NPS contribution and expected annual return.",
+      "Set the number of years remaining until retirement.",
+      "Adjust the portion of your corpus used to buy an annuity (minimum 40% as per rules) and the expected annuity rate.",
+      "View your projected corpus, lump sum available, and estimated monthly pension.",
+    ],
+    features: [
+      "Models monthly compounding on your NPS contributions.",
+      "Splits your final corpus into lump-sum withdrawal and annuity purchase.",
+      "Estimates your resulting monthly pension after retirement.",
+      "Adjustable annuity portion and rate to match your NPS plan.",
+      "Free and instant \u2014 no account or sign-up needed.",
+    ],
+    faq: [
+      { question: "What is the minimum annuity purchase requirement in NPS?", answer: "As per current rules, you must use at least 40% of your NPS corpus to purchase an annuity at retirement; the remaining amount can be withdrawn as a lump sum (rules may vary by exit age and corpus size)." },
+      { question: "Is NPS better than mutual fund SIPs for retirement?", answer: "NPS offers additional tax benefits under Section 80CCD and mandates a disciplined annuity-based payout, while SIPs offer more flexibility and liquidity. Many investors use both for a balanced retirement strategy." },
+      { question: "What tax benefits does NPS offer?", answer: "NPS contributions are eligible for tax deduction under Section 80C (up to \u20B91.5 lakh) and an additional \u20B950,000 under Section 80CCD(1B), making it one of the most tax-efficient retirement instruments in India." },
+      { question: "How accurate is the estimated monthly pension?", answer: "It's a simplified estimate based on a constant annuity rate. Actual pension amounts depend on the annuity provider, plan type (with/without spouse cover), and prevailing annuity rates at the time of purchase." },
+    ],
+  },
+
+  "savings-calculators/sukanya-calculator": {
+    howToUse: [
+      "Enter your planned yearly deposit amount (up to \u20B91.5 lakh).",
+      "Set the current Sukanya Samriddhi Yojana interest rate.",
+      "Adjust the deposit period (up to 15 years) and total account maturity period (up to 21 years from opening).",
+      "View your projected maturity value, total deposits, and interest earned.",
+    ],
+    features: [
+      "Models the full SSY structure: 15 years of deposits, then compounding until 21-year maturity.",
+      "Shows principal vs. interest breakdown clearly.",
+      "Adjustable interest rate to match the latest government notification.",
+      "Useful for planning a girl child's education or marriage fund.",
+      "Free, private, and instant.",
+    ],
+    faq: [
+      { question: "Who is eligible to open a Sukanya Samriddhi account?", answer: "The scheme is for the benefit of a girl child below 10 years of age, opened by a parent or legal guardian, with a maximum of two accounts per family (with some exceptions for twins/triplets)." },
+      { question: "Is SSY interest tax-free?", answer: "Yes, Sukanya Samriddhi Yojana falls under the EEE tax category \u2014 contributions, interest, and maturity amount are all exempt from tax under Section 80C and related provisions." },
+      { question: "Can I withdraw money before maturity?", answer: "Partial withdrawal (up to 50%) is allowed once the girl turns 18 or passes 10th grade, for education expenses. Premature closure is otherwise allowed only in specific circumstances." },
+      { question: "What happens after 15 years of deposits?", answer: "You stop making deposits after 15 years, but the account continues to earn interest on the accumulated balance until it matures 21 years after the account was opened." },
+    ],
+  },
+
+  "retirement-calculators/retirement-calculator": {
+    howToUse: [
+      "Enter your current monthly expenses, current age, and planned retirement age.",
+      "Set your life expectancy and expected inflation rate.",
+      "Enter your expected investment returns before and after retirement.",
+      "See your required retirement corpus, inflation-adjusted future expenses, and the monthly SIP needed to get there.",
+    ],
+    features: [
+      "Inflates today's expenses to your retirement year automatically.",
+      "Calculates a sustainable retirement corpus using real (inflation-adjusted) returns.",
+      "Shows the exact monthly SIP required to reach your goal.",
+      "Fully adjustable assumptions for personalized planning.",
+      "Free, private, and works entirely in your browser.",
+    ],
+    faq: [
+      { question: "How much corpus do I need to retire comfortably?", answer: "It depends on your expenses, expected lifespan post-retirement, inflation, and investment returns. This calculator computes a personalized corpus based on your specific inputs rather than a generic rule of thumb." },
+      { question: "Why does inflation matter so much for retirement planning?", answer: "Inflation erodes purchasing power over time \u2014 even a modest 6% inflation roughly doubles expenses every 12 years, so your retirement corpus must be large enough to sustain inflated future expenses, not today's expenses." },
+      { question: "What return rate should I assume after retirement?", answer: "Post-retirement, most planners recommend a more conservative, capital-protection-focused portfolio (debt-heavy), hence a lower assumed return (6\u20138%) compared to your working years." },
+      { question: "Should I include pension or Social Security in this calculation?", answer: "This calculator focuses on the corpus you need to build yourself. If you'll receive a pension, NPS payout, or other guaranteed income, you can reduce your monthly expense input by that amount for a more accurate result." },
+    ],
+  },
+
+  "retirement-calculators/fire-calculator": {
+    howToUse: [
+      "Enter your current annual expenses and your target safe withdrawal rate (commonly 3\u20134%).",
+      "Enter your current savings/investments and how much you can save monthly.",
+      "Set your expected annual investment return.",
+      "See your FIRE number (target corpus) and estimated years until you reach financial independence.",
+    ],
+    features: [
+      "Based on the popular 4% safe withdrawal rule (fully adjustable).",
+      "Simulates monthly compounding growth of your existing and future savings.",
+      "Shows your exact FIRE number and realistic timeline.",
+      "Useful for FIRE movement followers and early-retirement planners.",
+      "Free, instant, and requires no sign-up.",
+    ],
+    faq: [
+      { question: "What is a FIRE number?", answer: "Your FIRE number is the investment corpus needed to sustain your lifestyle indefinitely through withdrawals, typically calculated as annual expenses divided by your safe withdrawal rate (e.g., expenses \u00D7 25 for a 4% rate)." },
+      { question: "Is the 4% rule still valid?", answer: "The 4% rule (from the Trinity Study) is a widely used guideline, but many planners now recommend a more conservative 3\u20133.5% withdrawal rate for portfolios expected to last 40+ years, especially outside the US market conditions it was based on." },
+      { question: "What's the difference between FIRE and normal retirement planning?", answer: "FIRE (Financial Independence, Retire Early) focuses on aggressive saving and a lean, sustainable withdrawal rate to retire well before traditional retirement age, often in your 30s-40s." },
+      { question: "Does this account for taxes on withdrawals?", answer: "No, this is a pre-tax corpus estimate. Actual withdrawals may be subject to capital gains tax depending on your investment vehicles and country of residence." },
+    ],
+  },
+
+  "retirement-calculators/pension-calculator": {
+    howToUse: [
+      "Enter your planned monthly contribution and expected annual return until retirement.",
+      "Set the number of years until retirement and your expected pension payout period.",
+      "Enter the expected annuity rate during your payout years.",
+      "View your projected corpus at retirement and the resulting estimated monthly pension.",
+    ],
+    features: [
+      "Models monthly compounding growth followed by an annuity-style payout.",
+      "Fully adjustable payout period and annuity rate.",
+      "Useful for comparing different pension or annuity products.",
+      "Instant recalculation as you adjust any input.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "What is an annuity rate?", answer: "The annuity rate is the return an insurance company or annuity provider offers on your corpus during the payout phase \u2014 it determines how much monthly pension your accumulated corpus can generate." },
+      { question: "Is a pension plan better than investing in mutual funds?", answer: "Pension plans offer guaranteed, predictable income which is valuable for peace of mind, but often at a lower expected return than market-linked mutual funds. Many people use a mix of both for balance." },
+      { question: "What happens if I outlive my payout period?", answer: "This depends on your specific pension product. Some annuities pay for a fixed period, others (life annuities) pay for as long as you live \u2014 check your plan's terms." },
+      { question: "Can I increase my monthly contribution later?", answer: "Yes, most pension plans and NPS allow you to increase contributions over time. Simply re-run this calculator with updated numbers to see the impact." },
+    ],
+  },
+
+  "retirement-calculators/future-value": {
+    howToUse: [
+      "Enter your present value (initial lump sum) and any periodic (yearly) contribution.",
+      "Set your expected annual rate of return.",
+      "Choose the number of years.",
+      "View the future value of your investment, combining both the lump sum growth and contributions.",
+    ],
+    features: [
+      "Combines lump-sum growth and periodic contributions in one calculation.",
+      "Uses the standard FV = PV \u00D7 (1+r)^n formula plus an annuity formula for contributions.",
+      "Works for any currency and any compounding scenario.",
+      "Instant, real-time results.",
+      "Free and requires no sign-up.",
+    ],
+    faq: [
+      { question: "What is future value?", answer: "Future value is how much a sum of money today (or a series of contributions) will grow to at a specific point in the future, given a rate of return." },
+      { question: "How is future value different from compound interest calculators?", answer: "This is essentially a general-purpose compound interest and annuity calculator \u2014 it combines a one-time initial amount with recurring contributions, unlike simpler tools that only handle one or the other." },
+      { question: "Can I use this for any currency?", answer: "Yes, the calculator is currency-agnostic \u2014 just enter your numbers in whichever currency you're working with." },
+      { question: "What's a realistic rate of return to assume?", answer: "It depends on the asset class: equity markets have historically returned 10\u201312% annually over long periods, while fixed-income instruments typically return 6\u20138%. Choose a rate that matches your actual investment." },
+    ],
+  },
+
+  "retirement-calculators/present-value": {
+    howToUse: [
+      "Enter the future value (target amount) you want to discount to today's value.",
+      "Set your discount rate (expected rate of return or inflation rate).",
+      "Choose the number of years until that future amount is received.",
+      "View the present value \u2014 what that future sum is worth today.",
+    ],
+    features: [
+      "Uses the standard PV = FV / (1+r)^n formula.",
+      "Useful for comparing offers, settlements, or goals payable at different times.",
+      "Works for any currency and discount rate.",
+      "Instant, accurate results with no sign-up.",
+      "100% client-side calculation \u2014 nothing is uploaded.",
+    ],
+    faq: [
+      { question: "What is present value used for?", answer: "Present value helps you compare money received at different points in time on an apples-to-apples basis \u2014 useful for evaluating settlements, deferred payments, insurance payouts, or investment goals." },
+      { question: "What discount rate should I use?", answer: "Use your expected rate of return if comparing investment opportunities, or the expected inflation rate if you want to know the real purchasing power of a future amount." },
+      { question: "How is this different from the Future Value Calculator?", answer: "Future Value projects forward (what will my money grow to?), while Present Value works backward (what is a future amount worth today?). They're inverse operations of the same time-value-of-money concept." },
+      { question: "Does a higher discount rate increase or decrease present value?", answer: "A higher discount rate decreases present value \u2014 the same future amount is considered less valuable today when discounted at a higher rate." },
+    ],
+  },
+
+  "tax-calculators/income-tax-calculator": {
+    howToUse: [
+      "Enter your gross annual income.",
+      "Enter your total deductions (80C, 80D, HRA, etc. \u2014 relevant only for the old regime).",
+      "Instantly compare your estimated tax liability under both the new and old tax regimes.",
+      "Choose whichever regime results in lower tax for your situation.",
+    ],
+    features: [
+      "Compares new regime vs. old regime tax side by side.",
+      "Includes the Section 87A rebate and 4% health & education cess.",
+      "Instant recalculation as you adjust income or deductions.",
+      "Highlights which regime is more beneficial for you.",
+      "Free and completely private \u2014 no financial data leaves your browser.",
+    ],
+    faq: [
+      { question: "Which tax regime should I choose?", answer: "If you have significant deductions (80C investments, home loan interest, HRA), the old regime may result in lower tax. If you have few deductions, the new regime's lower slab rates often work out better. Compare both using this calculator." },
+      { question: "Are these tax slabs accurate for the current year?", answer: "This calculator uses representative, illustrative slabs. Tax slabs change with each Union Budget, so always verify the current assessment year's official slabs on the Income Tax Department website or consult a CA before filing." },
+      { question: "What is the Section 87A rebate?", answer: "It's a rebate that effectively makes your tax liability zero if your taxable income is below a certain threshold (currently \u20B97 lakh under the new regime), even though slab rates would otherwise apply." },
+      { question: "Does this calculator account for capital gains or other income?", answer: "No, this focuses on regular salary/business income taxed at slab rates. Capital gains are taxed separately \u2014 use the Capital Gains Calculator for those." },
+    ],
+  },
+
+  "tax-calculators/gst-calculator": {
+    howToUse: [
+      "Enter the amount you want to calculate GST on.",
+      "Select the applicable GST rate (5%, 12%, 18%, 28%, or others).",
+      "Choose whether your amount excludes GST (add GST) or already includes GST (remove GST).",
+      "View the base amount, GST amount, and total amount instantly.",
+    ],
+    features: [
+      "Supports all standard Indian GST slabs.",
+      "Two modes: add GST to a base price, or extract GST from a tax-inclusive price.",
+      "Instant, accurate calculations with no rounding errors.",
+      "Useful for invoicing, shopping, and business calculations.",
+      "Free with no usage limits.",
+    ],
+    faq: [
+      { question: "What are the standard GST rates in India?", answer: "The common GST slabs are 0%, 5%, 12%, 18%, and 28%, depending on the goods or service category. Some items also have special rates like 0.25% or 3% (for precious stones and gold)." },
+      { question: "How do I remove GST from an MRP?", answer: "Select 'Remove GST' mode and enter the MRP (which already includes GST) \u2014 the calculator will show you the base price before tax and the GST component." },
+      { question: "What's the difference between CGST, SGST, and IGST?", answer: "For intra-state transactions, GST is split equally into CGST (Central) and SGST (State). For inter-state transactions, the full rate is charged as IGST (Integrated GST). This calculator shows the total GST \u2014 use the GST Invoice Generator for the CGST/SGST/IGST split." },
+      { question: "Is this calculator suitable for filing GST returns?", answer: "This is a quick reference calculator for individual transactions. For actual GST return filing, use GST-compliant accounting software or consult with a tax professional." },
+    ],
+  },
+
+  "tax-calculators/hra-calculator": {
+    howToUse: [
+      "Enter your monthly basic salary and HRA received from your employer.",
+      "Enter your monthly rent paid.",
+      "Select whether you live in a metro city (Delhi, Mumbai, Kolkata, Chennai) or a non-metro city.",
+      "View your annual HRA exemption and the taxable portion of your HRA.",
+    ],
+    features: [
+      "Applies the official 3-way minimum rule for HRA exemption.",
+      "Accounts for metro (50%) vs. non-metro (40%) basic salary thresholds.",
+      "Instant annual exemption and taxable HRA breakdown.",
+      "Useful for tax planning and Form 16 verification.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "How is HRA exemption calculated?", answer: "HRA exemption is the minimum of: (1) actual HRA received, (2) rent paid minus 10% of basic salary, and (3) 50% of basic salary for metro cities or 40% for non-metro cities." },
+      { question: "Can I claim HRA exemption under the new tax regime?", answer: "No, HRA exemption is only available under the old tax regime. If you opt for the new regime, your entire HRA received is taxable." },
+      { question: "What if I don't receive HRA but pay rent?", answer: "If you don't receive HRA from your employer, you may be able to claim a deduction under Section 80GG instead, subject to different rules and limits." },
+      { question: "Do I need rent receipts to claim HRA exemption?", answer: "Yes, you typically need to submit rent receipts to your employer, and if annual rent exceeds \u20B91 lakh, your landlord's PAN is also required." },
+    ],
+  },
+
+  "tax-calculators/capital-gains-calculator": {
+    howToUse: [
+      "Select the asset type: equity, property, or other.",
+      "Enter your purchase price, sale price, and the respective purchase and sale dates.",
+      "The calculator automatically determines your holding period.",
+      "View your capital gain/loss and whether it's classified as short-term or long-term.",
+    ],
+    features: [
+      "Automatically classifies gains as short-term or long-term based on holding period rules.",
+      "Different thresholds for equity (12 months) vs. property/other assets (24\u201336 months).",
+      "Simple date-based holding period calculation.",
+      "Includes guidance on typical applicable tax rates.",
+      "Free and works entirely in your browser.",
+    ],
+    faq: [
+      { question: "What's the difference between STCG and LTCG?", answer: "STCG (Short-Term Capital Gains) applies to assets held for less than the specified holding period and is usually taxed at a higher rate or added to your income. LTCG (Long-Term Capital Gains) applies to assets held longer and often gets preferential tax rates." },
+      { question: "What is the holding period threshold for equity vs. property?", answer: "For listed equity/equity mutual funds, the LTCG threshold is 12 months. For property and most other assets, it's typically 24\u201336 months, though rules vary and change with tax law updates." },
+      { question: "Does this account for indexation benefit?", answer: "No, this calculator shows the raw capital gain without indexation adjustment. Indexation (available for certain LTCG on property/debt funds) can significantly reduce taxable gains \u2014 consult a tax advisor for an indexed calculation." },
+      { question: "Are capital gains tax rates the same every year?", answer: "No, capital gains tax rates and rules change periodically with Union Budget announcements. Always verify current rates with the Income Tax Department or a tax professional before filing." },
+    ],
+  },
+
+  "tax-calculators/tds-calculator": {
+    howToUse: [
+      "Enter the payment amount on which TDS needs to be deducted.",
+      "Select the relevant TDS section (professional fees, rent, contractor payment, etc.) or enter a custom rate.",
+      "View the calculated TDS amount and the net payable amount after deduction.",
+      "Use this for quick reference before making a payment.",
+    ],
+    features: [
+      "Covers common TDS sections used in everyday transactions.",
+      "Custom rate option for any other scenario.",
+      "Instant TDS amount and net payable calculation.",
+      "Useful for freelancers, businesses, and accounts teams.",
+      "Free with no sign-up required.",
+    ],
+    faq: [
+      { question: "What is TDS?", answer: "TDS (Tax Deducted at Source) is a mechanism where the payer deducts tax at the time of making certain payments (salary, rent, professional fees, etc.) and deposits it with the government on behalf of the recipient." },
+      { question: "Are these TDS rates accurate for all cases?", answer: "The rates shown are representative rates for common sections. Actual applicable rates can vary based on PAN availability (higher TDS without PAN), recipient type (individual/company), and payment thresholds \u2014 verify with the official TDS rate chart." },
+      { question: "What happens if TDS is deducted at a higher rate?", answer: "If excess TDS is deducted, you can claim a refund when filing your income tax return, as TDS is only an advance tax payment, not the final tax liability." },
+      { question: "Is TDS applicable on all payments?", answer: "No, TDS applies only to specified categories of payments above certain threshold amounts, as defined under various sections of the Income Tax Act." },
+    ],
+  },
+
+  "tax-calculators/salary-calculator": {
+    howToUse: [
+      "Enter your annual CTC (Cost to Company).",
+      "Adjust the basic salary percentage and HRA percentage of basic.",
+      "Set your employee PF contribution percentage and monthly professional tax.",
+      "View your monthly salary breakdown: basic, HRA, allowances, PF, and gross/net salary.",
+    ],
+    features: [
+      "Breaks CTC into standard salary components.",
+      "Fully adjustable percentage splits to match your actual offer letter.",
+      "Shows both monthly gross and net (pre-tax) salary.",
+      "Useful for evaluating job offers and salary structures.",
+      "Free, instant, and completely private.",
+    ],
+    faq: [
+      { question: "What's the difference between CTC and take-home salary?", answer: "CTC (Cost to Company) is the total amount your employer spends on you, including basic, allowances, PF contributions, and other benefits. Take-home salary is what actually lands in your bank account after all deductions \u2014 use the Take Home Salary Calculator for that." },
+      { question: "Why is my calculated salary different from my actual payslip?", answer: "This calculator uses common industry-standard percentage splits. Actual company salary structures vary in how they allocate basic, HRA, special allowances, and other components \u2014 check your specific offer letter or payslip for exact figures." },
+      { question: "What is a typical basic salary percentage?", answer: "Basic salary is commonly structured as 30\u201350% of CTC, though this varies significantly by company and industry." },
+      { question: "Does this include income tax deduction?", answer: "No, this tool focuses purely on salary structure breakdown (before tax). Use the Take Home Salary Calculator to see your final in-hand pay after estimated income tax." },
+    ],
+  },
+
+  "tax-calculators/take-home-salary": {
+    howToUse: [
+      "Enter your annual CTC.",
+      "Adjust basic salary percentage, employee PF percentage, and monthly professional tax.",
+      "Choose your tax regime (new or old).",
+      "View your estimated gross salary, income tax, PF deduction, and final monthly take-home pay.",
+    ],
+    features: [
+      "Combines salary structuring with an income tax estimate for a realistic take-home figure.",
+      "Supports both new and old tax regime calculations.",
+      "Clear breakdown of all monthly deductions.",
+      "Useful for comparing job offers on an apples-to-apples in-hand basis.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "How accurate is the take-home salary estimate?", answer: "This is a close estimate based on standard PF, professional tax, and illustrative income tax slabs. Your actual take-home may vary slightly due to specific employer deductions, additional benefits, or exact tax-saving investments." },
+      { question: "Which tax regime results in higher take-home pay?", answer: "It depends on your deductions. If you have significant 80C/80D investments or HRA claims, the old regime might result in higher take-home pay; otherwise, the new regime's lower slabs often win. Try both options to compare." },
+      { question: "Does this include bonus or variable pay?", answer: "No, this calculator assumes your entire CTC is paid out as fixed monthly salary. If you have a separate bonus or variable component, calculate that portion's tax impact separately." },
+      { question: "What other deductions might reduce my actual take-home pay?", answer: "Additional deductions like gratuity contributions, voluntary PF, health insurance premiums, or loan EMIs deducted at source aren't modeled here and could further reduce your actual in-hand pay." },
+    ],
+  },
+
+  "currency-calculators/gold-price-calculator": {
+    howToUse: [
+      "Enter today's 24K gold rate per gram from your local jeweller or a live price source.",
+      "Select the purity of your gold (24K, 22K, 18K, or 14K).",
+      "Enter the quantity and select your unit (gram, 10 grams, troy ounce, or tola).",
+      "Optionally add making charges to see the total cost including labor.",
+    ],
+    features: [
+      "Converts between common purity levels (24K/22K/18K/14K) automatically.",
+      "Supports multiple weight units including tola and troy ounce.",
+      "Optional making charges calculation.",
+      "Instant value calculation as you type.",
+      "Free and doesn't require any live API or account.",
+    ],
+    faq: [
+      { question: "Does this fetch live gold rates automatically?", answer: "No, this calculator doesn't connect to any live pricing API. You need to enter the current gold rate per gram yourself, which you can find from your local jeweller, bank, or a financial news website." },
+      { question: "What's the difference between 24K, 22K, and 18K gold?", answer: "The 'K' (karat) indicates purity: 24K is 99.9% pure gold, 22K is about 91.6% pure (mixed with other metals for durability), and 18K is 75% pure \u2014 commonly used in jewellery for strength." },
+      { question: "What is a tola?", answer: "A tola is a traditional unit of mass used in South Asia for gold and silver, equal to approximately 11.6638 grams." },
+      { question: "Are making charges and GST included in the gold value?", answer: "The base gold value doesn't include making charges or GST by default \u2014 you can add an estimated making charge percentage to see the total, but jewellers may also add GST (typically 3%) separately." },
+    ],
+  },
+
+  "currency-calculators/silver-price-calculator": {
+    howToUse: [
+      "Enter today's silver rate per gram from your local jeweller or a live price source.",
+      "Enter the quantity and select your unit (gram, 10 grams, kilogram, or troy ounce).",
+      "Optionally add making charges to see the total cost.",
+      "View the calculated weight and silver value instantly.",
+    ],
+    features: [
+      "Supports multiple weight units including kilograms and troy ounces.",
+      "Optional making charges calculation for jewellery purchases.",
+      "Instant, accurate value calculation.",
+      "Works for any currency \u2014 just enter your local silver rate.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "Does this fetch live silver rates?", answer: "No, you need to enter the current silver rate per gram yourself from a reliable source like your local jeweller, bank, or financial news website \u2014 this tool doesn't connect to live pricing data." },
+      { question: "Why do silver rates fluctuate more than gold?", answer: "Silver has significant industrial demand (electronics, solar panels) in addition to investment demand, which makes its price more volatile compared to gold, which is primarily driven by investment and jewellery demand." },
+      { question: "Are making charges and GST included?", answer: "The base silver value doesn't include making charges or GST by default. You can add an estimated making charge percentage; jewellers typically add GST separately on top of the final price." },
+      { question: "What unit should I use for silver coins vs. jewellery?", answer: "Silver coins and bars are often priced per gram or per kilogram, while jewellery may be priced per gram or per 10 grams depending on your jeweller's convention." },
+    ],
+  },
+
+  "business-calculators/gst-invoice-generator": {
+    howToUse: [
+      "Enter your business name, client name, and invoice number.",
+      "Add one or more line items with description, quantity, and unit price.",
+      "Select the applicable GST rate and whether the supply is intra-state or inter-state.",
+      "View the generated invoice preview with CGST/SGST or IGST breakdown and total.",
+    ],
+    features: [
+      "Automatically splits GST into CGST + SGST (intra-state) or shows full IGST (inter-state).",
+      "Supports multiple line items with automatic subtotal calculation.",
+      "Clean, readable invoice preview format.",
+      "All standard GST slabs supported.",
+      "Free and works entirely in your browser.",
+    ],
+    faq: [
+      { question: "Is this invoice GST-filing compliant?", answer: "This generates a simple reference invoice preview showing correct tax calculations, but for official GSTR filing and e-invoicing compliance (with QR codes, IRN, etc.), use dedicated GST-compliant accounting software." },
+      { question: "When should I charge CGST + SGST vs. IGST?", answer: "Charge CGST + SGST when the buyer and seller are in the same state (intra-state supply). Charge IGST when they're in different states (inter-state supply) or for exports." },
+      { question: "Can I add a discount to this invoice?", answer: "This generator focuses on GST-specific invoicing with the CGST/SGST/IGST split. For invoices with a discount component, use the general Invoice Calculator instead." },
+      { question: "What GST rate should I select?", answer: "GST rates depend on the specific goods or services you're billing \u2014 common rates are 5%, 12%, 18%, and 28%. Check the official GST rate schedule for your product/service category." },
+    ],
+  },
+
+  "business-calculators/profit-margin-calculator": {
+    howToUse: [
+      "Enter your cost price (what you paid) and selling price (what you charge).",
+      "The calculator instantly computes your profit amount.",
+      "View both your profit margin (% of selling price) and markup (% of cost price).",
+      "Use these figures to compare pricing strategies across products.",
+    ],
+    features: [
+      "Calculates both margin and markup from the same inputs.",
+      "Instant, real-time results as you type.",
+      "Works in any currency.",
+      "Useful for retail, wholesale, and service pricing decisions.",
+      "Free with no sign-up required.",
+    ],
+    faq: [
+      { question: "What's the difference between margin and markup?", answer: "Margin is profit as a percentage of the selling price, while markup is profit as a percentage of the cost price. A 50% markup on cost doesn't equal a 50% margin \u2014 they're calculated on different bases." },
+      { question: "Which should I use for pricing my products?", answer: "Markup is often used to set a selling price from a known cost (e.g., 'mark up by 40%'), while margin is used to analyze overall profitability from a sales perspective. Both are useful depending on your business context." },
+      { question: "What's a good profit margin for a small business?", answer: "It varies widely by industry \u2014 retail often sees 20\u201350% margins, while services can have much higher margins (50\u201380%+). Compare against industry benchmarks for your specific sector." },
+      { question: "Does this include taxes or overhead costs?", answer: "No, this calculates margin/markup based purely on cost price and selling price you provide. Include all relevant costs (materials, labor, overhead) in your cost price for an accurate profit picture." },
+    ],
+  },
+
+  "business-calculators/break-even-calculator": {
+    howToUse: [
+      "Enter your total fixed costs (rent, salaries, etc. that don't change with sales volume).",
+      "Enter your variable cost per unit (materials, packaging, etc.).",
+      "Enter your selling price per unit.",
+      "View the number of units and revenue needed to break even.",
+    ],
+    features: [
+      "Calculates both break-even units and break-even revenue.",
+      "Shows contribution margin per unit for deeper analysis.",
+      "Instant recalculation as you adjust costs or pricing.",
+      "Useful for startups, product launches, and pricing decisions.",
+      "Free and works entirely in your browser.",
+    ],
+    faq: [
+      { question: "What is the break-even point?", answer: "The break-even point is the sales volume (in units or revenue) at which your total revenue exactly equals your total costs \u2014 beyond this point, you start making a profit." },
+      { question: "What if my selling price is lower than my variable cost?", answer: "If your price per unit is at or below your variable cost per unit, you lose money on every sale and can never break even, regardless of volume \u2014 the calculator will show an infinite break-even point in this case." },
+      { question: "What counts as a fixed cost vs. a variable cost?", answer: "Fixed costs (rent, salaries, insurance) stay the same regardless of how much you sell. Variable costs (raw materials, packaging, shipping) scale directly with each unit sold." },
+      { question: "How can I lower my break-even point?", answer: "You can lower your break-even point by reducing fixed costs, reducing variable costs per unit, or increasing your selling price \u2014 try adjusting each input to see the impact." },
+    ],
+  },
+
+  "business-calculators/discount-calculator": {
+    howToUse: [
+      "Choose whether you want to find the discounted price or the original price.",
+      "Enter the known price (original or discounted) and the discount percentage.",
+      "View the calculated result instantly.",
+      "Switch modes anytime to solve for a different variable.",
+    ],
+    features: [
+      "Two modes: forward (find sale price) and reverse (find original price).",
+      "Instant, accurate calculations with no rounding errors.",
+      "Works for any currency and discount percentage.",
+      "Useful for shoppers, retailers, and sales planning.",
+      "Free with no usage limits.",
+    ],
+    faq: [
+      { question: "How do I calculate the original price from a discounted price?", answer: "Switch to 'Find original price' mode, enter the discounted (final) price and the discount percentage that was applied \u2014 the calculator divides by (1 \u2212 discount%) to reverse the calculation." },
+      { question: "Can this handle multiple stacked discounts?", answer: "This calculator handles a single discount percentage at a time. For stacked discounts (e.g., 20% off, then an additional 10% off), apply them one at a time using the result of the first as the input for the second." },
+      { question: "Does this include tax on the discounted price?", answer: "No, this calculates the discount only. Add tax separately using the GST or VAT calculator if needed on the final discounted amount." },
+      { question: "What's a typical discount range for retail sales?", answer: "Retail discounts commonly range from 10\u201370% depending on the type of sale (seasonal clearance, festival sale, clearance stock, etc.)." },
+    ],
+  },
+
+  "business-calculators/commission-calculator": {
+    howToUse: [
+      "Enter the total sale amount.",
+      "Set the commission percentage rate.",
+      "View the commission earned and the net amount after commission.",
+      "Adjust either value to see the impact instantly.",
+    ],
+    features: [
+      "Simple, instant flat-rate commission calculation.",
+      "Shows both commission earned and net amount.",
+      "Works for any currency and commission rate.",
+      "Useful for sales reps, brokers, affiliates, and agents.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "How is commission typically calculated?", answer: "Most commission structures use a flat percentage of the sale amount, though some businesses use tiered or graduated rates that increase as sales volume grows \u2014 this calculator models the simple flat-rate case." },
+      { question: "Is commission income taxable?", answer: "Yes, commission income is generally taxable as regular income in most jurisdictions. Consult a tax professional for how it's treated in your specific situation (employee vs. self-employed)." },
+      { question: "What's a typical real estate commission rate?", answer: "Real estate commission rates vary by market and region, commonly ranging from 1\u20136% of the property sale value, often split between buyer's and seller's agents." },
+      { question: "Can I use this for calculating my net proceeds after a broker fee?", answer: "Yes, enter your gross sale amount and the broker's commission percentage to see your net amount after the commission is deducted." },
+    ],
+  },
+
+  "business-calculators/vat-calculator": {
+    howToUse: [
+      "Enter the amount you want to calculate VAT on.",
+      "Set the applicable VAT rate for your country.",
+      "Choose whether your amount excludes VAT (add VAT) or includes VAT (remove VAT).",
+      "View the net amount, VAT amount, and gross amount instantly.",
+    ],
+    features: [
+      "Works for any country's VAT rate (UK, EU, and others).",
+      "Two modes: add VAT or extract VAT from a gross price.",
+      "Instant, accurate calculations.",
+      "Useful for invoicing, shopping, and business accounting.",
+      "Free with no usage limits.",
+    ],
+    faq: [
+      { question: "What is VAT?", answer: "VAT (Value Added Tax) is a consumption tax charged on goods and services at each stage of production or distribution, ultimately borne by the end consumer, commonly used across the UK, EU, and many other countries." },
+      { question: "What's the standard VAT rate in the UK?", answer: "The UK's standard VAT rate is 20%, though reduced rates (5%) and zero rates apply to certain goods and services. Always check the current rate for your specific product category." },
+      { question: "How do I remove VAT from a gross price?", answer: "Select 'Remove VAT' mode and enter the VAT-inclusive (gross) price \u2014 the calculator divides by (1 + VAT rate) to find the net price and VAT component." },
+      { question: "Is VAT the same as GST?", answer: "VAT and GST (Goods and Services Tax) are conceptually similar consumption taxes used in different countries \u2014 India uses GST terminology, while the UK, EU, and many other regions use VAT." },
+    ],
+  },
+
+  "business-calculators/invoice-calculator": {
+    howToUse: [
+      "Add one or more line items with description, quantity, and unit price.",
+      "Set an optional discount percentage and your applicable tax rate.",
+      "View the subtotal, discount, tax, and final total instantly.",
+      "Add or remove line items as needed.",
+    ],
+    features: [
+      "Supports unlimited line items with automatic subtotal calculation.",
+      "Optional discount applied before tax.",
+      "Generic tax rate field works for any country's tax system.",
+      "Instant recalculation as you edit any field.",
+      "Free and works entirely in your browser.",
+    ],
+    faq: [
+      { question: "Can I use this for GST invoices in India?", answer: "For India-specific GST invoices with CGST/SGST/IGST breakdown, use the dedicated GST Invoice Generator instead, which handles the specific tax split rules." },
+      { question: "Does this calculator save my invoices?", answer: "No, this tool calculates totals in real time in your browser and doesn't save or store any data \u2014 refreshing the page will reset your line items." },
+      { question: "Can I apply a discount and tax together?", answer: "Yes, the discount is applied to the subtotal first, and then tax is calculated on the discounted amount, which matches how most real-world invoices are structured." },
+      { question: "Is this suitable for any country?", answer: "Yes, since the tax rate is a generic percentage field, you can use this for any country's sales tax, VAT, or GST system by entering the appropriate rate." },
+    ],
+  },
+
+  "personal-finance-calculators/budget-planner": {
+    howToUse: [
+      "Enter your monthly income.",
+      "Add your expense categories with their respective amounts.",
+      "Add, edit, or remove categories as needed to match your actual spending.",
+      "View your total expenses, monthly savings, and savings rate instantly.",
+    ],
+    features: [
+      "Fully customizable expense categories.",
+      "Instant savings rate calculation.",
+      "Useful for applying the 50/30/20 budgeting rule or your own custom framework.",
+      "No sign-up or data storage \u2014 everything happens in your browser.",
+      "Free and works on any device.",
+    ],
+    faq: [
+      { question: "What is the 50/30/20 budgeting rule?", answer: "It's a popular guideline suggesting you allocate 50% of income to needs (rent, groceries, utilities), 30% to wants (entertainment, dining out), and 20% to savings and debt repayment." },
+      { question: "What's considered a good savings rate?", answer: "A savings rate of 20% or higher is generally considered healthy, though FIRE (Financial Independence, Retire Early) followers often aim for 40-50%+ to retire earlier." },
+      { question: "Does this track my spending automatically?", answer: "No, this is a planning tool where you manually enter your income and expected/actual expenses. For automatic transaction tracking, you'd need a bank-linked budgeting app." },
+      { question: "Can I add unlimited expense categories?", answer: "Yes, you can add as many custom categories as you need to accurately reflect your spending pattern." },
+    ],
+  },
+
+  "personal-finance-calculators/expense-tracker": {
+    howToUse: [
+      "Add each expense with a description, category, and amount.",
+      "Add as many expenses as you need to track your spending.",
+      "View your total spending and a category-wise breakdown with visual bars.",
+      "Remove or edit any expense entry as needed.",
+    ],
+    features: [
+      "Category-wise spending breakdown with visual progress bars.",
+      "Instant total and percentage calculations.",
+      "Simple, distraction-free interface for quick logging.",
+      "Works entirely in your browser \u2014 no account needed.",
+      "Free with unlimited entries.",
+    ],
+    faq: [
+      { question: "Does this save my expenses permanently?", answer: "No, this tool works in your browser's memory for the current session only \u2014 it doesn't save data permanently. For ongoing expense tracking, note down your totals periodically or use a dedicated expense tracking app." },
+      { question: "Can I export my expense data?", answer: "Currently, this tool doesn't support exporting data. It's designed for quick, one-time expense breakdowns and category analysis." },
+      { question: "What categories should I use?", answer: "The tool includes common categories like Food, Transport, Housing, Utilities, Entertainment, Shopping, Health, and Other \u2014 pick whichever best matches each expense." },
+      { question: "Is this the same as the Budget Planner?", answer: "The Budget Planner compares your income against planned expense categories to calculate a savings rate, while the Expense Tracker logs individual transactions and shows a category-wise spending breakdown." },
+    ],
+  },
+
+  "personal-finance-calculators/net-worth-calculator": {
+    howToUse: [
+      "List all your assets (cash, investments, property, vehicles, etc.) with their current values.",
+      "List all your liabilities (loans, credit card debt, etc.) with their outstanding balances.",
+      "Add or remove items as needed to match your full financial picture.",
+      "View your total assets, total liabilities, and overall net worth.",
+    ],
+    features: [
+      "Simple, flexible asset and liability line items.",
+      "Instant net worth calculation.",
+      "Useful for tracking your financial progress over time.",
+      "Works entirely in your browser \u2014 fully private.",
+      "Free with unlimited entries.",
+    ],
+    faq: [
+      { question: "What counts as an asset?", answer: "Assets include cash, bank balances, investments (stocks, mutual funds, FDs), real estate, vehicles, and any other items of value you own." },
+      { question: "What counts as a liability?", answer: "Liabilities include any outstanding debt: home loans, car loans, personal loans, credit card balances, and any other money you owe." },
+      { question: "How often should I calculate my net worth?", answer: "Many financial planners recommend recalculating your net worth quarterly or annually to track your financial progress over time and adjust your savings/investment strategy accordingly." },
+      { question: "Is a negative net worth bad?", answer: "A negative net worth (more liabilities than assets) is common early in life, especially with student loans or a large mortgage, and isn't necessarily alarming if you have a clear plan to build assets and pay down debt over time." },
+    ],
+  },
+
+  "personal-finance-calculators/emergency-fund-calculator": {
+    howToUse: [
+      "Enter your essential monthly expenses (rent, food, utilities, EMIs, etc.).",
+      "Choose your desired months of coverage (typically 3\u20136 months).",
+      "Enter your current emergency savings and monthly savings capacity.",
+      "View your target fund amount, shortfall, and months needed to reach your goal.",
+    ],
+    features: [
+      "Calculates a personalized emergency fund target.",
+      "Shows exactly how much more you need to save and how long it will take.",
+      "Adjustable coverage period from 3 to 12 months.",
+      "Free, instant, and completely private.",
+      "Useful first step before aggressive investing.",
+    ],
+    faq: [
+      { question: "How many months of expenses should my emergency fund cover?", answer: "Most financial planners recommend 3\u20136 months of essential expenses. Freelancers, single-income households, or those in unstable industries may want 9\u201312 months for extra security." },
+      { question: "Where should I keep my emergency fund?", answer: "Emergency funds should be kept in easily accessible, low-risk accounts like a savings account, liquid mutual fund, or short-term FD \u2014 not in volatile investments like stocks, since you may need quick access." },
+      { question: "Should I include essential expenses or all expenses?", answer: "Use only essential/non-negotiable expenses (rent, groceries, utilities, insurance, minimum debt payments) rather than discretionary spending, since an emergency fund is meant to cover necessities during a crisis." },
+      { question: "Should I build an emergency fund before investing?", answer: "Most financial advisors recommend building at least a partial emergency fund before aggressive investing, since it prevents you from having to sell investments at a loss during a financial emergency." },
+    ],
+  },
+
+  "personal-finance-calculators/debt-payoff-calculator": {
+    howToUse: [
+      "Add all your debts with their balance, interest rate, and minimum payment.",
+      "Enter any extra monthly budget you can put toward debt beyond the minimums.",
+      "Choose the snowball (smallest balance first) or avalanche (highest rate first) strategy.",
+      "View your total payoff time, total interest paid, and the order debts get eliminated.",
+    ],
+    features: [
+      "Supports both snowball and avalanche payoff strategies.",
+      "Simulates month-by-month payoff across multiple debts.",
+      "Shows total interest paid and time to become debt-free.",
+      "Displays the exact order debts will be paid off in.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "What's the difference between snowball and avalanche methods?", answer: "The avalanche method pays off the highest-interest-rate debt first, which minimizes total interest paid. The snowball method pays off the smallest balance first, providing psychological quick wins that can help maintain motivation." },
+      { question: "Which method should I choose?", answer: "Avalanche saves you the most money mathematically, but snowball can be more motivating for many people since you eliminate debts faster in the beginning. Choose based on what will keep you most consistent." },
+      { question: "Does extra payment go to all debts or just one?", answer: "In both methods, minimum payments are made on all debts, while any extra budget is concentrated on just one debt at a time (based on the chosen strategy) until it's paid off, then rolled onto the next." },
+      { question: "What if I can't afford the minimum payments?", answer: "If your total minimum payments exceed your budget, you may need to explore debt consolidation, balance transfer offers, or speak with a credit counselor before this calculator's projections become realistic." },
+    ],
+  },
+
+  "personal-finance-calculators/credit-card-interest-calculator": {
+    howToUse: [
+      "Enter your outstanding credit card balance.",
+      "Enter the annual interest rate (APR) charged by your card.",
+      "Enter the fixed monthly payment you plan to make.",
+      "View the months to pay off, total interest paid, and total amount paid.",
+    ],
+    features: [
+      "Simulates monthly compounding credit card interest accurately.",
+      "Warns you if your payment doesn't cover accruing interest.",
+      "Shows total interest cost, not just the payoff timeline.",
+      "Useful for planning faster debt payoff strategies.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "Why is credit card interest so expensive?", answer: "Credit cards typically charge 30\u201348% APR in India (or 15\u201330% in many other countries), much higher than other loan types, and interest compounds monthly \u2014 which is why balances can balloon quickly if not paid off." },
+      { question: "What happens if I only pay the minimum amount?", answer: "Paying only the minimum (often 2\u20135% of the balance) can take years to pay off and cost significantly more in interest than the original balance \u2014 this calculator shows you exactly how much more." },
+      { question: "What does it mean if my payment doesn't cover the interest?", answer: "If your monthly payment is less than or equal to the interest accruing each month, your balance will never decrease (and may even grow) \u2014 the calculator flags this scenario so you know to increase your payment." },
+      { question: "How can I pay off my credit card faster?", answer: "Increasing your monthly payment even slightly can dramatically reduce both your payoff time and total interest paid, due to how compounding interest works on a shrinking balance." },
+    ],
+  },
+
+  "insurance-calculators/life-insurance-calculator": {
+    howToUse: [
+      "Enter your annual income and how many years of income you want to replace.",
+      "Enter your outstanding loans and liabilities.",
+      "Enter any existing life insurance cover you already have.",
+      "View your recommended additional life insurance cover needed.",
+    ],
+    features: [
+      "Uses the Human Life Value (HLV) method for a quick estimate.",
+      "Accounts for existing liabilities and cover.",
+      "Simple, fast estimate without lengthy forms.",
+      "Useful starting point before consulting an insurance advisor.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "How much life insurance do I need?", answer: "A common rule of thumb is 10\u201315x your annual income, but the ideal amount depends on your specific liabilities, dependents, and financial goals \u2014 this calculator gives a more personalized estimate." },
+      { question: "What is the Human Life Value method?", answer: "It's an approach that estimates the economic value of a person's life to their dependents by calculating the income they would have earned over a set number of years, adjusted for liabilities and existing cover." },
+      { question: "Should I buy term insurance or a whole life/investment-linked policy?", answer: "Term insurance is generally recommended for pure protection needs since it offers the highest cover for the lowest premium. Investment-linked policies mix insurance and investment, often at a lower overall return \u2014 many experts suggest 'buy term, invest the rest.'" },
+      { question: "How is this different from the Term Insurance Need Calculator?", answer: "This calculator gives a quick, general HLV-based estimate. The Term Insurance Need Calculator is more detailed, factoring in specific future goals (education, marriage) and existing savings for a more precise sum assured recommendation." },
+    ],
+  },
+
+  "insurance-calculators/health-insurance-estimator": {
+    howToUse: [
+      "Enter the age of the eldest member to be covered.",
+      "Enter the number of family members to be included in the policy.",
+      "Set your desired sum insured amount.",
+      "Select your city tier to see a rough estimated annual premium.",
+    ],
+    features: [
+      "Quick, rough premium estimate based on common pricing patterns.",
+      "Accounts for age, family size, sum insured, and city tier.",
+      "Useful for initial budgeting before requesting real quotes.",
+      "Free and instant \u2014 no personal health data required.",
+      "Completely private, runs entirely in your browser.",
+    ],
+    faq: [
+      { question: "Is this an actual insurance quote?", answer: "No, this is a rough, ballpark estimate based on typical age-band and city-tier pricing patterns \u2014 it is not a real insurer quote. Actual premiums depend on medical history, specific insurer pricing, and underwriting, so always get quotes directly from insurers." },
+      { question: "Why does age affect the premium so much?", answer: "Health insurance premiums increase with age because older individuals statistically have a higher likelihood of health claims, so insurers charge more to cover the increased risk." },
+      { question: "Should I buy an individual or family floater policy?", answer: "A family floater policy covers all family members under one shared sum insured, often at a lower combined premium than individual policies, but the sum insured is shared \u2014 evaluate based on your family's health profile and needs." },
+      { question: "How much sum insured should I choose?", answer: "Given rising healthcare costs, many experts recommend a minimum of \u20B95\u201310 lakh sum insured for individuals in metro cities, with higher amounts recommended for families or those with existing health conditions." },
+    ],
+  },
+
+  "insurance-calculators/term-insurance-need-calculator": {
+    howToUse: [
+      "Enter your annual income and years remaining until retirement.",
+      "Enter your outstanding loans and estimated cost of future goals (education, marriage, etc.).",
+      "Enter your existing savings/investments and any existing term insurance cover.",
+      "View your recommended term insurance sum assured.",
+    ],
+    features: [
+      "Detailed, goal-based need calculation beyond simple income multiples.",
+      "Accounts for loans, future goals, savings, and existing cover.",
+      "More precise than generic 'X times income' rules of thumb.",
+      "Free, instant, and completely private.",
+      "Useful before comparing term insurance plans.",
+    ],
+    faq: [
+      { question: "How is this different from a simple income-multiple rule?", answer: "Generic rules like '10x your income' don't account for your specific liabilities, future goals, or existing savings. This calculator factors in all of these for a more personalized and accurate sum assured recommendation." },
+      { question: "What counts as a 'future goal' in this calculator?", answer: "Future goals include costs like your children's higher education, wedding expenses, or any other large planned expenditure your family would need to fund even in your absence." },
+      { question: "Should I subtract my existing investments from my insurance need?", answer: "Yes, existing savings and investments that your family could use in an emergency reduce the additional insurance cover needed \u2014 this calculator subtracts them automatically." },
+      { question: "How often should I recalculate my term insurance need?", answer: "It's a good practice to recalculate every few years or after major life events (marriage, children, a new loan, a salary increase) to ensure your cover stays adequate." },
+    ],
+  },
+
+  "real-estate-calculators/stamp-duty-calculator": {
+    howToUse: [
+      "Enter the property value.",
+      "Select your state from the dropdown to see the applicable stamp duty rate.",
+      "Adjust the registration fee percentage if needed.",
+      "View the stamp duty, registration fee, and total charges.",
+    ],
+    features: [
+      "Covers major Indian states with representative stamp duty rates.",
+      "Separate stamp duty and registration fee calculation.",
+      "Editable rates for custom scenarios.",
+      "Instant total transaction cost estimate.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "Why do stamp duty rates vary by state?", answer: "Stamp duty is a state subject in India, so each state government sets its own rates, which can also vary based on property type, location (urban/rural), and the owner's gender in some states." },
+      { question: "Do women get a stamp duty discount?", answer: "Yes, several Indian states (like Delhi) offer a reduced stamp duty rate for properties registered in a woman's name, as an incentive for female property ownership." },
+      { question: "Are these rates always accurate?", answer: "The rates shown are representative reference values that can change with state government notifications. Always verify the current rate on your state's registration/revenue department website before a transaction." },
+      { question: "What is the registration fee separate from stamp duty?", answer: "Registration fee is an additional charge (typically 1% of property value) paid to register the property transaction with the government, separate from the stamp duty tax itself." },
+    ],
+  },
+
+  "real-estate-calculators/rental-yield-calculator": {
+    howToUse: [
+      "Enter the property's current market value.",
+      "Enter the monthly rental income you receive (or expect to receive).",
+      "Enter your annual expenses (maintenance, property tax, insurance).",
+      "View your gross and net rental yield percentages.",
+    ],
+    features: [
+      "Calculates both gross and net rental yield.",
+      "Accounts for annual property-related expenses.",
+      "Useful for comparing different property investment options.",
+      "Instant, accurate percentage calculations.",
+      "Free and works entirely in your browser.",
+    ],
+    faq: [
+      { question: "What is rental yield?", answer: "Rental yield measures the annual rental income as a percentage of the property's value \u2014 it's a key metric for evaluating whether a property investment generates good ongoing cash flow." },
+      { question: "What's a good rental yield in India?", answer: "Residential rental yields in India typically range from 2\u20134%, which is relatively low compared to some other countries. Commercial properties often offer higher yields (6\u201310%)." },
+      { question: "What's the difference between gross and net yield?", answer: "Gross yield is annual rent divided by property value, without deducting any costs. Net yield subtracts annual expenses (maintenance, tax, insurance) from the rental income first, giving a more realistic return figure." },
+      { question: "Does rental yield account for property appreciation?", answer: "No, rental yield only measures the income return from rent. Use the Property ROI Calculator to see a combined return that includes both rental income and capital appreciation." },
+    ],
+  },
+
+  "real-estate-calculators/mortgage-calculator": {
+    howToUse: [
+      "Enter the home price and your down payment percentage.",
+      "Set the interest rate and loan term.",
+      "Enter your annual property tax rate, annual home insurance cost, and any monthly HOA fees.",
+      "View your full monthly mortgage payment broken down into principal, interest, taxes, insurance, and HOA (PITI).",
+    ],
+    features: [
+      "Calculates the full PITI (Principal, Interest, Taxes, Insurance) payment, common in US-style mortgages.",
+      "Includes optional HOA fee in the total monthly payment.",
+      "Accurate reducing-balance EMI formula for principal and interest.",
+      "Adjustable down payment, loan term, and rate.",
+      "Free and works in any currency.",
+    ],
+    faq: [
+      { question: "What does PITI stand for?", answer: "PITI stands for Principal, Interest, Taxes, and Insurance \u2014 the four components that typically make up a full monthly mortgage payment in markets like the US, where property tax and insurance are often escrowed with the lender." },
+      { question: "How is this different from the Home Loan Calculator?", answer: "The Home Loan Calculator focuses on pure EMI (principal + interest), common in India and similar markets. This Mortgage Calculator adds property tax, home insurance, and HOA fees for a fuller US-style monthly payment picture." },
+      { question: "What's a typical down payment percentage?", answer: "In the US, conventional mortgages often require 3\u201320% down, with 20% avoiding private mortgage insurance (PMI). This calculator lets you adjust the percentage to see the impact on your monthly payment." },
+      { question: "What is an HOA fee?", answer: "HOA (Homeowners Association) fees are recurring charges paid by owners in certain communities or condos to cover shared amenities and maintenance \u2014 common in the US but less so elsewhere." },
+    ],
+  },
+
+  "real-estate-calculators/property-roi": {
+    howToUse: [
+      "Enter the purchase price and any purchase costs (stamp duty, renovation, etc.).",
+      "Enter your expected annual rental income and annual expenses.",
+      "Set your expected annual appreciation rate and holding period.",
+      "View your projected sale value, net profit, and total/annualized ROI.",
+    ],
+    features: [
+      "Combines rental income and capital appreciation into one ROI figure.",
+      "Accounts for purchase costs and selling costs.",
+      "Shows both total and annualized ROI for easy comparison with other investments.",
+      "Fully adjustable holding period and appreciation assumptions.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "What is a good ROI for a real estate investment?", answer: "It varies by market and risk tolerance, but many investors target an annualized ROI of 10-15%+ when combining rental income and appreciation, to justify the illiquidity and effort of real estate versus other investments." },
+      { question: "Does this account for a home loan/mortgage on the property?", answer: "No, this calculates ROI assuming a cash purchase. If you finance the property with a loan, your actual cash-on-cash return will differ due to EMI payments and leverage effects \u2014 factor in your loan payments separately." },
+      { question: "How accurate are appreciation rate assumptions?", answer: "Property appreciation varies significantly by location, market cycle, and property type. Use a conservative estimate based on historical trends in your specific area rather than a generic average." },
+      { question: "What selling costs should I account for?", answer: "Selling costs typically include broker commission, legal fees, and any capital gains tax \u2014 this calculator lets you set an estimated selling cost percentage to account for these." },
+    ],
+  },
+
+  "crypto-calculators/crypto-profit-calculator": {
+    howToUse: [
+      "Enter the quantity of crypto you bought.",
+      "Enter your buy price and sell price per unit.",
+      "Enter the buy and sell exchange fees (as a percentage).",
+      "View your cost basis, sale proceeds, net profit, and ROI after fees.",
+    ],
+    features: [
+      "Accounts for exchange trading fees on both buy and sell sides.",
+      "Shows cost basis and sale proceeds separately for transparency.",
+      "Instant net profit and ROI percentage calculation.",
+      "Works for any cryptocurrency and any currency.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "Why do exchange fees matter for profit calculation?", answer: "Trading fees (often 0.1\u20131% per trade) reduce your effective profit on both the buy and sell side \u2014 ignoring them can make your actual returns look better than they really are, especially on frequent trades." },
+      { question: "Is crypto profit taxable?", answer: "Yes, in most jurisdictions including India, profits from cryptocurrency trading are taxable (in India, at a flat 30% rate on gains plus applicable cess/surcharge, with no deduction for losses against other income). Check your local tax rules." },
+      { question: "Does this account for network/gas fees?", answer: "This calculator focuses on exchange trading fees. If you're also paying blockchain network/gas fees for transfers, factor those into your buy price or as an additional cost separately." },
+      { question: "Can I use this for any cryptocurrency?", answer: "Yes, the calculator works with any quantity, price, and currency \u2014 just enter your specific trade details regardless of which coin or token you traded." },
+    ],
+  },
+
+  "crypto-calculators/mining-profit-calculator": {
+    howToUse: [
+      "Get your estimated daily coin reward from your mining pool's dashboard or hardware-specific mining calculator.",
+      "Enter that reward along with the current coin price.",
+      "Enter your mining rig's power consumption and your local electricity cost per kWh.",
+      "View your daily and monthly net profit after electricity costs and pool fees.",
+    ],
+    features: [
+      "Calculates daily and monthly mining profitability after real costs.",
+      "Accounts for electricity cost and pool fees separately.",
+      "Shows the break-even electricity price for your setup.",
+      "Works for any cryptocurrency and mining hardware.",
+      "Free and completely private.",
+    ],
+    faq: [
+      { question: "Why doesn't this calculator use live network difficulty data?", answer: "Network difficulty changes constantly and requires a live data feed. Instead, this calculator asks for your estimated daily coin reward (available from your mining pool's dashboard or a hardware-specific mining calculator), which already accounts for current difficulty." },
+      { question: "What is a pool fee?", answer: "Most miners join a mining pool to combine hashing power for more consistent payouts. Pools typically charge a fee (often 1\u20133%) on your mining rewards for this service." },
+      { question: "How do I find my rig's power consumption?", answer: "Check your mining hardware's (GPU/ASIC) specification sheet for its power draw in watts, or measure it directly with a power meter for the most accurate figure." },
+      { question: "Is crypto mining still profitable?", answer: "Profitability depends heavily on your electricity cost, hardware efficiency, coin price, and network difficulty \u2014 use this calculator regularly with updated numbers, as conditions can change quickly." },
+    ],
+  },
 };
 
 export function getToolContent(categorySlug: string, toolSlug: string): ToolContent | undefined {

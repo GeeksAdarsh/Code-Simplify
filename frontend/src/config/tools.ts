@@ -2152,6 +2152,372 @@ export const categories: Category[] = [
       ),
     ],
   },
+  {
+    slug: "savings-calculators",
+    title: "Savings Calculators",
+    icon: "\u{1F4B0}",
+    description: "Project maturity values for fixed deposits, recurring deposits, PPF, EPF, NPS, and Sukanya Samriddhi accounts.",
+    tools: [
+      tool(
+        "fd-calculator",
+        "FD Calculator",
+        "Calculate the maturity value and interest earned on a Fixed Deposit with your choice of compounding frequency.",
+        "live",
+        ["fd calculator", "fixed deposit calculator", "fd maturity calculator", "fd interest calculator"]
+      ),
+      tool(
+        "rd-calculator",
+        "RD Calculator",
+        "Calculate the maturity value of a Recurring Deposit based on your monthly deposit, interest rate, and tenure.",
+        "live",
+        ["rd calculator", "recurring deposit calculator", "rd maturity calculator", "rd interest calculator"]
+      ),
+      tool(
+        "ppf-calculator",
+        "PPF Calculator",
+        "Calculate your Public Provident Fund maturity value based on yearly contributions and the current interest rate.",
+        "live",
+        ["ppf calculator", "public provident fund calculator", "ppf maturity calculator", "ppf interest calculator"]
+      ),
+      tool(
+        "epf-calculator",
+        "EPF Calculator",
+        "Estimate your Employee Provident Fund corpus at retirement based on your salary, contributions, and annual increments.",
+        "live",
+        ["epf calculator", "employee provident fund calculator", "epf maturity calculator", "pf calculator"]
+      ),
+      tool(
+        "nps-calculator",
+        "NPS Calculator",
+        "Estimate your National Pension Scheme corpus at retirement and the resulting monthly pension from annuitization.",
+        "live",
+        ["nps calculator", "national pension scheme calculator", "nps maturity calculator", "nps pension calculator"]
+      ),
+      tool(
+        "sukanya-calculator",
+        "Sukanya Samriddhi Calculator",
+        "Calculate the maturity value of a Sukanya Samriddhi Yojana account based on yearly deposits and the current interest rate.",
+        "live",
+        ["sukanya samriddhi calculator", "ssy calculator", "sukanya samriddhi yojana calculator", "girl child savings scheme calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "retirement-calculators",
+    title: "Retirement Calculators",
+    icon: "\u{1F3D6}\uFE0F",
+    description: "Plan your retirement corpus, financial independence (FIRE) timeline, pension payouts, and general time-value-of-money calculations.",
+    tools: [
+      tool(
+        "retirement-calculator",
+        "Retirement Calculator",
+        "Estimate the retirement corpus you'll need and the monthly SIP required to build it, adjusted for inflation.",
+        "live",
+        ["retirement calculator", "retirement corpus calculator", "retirement planning calculator", "how much do i need to retire"]
+      ),
+      tool(
+        "fire-calculator",
+        "FIRE Calculator",
+        "Calculate your Financial Independence, Retire Early (FIRE) number and estimate how many years until you reach it.",
+        "live",
+        ["fire calculator", "financial independence calculator", "fire number calculator", "retire early calculator"]
+      ),
+      tool(
+        "pension-calculator",
+        "Pension Calculator",
+        "Estimate your retirement corpus and the monthly pension it can generate based on your contributions and annuity rate.",
+        "live",
+        ["pension calculator", "monthly pension calculator", "pension corpus calculator", "retirement pension calculator"]
+      ),
+      tool(
+        "future-value",
+        "Future Value Calculator",
+        "Calculate the future value of a present sum plus optional periodic contributions at a given rate of return.",
+        "live",
+        ["future value calculator", "fv calculator", "future value of money calculator", "compound interest future value"]
+      ),
+      tool(
+        "present-value",
+        "Present Value Calculator",
+        "Calculate the present value of a future sum of money, discounted at your chosen rate of return.",
+        "live",
+        ["present value calculator", "pv calculator", "present value of money calculator", "discounted value calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "tax-calculators",
+    title: "Tax Calculators",
+    icon: "\u{1F4CB}",
+    description: "Estimate income tax, GST, HRA exemption, capital gains, TDS, and salary/take-home pay for India.",
+    tools: [
+      tool(
+        "income-tax-calculator",
+        "Income Tax Calculator",
+        "Estimate your income tax liability under both the new and old tax regimes and see which one saves you more.",
+        "live",
+        ["income tax calculator", "income tax calculator india", "new vs old tax regime calculator", "tax calculator india"]
+      ),
+      tool(
+        "gst-calculator",
+        "GST Calculator",
+        "Add or remove GST from an amount at any standard GST rate (5%, 12%, 18%, 28%).",
+        "live",
+        ["gst calculator", "gst calculator india", "add gst calculator", "remove gst calculator"]
+      ),
+      tool(
+        "hra-calculator",
+        "HRA Calculator",
+        "Calculate your House Rent Allowance (HRA) tax exemption based on your salary, HRA received, and rent paid.",
+        "live",
+        ["hra calculator", "hra exemption calculator", "house rent allowance calculator", "hra tax exemption calculator"]
+      ),
+      tool(
+        "capital-gains-calculator",
+        "Capital Gains Calculator",
+        "Calculate your capital gain and check whether it qualifies as short-term or long-term based on your holding period.",
+        "live",
+        ["capital gains calculator", "capital gains tax calculator", "ltcg calculator", "stcg calculator"]
+      ),
+      tool(
+        "tds-calculator",
+        "TDS Calculator",
+        "Calculate TDS (Tax Deducted at Source) and net payable amount for common payment types and sections.",
+        "live",
+        ["tds calculator", "tds calculator india", "tax deducted at source calculator", "tds rate calculator"]
+      ),
+      tool(
+        "salary-calculator",
+        "Salary Calculator",
+        "Break down your annual CTC into salary components: basic, HRA, allowances, PF, and gross/net monthly salary.",
+        "live",
+        ["salary calculator", "ctc calculator", "salary breakup calculator", "ctc to salary calculator"]
+      ),
+      tool(
+        "take-home-salary",
+        "Take Home Salary Calculator",
+        "Calculate your final in-hand monthly salary after PF, professional tax, and estimated income tax deductions.",
+        "live",
+        ["take home salary calculator", "in hand salary calculator", "net salary calculator", "ctc to in hand salary calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "currency-calculators",
+    title: "Currency & Metals Calculators",
+    icon: "\u{1FA99}",
+    description: "Calculate the value of gold and silver based on live market rates, purity, and weight.",
+    tools: [
+      tool(
+        "gold-price-calculator",
+        "Gold Price Calculator",
+        "Calculate the value of your gold based on today's rate, purity (24K/22K/18K/14K), and weight.",
+        "live",
+        ["gold price calculator", "gold rate calculator", "gold value calculator", "22k to 24k gold calculator"]
+      ),
+      tool(
+        "silver-price-calculator",
+        "Silver Price Calculator",
+        "Calculate the value of your silver based on today's rate and weight in grams, kilograms, or ounces.",
+        "live",
+        ["silver price calculator", "silver rate calculator", "silver value calculator", "silver weight calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "business-calculators",
+    title: "Business Calculators",
+    icon: "\u{1F4BC}",
+    description: "Generate GST invoices and calculate profit margin, break-even point, discounts, commission, VAT, and general invoices.",
+    tools: [
+      tool(
+        "gst-invoice-generator",
+        "GST Invoice Generator",
+        "Generate a simple GST invoice with line items, CGST/SGST or IGST split, and a live total preview.",
+        "live",
+        ["gst invoice generator", "gst invoice maker", "gst bill generator", "gst invoice format"]
+      ),
+      tool(
+        "profit-margin-calculator",
+        "Profit Margin Calculator",
+        "Calculate your profit, profit margin percentage, and markup percentage from cost price and selling price.",
+        "live",
+        ["profit margin calculator", "margin calculator", "markup calculator", "profit percentage calculator"]
+      ),
+      tool(
+        "break-even-calculator",
+        "Break-even Calculator",
+        "Calculate the number of units and revenue needed to break even based on fixed costs, variable costs, and price.",
+        "live",
+        ["break even calculator", "break even point calculator", "break even analysis calculator", "break even units calculator"]
+      ),
+      tool(
+        "discount-calculator",
+        "Discount Calculator",
+        "Calculate a discounted price from a percentage off, or work backwards to find the original price.",
+        "live",
+        ["discount calculator", "percentage off calculator", "sale price calculator", "discount percentage calculator"]
+      ),
+      tool(
+        "commission-calculator",
+        "Commission Calculator",
+        "Calculate commission earned on a sale amount at a given commission percentage rate.",
+        "live",
+        ["commission calculator", "sales commission calculator", "commission percentage calculator", "broker commission calculator"]
+      ),
+      tool(
+        "vat-calculator",
+        "VAT Calculator",
+        "Add or remove VAT from an amount at any VAT rate \u2014 useful for UK, EU, and other VAT-based tax systems.",
+        "live",
+        ["vat calculator", "add vat calculator", "remove vat calculator", "vat calculator uk"]
+      ),
+      tool(
+        "invoice-calculator",
+        "Invoice Calculator",
+        "Calculate an invoice total from line items with an optional discount and tax rate.",
+        "live",
+        ["invoice calculator", "invoice total calculator", "invoice generator", "invoice tax calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "personal-finance-calculators",
+    title: "Personal Finance Calculators",
+    icon: "\u{1F4B5}",
+    description: "Plan your budget, track expenses, calculate net worth, build an emergency fund, and pay off debt faster.",
+    tools: [
+      tool(
+        "budget-planner",
+        "Budget Planner",
+        "Plan your monthly budget by comparing your income against custom expense categories and see your savings rate.",
+        "live",
+        ["budget planner", "monthly budget calculator", "budget calculator", "50 30 20 rule calculator"]
+      ),
+      tool(
+        "expense-tracker",
+        "Expense Tracker",
+        "Log individual expenses by category and see a visual breakdown of where your money goes.",
+        "live",
+        ["expense tracker", "expense tracker online", "expense calculator", "spending tracker"]
+      ),
+      tool(
+        "net-worth-calculator",
+        "Net Worth Calculator",
+        "Calculate your net worth by listing your assets and liabilities.",
+        "live",
+        ["net worth calculator", "net worth calculator online", "personal net worth calculator", "assets and liabilities calculator"]
+      ),
+      tool(
+        "emergency-fund-calculator",
+        "Emergency Fund Calculator",
+        "Calculate your target emergency fund based on your essential expenses and desired months of coverage.",
+        "live",
+        ["emergency fund calculator", "emergency fund goal calculator", "how much emergency fund do i need", "rainy day fund calculator"]
+      ),
+      tool(
+        "debt-payoff-calculator",
+        "Debt Payoff Calculator",
+        "Compare the snowball and avalanche debt payoff strategies to see how fast you can become debt-free.",
+        "live",
+        ["debt payoff calculator", "debt snowball calculator", "debt avalanche calculator", "debt free calculator"]
+      ),
+      tool(
+        "credit-card-interest-calculator",
+        "Credit Card Interest Calculator",
+        "Calculate how long it will take to pay off a credit card balance and the total interest you'll pay.",
+        "live",
+        ["credit card interest calculator", "credit card payoff calculator", "credit card debt calculator", "minimum payment calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "insurance-calculators",
+    title: "Insurance Calculators",
+    icon: "\u{1F6E1}\uFE0F",
+    description: "Estimate how much life insurance, term insurance, and health insurance coverage you need.",
+    tools: [
+      tool(
+        "life-insurance-calculator",
+        "Life Insurance Calculator",
+        "Estimate how much life insurance cover you need based on your income, liabilities, and existing cover.",
+        "live",
+        ["life insurance calculator", "life insurance need calculator", "how much life insurance do i need", "human life value calculator"]
+      ),
+      tool(
+        "health-insurance-estimator",
+        "Health Insurance Estimator",
+        "Get a rough estimate of your annual health insurance premium based on age, family size, and sum insured.",
+        "live",
+        ["health insurance estimator", "health insurance premium calculator", "mediclaim calculator", "health insurance cost calculator"]
+      ),
+      tool(
+        "term-insurance-need-calculator",
+        "Term Insurance Need Calculator",
+        "Calculate the ideal term insurance sum assured based on income replacement, loans, goals, and existing savings.",
+        "live",
+        ["term insurance need calculator", "term insurance calculator", "sum assured calculator", "how much term insurance do i need"]
+      ),
+    ],
+  },
+  {
+    slug: "real-estate-calculators",
+    title: "Real Estate Calculators",
+    icon: "\u{1F3E1}",
+    description: "Calculate stamp duty, rental yield, mortgage payments (PITI), and property investment ROI.",
+    tools: [
+      tool(
+        "stamp-duty-calculator",
+        "Stamp Duty Calculator",
+        "Calculate stamp duty and registration charges on a property based on its value and state.",
+        "live",
+        ["stamp duty calculator", "stamp duty calculator india", "property registration charges calculator", "stamp duty and registration calculator"]
+      ),
+      tool(
+        "rental-yield-calculator",
+        "Rental Yield Calculator",
+        "Calculate the gross and net rental yield of a property based on its value, rent, and expenses.",
+        "live",
+        ["rental yield calculator", "rental yield calculator india", "property yield calculator", "gross yield calculator"]
+      ),
+      tool(
+        "mortgage-calculator",
+        "Mortgage Calculator",
+        "Calculate your full monthly mortgage payment including principal, interest, property tax, insurance, and HOA (PITI).",
+        "live",
+        ["mortgage calculator", "mortgage payment calculator", "piti calculator", "home mortgage calculator"]
+      ),
+      tool(
+        "property-roi",
+        "Property ROI Calculator",
+        "Calculate the total and annualized ROI of a property investment including rental income and appreciation.",
+        "live",
+        ["property roi calculator", "real estate roi calculator", "property investment calculator", "real estate return calculator"]
+      ),
+    ],
+  },
+  {
+    slug: "crypto-calculators",
+    title: "Crypto Calculators",
+    icon: "\u{20BF}",
+    description: "Calculate cryptocurrency trading profit/loss and mining profitability after fees and electricity costs.",
+    tools: [
+      tool(
+        "crypto-profit-calculator",
+        "Crypto Profit Calculator",
+        "Calculate your net profit and ROI on a crypto trade after accounting for buy and sell exchange fees.",
+        "live",
+        ["crypto profit calculator", "crypto profit loss calculator", "bitcoin profit calculator", "crypto roi calculator"]
+      ),
+      tool(
+        "mining-profit-calculator",
+        "Mining Profit Calculator",
+        "Calculate your daily and monthly crypto mining profit after electricity costs and pool fees.",
+        "live",
+        ["mining profit calculator", "crypto mining calculator", "bitcoin mining profit calculator", "mining profitability calculator"]
+      ),
+    ],
+  },
 ];
 
 export function getAllTools() {
