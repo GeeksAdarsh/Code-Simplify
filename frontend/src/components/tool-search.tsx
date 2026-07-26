@@ -56,7 +56,7 @@ export function ToolSearch() {
           }}
           onFocus={() => setOpen(true)}
           type="text"
-          placeholder="Search 200+ tools..."
+          placeholder={`Search ${allTools.length}+ tools...`}
           className="w-full bg-transparent text-sm outline-none placeholder:text-muted"
         />
       </div>

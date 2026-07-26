@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/config/tools";
+import { siteConfig, getAllTools } from "@/config/tools";
 
 const KOFI_URL = "https://ko-fi.com/codesimplify";
 
@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function SupportPage() {
+  const totalTools = getAllTools().filter((t) => t.status === "live").length;
+
   return (
     <div className="container-page max-w-3xl py-12">
       <h1 className="text-3xl font-semibold tracking-tight">Support {siteConfig.name}</h1>
@@ -17,7 +19,7 @@ export default function SupportPage() {
         <p>
           {siteConfig.name} is free, has no sign-up, and runs every tool locally in your browser &mdash; no
           ads-for-data tradeoffs, no premium tier holding features back. Keeping it that way costs real money:
-          server hosting, a domain, and the time spent building and maintaining 200+ tools.
+          server hosting, a domain, and the time spent building and maintaining {totalTools}+ tools.
         </p>
         <p>
           If {siteConfig.name} has saved you time, the best way to support it is a small one-time or recurring
