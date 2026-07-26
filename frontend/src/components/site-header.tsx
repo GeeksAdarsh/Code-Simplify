@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ToolSearch } from "@/components/tool-search";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/config/tools";
 
 export function SiteHeader() {
@@ -20,9 +21,13 @@ export function SiteHeader() {
           <Link href="/categories" className="hidden text-muted transition-colors hover:text-foreground sm:inline">
             All Tools
           </Link>
+          <Link href="/favorites" className="hidden text-muted transition-colors hover:text-foreground sm:inline">
+            &#9733; Favorites
+          </Link>
           <Link href="/json/formatter" className="btn btn-primary">
             JSON Formatter
           </Link>
+          <ThemeToggle />
         </nav>
       </div>
       <div className="border-t border-border px-4 py-2 md:hidden">

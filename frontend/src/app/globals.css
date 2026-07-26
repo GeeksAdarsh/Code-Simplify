@@ -10,6 +10,20 @@
   --accent-foreground: #ffffff;
 }
 
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f2f2f2;
+  --muted: #9a9a9a;
+  --border: #262626;
+  --surface: #161616;
+  --accent: #f2f2f2;
+  --accent-foreground: #0a0a0a;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -108,6 +122,11 @@ body {
   color: #ffffff;
 }
 
+.dark ::selection {
+  background: #f2f2f2;
+  color: #0a0a0a;
+}
+
 .tok-key {
   color: #0a0a0a;
   font-weight: 600;
@@ -129,4 +148,35 @@ body {
 .tok-null {
   color: #999999;
   font-style: italic;
+}
+
+.dark .tok-key {
+  color: #f2f2f2;
+}
+
+.dark .tok-string {
+  color: #6ee7a0;
+}
+
+.dark .tok-number {
+  color: #f5b544;
+}
+
+.dark .tok-boolean {
+  color: #c4a4f5;
+}
+
+.dark .tok-null {
+  color: #8a8a8a;
+}
+
+.tok-match {
+  background: #fde047;
+  color: #0a0a0a;
+  border-radius: 2px;
+}
+
+.dark .tok-match {
+  background: #a16207;
+  color: #fef9c3;
 }

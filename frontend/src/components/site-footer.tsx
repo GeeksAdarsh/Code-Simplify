@@ -12,6 +12,7 @@ const resourceLinks = [
   { label: "FAQ", href: "/faq" },
   { label: "Roadmap", href: "/roadmap" },
   { label: "All tools", href: "/categories" },
+  { label: "Favorites", href: "/favorites" },
 ];
 
 const featuredCategorySlugs = ["json", "xml", "csv", "sql"];

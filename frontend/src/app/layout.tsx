@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/tools";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const GA_MEASUREMENT_ID = "G-S1S7JLX46K";
 const CLARITY_PROJECT_ID = "xokv9ay8zz";
@@ -63,8 +64,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
         <JsonLd
           data={{
             "@context": "https://schema.org",

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqSection, type FaqItem } from "@/components/faq-section";
+import { FavoriteButton } from "@/components/favorite-button";
 import { JsonLd } from "@/components/json-ld";
 import type { Category, Tool } from "@/config/tools";
 import { siteConfig, toolHref } from "@/config/tools";
@@ -65,7 +66,10 @@ export function ToolPageLayout({
       />
 
       <div className="mt-4">
-        <h1 className="text-3xl font-semibold tracking-tight">{tool.title}</h1>
+        <div className="flex items-start gap-3">
+          <h1 className="text-3xl font-semibold tracking-tight">{tool.title}</h1>
+          <FavoriteButton categorySlug={category.slug} slug={tool.slug} size="lg" className="mt-1" />
+        </div>
         <p className="mt-2 max-w-2xl text-muted">{tool.description}</p>
       </div>
 
