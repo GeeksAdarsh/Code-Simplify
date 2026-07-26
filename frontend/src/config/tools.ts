@@ -2543,6 +2543,33 @@ export function getTool(categorySlug: string, toolSlug: string) {
   return found ? { tool: found, category } : undefined;
 }
 
+/** Hand-picked flagship tools shown in the homepage's "Popular tools" section. */
+const featuredToolRefs: { categorySlug: string; slug: string }[] = [
+  { categorySlug: "json", slug: "formatter" },
+  { categorySlug: "security", slug: "password-generator" },
+  { categorySlug: "security", slug: "base64-encode" },
+  { categorySlug: "ids", slug: "uuid-v4" },
+  { categorySlug: "colors", slug: "picker" },
+  { categorySlug: "qr-barcode", slug: "qr-generator" },
+  { categorySlug: "text", slug: "word-counter" },
+  { categorySlug: "numbers", slug: "unit-converter" },
+  { categorySlug: "markdown", slug: "preview" },
+  { categorySlug: "security", slug: "jwt-decoder" },
+  { categorySlug: "loan-calculators", slug: "emi-calculator" },
+  { categorySlug: "decision-tools", slug: "spin-wheel" },
+];
+
+/** Resolves the curated flagship tool list, skipping any ref that is missing or not live. */
+export function getFeaturedTools() {
+  return featuredToolRefs
+    .map(({ categorySlug, slug }) => {
+      const found = getTool(categorySlug, slug);
+      if (!found || found.tool.status !== "live") return undefined;
+      return { ...found.tool, categorySlug, categoryTitle: found.category!.title };
+    })
+    .filter((t): t is NonNullable<typeof t> => t !== undefined);
+}
+
 export function toolHref(categorySlug: string, toolSlug: string) {
   return `/${categorySlug}/${toolSlug}`;
 }

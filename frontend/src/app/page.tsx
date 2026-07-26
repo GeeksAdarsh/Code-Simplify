@@ -1,16 +1,19 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { siteConfig, toolHref, getAllTools, getLiveCategories } from "@/config/tools";
+import { siteConfig, toolHref, getAllTools, getLiveCategories, getFeaturedTools } from "@/config/tools";
+import { FavoriteButton } from "@/components/favorite-button";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const CATEGORY_PREVIEW_COUNT = 8;
+
 export default function Home() {
   const allTools = getAllTools();
-  const liveTools = allTools.filter((t) => t.status === "live");
-  const totalTools = liveTools.length;
+  const totalTools = allTools.filter((t) => t.status === "live").length;
   const liveCategories = getLiveCategories();
+  const featuredTools = getFeaturedTools();
 
   return (
     <div>
@@ -37,17 +40,18 @@ export default function Home() {
         </div>
       </section>
 
-      {liveTools.length > 0 && (
+      {featuredTools.length > 0 && (
         <section className="container-page py-12">
-          <h2 className="mb-6 text-xl font-semibold">Popular right now</h2>
+          <h2 className="mb-6 text-xl font-semibold">Popular tools</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {liveTools.map((t) => (
+            {featuredTools.map((t) => (
               <Link
                 key={`${t.categorySlug}-${t.slug}`}
                 href={toolHref(t.categorySlug, t.slug)}
                 className="card group p-5 transition-colors hover:border-foreground"
               >
-                <div className="mb-2 flex items-center justify-end">
+                <div className="mb-2 flex items-center justify-between">
+                  <FavoriteButton categorySlug={t.categorySlug} slug={t.slug} />
                   <span className="text-muted transition-transform group-hover:translate-x-1">&rarr;</span>
                 </div>
                 <h3 className="font-medium">{t.title}</h3>
@@ -66,20 +70,39 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {liveCategories.map((category) => (
-            <Link
-              key={category.slug}
-              href={`/${category.slug}`}
-              className="card p-5 transition-colors hover:border-foreground"
-            >
-              <div className="mb-2 flex items-center gap-2">
-                <span className="text-xl">{category.icon}</span>
-                <h3 className="font-medium">{category.title}</h3>
-                <span className="ml-auto text-xs text-muted">{category.tools.length} tools</span>
-              </div>
-              <p className="text-sm text-muted">{category.description}</p>
-            </Link>
-          ))}
+          {liveCategories.map((category) => {
+            const preview = category.tools.slice(0, CATEGORY_PREVIEW_COUNT);
+            const remaining = category.tools.length - preview.length;
+            return (
+              <Link
+                key={category.slug}
+                href={`/${category.slug}`}
+                className="card p-5 transition-colors hover:border-foreground"
+              >
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="text-xl">{category.icon}</span>
+                  <h3 className="font-medium">{category.title}</h3>
+                  <span className="ml-auto text-xs text-muted">{category.tools.length} tools</span>
+                </div>
+                <p className="text-sm text-muted">{category.description}</p>
+                <ul className="mt-3 flex flex-wrap gap-1.5">
+                  {preview.map((tool) => (
+                    <li
+                      key={tool.slug}
+                      className="rounded-full border border-border bg-surface px-2 py-0.5 text-xs text-muted"
+                    >
+                      {tool.title}
+                    </li>
+                  ))}
+                  {remaining > 0 && (
+                    <li className="rounded-full border border-border px-2 py-0.5 text-xs text-muted">
+                      +{remaining} more
+                    </li>
+                  )}
+                </ul>
+              </Link>
+            );
+          })}
         </div>
       </section>
     </div>
