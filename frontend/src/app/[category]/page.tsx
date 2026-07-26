@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getCategory, getLiveCategories, toolHref } from "@/config/tools";
+import { getCategory, getLiveCategories, siteConfig, toolHref } from "@/config/tools";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { FavoriteButton } from "@/components/favorite-button";
+import { JsonLd } from "@/components/json-ld";
 
 export function generateStaticParams() {
   return getLiveCategories().map((c) => ({ category: c.slug }));
@@ -33,8 +35,38 @@ export default async function CategoryPage({
   const liveTools = category?.tools.filter((t) => t.status === "live") ?? [];
   if (!category || liveTools.length === 0) notFound();
 
+  const categoryUrl = `${siteConfig.url}/${category.slug}`;
+
   return (
     <div className="container-page py-10">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: `${category.title} Tools`,
+          description: category.description,
+          url: categoryUrl,
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: liveTools.map((tool, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: tool.title,
+              url: `${siteConfig.url}${toolHref(category.slug, tool.slug)}`,
+            })),
+          },
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+            { "@type": "ListItem", position: 2, name: category.title, item: categoryUrl },
+          ],
+        }}
+      />
       <Breadcrumbs items={[{ label: category.title }]} />
       <div className="mt-4 flex items-center gap-3">
         <span className="text-3xl">{category.icon}</span>
@@ -49,6 +81,9 @@ export default async function CategoryPage({
             href={toolHref(category.slug, tool.slug)}
             className="card p-5 transition-colors hover:border-foreground"
           >
+            <div className="mb-2 flex items-center justify-end">
+              <FavoriteButton categorySlug={category.slug} slug={tool.slug} />
+            </div>
             <h2 className="font-medium">{tool.title}</h2>
             <p className="mt-1 text-sm text-muted">{tool.description}</p>
           </Link>

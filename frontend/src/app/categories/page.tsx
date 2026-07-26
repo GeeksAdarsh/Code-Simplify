@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { siteConfig, toolHref, getLiveCategories } from "@/config/tools";
+import { JsonLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
   title: "All Tools",
@@ -13,6 +14,34 @@ export default function CategoriesPage() {
 
   return (
     <div className="container-page py-12">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "All Tools",
+          description: metadata.description,
+          url: `${siteConfig.url}/categories`,
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: categories.map((category, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: `${category.title} Tools`,
+              url: `${siteConfig.url}/${category.slug}`,
+            })),
+          },
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+            { "@type": "ListItem", position: 2, name: "All Tools", item: `${siteConfig.url}/categories` },
+          ],
+        }}
+      />
       <h1 className="text-3xl font-semibold tracking-tight">All tools</h1>
       <p className="mt-2 max-w-2xl text-muted">
         Every tool on {siteConfig.name}, organized by category. New tools ship regularly &mdash; bookmark this
