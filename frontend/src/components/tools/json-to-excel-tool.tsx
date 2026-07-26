@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import * as XLSX from "xlsx";
+import { CodeEditor } from "@/components/code-editor";
 import { flattenJsonRows } from "@/lib/json-convert";
 import { byteSize, parseJson } from "@/lib/json-utils";
 
@@ -47,13 +48,7 @@ export function JsonToExcelTool() {
             <span>JSON input</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste a JSON array of objects here to convert it to Excel..."
-            spellCheck={false}
-            className="h-80 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="json" placeholder="Paste a JSON array of objects here to convert it to Excel..." height="20rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Preview</div>

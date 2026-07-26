@@ -1,7 +1,9 @@
 "use client";
 
 import { type ReactNode, useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
+import { languageFromFilename, languageFromLabel } from "@/lib/monaco-language";
 
 export interface ConvertResult {
   output: string;
@@ -18,6 +20,10 @@ interface ConvertToolProps {
   downloadFilename: string;
   downloadMimeType?: string;
   toolbarExtra?: ReactNode;
+  /** Monaco language id for the input editor; guessed from inputLabel when omitted. */
+  inputLanguage?: string;
+  /** Monaco language id for the output editor; guessed from downloadFilename when omitted. */
+  outputLanguage?: string;
 }
 
 export function ConvertTool({
@@ -30,6 +36,8 @@ export function ConvertTool({
   downloadFilename,
   downloadMimeType = "text/plain",
   toolbarExtra,
+  inputLanguage,
+  outputLanguage,
 }: ConvertToolProps) {
   const [input, setInput] = useState("");
   const [copied, setCopied] = useState(false);
@@ -79,12 +87,12 @@ export function ConvertTool({
             <span>{inputLabel}</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
+          <CodeEditor
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={setInput}
+            language={inputLanguage ?? languageFromLabel(inputLabel)}
             placeholder={inputPlaceholder}
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
+            height="24rem"
           />
         </div>
         <div className="flex flex-col">
@@ -108,12 +116,12 @@ export function ConvertTool({
               </button>
             </div>
           </div>
-          <textarea
+          <CodeEditor
             value={result.output}
             readOnly
+            language={outputLanguage ?? languageFromFilename(downloadFilename)}
             placeholder={outputPlaceholder}
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
+            height="24rem"
           />
         </div>
       </div>

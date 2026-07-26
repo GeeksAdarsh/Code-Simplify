@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { parseUserAgent } from "@/lib/user-agent-utils";
 
 const SAMPLE_UAS = [
@@ -26,15 +27,16 @@ export function UserAgentParserTool() {
     <div>
       <div className="card p-4">
         <label className="mb-1 block text-xs font-medium text-muted">User-Agent string</label>
-        <textarea
+        <CodeEditor
           value={ua}
-          onChange={(e) => {
-            setUa(e.target.value);
+          onChange={(v) => {
+            setUa(v);
             setAutoDetected(false);
           }}
+          language="plaintext"
           placeholder="Paste a User-Agent string here..."
-          spellCheck={false}
-          className="h-20 w-full resize-none rounded border border-border bg-background p-2.5 font-mono text-xs outline-none"
+          height="5rem"
+          className="rounded border border-border"
         />
         {autoDetected && <p className="mt-1 text-xs text-muted">Auto-detected from your current browser.</p>}
         <div className="mt-2 flex flex-wrap gap-2">

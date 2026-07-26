@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { CHAT_MODELS, countTokens } from "@/lib/tokenizer-utils";
 
 const SAMPLE = `You are a helpful assistant that summarizes long documents into three concise bullet points, written in a neutral and professional tone.`;
@@ -54,13 +55,7 @@ export function PromptTokenCounterTool() {
       </div>
 
       <div className="rounded-b-xl border border-border">
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your prompt here to count tokens..."
-          spellCheck={false}
-          className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="plaintext" placeholder="Paste your prompt here to count tokens..." height="18rem" />
       </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-4">

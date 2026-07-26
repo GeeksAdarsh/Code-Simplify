@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { hmac, encodeDigest, type DigestEncoding, type ShaAlgorithm } from "@/lib/hash-utils";
 
@@ -92,13 +93,7 @@ export function HmacGeneratorTool() {
           <span>Message</span>
           <span>{byteSize(message).toLocaleString()} bytes</span>
         </div>
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Type or paste the message to sign..."
-          spellCheck={false}
-          className="h-32 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={message} onChange={setMessage} language="plaintext" placeholder="Type or paste the message to sign..." height="8rem" />
         <div className="border-t border-border px-3 py-2">
           <input
             value={secret}

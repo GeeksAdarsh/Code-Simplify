@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { diffJson, stringifyValue } from "@/lib/json-diff";
 import { parseJson } from "@/lib/json-utils";
 
@@ -67,23 +68,11 @@ export function JsonCompareTool() {
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
         <div className="flex flex-col border-b border-border sm:border-b-0 sm:border-r">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">JSON A</div>
-          <textarea
-            value={inputA}
-            onChange={(e) => setInputA(e.target.value)}
-            placeholder="Paste the first JSON here..."
-            spellCheck={false}
-            className="h-64 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={inputA} onChange={setInputA} language="json" placeholder="Paste the first JSON here..." height="16rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">JSON B</div>
-          <textarea
-            value={inputB}
-            onChange={(e) => setInputB(e.target.value)}
-            placeholder="Paste the second JSON here..."
-            spellCheck={false}
-            className="h-64 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={inputB} onChange={setInputB} language="json" placeholder="Paste the second JSON here..." height="16rem" />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { DEFAULT_PROMPT_FORMAT_OPTIONS, diffStats, formatPrompt, type PromptFormatOptions } from "@/lib/prompt-utils";
 
 const SAMPLE = `You are a helpful assistant.   
@@ -68,13 +69,7 @@ export function PromptFormatterTool() {
             <span>Prompt input</span>
             <span>{stats.charsBefore.toLocaleString()} chars &middot; {stats.linesBefore} lines</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your raw prompt here..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="plaintext" placeholder="Paste your raw prompt here..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
@@ -86,13 +81,7 @@ export function PromptFormatterTool() {
               </button>
             </div>
           </div>
-          <textarea
-            value={output}
-            readOnly
-            placeholder="Cleaned prompt will appear here."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={output} readOnly language="plaintext" placeholder="Cleaned prompt will appear here." height="24rem" />
         </div>
       </div>
     </div>

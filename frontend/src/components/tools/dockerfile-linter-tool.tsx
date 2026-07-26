@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { lintDockerfile } from "@/lib/docker-utils";
 import { LintResults } from "@/components/tools/shared/lint-results";
 
@@ -33,13 +34,7 @@ export function DockerfileLinterTool() {
         <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
           <span>Dockerfile</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your Dockerfile here..."
-          spellCheck={false}
-          className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="dockerfile" placeholder="Paste your Dockerfile here..." height="24rem" />
       </div>
 
       <div className="mt-4">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize, countNodes, jsonTypeOf, parseJson } from "@/lib/json-utils";
 
 const SAMPLE_JSON = `{"name":"CodeSimplify","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
@@ -35,13 +36,7 @@ export function JsonValidatorTool() {
           <span>JSON input</span>
           <span>{byteSize(input).toLocaleString()} bytes</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your JSON here to validate it..."
-          spellCheck={false}
-          className="h-80 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="json" placeholder="Paste your JSON here to validate it..." height="20rem" />
       </div>
 
       <div className="mt-4">

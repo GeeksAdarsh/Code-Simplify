@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { markdownToHtml } from "@/lib/markdown-utils";
 
@@ -76,13 +77,7 @@ export function MarkdownPreviewTool() {
             <span>Markdown source</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type or paste Markdown here to preview it live..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="markdown" placeholder="Type or paste Markdown here to preview it live..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">

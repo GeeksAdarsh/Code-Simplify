@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 
 const SAMPLE_RAW = `Hello "World"!\nLine two with a \\backslash\\ and a tab:\tend.`;
@@ -82,16 +83,16 @@ export function JsonEscapeUnescapeTool() {
             <span>{mode === "escape" ? "Raw text" : "Escaped JSON string"}</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
+          <CodeEditor
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={setInput}
+            language="plaintext"
             placeholder={
               mode === "escape"
                 ? "Type or paste raw text to escape for use inside a JSON string..."
                 : 'Paste an escaped JSON string (e.g. "line1\\nline2") to decode...'
             }
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
+            height="18rem"
           />
         </div>
         <div className="flex flex-col">
@@ -108,13 +109,7 @@ export function JsonEscapeUnescapeTool() {
               </button>
             </div>
           </div>
-          <textarea
-            value={result.output}
-            readOnly
-            placeholder="Output will appear here."
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={result.output} readOnly language="plaintext" placeholder="Output will appear here." height="18rem" />
         </div>
       </div>
 

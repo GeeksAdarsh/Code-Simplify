@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { countXmlElements, validateXml } from "@/lib/xml-utils";
 
@@ -48,13 +49,7 @@ export function XmlValidatorTool() {
           <span>XML input</span>
           <span>{byteSize(input).toLocaleString()} bytes</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your XML here to validate it..."
-          spellCheck={false}
-          className="h-80 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="xml" placeholder="Paste your XML here to validate it..." height="20rem" />
       </div>
 
       <div className="mt-4">

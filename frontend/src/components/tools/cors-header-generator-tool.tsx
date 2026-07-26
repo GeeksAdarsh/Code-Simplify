@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { buildCorsHeaders, corsWarnings } from "@/lib/cors-utils";
 
 export function CorsHeaderGeneratorTool() {
@@ -34,12 +35,7 @@ export function CorsHeaderGeneratorTool() {
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-xs sm:col-span-2">
           <span className="mb-1 block text-muted">Allowed origin(s) &mdash; one per line, or * for any</span>
-          <textarea
-            value={origins}
-            onChange={(e) => setOrigins(e.target.value)}
-            rows={2}
-            className="w-full resize-none rounded border border-border bg-background px-2.5 py-1.5 font-mono text-sm outline-none focus:border-foreground"
-          />
+          <CodeEditor value={origins} onChange={setOrigins} language="plaintext" height="4.5rem" className="rounded border border-border" />
         </label>
         <label className="block text-xs">
           <span className="mb-1 block text-muted">Allowed methods</span>
@@ -80,7 +76,7 @@ export function CorsHeaderGeneratorTool() {
             {copied ? "Copied!" : "Copy"}
           </button>
         </div>
-        <pre className="whitespace-pre-wrap p-3 font-mono text-sm">{headerText}</pre>
+        <CodeEditor value={headerText} readOnly language="plaintext" height="10rem" />
       </div>
     </div>
   );

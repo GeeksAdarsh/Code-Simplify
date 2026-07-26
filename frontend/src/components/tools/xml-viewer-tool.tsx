@@ -1,22 +1,21 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { formatXml, validateXml } from "@/lib/xml-utils";
-import { highlightXml } from "@/lib/xml-highlight";
 
 const SAMPLE_XML = `<?xml version="1.0" encoding="UTF-8"?><catalog><book id="1"><title>Learning XML</title><author>Jane Doe</author><price>29.99</price></book></catalog>`;
 
 export function XmlViewerTool() {
   const [input, setInput] = useState("");
-  const [wrap, setWrap] = useState(true);
 
   const validation = useMemo(() => (input.trim() ? validateXml(input) : { valid: true }), [input]);
 
-  const html = useMemo(() => {
+  const formatted = useMemo(() => {
     if (!input.trim() || !validation.valid) return "";
     try {
-      return highlightXml(formatXml(input));
+      return formatXml(input);
     } catch {
       return "";
     }
@@ -31,10 +30,6 @@ export function XmlViewerTool() {
         <button onClick={() => setInput("")} className="btn btn-secondary h-8 px-3 text-xs">
           Clear
         </button>
-        <label className="ml-auto flex items-center gap-1.5 text-xs text-muted">
-          <input type="checkbox" checked={wrap} onChange={(e) => setWrap(e.target.checked)} className="accent-foreground" />
-          Wrap lines
-        </label>
       </div>
 
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
@@ -43,24 +38,11 @@ export function XmlViewerTool() {
             <span>XML input</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your XML here to view it..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="xml" placeholder="Paste your XML here to view it..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Highlighted view</div>
-          <pre
-            className={`h-96 overflow-auto bg-background p-3 font-mono text-sm ${
-              wrap ? "whitespace-pre-wrap break-words" : "whitespace-pre"
-            }`}
-            dangerouslySetInnerHTML={{
-              __html: html || '<span class="tok-null">Formatted XML will appear here.</span>',
-            }}
-          />
+          <CodeEditor value={formatted} readOnly language="xml" placeholder="Formatted XML will appear here." height="24rem" />
         </div>
       </div>
 

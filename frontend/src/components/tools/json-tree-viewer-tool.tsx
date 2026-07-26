@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { parseJson } from "@/lib/json-utils";
 
 const SAMPLE_JSON = `{
@@ -153,13 +154,7 @@ export function JsonTreeViewerTool() {
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
         <div className="flex flex-col border-b border-border sm:border-b-0 sm:border-r">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">JSON input</div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your JSON here to explore it as a tree..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="json" placeholder="Paste your JSON here to explore it as a tree..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Tree</div>

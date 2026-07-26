@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import {
   generateConfigMapYaml,
   generateDeploymentYaml,
@@ -107,7 +108,7 @@ export function K8sManifestGeneratorTool() {
               </Field>
             </div>
             <Field label="Environment variables (KEY=value per line)">
-              <textarea value={envVars} onChange={(e) => setEnvVars(e.target.value)} rows={4} className={`${inputClass} resize-none font-mono`} />
+              <CodeEditor value={envVars} onChange={setEnvVars} language="plaintext" height="6rem" />
             </Field>
           </>
         )}
@@ -137,7 +138,7 @@ export function K8sManifestGeneratorTool() {
 
         {(kind === "ConfigMap" || kind === "Secret") && (
           <Field label="Data entries (KEY=value per line)">
-            <textarea value={entries} onChange={(e) => setEntries(e.target.value)} rows={6} className={`${inputClass} resize-none font-mono`} />
+            <CodeEditor value={entries} onChange={setEntries} language="plaintext" height="9rem" />
           </Field>
         )}
         {kind === "Secret" && (
@@ -152,7 +153,7 @@ export function K8sManifestGeneratorTool() {
             {copied ? "Copied!" : "Copy"}
           </button>
         </div>
-        <pre className="h-full min-h-96 flex-1 overflow-auto whitespace-pre-wrap bg-background p-3 font-mono text-sm">{yaml}</pre>
+        <CodeEditor value={yaml} readOnly language="yaml" height="24rem" />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { analyzeEmailHeaders } from "@/lib/email-utils";
 
 const SAMPLE_HEADERS = `Delivered-To: alex@example.com
@@ -40,12 +41,13 @@ export function EmailHeaderAnalyzerTool() {
           Clear
         </button>
       </div>
-      <textarea
+      <CodeEditor
         value={raw}
-        onChange={(e) => setRaw(e.target.value)}
+        onChange={setRaw}
+        language="plaintext"
         placeholder="Paste the full raw email headers here (View Source / Show Original in your email client)..."
-        spellCheck={false}
-        className="h-56 w-full resize-none rounded-b-xl border border-border bg-background p-3 font-mono text-xs outline-none"
+        height="14rem"
+        className="rounded-b-xl border border-border"
       />
 
       {analysis && (

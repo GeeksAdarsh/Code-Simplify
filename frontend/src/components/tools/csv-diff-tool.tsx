@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { diffJson, stringifyValue, type DiffEntry } from "@/lib/json-diff";
 import { csvToObjects } from "@/lib/csv-utils";
 
@@ -70,24 +71,12 @@ export function CsvDiffTool() {
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
         <div className="flex flex-col border-b border-border sm:border-b-0 sm:border-r">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">CSV A (original)</div>
-          <textarea
-            value={inputA}
-            onChange={(e) => setInputA(e.target.value)}
-            placeholder="Paste the original CSV here..."
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={inputA} onChange={setInputA} language="plaintext" placeholder="Paste the original CSV here..." height="18rem" />
           {resultA.error && <p className="border-t border-border px-3 py-2 text-xs text-muted">Invalid CSV: {resultA.error}</p>}
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">CSV B (changed)</div>
-          <textarea
-            value={inputB}
-            onChange={(e) => setInputB(e.target.value)}
-            placeholder="Paste the changed CSV here..."
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={inputB} onChange={setInputB} language="plaintext" placeholder="Paste the changed CSV here..." height="18rem" />
           {resultB.error && <p className="border-t border-border px-3 py-2 text-xs text-muted">Invalid CSV: {resultB.error}</p>}
         </div>
       </div>

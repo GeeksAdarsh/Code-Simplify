@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import type { DigestEncoding } from "@/lib/hash-utils";
 
@@ -73,12 +74,12 @@ export function HashTool({ algorithmName, sampleInput, digest }: HashToolProps) 
           <span>Text input</span>
           <span>{byteSize(input).toLocaleString()} bytes</span>
         </div>
-        <textarea
+        <CodeEditor
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={setInput}
+          language="plaintext"
           placeholder={`Type or paste text here to compute its ${algorithmName} hash...`}
-          spellCheck={false}
-          className="h-40 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
+          height="10rem"
         />
       </div>
 

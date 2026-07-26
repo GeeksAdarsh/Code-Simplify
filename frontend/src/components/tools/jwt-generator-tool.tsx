@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { signJwt, type JwtAlgorithm } from "@/lib/jwt-utils";
 import { byteSize, parseJson } from "@/lib/json-utils";
 
@@ -87,12 +88,7 @@ export function JwtGeneratorTool() {
         <div className="card space-y-4 p-4">
           <div>
             <label className="mb-1 block text-xs font-medium text-muted">Payload (claims)</label>
-            <textarea
-              value={payloadInput}
-              onChange={(e) => setPayloadInput(e.target.value)}
-              spellCheck={false}
-              className="h-40 w-full resize-none rounded border border-border bg-background p-2.5 font-mono text-sm outline-none"
-            />
+            <CodeEditor value={payloadInput} onChange={setPayloadInput} language="json" height="10rem" className="rounded border border-border" />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -150,13 +146,7 @@ export function JwtGeneratorTool() {
               </button>
             </div>
           </div>
-          <textarea
-            value={token}
-            readOnly
-            placeholder="Your signed JWT will appear here."
-            spellCheck={false}
-            className="h-40 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={token} readOnly language="plaintext" placeholder="Your signed JWT will appear here." height="10rem" />
           {error && <p className="border-t border-border px-3 py-2 text-xs text-muted">{error}</p>}
           {token && !error && (
             <p className="border-t border-border px-3 py-2 text-xs text-muted">

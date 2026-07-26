@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { formatHtml, minifyHtml } from "@/lib/html-utils";
 
@@ -85,13 +86,7 @@ export function HtmlFormatterTool() {
             <span>Input</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your HTML here..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="html" placeholder="Paste your HTML here..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
@@ -106,13 +101,7 @@ export function HtmlFormatterTool() {
               </button>
             </div>
           </div>
-          <textarea
-            value={output}
-            readOnly
-            placeholder="Formatted HTML will appear here."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={output} readOnly language="html" placeholder="Formatted HTML will appear here." height="24rem" />
         </div>
       </div>
     </div>

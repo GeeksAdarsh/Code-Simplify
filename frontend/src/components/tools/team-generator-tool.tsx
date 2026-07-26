@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { splitIntoTeams } from "@/lib/decision-utils";
 
 const SAMPLE_NAMES = "Alex\nJordan\nTaylor\nMorgan\nCasey\nRiley\nSam\nJamie";
@@ -24,12 +25,7 @@ export function TeamGeneratorTool() {
     <div>
       <div className="card p-4">
         <label className="mb-1 block text-xs font-medium text-muted">Names (one per line)</label>
-        <textarea
-          value={namesText}
-          onChange={(e) => setNamesText(e.target.value)}
-          rows={8}
-          className="w-full rounded border border-border bg-background px-3 py-2 text-sm outline-none"
-        />
+        <CodeEditor value={namesText} onChange={setNamesText} language="plaintext" height="12rem" className="rounded border border-border" />
         <div className="mt-3 flex flex-wrap items-end gap-4">
           <div>
             <label className="mb-1 block text-xs font-medium text-muted">Number of teams</label>

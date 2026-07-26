@@ -1,14 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { highlightJson } from "@/lib/json-highlight";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize, parseJson } from "@/lib/json-utils";
 
 const SAMPLE_JSON = `{"name":"CodeSimplify","version":1.0,"active":true,"tags":["json","developer","tools"],"author":{"name":"Dev Team","url":"https://example.com"},"stars":null}`;
 
 export function JsonViewerTool() {
   const [input, setInput] = useState("");
-  const [wrap, setWrap] = useState(true);
 
   const result = useMemo(() => parseJson(input), [input]);
 
@@ -16,8 +15,6 @@ export function JsonViewerTool() {
     if (result.error || result.data === undefined) return "";
     return JSON.stringify(result.data, null, 2);
   }, [result]);
-
-  const html = useMemo(() => (formatted ? highlightJson(formatted) : ""), [formatted]);
 
   return (
     <div>
@@ -28,10 +25,6 @@ export function JsonViewerTool() {
         <button onClick={() => setInput("")} className="btn btn-secondary h-8 px-3 text-xs">
           Clear
         </button>
-        <label className="ml-auto flex items-center gap-1.5 text-xs text-muted">
-          <input type="checkbox" checked={wrap} onChange={(e) => setWrap(e.target.checked)} className="accent-foreground" />
-          Wrap lines
-        </label>
       </div>
 
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
@@ -40,24 +33,11 @@ export function JsonViewerTool() {
             <span>JSON input</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your JSON here to view it..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="json" placeholder="Paste your JSON here to view it..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Highlighted view</div>
-          <pre
-            className={`h-96 overflow-auto bg-background p-3 font-mono text-sm ${
-              wrap ? "whitespace-pre-wrap break-words" : "whitespace-pre"
-            }`}
-            dangerouslySetInnerHTML={{
-              __html: html || '<span class="tok-null">Formatted JSON will appear here.</span>',
-            }}
-          />
+          <CodeEditor value={formatted} readOnly language="json" placeholder="Formatted JSON will appear here." height="24rem" />
         </div>
       </div>
 

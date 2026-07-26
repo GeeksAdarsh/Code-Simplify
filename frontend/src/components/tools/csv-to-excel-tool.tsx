@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import * as XLSX from "xlsx";
+import { CodeEditor } from "@/components/code-editor";
 import { DataTable } from "@/components/tools/shared/data-table";
 import { byteSize } from "@/lib/json-utils";
 import { parseCsv } from "@/lib/csv-utils";
@@ -63,13 +64,7 @@ export function CsvToExcelTool() {
             <span>CSV input</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your CSV here to convert it to Excel..."
-            spellCheck={false}
-            className="h-80 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="plaintext" placeholder="Paste your CSV here to convert it to Excel..." height="20rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Preview</div>

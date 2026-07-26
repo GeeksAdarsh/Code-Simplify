@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { validateK8sManifests } from "@/lib/k8s-utils";
 import { LintResults } from "@/components/tools/shared/lint-results";
 
@@ -60,13 +61,7 @@ export function K8sYamlValidatorTool() {
         <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
           <span>Kubernetes manifest (YAML, supports multiple --- documents)</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your Kubernetes YAML manifest(s) here..."
-          spellCheck={false}
-          className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="yaml" placeholder="Paste your Kubernetes YAML manifest(s) here..." height="24rem" />
       </div>
 
       <div className="mt-4 space-y-4">

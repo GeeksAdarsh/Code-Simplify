@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { getLineStats } from "@/lib/text-utils";
 import { Stat, StatGrid } from "@/components/tools/shared/stat-grid";
 
@@ -15,12 +16,13 @@ export function LineCounterTool() {
           Clear
         </button>
       </div>
-      <textarea
+      <CodeEditor
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={setText}
+        language="plaintext"
         placeholder="Type or paste your text here..."
-        spellCheck={false}
-        className="h-64 w-full resize-none rounded-b-xl border border-border bg-background p-3 font-mono text-sm outline-none"
+        height="16rem"
+        className="rounded-b-xl border border-border"
       />
 
       <div className="mt-4">

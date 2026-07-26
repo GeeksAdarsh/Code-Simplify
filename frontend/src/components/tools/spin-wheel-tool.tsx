@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { generateRandomInt } from "@/lib/random-utils";
 
 const SAMPLE_OPTIONS = "Pizza\nSushi\nTacos\nBurgers\nPasta\nSalad";
@@ -55,14 +56,15 @@ export function SpinWheelTool() {
     <div>
       <div className="card p-4">
         <label className="mb-1 block text-xs font-medium text-muted">Wheel options (one per line, at least 2)</label>
-        <textarea
+        <CodeEditor
           value={optionsText}
-          onChange={(e) => {
-            setOptionsText(e.target.value);
+          onChange={(v) => {
+            setOptionsText(v);
             setWinner(null);
           }}
-          rows={6}
-          className="w-full rounded border border-border bg-background px-3 py-2 text-sm outline-none"
+          language="plaintext"
+          height="9rem"
+          className="rounded border border-border"
         />
       </div>
 

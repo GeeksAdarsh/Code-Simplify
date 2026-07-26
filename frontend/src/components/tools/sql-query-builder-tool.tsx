@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { format } from "sql-formatter";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 
 interface WhereCondition {
@@ -240,12 +241,7 @@ export function SqlQueryBuilderTool() {
             </button>
           </div>
         </div>
-        <textarea
-          value={sql}
-          readOnly
-          spellCheck={false}
-          className="h-96 w-full flex-1 resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={sql} readOnly language="sql" height="24rem" />
       </div>
     </div>
   );

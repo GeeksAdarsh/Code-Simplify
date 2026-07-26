@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { generateQrDataUrl, type QrOptions } from "@/lib/qr-barcode-utils";
 import { QrPreview } from "@/components/tools/shared/qr-preview";
 
@@ -37,12 +38,13 @@ export function QrGeneratorTool() {
       <div>
         <label className="block text-xs">
           <span className="mb-1 block text-muted">Text, URL, or any content</span>
-          <textarea
+          <CodeEditor
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={setText}
+            language="plaintext"
             placeholder="Enter a URL, text, or any content to encode..."
-            spellCheck={false}
-            className="h-32 w-full resize-none rounded-lg border border-border bg-background p-3 text-sm outline-none focus:border-foreground"
+            height="8rem"
+            className="rounded-lg border border-border"
           />
         </label>
 

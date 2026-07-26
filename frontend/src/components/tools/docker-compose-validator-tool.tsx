@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { validateDockerCompose } from "@/lib/docker-utils";
 import { LintResults } from "@/components/tools/shared/lint-results";
 
@@ -53,13 +54,7 @@ export function DockerComposeValidatorTool() {
         <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
           <span>docker-compose.yml</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your docker-compose.yml here..."
-          spellCheck={false}
-          className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="yaml" placeholder="Paste your docker-compose.yml here..." height="24rem" />
       </div>
 
       <div className="mt-4">

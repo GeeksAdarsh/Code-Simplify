@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize, countNodes, jsonTypeOf } from "@/lib/json-utils";
 import { parseYaml } from "@/lib/yaml-utils";
 
@@ -45,13 +46,7 @@ export function YamlValidatorTool() {
           <span>YAML input</span>
           <span>{byteSize(input).toLocaleString()} bytes</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your YAML here to validate it..."
-          spellCheck={false}
-          className="h-80 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="yaml" placeholder="Paste your YAML here to validate it..." height="20rem" />
       </div>
 
       <div className="mt-4">

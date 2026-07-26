@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { decodeJwt, verifyJwtSignature } from "@/lib/jwt-utils";
 
 const SAMPLE_JWT =
@@ -60,13 +61,7 @@ export function JwtDecoderTool() {
 
       <div className="rounded-b-xl border border-border">
         <div className="border-b border-border px-3 py-1.5 text-xs text-muted">JWT token</div>
-        <textarea
-          value={token}
-          onChange={(e) => setToken(e.target.value)}
-          placeholder="Paste your JSON Web Token here (header.payload.signature)..."
-          spellCheck={false}
-          className="h-28 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={token} onChange={setToken} language="plaintext" placeholder="Paste your JSON Web Token here (header.payload.signature)..." height="7rem" />
         <div className="flex items-center gap-2 border-t border-border px-3 py-2">
           <input
             value={secret}
@@ -107,11 +102,11 @@ export function JwtDecoderTool() {
             <div className="grid gap-0 rounded-xl border border-border sm:grid-cols-2">
               <div className="flex flex-col border-b border-border sm:border-b-0 sm:border-r">
                 <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Header</div>
-                <pre className="h-56 overflow-auto bg-background p-3 font-mono text-sm">{result.data.headerRaw}</pre>
+                <CodeEditor value={result.data.headerRaw} readOnly language="json" height="14rem" />
               </div>
               <div className="flex flex-col">
                 <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Payload</div>
-                <pre className="h-56 overflow-auto bg-background p-3 font-mono text-sm">{result.data.payloadRaw}</pre>
+                <CodeEditor value={result.data.payloadRaw} readOnly language="json" height="14rem" />
               </div>
             </div>
 

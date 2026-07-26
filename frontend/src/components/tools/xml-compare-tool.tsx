@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { diffJson, stringifyValue } from "@/lib/json-diff";
 import { xmlToJsObject } from "@/lib/xml-utils";
 
@@ -53,23 +54,11 @@ export function XmlCompareTool() {
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
         <div className="flex flex-col border-b border-border sm:border-b-0 sm:border-r">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">XML A (original)</div>
-          <textarea
-            value={inputA}
-            onChange={(e) => setInputA(e.target.value)}
-            placeholder="Paste the original XML here..."
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={inputA} onChange={setInputA} language="xml" placeholder="Paste the original XML here..." height="18rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">XML B (changed)</div>
-          <textarea
-            value={inputB}
-            onChange={(e) => setInputB(e.target.value)}
-            placeholder="Paste the changed XML here..."
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={inputB} onChange={setInputB} language="xml" placeholder="Paste the changed XML here..." height="18rem" />
         </div>
       </div>
 

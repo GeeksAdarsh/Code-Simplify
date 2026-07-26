@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { lintNginxConfig } from "@/lib/nginx-utils";
 import { LintResults } from "@/components/tools/shared/lint-results";
 
@@ -39,13 +40,7 @@ export function NginxConfigTesterTool() {
         <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
           <span>nginx.conf</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your nginx configuration here..."
-          spellCheck={false}
-          className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="plaintext" placeholder="Paste your nginx configuration here..." height="24rem" />
       </div>
 
       <div className="mt-4">

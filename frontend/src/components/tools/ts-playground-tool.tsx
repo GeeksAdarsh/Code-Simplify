@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { transpileTypeScript } from "@/lib/ts-utils";
 
@@ -133,13 +134,7 @@ export function TsPlaygroundTool() {
             <span>TypeScript code</span>
             <span>{byteSize(code).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            placeholder="Write TypeScript here, then click Run..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={code} onChange={setCode} language="typescript" placeholder="Write TypeScript here, then click Run..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">

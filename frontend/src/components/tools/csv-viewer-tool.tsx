@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { DataTable } from "@/components/tools/shared/data-table";
 import { byteSize } from "@/lib/json-utils";
 import { parseCsv } from "@/lib/csv-utils";
@@ -47,13 +48,7 @@ export function CsvViewerTool() {
             <span>CSV input</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Paste your CSV here to view it as a table..."
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={input} onChange={setInput} language="plaintext" placeholder="Paste your CSV here to view it as a table..." height="24rem" />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">

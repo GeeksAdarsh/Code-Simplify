@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { evaluateXPath } from "@/lib/xml-utils";
 
 const SAMPLE_XML = `<?xml version="1.0" encoding="UTF-8"?>
@@ -40,13 +41,7 @@ export function XPathTesterTool() {
 
       <div className="rounded-b-xl border border-border">
         <div className="border-b border-border px-3 py-1.5 text-xs text-muted">XML document</div>
-        <textarea
-          value={xml}
-          onChange={(e) => setXml(e.target.value)}
-          placeholder="Paste your XML document here..."
-          spellCheck={false}
-          className="h-64 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={xml} onChange={setXml} language="xml" placeholder="Paste your XML document here..." height="16rem" />
         <div className="border-t border-border">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">XPath expression</div>
           <input

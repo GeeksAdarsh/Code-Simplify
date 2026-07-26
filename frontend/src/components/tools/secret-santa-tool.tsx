@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { generateSecretSantaPairs, type SecretSantaPair } from "@/lib/decision-utils";
 
 const SAMPLE_NAMES = "Alex\nJordan\nTaylor\nMorgan\nCasey\nRiley";
@@ -36,12 +37,7 @@ export function SecretSantaTool() {
     <div>
       <div className="card p-4">
         <label className="mb-1 block text-xs font-medium text-muted">Participant names (one per line)</label>
-        <textarea
-          value={namesText}
-          onChange={(e) => setNamesText(e.target.value)}
-          rows={7}
-          className="w-full rounded border border-border bg-background px-3 py-2 text-sm outline-none"
-        />
+        <CodeEditor value={namesText} onChange={setNamesText} language="plaintext" height="10.5rem" className="rounded border border-border" />
         <div className="mt-3 flex flex-wrap items-center gap-4">
           <button onClick={generate} disabled={names.length < 2 || duplicates} className="btn btn-primary h-9 px-4 text-sm disabled:opacity-50">
             Generate Secret Santa Pairs

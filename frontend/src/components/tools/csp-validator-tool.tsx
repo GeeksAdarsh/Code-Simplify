@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { validateCsp } from "@/lib/csp-utils";
 import { LintResults } from "@/components/tools/shared/lint-results";
 
@@ -23,13 +24,7 @@ export function CspValidatorTool() {
       </div>
 
       <div className="rounded-b-xl border border-border">
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your Content-Security-Policy header value here..."
-          spellCheck={false}
-          className="h-32 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="plaintext" placeholder="Paste your Content-Security-Policy header value here..." height="8rem" />
       </div>
 
       <div className="mt-4">

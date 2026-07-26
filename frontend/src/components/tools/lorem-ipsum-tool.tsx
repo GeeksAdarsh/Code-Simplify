@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { generateLoremIpsum, type LoremUnit } from "@/lib/text-utils";
 
 export function LoremIpsumTool() {
@@ -68,12 +69,7 @@ export function LoremIpsumTool() {
             {copied ? "Copied!" : "Copy"}
           </button>
         </div>
-        <textarea
-          value={output}
-          readOnly
-          spellCheck={false}
-          className="h-72 w-full resize-none bg-background p-3 text-sm outline-none"
-        />
+        <CodeEditor value={output} readOnly language="plaintext" height="18rem" />
       </div>
     </div>
   );

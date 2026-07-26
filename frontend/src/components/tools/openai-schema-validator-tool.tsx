@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { validateOpenAiSchema } from "@/lib/openai-schema-utils";
 import { LintResults } from "@/components/tools/shared/lint-results";
 
@@ -40,12 +41,12 @@ export function OpenAiSchemaValidatorTool() {
       </div>
 
       <div className="rounded-b-xl border border-border">
-        <textarea
+        <CodeEditor
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={setInput}
+          language="json"
           placeholder="Paste a JSON Schema (or a full response_format / function definition) here..."
-          spellCheck={false}
-          className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
+          height="24rem"
         />
       </div>
 

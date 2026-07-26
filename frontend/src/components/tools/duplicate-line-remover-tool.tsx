@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { removeDuplicateLines } from "@/lib/text-utils";
 
 const SAMPLE = "apple\nbanana\napple\ncherry\nBanana\ndate\ncherry";
@@ -53,13 +54,7 @@ export function DuplicateLineRemoverTool() {
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
         <div className="flex flex-col border-b border-border sm:border-b-0 sm:border-r">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Input</div>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Paste text with duplicate lines here..."
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={text} onChange={setText} language="plaintext" placeholder="Paste text with duplicate lines here..." height="18rem" />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
@@ -68,13 +63,7 @@ export function DuplicateLineRemoverTool() {
               {copied ? "Copied!" : "Copy"}
             </button>
           </div>
-          <textarea
-            value={result.output}
-            readOnly
-            placeholder="Deduplicated text will appear here..."
-            spellCheck={false}
-            className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={result.output} readOnly language="plaintext" placeholder="Deduplicated text will appear here..." height="18rem" />
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { countTokens, EMBEDDING_MODELS } from "@/lib/tokenizer-utils";
 
 const SAMPLE = `CodeSimplify is a free online suite of developer tools for formatting, validating, and converting JSON, YAML, SQL, and more.`;
@@ -54,13 +55,7 @@ export function EmbeddingTokenCounterTool() {
       </div>
 
       <div className="rounded-b-xl border border-border">
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste the text you plan to embed here..."
-          spellCheck={false}
-          className="h-72 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="plaintext" placeholder="Paste the text you plan to embed here..." height="18rem" />
       </div>
 
       <div className="mt-4">

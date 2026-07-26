@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { format } from "sql-formatter";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { splitSqlSegments, SQL_KEYWORDS } from "@/lib/sql-utils";
 
@@ -65,13 +66,7 @@ export function SqlValidatorTool() {
           <span>SQL input</span>
           <span>{byteSize(input).toLocaleString()} bytes</span>
         </div>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste your SQL query here to validate its syntax..."
-          spellCheck={false}
-          className="h-80 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-        />
+        <CodeEditor value={input} onChange={setInput} language="sql" placeholder="Paste your SQL query here to validate its syntax..." height="20rem" />
       </div>
 
       <div className="mt-4">

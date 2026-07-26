@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { diffLines, summarizeDiff } from "@/lib/text-diff-utils";
 
 const SAMPLE_A = "The quick brown fox\njumps over the lazy dog\nEvery day is a good day\nThe end.";
@@ -58,23 +59,11 @@ export function TextDiffTool() {
       <div className="grid gap-0 rounded-b-xl border border-border sm:grid-cols-2">
         <div className="flex flex-col border-b border-border sm:border-b-0 sm:border-r">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Original</div>
-          <textarea
-            value={textA}
-            onChange={(e) => setTextA(e.target.value)}
-            placeholder="Paste the original text here..."
-            spellCheck={false}
-            className="h-56 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={textA} onChange={setTextA} language="plaintext" placeholder="Paste the original text here..." height="14rem" />
         </div>
         <div className="flex flex-col">
           <div className="border-b border-border px-3 py-1.5 text-xs text-muted">Changed</div>
-          <textarea
-            value={textB}
-            onChange={(e) => setTextB(e.target.value)}
-            placeholder="Paste the changed text here..."
-            spellCheck={false}
-            className="h-56 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
-          />
+          <CodeEditor value={textB} onChange={setTextB} language="plaintext" placeholder="Paste the changed text here..." height="14rem" />
         </div>
       </div>
 

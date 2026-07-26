@@ -1,7 +1,9 @@
 "use client";
 
 import { type ReactNode, useEffect, useRef, useState } from "react";
+import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
+import { languageFromFilename, languageFromLabel } from "@/lib/monaco-language";
 
 export interface ConvertResult {
   output: string;
@@ -19,6 +21,10 @@ interface AsyncConvertToolProps {
   downloadMimeType?: string;
   toolbarExtra?: ReactNode;
   debounceMs?: number;
+  /** Monaco language id for the input editor; guessed from inputLabel when omitted. */
+  inputLanguage?: string;
+  /** Monaco language id for the output editor; guessed from downloadFilename when omitted. */
+  outputLanguage?: string;
 }
 
 export function AsyncConvertTool({
@@ -32,6 +38,8 @@ export function AsyncConvertTool({
   downloadMimeType = "text/plain",
   toolbarExtra,
   debounceMs = 300,
+  inputLanguage,
+  outputLanguage,
 }: AsyncConvertToolProps) {
   const [input, setInput] = useState("");
   const [result, setResult] = useState<ConvertResult>({ output: "" });
@@ -102,12 +110,12 @@ export function AsyncConvertTool({
             <span>{inputLabel}</span>
             <span>{byteSize(input).toLocaleString()} bytes</span>
           </div>
-          <textarea
+          <CodeEditor
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={setInput}
+            language={inputLanguage ?? languageFromLabel(inputLabel)}
             placeholder={inputPlaceholder}
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
+            height="24rem"
           />
         </div>
         <div className="flex flex-col">
@@ -132,12 +140,12 @@ export function AsyncConvertTool({
               </button>
             </div>
           </div>
-          <textarea
+          <CodeEditor
             value={result.output}
             readOnly
+            language={outputLanguage ?? languageFromFilename(downloadFilename)}
             placeholder={outputPlaceholder}
-            spellCheck={false}
-            className="h-96 w-full resize-none bg-background p-3 font-mono text-sm outline-none"
+            height="24rem"
           />
         </div>
       </div>
