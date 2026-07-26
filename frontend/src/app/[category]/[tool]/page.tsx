@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getLiveCategories, getTool, siteConfig, toolHref } from "@/config/tools";
-import { getToolWidget } from "@/config/tool-widgets";
+import { ToolWidget } from "@/config/tool-widgets";
 import { getToolContent } from "@/config/tool-content";
 import { ToolPageLayout } from "@/components/tool-page-layout";
 
@@ -55,7 +55,6 @@ export default async function ToolPage({
   if (!found?.category || found.tool.status !== "live") notFound();
   const { tool, category } = found;
 
-  const widget = getToolWidget(category.slug, tool.slug);
   const content = getToolContent(category.slug, tool.slug);
 
   return (
@@ -66,7 +65,7 @@ export default async function ToolPage({
       features={content?.features}
       faq={content?.faq}
     >
-      {widget}
+      <ToolWidget categorySlug={category.slug} toolSlug={tool.slug} />
     </ToolPageLayout>
   );
 }
