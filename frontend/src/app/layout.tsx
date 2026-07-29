@@ -10,6 +10,7 @@ import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const GA_MEASUREMENT_ID = "G-S1S7JLX46K";
 const CLARITY_PROJECT_ID = "xokv9ay8zz";
+const ADSENSE_CLIENT_ID = "ca-pub-3410490561561009";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,6 +68,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+        />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
