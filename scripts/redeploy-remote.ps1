@@ -1,7 +1,9 @@
 <#
 .SYNOPSIS
-  SSHes into the EC2 instance and re-runs redeploy.sh: git pull + rebuild the
-  Docker images on the box itself + restart the stack.
+  SSHes into the EC2 instance and re-runs redeploy.sh: git pull + pull the
+  latest pre-built images from ECR (built by GitHub Actions) + restart the
+  stack. Useful for a manual redeploy without waiting on a GitHub Actions
+  run - normally deploys happen automatically on push to main.
 
 .EXAMPLE
   ./scripts/redeploy-remote.ps1 -InstanceIp 16.192.95.202 -KeyPath ~/.ssh/codesimplify.pem

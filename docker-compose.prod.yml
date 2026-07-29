@@ -1,18 +1,19 @@
-# Used on the EC2 instance: builds images from source on the box itself.
+# Used on the EC2 instance: pulls images that GitHub Actions already built
+# and pushed to ECR - the instance never builds anything itself (t3.micro
+# doesn't have the RAM/CPU to build this app in a reasonable time).
+# ECR_REGISTRY comes from /opt/codesimplify/.env, written by user_data.sh.tpl.
 # Plain HTTP for now - TLS/domain is handled externally later (e.g. Cloudflare).
 # Local testing should use ./docker-compose.yml instead.
 
 services:
   backend:
-    build:
-      context: ./backend
+    image: ${ECR_REGISTRY}/codesimplify-backend:latest
     restart: unless-stopped
     expose:
       - "8080"
 
   frontend:
-    build:
-      context: ./frontend
+    image: ${ECR_REGISTRY}/codesimplify-frontend:latest
     restart: unless-stopped
     environment:
       BACKEND_URL: http://backend:8080

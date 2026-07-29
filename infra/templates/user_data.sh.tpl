@@ -14,18 +14,13 @@ curl -sSL https://github.com/docker/compose/releases/latest/download/docker-comp
   -o /usr/local/lib/docker/cli-plugins/docker-compose
 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
-# `docker compose build` shells out to buildx - the plain "docker" dnf package
-# doesn't ship it, and buildx's GitHub releases use versioned filenames (no
-# fixed "latest" asset name), so resolve the tag via the API first.
-BUILDX_VERSION=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest \
-  | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p' | head -1)
-curl -sSL "https://github.com/docker/buildx/releases/download/$${BUILDX_VERSION}/buildx-$${BUILDX_VERSION}.linux-amd64" \
-  -o /usr/local/lib/docker/cli-plugins/docker-buildx
-chmod +x /usr/local/lib/docker/cli-plugins/docker-buildx
+# Images are built by GitHub Actions and pulled from ECR - this box never
+# builds anything, so buildx isn't needed here anymore.
 
-# t3.micro has only 1GB RAM; building Next.js + Maven on it needs real swap headroom.
+# t3.micro has only 1GB RAM; a little swap keeps the frontend (Node) +
+# backend (JVM) stack from OOMing under load spikes.
 if [ ! -f /swapfile ]; then
-  fallocate -l 2G /swapfile
+  fallocate -l 1G /swapfile
   chmod 600 /swapfile
   mkswap /swapfile
   swapon /swapfile
@@ -41,13 +36,17 @@ else
   cd /opt/codesimplify
 fi
 
+cat > /opt/codesimplify/.env <<EOF
+ECR_REGISTRY=${ecr_registry}
+EOF
+
 cat > redeploy.sh <<'REDEPLOY'
 #!/bin/bash
 set -euxo pipefail
 cd /opt/codesimplify
 git pull origin main
-docker compose -f docker-compose.prod.yml build backend
-docker compose -f docker-compose.prod.yml build frontend
+aws ecr get-login-password --region ${aws_region} | docker login --username AWS --password-stdin ${ecr_registry}
+docker compose -f docker-compose.prod.yml pull
 docker compose -f docker-compose.prod.yml up -d
 docker image prune -f
 REDEPLOY
