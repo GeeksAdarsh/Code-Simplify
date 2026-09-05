@@ -92,7 +92,6 @@ export function ConvertTool({
             onChange={setInput}
             language={inputLanguage ?? languageFromLabel(inputLabel)}
             placeholder={inputPlaceholder}
-            height="24rem"
           />
         </div>
         <div className="flex flex-col">
@@ -121,7 +120,6 @@ export function ConvertTool({
             readOnly
             language={outputLanguage ?? languageFromFilename(downloadFilename)}
             placeholder={outputPlaceholder}
-            height="24rem"
           />
         </div>
       </div>

@@ -289,7 +289,7 @@ export const JsonTreeView = forwardRef<JsonTreeViewHandle, JsonTreeViewProps>(fu
   const rootType = getType(data);
 
   return (
-    <div className="scrollbar-thin h-96 overflow-auto bg-background p-3">
+    <div className="scrollbar-thin tool-workspace-height overflow-auto bg-background p-3">
       <JsonNode
         nodeKey={null}
         isArrayIndex={false}

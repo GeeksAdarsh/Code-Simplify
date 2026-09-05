@@ -29,7 +29,7 @@ export function ToolPageLayout({
   const toolUrl = `${siteConfig.url}${toolHref(category.slug, tool.slug)}`;
 
   return (
-    <div className="container-page py-8">
+    <div className="container-tool py-8">
       <JsonLd
         data={{
           "@context": "https://schema.org",

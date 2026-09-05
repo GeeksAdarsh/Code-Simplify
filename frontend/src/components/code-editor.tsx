@@ -36,7 +36,7 @@ export function CodeEditor({
   onChange,
   language = "json",
   readOnly = false,
-  height = "24rem",
+  height = "var(--tool-workspace-height)",
   placeholder,
   className,
 }: CodeEditorProps) {

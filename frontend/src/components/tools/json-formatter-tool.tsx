@@ -217,7 +217,6 @@ export function JsonFormatterTool() {
             value={input}
             onChange={setInput}
             language="json"
-            height="24rem"
             placeholder="Paste JSON here, or drag & drop a .json file..."
           />
           {isDragging && (
@@ -279,11 +278,11 @@ export function JsonFormatterTool() {
             </div>
           )}
 
-          {activeTab === "text" && <CodeEditor value={output} language="json" readOnly height="24rem" placeholder="Formatted JSON will appear here." />}
+          {activeTab === "text" && <CodeEditor value={output} language="json" readOnly placeholder="Formatted JSON will appear here." />}
 
           {activeTab === "tree" &&
             (error || parsedValue === undefined ? (
-              <div className="flex h-96 items-center justify-center px-4 text-center text-sm text-muted">
+              <div className="tool-workspace-height flex items-center justify-center px-4 text-center text-sm text-muted">
                 {input.trim() ? "Fix the JSON errors to see the tree view." : "Enter JSON to see the tree view."}
               </div>
             ) : (
@@ -297,13 +296,13 @@ export function JsonFormatterTool() {
             ))}
 
           {activeTab === "raw" && (
-            <pre className="scrollbar-thin h-96 w-full overflow-auto whitespace-pre-wrap break-words bg-background p-3 font-mono text-sm">
+            <pre className="scrollbar-thin tool-workspace-height w-full overflow-auto whitespace-pre-wrap break-words bg-background p-3 font-mono text-sm">
               {output || "Formatted JSON will appear here."}
             </pre>
           )}
 
           {activeTab === "minified" && (
-            <pre className="scrollbar-thin h-96 w-full overflow-auto whitespace-pre-wrap break-words bg-background p-3 font-mono text-sm">
+            <pre className="scrollbar-thin tool-workspace-height w-full overflow-auto whitespace-pre-wrap break-words bg-background p-3 font-mono text-sm">
               {minified || "Minified JSON will appear here."}
             </pre>
           )}

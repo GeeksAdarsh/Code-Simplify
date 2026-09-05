@@ -8,6 +8,7 @@
   --surface: #fafafa;
   --accent: #0a0a0a;
   --accent-foreground: #ffffff;
+  --tool-workspace-height: clamp(22rem, calc(100vh - 17rem), 56rem);
 }
 
 .dark {
@@ -51,9 +52,22 @@ body {
 
 .container-page {
   width: 100%;
-  max-width: 80rem;
+  max-width: 100%;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: clamp(1rem, 2.5vw, 3rem);
+}
+
+/* Tool pages use the full viewport width (with side padding) on large monitors. */
+.container-tool {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 2vw, 2.5rem);
+}
+
+.tool-workspace-height {
+  height: var(--tool-workspace-height);
+  min-height: 22rem;
 }
 
 .btn {
