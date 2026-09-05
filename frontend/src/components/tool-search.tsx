@@ -24,14 +24,26 @@ export function ToolSearch() {
   }, [query, allTools]);
 
   useEffect(() => {
-    function onClickOutside(e: MouseEvent) {
+    function onPointerDown(e: PointerEvent) {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setOpen(false);
       }
     }
-    document.addEventListener("mousedown", onClickOutside);
-    return () => document.removeEventListener("mousedown", onClickOutside);
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
+
+  const trimmedQuery = query.trim();
+  const showPanel = open && trimmedQuery.length > 0;
 
   return (
     <div ref={containerRef} className="relative w-full max-w-sm">
@@ -55,26 +67,39 @@ export function ToolSearch() {
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
-          type="text"
+          type="search"
           placeholder={`Search ${allTools.length}+ tools...`}
           className="w-full bg-transparent text-sm outline-none placeholder:text-muted"
+          autoComplete="off"
         />
       </div>
-      {open && results.length > 0 && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-2 max-h-96 overflow-auto rounded-lg border border-border bg-background shadow-lg">
-          {results.map((t) => (
-            <Link
-              key={`${t.categorySlug}-${t.slug}`}
-              href={toolHref(t.categorySlug, t.slug)}
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between gap-3 border-b border-border px-3 py-2.5 text-sm last:border-b-0 hover:bg-surface"
-            >
-              <span>
-                <span className="font-medium">{t.title}</span>
-                <span className="ml-2 text-xs text-muted">{t.categoryTitle}</span>
-              </span>
-            </Link>
-          ))}
+      {showPanel && (
+        <div className="absolute left-0 right-0 top-full z-50 pt-1">
+          <div
+            id="tool-search-results"
+            className="max-h-96 overflow-auto rounded-lg border border-border bg-background shadow-lg"
+          >
+            {results.length > 0 ? (
+              results.map((t) => (
+                <Link
+                  key={`${t.categorySlug}-${t.slug}`}
+                  href={toolHref(t.categorySlug, t.slug)}
+                  onClick={() => {
+                    setOpen(false);
+                    setQuery("");
+                  }}
+                  className="flex items-center justify-between gap-3 border-b border-border px-3 py-2.5 text-sm transition-colors last:border-b-0 hover:bg-surface"
+                >
+                  <span>
+                    <span className="font-medium">{t.title}</span>
+                    <span className="ml-2 text-xs text-muted">{t.categoryTitle}</span>
+                  </span>
+                </Link>
+              ))
+            ) : (
+              <p className="px-3 py-2.5 text-sm text-muted">No tools found for &ldquo;{trimmedQuery}&rdquo;</p>
+            )}
+          </div>
         </div>
       )}
     </div>

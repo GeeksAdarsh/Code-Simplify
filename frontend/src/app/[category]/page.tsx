@@ -1,9 +1,8 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCategory, getLiveCategories, siteConfig, toolHref } from "@/config/tools";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { FavoriteButton } from "@/components/favorite-button";
+import { ToolCard } from "@/components/tool-card";
 import { JsonLd } from "@/components/json-ld";
 
 export function generateStaticParams() {
@@ -76,17 +75,14 @@ export default async function CategoryPage({
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {liveTools.map((tool) => (
-          <Link
+          <ToolCard
             key={tool.slug}
             href={toolHref(category.slug, tool.slug)}
-            className="card p-5 transition-colors hover:border-foreground"
-          >
-            <div className="mb-2 flex items-center justify-end">
-              <FavoriteButton categorySlug={category.slug} slug={tool.slug} />
-            </div>
-            <h2 className="font-medium">{tool.title}</h2>
-            <p className="mt-1 text-sm text-muted">{tool.description}</p>
-          </Link>
+            categorySlug={category.slug}
+            slug={tool.slug}
+            title={tool.title}
+            description={tool.description}
+          />
         ))}
       </div>
     </div>

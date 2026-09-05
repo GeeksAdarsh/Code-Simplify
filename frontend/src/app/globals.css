@@ -121,6 +121,18 @@ body {
   border: 1px solid var(--border);
 }
 
+mark {
+  color: inherit;
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-summary::marker {
+  content: "";
+}
+
 .scrollbar-thin::-webkit-scrollbar {
   height: 6px;
   width: 6px;

@@ -65,7 +65,7 @@ export default function CategoriesPage() {
                 <Link
                   key={tool.slug}
                   href={toolHref(category.slug, tool.slug)}
-                  className="badge gap-1.5 rounded-lg px-3 py-1.5 text-xs font-normal normal-case tracking-normal transition-colors hover:border-foreground"
+                  className="badge gap-1.5 rounded-lg px-3 py-1.5 text-xs font-normal normal-case tracking-normal transition-colors hover:border-foreground hover:bg-surface"
                 >
                   {tool.title}
                 </Link>

@@ -98,15 +98,25 @@ function highlight(text: string, term: string): ReactNode {
   if (!term) return text;
   const lower = text.toLowerCase();
   const needle = term.toLowerCase();
-  const idx = lower.indexOf(needle);
-  if (idx === -1) return text;
-  return (
-    <>
-      {text.slice(0, idx)}
-      <mark className="tok-match">{text.slice(idx, idx + term.length)}</mark>
-      {text.slice(idx + term.length)}
-    </>
-  );
+  const parts: ReactNode[] = [];
+  let start = 0;
+
+  while (start < text.length) {
+    const idx = lower.indexOf(needle, start);
+    if (idx === -1) {
+      parts.push(text.slice(start));
+      break;
+    }
+    if (idx > start) parts.push(text.slice(start, idx));
+    parts.push(
+      <mark key={`${idx}-${start}`} className="tok-match">
+        {text.slice(idx, idx + term.length)}
+      </mark>
+    );
+    start = idx + term.length;
+  }
+
+  return parts.length === 1 ? parts[0] : <>{parts}</>;
 }
 
 interface NodeProps {

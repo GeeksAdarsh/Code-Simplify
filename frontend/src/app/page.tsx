@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { siteConfig, toolHref, getAllTools, getLiveCategories, getFeaturedTools } from "@/config/tools";
-import { FavoriteButton } from "@/components/favorite-button";
+import { ToolCard } from "@/components/tool-card";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -45,18 +45,18 @@ export default function Home() {
           <h2 className="mb-6 text-xl font-semibold">Popular tools</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {featuredTools.map((t) => (
-              <Link
+              <ToolCard
                 key={`${t.categorySlug}-${t.slug}`}
                 href={toolHref(t.categorySlug, t.slug)}
-                className="card group p-5 transition-colors hover:border-foreground"
-              >
-                <div className="mb-2 flex items-center justify-between">
-                  <FavoriteButton categorySlug={t.categorySlug} slug={t.slug} />
+                categorySlug={t.categorySlug}
+                slug={t.slug}
+                title={t.title}
+                description={t.description}
+                favoritePosition="left"
+                trailing={
                   <span className="text-muted transition-transform group-hover:translate-x-1">&rarr;</span>
-                </div>
-                <h3 className="font-medium">{t.title}</h3>
-                <p className="mt-1 text-sm text-muted">{t.description}</p>
-              </Link>
+                }
+              />
             ))}
           </div>
         </section>

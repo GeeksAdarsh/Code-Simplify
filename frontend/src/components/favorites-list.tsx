@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { getAllTools, toolHref } from "@/config/tools";
 import { useFavorites } from "@/lib/use-favorites";
-import { FavoriteButton } from "@/components/favorite-button";
+import { ToolCard } from "@/components/tool-card";
 
 export function FavoritesList() {
   const { favorites, mounted } = useFavorites();
@@ -32,18 +32,15 @@ export function FavoritesList() {
   return (
     <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {favoriteTools.map((t) => (
-        <Link
+        <ToolCard
           key={`${t.categorySlug}-${t.slug}`}
           href={toolHref(t.categorySlug, t.slug)}
-          className="card group relative p-5 transition-colors hover:border-foreground"
-        >
-          <div className="mb-2 flex items-center justify-between">
-            <span className="text-xs font-medium uppercase tracking-wide text-muted">{t.categoryTitle}</span>
-            <FavoriteButton categorySlug={t.categorySlug} slug={t.slug} />
-          </div>
-          <h3 className="font-medium">{t.title}</h3>
-          <p className="mt-1 text-sm text-muted">{t.description}</p>
-        </Link>
+          categorySlug={t.categorySlug}
+          slug={t.slug}
+          title={t.title}
+          description={t.description}
+          categoryLabel={t.categoryTitle}
+        />
       ))}
     </div>
   );
