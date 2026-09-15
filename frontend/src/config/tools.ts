@@ -10,6 +10,8 @@ export interface Tool {
   status: ToolStatus;
   /** Extra keywords to help with on-page SEO / search */
   keywords?: string[];
+  /** Longer Google title for high-traffic tools. The visible H1 stays `title`. */
+  seoTitle?: string;
 }
 
 export interface Category {
@@ -27,9 +29,10 @@ function tool(
   title: string,
   description: string,
   status: ToolStatus = "soon",
-  keywords: string[] = []
+  keywords: string[] = [],
+  seoTitle?: string,
 ): Tool {
-  return { slug, title, description, status, keywords };
+  return { slug, title, description, status, keywords, seoTitle };
 }
 
 export const categories: Category[] = [
@@ -45,14 +48,16 @@ export const categories: Category[] = [
         "JSON Formatter",
         "Format and beautify messy JSON into clean, readable, indented JSON instantly.",
         "live",
-        ["json formatter", "json beautifier", "pretty print json", "format json online"]
+        ["json formatter", "json beautifier", "pretty print json", "format json online"],
+        "Free JSON Formatter Online — No Upload, Runs in Browser"
       ),
       tool(
         "validator",
         "JSON Validator",
         "Validate JSON syntax instantly and get precise line and column error locations.",
         "live",
-        ["json validator", "validate json online", "json syntax checker"]
+        ["json validator", "validate json online", "json syntax checker"],
+        "JSON Validator Online — Check Syntax, No Upload"
       ),
       tool(
         "beautifier",
@@ -186,7 +191,8 @@ export const categories: Category[] = [
         "XML Formatter",
         "Format and indent XML into a clean, readable structure with validation.",
         "live",
-        ["xml formatter", "format xml online", "xml beautifier"]
+        ["xml formatter", "format xml online", "xml beautifier"],
+        "XML Formatter Online — Beautify XML in Browser"
       ),
       tool(
         "validator",
@@ -250,7 +256,8 @@ export const categories: Category[] = [
         "YAML Formatter",
         "Format and beautify YAML documents with consistent indentation.",
         "live",
-        ["yaml formatter", "format yaml online", "yaml beautifier"]
+        ["yaml formatter", "format yaml online", "yaml beautifier"],
+        "YAML Formatter Online — Format YAML in Browser"
       ),
       tool(
         "validator",
@@ -300,7 +307,8 @@ export const categories: Category[] = [
         "CSV to JSON",
         "Convert CSV data into a JSON array of objects instantly.",
         "live",
-        ["csv to json converter", "convert csv to json"]
+        ["csv to json converter", "convert csv to json"],
+        "CSV to JSON Converter Online — Free & Instant"
       ),
       tool(
         "to-xml",
@@ -343,7 +351,8 @@ export const categories: Category[] = [
         "SQL Formatter",
         "Format and beautify SQL queries with proper indentation across MySQL, PostgreSQL, SQL Server, and more.",
         "live",
-        ["sql formatter online", "format sql query", "beautify sql"]
+        ["sql formatter online", "format sql query", "beautify sql"],
+        "SQL Formatter Online — Beautify SQL Queries"
       ),
       tool(
         "minifier",
@@ -414,35 +423,40 @@ export const categories: Category[] = [
         "Base64 Encode",
         "Encode any text (including Unicode and emoji) into Base64.",
         "live",
-        ["base64 encode online", "encode text to base64", "base64 encoder"]
+        ["base64 encode online", "encode text to base64", "base64 encoder"],
+        "Base64 Encode Online — Free Text to Base64"
       ),
       tool(
         "base64-decode",
         "Base64 Decode",
         "Decode Base64 back into readable UTF-8 text.",
         "live",
-        ["base64 decode online", "decode base64 to text", "base64 decoder"]
+        ["base64 decode online", "decode base64 to text", "base64 decoder"],
+        "Base64 Decode Online — Decode in Your Browser"
       ),
       tool(
         "url-encode",
         "URL Encode",
         "Percent-encode text or full URLs for safe use in query strings and links.",
         "live",
-        ["url encode online", "percent encode text", "uri encode"]
+        ["url encode online", "percent encode text", "uri encode"],
+        "URL Encode Online — Percent Encode Text Free"
       ),
       tool(
         "url-decode",
         "URL Decode",
         "Decode percent-encoded (%XX) URL strings back into plain text.",
         "live",
-        ["url decode online", "percent decode", "uri decode"]
+        ["url decode online", "percent decode", "uri decode"],
+        "URL Decode Online — Percent Decode URLs Free"
       ),
       tool(
         "jwt-decoder",
         "JWT Decoder",
         "Decode and inspect JSON Web Tokens, with optional HMAC signature verification.",
         "live",
-        ["jwt decoder online", "decode jwt token", "jwt.io alternative"]
+        ["jwt decoder online", "decode jwt token", "jwt.io alternative"],
+        "JWT Decoder Online — Decode Token in Browser"
       ),
       tool(
         "jwt-generator",
@@ -456,7 +470,8 @@ export const categories: Category[] = [
         "MD5 Generator",
         "Generate MD5 hashes from text, computed entirely in your browser.",
         "live",
-        ["md5 hash generator", "md5 online", "generate md5 checksum"]
+        ["md5 hash generator", "md5 online", "generate md5 checksum"],
+        "MD5 Hash Generator Online — Checksum in Browser"
       ),
       tool(
         "sha1",
@@ -470,7 +485,8 @@ export const categories: Category[] = [
         "SHA256 Generator",
         "Generate SHA-256 hashes from text using the Web Crypto API.",
         "live",
-        ["sha256 hash generator", "sha256 online", "generate sha256 checksum"]
+        ["sha256 hash generator", "sha256 online", "generate sha256 checksum"],
+        "SHA256 Hash Generator Online — Free Checksum"
       ),
       tool(
         "sha512",
@@ -498,7 +514,8 @@ export const categories: Category[] = [
         "Password Generator",
         "Generate strong, cryptographically random passwords with customizable rules.",
         "live",
-        ["password generator online", "random password generator", "strong password generator"]
+        ["password generator online", "random password generator", "strong password generator"],
+        "Strong Password Generator Online — Free & Random"
       ),
       tool(
         "password-strength",
@@ -534,7 +551,8 @@ export const categories: Category[] = [
         "UUID v4",
         "Generate random, cryptographically secure UUID v4 identifiers.",
         "live",
-        ["uuid v4 generator", "generate uuid online", "random uuid generator"]
+        ["uuid v4 generator", "generate uuid online", "random uuid generator"],
+        "UUID Generator Online — Free UUID v4"
       ),
       tool(
         "uuid-v7",
@@ -591,7 +609,8 @@ export const categories: Category[] = [
         "HTML Formatter",
         "Format and indent HTML markup.",
         "live",
-        ["html formatter", "format html online", "html beautifier", "indent html"]
+        ["html formatter", "format html online", "html beautifier", "indent html"],
+        "HTML Formatter Online — Beautify HTML Code"
       ),
       tool(
         "minifier",
@@ -1053,7 +1072,8 @@ export const categories: Category[] = [
         "Color Picker",
         "Pick a color visually or from your screen and get its HEX, RGB, HSL, HSV, and CMYK codes instantly.",
         "live",
-        ["color picker online", "html color picker", "eyedropper tool online", "pick color from screen"]
+        ["color picker online", "html color picker", "eyedropper tool online", "pick color from screen"],
+        "Color Picker Online — HEX RGB HSL Codes"
       ),
       tool(
         "hex-rgb",
@@ -1183,7 +1203,8 @@ export const categories: Category[] = [
         "QR Code Generator",
         "Generate a QR code from any text, URL, or content with adjustable error correction and instant PNG download.",
         "live",
-        ["qr code generator", "generate qr code online", "url to qr code", "free qr code generator"]
+        ["qr code generator", "generate qr code online", "url to qr code", "free qr code generator"],
+        "Free QR Code Generator — URL to QR Online"
       ),
       tool(
         "qr-scanner",
@@ -1233,7 +1254,8 @@ export const categories: Category[] = [
         "Unix Timestamp",
         "Convert between Unix timestamps and human-readable dates, in seconds or milliseconds, with a live current timestamp.",
         "live",
-        ["unix timestamp converter", "epoch converter", "timestamp to date", "current unix timestamp"]
+        ["unix timestamp converter", "epoch converter", "timestamp to date", "current unix timestamp"],
+        "Unix Timestamp Converter — Epoch to Date Online"
       ),
       tool(
         "date-difference",
@@ -1261,7 +1283,8 @@ export const categories: Category[] = [
         "Cron Generator",
         "Visually build cron expressions with presets, a plain-English description, and the next 5 run times.",
         "live",
-        ["cron expression generator", "cron job generator", "build cron expression", "crontab generator"]
+        ["cron expression generator", "cron job generator", "build cron expression", "crontab generator"],
+        "Cron Expression Generator Online — Crontab Builder"
       ),
       tool(
         "cron-parser",
@@ -1304,7 +1327,8 @@ export const categories: Category[] = [
         "Word Counter",
         "Count words, characters, sentences, and paragraphs in any text, with estimated reading and speaking time.",
         "live",
-        ["word counter online", "count words in text", "word count tool", "reading time calculator"]
+        ["word counter online", "count words in text", "word count tool", "reading time calculator"],
+        "Word Counter Online — Count Words & Characters"
       ),
       tool(
         "character-counter",
@@ -2007,7 +2031,8 @@ export const categories: Category[] = [
         "EMI Calculator",
         "Calculate your monthly loan EMI, total interest, and total payment using the standard reducing-balance formula.",
         "live",
-        ["emi calculator", "loan emi calculator", "calculate emi online", "monthly installment calculator"]
+        ["emi calculator", "loan emi calculator", "calculate emi online", "monthly installment calculator"],
+        "EMI Calculator Online — Home Loan Monthly EMI"
       ),
       tool(
         "loan-eligibility",
@@ -2085,7 +2110,8 @@ export const categories: Category[] = [
         "SIP Calculator",
         "Estimate the future value of a monthly SIP investment based on your expected rate of return.",
         "live",
-        ["sip calculator", "sip return calculator", "mutual fund sip calculator", "monthly sip calculator"]
+        ["sip calculator", "sip return calculator", "mutual fund sip calculator", "monthly sip calculator"],
+        "SIP Calculator India — Mutual Fund Returns Online"
       ),
       tool(
         "swp-calculator",
@@ -2256,14 +2282,16 @@ export const categories: Category[] = [
         "Income Tax Calculator",
         "Estimate your income tax liability under both the new and old tax regimes and see which one saves you more.",
         "live",
-        ["income tax calculator", "income tax calculator india", "new vs old tax regime calculator", "tax calculator india"]
+        ["income tax calculator", "income tax calculator india", "new vs old tax regime calculator", "tax calculator india"],
+        "Income Tax Calculator India — New vs Old Regime"
       ),
       tool(
         "gst-calculator",
         "GST Calculator",
         "Add or remove GST from an amount at any standard GST rate (5%, 12%, 18%, 28%).",
         "live",
-        ["gst calculator", "gst calculator india", "add gst calculator", "remove gst calculator"]
+        ["gst calculator", "gst calculator india", "add gst calculator", "remove gst calculator"],
+        "GST Calculator India — Inclusive & Exclusive"
       ),
       tool(
         "hra-calculator",

@@ -21,15 +21,16 @@ export async function generateMetadata({
   if (!found?.category || found.tool.status !== "live") return {};
   const { tool, category } = found;
   const canonical = toolHref(category.slug, tool.slug);
-  const title = `${tool.title} — Free Online ${category.title} Tool`;
+  const pageTitle = tool.seoTitle ?? tool.title;
+  const socialTitle = `${pageTitle} — Free Online ${category.title} Tool`;
 
   return {
-    title: tool.title,
+    title: pageTitle,
     description: tool.description,
     alternates: { canonical },
     keywords: tool.keywords,
     openGraph: {
-      title,
+      title: socialTitle,
       description: tool.description,
       url: canonical,
       siteName: siteConfig.name,
@@ -38,7 +39,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary",
-      title,
+      title: socialTitle,
       description: tool.description,
       images: ["/logo.png"],
     },
