@@ -63,7 +63,7 @@ export function StepUpSipTool() {
 
       <p className="mt-4 text-xs text-muted">
         Your monthly SIP amount increases by the step-up percentage every 12 months, modeling a rising income
-        that lets you invest more over time \u2014 compared to a flat SIP of the same starting amount, this
+        that lets you invest more over time — compared to a flat SIP of the same starting amount, this
         typically builds meaningfully more wealth over the long run.
       </p>
     </div>

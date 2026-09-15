@@ -193,7 +193,7 @@ export function LoanEmiTool({
       )}
 
       <p className="mt-4 text-xs text-muted">
-        Calculated using the standard reducing-balance EMI formula. This is an estimate for planning purposes \u2014
+        Calculated using the standard reducing-balance EMI formula. This is an estimate for planning purposes —
         actual EMI, processing fees, and eligibility depend on your lender.
       </p>
     </div>

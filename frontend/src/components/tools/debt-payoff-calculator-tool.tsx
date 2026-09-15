@@ -51,8 +51,8 @@ export function DebtPayoffCalculatorTool() {
           <div>
             <label className="mb-1 block text-xs font-medium text-muted">Strategy</label>
             <select value={method} onChange={(e) => setMethod(e.target.value as typeof method)} className="w-full rounded border border-border bg-background px-2.5 py-1.5 text-sm">
-              <option value="avalanche">Avalanche (highest rate first \u2014 saves most interest)</option>
-              <option value="snowball">Snowball (smallest balance first \u2014 quick wins)</option>
+              <option value="avalanche">Avalanche (highest rate first — saves most interest)</option>
+              <option value="snowball">Snowball (smallest balance first — quick wins)</option>
             </select>
           </div>
         </div>

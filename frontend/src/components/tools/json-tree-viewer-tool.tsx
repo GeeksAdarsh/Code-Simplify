@@ -73,7 +73,7 @@ function TreeNode({ keyName, value, path, collapsed, toggle, depth }: TreeNodePr
             aria-label={isCollapsed ? "Expand" : "Collapse"}
             className="flex h-4 w-4 shrink-0 items-center justify-center text-xs text-muted hover:text-foreground"
           >
-            {isCollapsed ? "+" : "\u2212"}
+            {isCollapsed ? "+" : "−"}
           </button>
         ) : (
           <span className="w-4 shrink-0" />

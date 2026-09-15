@@ -120,7 +120,7 @@ export function LoanComparisonTool() {
           <tbody className="divide-y divide-border">
             {results.map((r, i) => (
               <tr key={i} className={r.totalPayment === cheapestTotal ? "font-medium" : ""}>
-                <td className="py-2 pr-4">{r.label}{r.totalPayment === cheapestTotal ? " \u2705" : ""}</td>
+                <td className="py-2 pr-4">{r.label}{r.totalPayment === cheapestTotal ? " ✅" : ""}</td>
                 <td className="py-2 pr-4 font-mono">{currency}{formatMoney(r.emi)}</td>
                 <td className="py-2 pr-4 font-mono">{currency}{formatMoney(r.totalInterest)}</td>
                 <td className="py-2 pr-4 font-mono">{currency}{formatMoney(r.totalPayment)}</td>

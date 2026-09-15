@@ -46,11 +46,11 @@ export function EmailValidatorTool() {
           <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
             <div className="rounded border border-border bg-background px-3 py-2">
               <p className="text-xs text-muted">Local part</p>
-              <p className="mt-0.5 font-mono">{result.localPart || "\u2014"}</p>
+              <p className="mt-0.5 font-mono">{result.localPart || "—"}</p>
             </div>
             <div className="rounded border border-border bg-background px-3 py-2">
               <p className="text-xs text-muted">Domain</p>
-              <p className="mt-0.5 font-mono">{result.domain || "\u2014"}</p>
+              <p className="mt-0.5 font-mono">{result.domain || "—"}</p>
             </div>
           </div>
 
@@ -84,7 +84,7 @@ export function EmailValidatorTool() {
       )}
 
       <p className="mt-3 text-xs text-muted">
-        Validation runs entirely in your browser \u2014 the email address you enter is never sent to a server. This
+        Validation runs entirely in your browser — the email address you enter is never sent to a server. This
         checks syntax only; it does not verify the mailbox actually exists or accepts mail.
       </p>
     </div>

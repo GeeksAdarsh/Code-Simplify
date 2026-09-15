@@ -74,7 +74,7 @@ export function LoanPrepaymentTool() {
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Assumes your EMI stays the same after the one-time prepayment, so your loan tenure shortens instead \u2014
+        Assumes your EMI stays the same after the one-time prepayment, so your loan tenure shortens instead —
         the most common way lenders apply prepayments unless you specifically request a lower EMI instead.
       </p>
     </div>

@@ -48,12 +48,12 @@ export function EmergencyFundCalculatorTool() {
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Months to reach goal</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{result.monthsToGoal === null ? "\u2014" : `${result.monthsToGoal} mo`}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{result.monthsToGoal === null ? "—" : `${result.monthsToGoal} mo`}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Financial planners typically recommend 3\u20136 months of essential expenses as an emergency fund (up to 12
+        Financial planners typically recommend 3–6 months of essential expenses as an emergency fund (up to 12
         months for single-income households or freelancers). Keep this fund in a liquid, easily accessible account
         like a savings account or liquid mutual fund.
       </p>

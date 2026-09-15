@@ -17,7 +17,7 @@ export function CopyField({ label, value }: { label: string; value: string }) {
     <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-2.5 last:border-b-0">
       <div className="min-w-0">
         <p className="text-xs text-muted">{label}</p>
-        <p className="truncate font-mono text-sm">{value || "\u2014"}</p>
+        <p className="truncate font-mono text-sm">{value || "—"}</p>
       </div>
       <button
         onClick={handleCopy}

@@ -111,7 +111,7 @@ bg-[${gradientValue.replace(/\s+/g, "_")}]`,
               />
             </ControlRow>
             {type === "linear" ? (
-              <ControlRow label="Angle" value={`${angle}\u00b0`}>
+              <ControlRow label="Angle" value={`${angle}°`}>
                 <RangeInput min={0} max={360} value={angle} onChange={setAngle} />
               </ControlRow>
             ) : (

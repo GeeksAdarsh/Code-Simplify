@@ -64,7 +64,7 @@ export function TotpGeneratorTool() {
           <p className="max-w-xs text-sm text-muted">{error}</p>
         ) : (
           <button onClick={() => copy(code)} className="font-mono text-4xl font-semibold tracking-[0.3em]">
-            {code || "\u2014".repeat(digits)}
+            {code || "—".repeat(digits)}
           </button>
         )}
         <div className="h-1.5 w-40 overflow-hidden rounded-full bg-border">
@@ -73,7 +73,7 @@ export function TotpGeneratorTool() {
             style={{ width: `${(remaining / period) * 100}%` }}
           />
         </div>
-        <span className="text-xs text-muted">Refreshes in {remaining}s{copied && " \u00b7 Copied!"}</span>
+        <span className="text-xs text-muted">Refreshes in {remaining}s{copied && " · Copied!"}</span>
       </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">

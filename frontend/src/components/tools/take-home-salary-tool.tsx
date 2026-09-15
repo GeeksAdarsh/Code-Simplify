@@ -20,7 +20,7 @@ export function TakeHomeSalaryTool() {
     <div>
       <div className="card grid gap-4 p-4 sm:grid-cols-2">
         <label className="block text-xs sm:col-span-2">
-          <span className="mb-1 block text-muted">Annual CTC (\u20B9)</span>
+          <span className="mb-1 block text-muted">Annual CTC (₹)</span>
           <input type="number" min={0} value={annualCtc} onChange={(e) => setAnnualCtc(Number(e.target.value))} className="w-full rounded border border-border bg-background px-2.5 py-1.5 font-mono text-sm outline-none" />
         </label>
 
@@ -48,24 +48,24 @@ export function TakeHomeSalaryTool() {
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <div className="card p-4">
           <p className="text-xs text-muted">Gross salary (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.grossMonthly)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.grossMonthly)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Estimated income tax (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.monthlyIncomeTax)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.monthlyIncomeTax)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Employee PF (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.monthlyPf)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.monthlyPf)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Take-home salary (monthly)</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(result.netMonthly)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(result.netMonthly)}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Deducts employee PF, professional tax, and an estimated income tax (using illustrative slabs \u2014 see the
+        Deducts employee PF, professional tax, and an estimated income tax (using illustrative slabs — see the
         Income Tax Calculator) from your gross salary to estimate your final monthly in-hand pay. Doesn&apos;t account
         for other deductions like TDS on perquisites, gratuity, or additional voluntary deductions.
       </p>

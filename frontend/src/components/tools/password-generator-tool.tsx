@@ -87,7 +87,7 @@ export function PasswordGeneratorTool() {
               {copied === -1 ? "Copied!" : "Copy"}
             </button>
           </div>
-          <p className="mt-2 break-all font-mono text-lg">{password || "\u2014"}</p>
+          <p className="mt-2 break-all font-mono text-lg">{password || "—"}</p>
           {strength && (
             <div className="mt-3">
               <div className="h-1.5 w-full overflow-hidden rounded-full bg-border">
@@ -97,7 +97,7 @@ export function PasswordGeneratorTool() {
                 />
               </div>
               <p className="mt-1.5 text-xs text-muted">
-                {strength.label} \u00b7 ~{strength.entropyBits} bits of entropy
+                {strength.label} · ~{strength.entropyBits} bits of entropy
               </p>
             </div>
           )}

@@ -87,15 +87,15 @@ export function ContrastCheckerTool() {
         <div className="flex flex-col gap-3">
           <div className="card p-4 text-center">
             <p className="text-xs text-muted">Contrast ratio</p>
-            <p className="mt-1 font-mono text-3xl font-semibold">{result ? result.ratio.toFixed(2) : "\u2014"}</p>
+            <p className="mt-1 font-mono text-3xl font-semibold">{result ? result.ratio.toFixed(2) : "—"}</p>
             <p className="text-xs text-muted">: 1</p>
           </div>
           {result && (
             <>
-              <Badge pass={result.aaNormal} label="WCAG AA \u00b7 normal text (\u2265 4.5)" />
-              <Badge pass={result.aaLarge} label="WCAG AA \u00b7 large text (\u2265 3)" />
-              <Badge pass={result.aaaNormal} label="WCAG AAA \u00b7 normal text (\u2265 7)" />
-              <Badge pass={result.aaaLarge} label="WCAG AAA \u00b7 large text (\u2265 4.5)" />
+              <Badge pass={result.aaNormal} label="WCAG AA · normal text (≥ 4.5)" />
+              <Badge pass={result.aaLarge} label="WCAG AA · large text (≥ 3)" />
+              <Badge pass={result.aaaNormal} label="WCAG AAA · normal text (≥ 7)" />
+              <Badge pass={result.aaaLarge} label="WCAG AAA · large text (≥ 4.5)" />
             </>
           )}
         </div>

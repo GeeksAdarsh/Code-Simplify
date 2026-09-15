@@ -4,10 +4,10 @@ import { useCallback, useRef, useState } from "react";
 import { simulateColorBlindness, simulateColorBlindnessOnImageData, type ColorBlindnessType } from "@/lib/color-utils";
 
 const TYPES: { value: ColorBlindnessType; label: string; prevalence: string }[] = [
-  { value: "protanopia", label: "Protanopia", prevalence: "~1% of men \u2014 red-blind" },
-  { value: "deuteranopia", label: "Deuteranopia", prevalence: "~1% of men \u2014 green-blind" },
-  { value: "tritanopia", label: "Tritanopia", prevalence: "<0.1% \u2014 blue-blind" },
-  { value: "achromatopsia", label: "Achromatopsia", prevalence: "Very rare \u2014 no color vision" },
+  { value: "protanopia", label: "Protanopia", prevalence: "~1% of men — red-blind" },
+  { value: "deuteranopia", label: "Deuteranopia", prevalence: "~1% of men — green-blind" },
+  { value: "tritanopia", label: "Tritanopia", prevalence: "<0.1% — blue-blind" },
+  { value: "achromatopsia", label: "Achromatopsia", prevalence: "Very rare — no color vision" },
 ];
 
 const DEMO_COLORS = ["#ef4444", "#22c55e", "#3b82f6", "#f59e0b", "#a855f7", "#ec4899", "#0a0a0a", "#14b8a6"];
@@ -152,7 +152,7 @@ export function ColorBlindnessSimulatorTool() {
 
       <p className="mt-6 text-xs text-muted">
         Simulations use standard color-vision-deficiency transform matrices and are an approximation, not a medical
-        diagnostic tool. Everything runs locally in your browser via the Canvas API \u2014 images are never uploaded.
+        diagnostic tool. Everything runs locally in your browser via the Canvas API — images are never uploaded.
       </p>
     </div>
   );

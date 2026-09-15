@@ -17,7 +17,7 @@ export function GstCalculatorTool() {
     <div>
       <div className="card grid gap-4 p-4 sm:grid-cols-2">
         <label className="block text-xs">
-          <span className="mb-1 block text-muted">Amount (\u20B9)</span>
+          <span className="mb-1 block text-muted">Amount (₹)</span>
           <input type="number" min={0} value={amount} onChange={(e) => setAmount(Number(e.target.value))} className="w-full rounded border border-border bg-background px-2.5 py-1.5 font-mono text-sm outline-none" />
         </label>
         <div>
@@ -42,15 +42,15 @@ export function GstCalculatorTool() {
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <div className="card p-4">
           <p className="text-xs text-muted">Base amount</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(result.baseAmount)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(result.baseAmount)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">GST amount</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(result.gstAmount)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(result.gstAmount)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Total amount</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(result.totalAmount)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(result.totalAmount)}</p>
         </div>
       </div>
 

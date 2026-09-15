@@ -46,7 +46,7 @@ export function LifeInsuranceCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Uses a simplified Human Life Value approach: replaces your income for the chosen number of years, plus
-        outstanding liabilities, minus any existing cover. A common rule of thumb is 10\u201315x your annual income.
+        outstanding liabilities, minus any existing cover. A common rule of thumb is 10–15x your annual income.
         For a more goal-specific number (education, marriage, retirement), use the Term Insurance Need Calculator.
       </p>
     </div>

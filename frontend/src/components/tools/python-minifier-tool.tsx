@@ -44,7 +44,7 @@ export function PythonMinifierTool() {
       />
       <p className="mt-2 text-xs text-muted">
         Since Python is whitespace-sensitive, this can't collapse everything onto one line like a JS minifier. Instead
-        it strips comments and blank lines, and shrinks every indentation level down to a single space \u2014 relative
+        it strips comments and blank lines, and shrinks every indentation level down to a single space — relative
         nesting (all Python actually requires) is fully preserved, so the output remains valid, runnable Python.
       </p>
     </div>

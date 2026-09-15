@@ -82,7 +82,7 @@ export function EpfCalculatorTool() {
       <p className="mt-4 text-xs text-muted">
         Simplified estimate: combines employee + employer contributions on your basic salary, compounded annually,
         with your salary increasing every year. Real EPF calculations also account for EPS diversion and monthly
-        compounding \u2014 treat this as a rough long-term projection.
+        compounding — treat this as a rough long-term projection.
       </p>
     </div>
   );

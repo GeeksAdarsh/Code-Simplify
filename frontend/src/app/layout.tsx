@@ -25,7 +25,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} \u2014 ${siteConfig.tagline}`,
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -40,15 +40,19 @@ export const metadata: Metadata = {
     type: "website",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} \u2014 ${siteConfig.tagline}`,
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: [{ url: "/logo.png" }],
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: `${siteConfig.name} logo` }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} \u2014 ${siteConfig.tagline}`,
+    card: "summary",
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     images: ["/logo.png"],
+  },
+  icons: {
+    icon: [{ url: "/icon", type: "image/png" }],
+    apple: [{ url: "/apple-icon", type: "image/png" }],
   },
   robots: {
     index: true,

@@ -10,7 +10,7 @@ export function RandomDrinkTool() {
   return (
     <div>
       <BatchGeneratorTool generate={generate} monospace={false} countOptions={[1, 5, 10, 20]} />
-      <p className="mt-3 text-xs text-muted">A quick pick for what to drink next \u2014 all non-alcoholic beverages.</p>
+      <p className="mt-3 text-xs text-muted">A quick pick for what to drink next — all non-alcoholic beverages.</p>
     </div>
   );
 }

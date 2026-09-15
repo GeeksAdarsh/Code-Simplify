@@ -43,17 +43,17 @@ export function HraCalculatorTool() {
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <div className="card p-4">
           <p className="text-xs text-muted">HRA exemption (annual)</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(exemption)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(exemption)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Taxable HRA (annual)</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(taxableHra)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(taxableHra)}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
         HRA exemption is the minimum of: actual HRA received, rent paid minus 10% of basic salary, and 50% (metro)
-        or 40% (non-metro) of basic salary \u2014 as per the old tax regime rules. HRA exemption isn&apos;t available under
+        or 40% (non-metro) of basic salary — as per the old tax regime rules. HRA exemption isn&apos;t available under
         the new tax regime.
       </p>
     </div>

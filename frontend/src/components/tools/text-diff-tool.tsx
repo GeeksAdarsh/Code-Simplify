@@ -13,7 +13,7 @@ const lineStyles: Record<string, string> = {
   equal: "border-l-2 border-transparent",
 };
 
-const linePrefix: Record<string, string> = { added: "+", removed: "\u2212", equal: " " };
+const linePrefix: Record<string, string> = { added: "+", removed: "−", equal: " " };
 
 export function TextDiffTool() {
   const [textA, setTextA] = useState("");
@@ -71,14 +71,14 @@ export function TextDiffTool() {
         <div className="mt-4">
           <div className="mb-2 flex flex-wrap items-center gap-2 text-xs">
             <span className="badge border-foreground text-foreground">+{summary.added} added</span>
-            <span className="badge border-foreground text-foreground">{"\u2212"}{summary.removed} removed</span>
+            <span className="badge border-foreground text-foreground">{"−"}{summary.removed} removed</span>
             <span className="badge">{summary.unchanged} unchanged</span>
           </div>
           <div className="max-h-96 overflow-auto rounded-xl border border-border font-mono text-xs">
             {entries.map((entry, i) => (
               <div key={i} className={`flex gap-3 whitespace-pre-wrap px-3 py-0.5 ${lineStyles[entry.type]}`}>
                 <span className="w-4 shrink-0 select-none text-muted">{linePrefix[entry.type]}</span>
-                <span>{entry.line || "\u00a0"}</span>
+                <span>{entry.line || " "}</span>
               </div>
             ))}
           </div>

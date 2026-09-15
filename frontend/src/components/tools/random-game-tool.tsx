@@ -11,7 +11,7 @@ export function RandomGameTool() {
     <div>
       <BatchGeneratorTool generate={generate} monospace={false} countOptions={[1, 5, 10, 20]} />
       <p className="mt-3 text-xs text-muted">
-        Picks from a curated list of popular video games across genres and platforms \u2014 great for deciding what
+        Picks from a curated list of popular video games across genres and platforms — great for deciding what
         to play next.
       </p>
     </div>

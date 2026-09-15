@@ -34,7 +34,7 @@ export function RandomCreditCardTool() {
   return (
     <div>
       <div className="card border-foreground/20 bg-surface p-4 text-sm">
-        <p className="font-semibold">\u26A0\uFE0F Fake test data only</p>
+        <p className="font-semibold">{"⚠️"} Fake test data only</p>
         <p className="mt-1 text-muted">
           These numbers pass basic Luhn-checksum validation (like real card numbers do) so they work great for
           testing checkout forms and validators. They are <strong>not real, active, or purchasable</strong> card

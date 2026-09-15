@@ -35,16 +35,16 @@ export function BreakEvenCalculatorTool() {
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Break-even units</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{Number.isFinite(result.breakEvenUnits) ? Math.ceil(result.breakEvenUnits) : "\u221E"}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{Number.isFinite(result.breakEvenUnits) ? Math.ceil(result.breakEvenUnits) : "∞"}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Break-even revenue</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{Number.isFinite(result.breakEvenRevenue) ? formatMoney(result.breakEvenRevenue) : "\u221E"}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{Number.isFinite(result.breakEvenRevenue) ? formatMoney(result.breakEvenRevenue) : "∞"}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Break-even point = Fixed costs \u00F7 (Price per unit \u2212 Variable cost per unit). If your selling price is at
+        Break-even point = Fixed costs ÷ (Price per unit − Variable cost per unit). If your selling price is at
         or below your variable cost, break-even is never reached and the answer shows infinity.
       </p>
     </div>

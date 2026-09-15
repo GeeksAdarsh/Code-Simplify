@@ -18,7 +18,7 @@ const SAMPLE_HTML = `<!DOCTYPE html>
   <body>
     <span class="badge">CodeSimplify</span>
     <h1>Live HTML Preview</h1>
-    <p>Edit the HTML on the left and watch this preview update instantly \u2014 all rendering happens locally in your browser.</p>
+    <p>Edit the HTML on the left and watch this preview update instantly — all rendering happens locally in your browser.</p>
     <button onclick="alert('Hello from your preview!')">Click me</button>
   </body>
 </html>`;
@@ -87,7 +87,7 @@ export function HtmlPreviewTool() {
         <div className={`flex flex-col ${mobileView === "preview" ? "" : "hidden sm:flex"}`}>
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
             <span>Live preview</span>
-            <span>Sandboxed \u2014 renders locally</span>
+            <span>Sandboxed — renders locally</span>
           </div>
           <div className="flex h-96 w-full items-start justify-center overflow-auto bg-white p-0">
             <iframe

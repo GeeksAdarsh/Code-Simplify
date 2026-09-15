@@ -5,7 +5,7 @@ import { FaqSection } from "@/components/faq-section";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: `Frequently asked questions about ${siteConfig.name} \u2014 pricing, privacy, data handling, and more.`,
+  description: `Frequently asked questions about ${siteConfig.name} — pricing, privacy, data handling, and more.`,
   alternates: { canonical: "/faq" },
 };
 
@@ -35,7 +35,7 @@ const faq = [
       "Email us at adarshsinghzaq12@gmail.com with what you'd like the tool to do. New tools ship regularly.",
   },
   {
-    question: "I found a bug \u2014 how do I report it?",
+    question: "I found a bug — how do I report it?",
     answer: "Please email adarshsinghzaq12@gmail.com with a description of the issue and, if possible, the input that caused it.",
   },
   {

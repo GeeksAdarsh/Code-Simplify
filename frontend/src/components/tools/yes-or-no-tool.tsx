@@ -34,11 +34,11 @@ export function YesOrNoTool() {
               : "border-foreground/20 bg-surface text-muted"
         }`}
       >
-        {thinking ? "\u2753" : answer ?? "?"}
+        {thinking ? "❓" : answer ?? "?"}
       </div>
 
       <button onClick={ask} disabled={thinking} className="btn btn-primary mt-6 h-10 px-6 text-sm disabled:opacity-50">
-        {thinking ? "Thinking\u2026" : "Ask the Question"}
+        {thinking ? "Thinking…" : "Ask the Question"}
       </button>
 
       {history.length > 0 && (

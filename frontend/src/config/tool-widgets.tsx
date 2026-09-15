@@ -597,7 +597,7 @@ export const toolWidgets: Record<string, () => ReactNode> = {
 /**
  * Renders the widget for a given "category/tool" pair.
  * This must be rendered as a Component (e.g. `<ToolWidget .../>`) from a Server Component,
- * rather than calling `getToolWidget()` directly \u2014 this file is a Client Component
+ * rather than calling `getToolWidget()` directly — this file is a Client Component
  * (required for `next/dynamic(..., { ssr: false })`), and Server Components can only
  * render functions from Client Component modules as JSX, not call them directly.
  */

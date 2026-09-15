@@ -35,7 +35,7 @@ export function JsMinifierTool() {
         downloadMimeType="text/javascript"
       />
       <p className="mt-2 text-xs text-muted">
-        Powered by Terser \u2014 removes whitespace and comments, and shortens local variable names to reduce file size.
+        Powered by Terser — removes whitespace and comments, and shortens local variable names to reduce file size.
       </p>
     </div>
   );

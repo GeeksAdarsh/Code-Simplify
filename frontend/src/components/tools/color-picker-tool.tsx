@@ -124,7 +124,7 @@ export function ColorPickerTool() {
 
       <p className="mt-4 text-xs text-muted">
         {supportsEyeDropper
-          ? "Use \u201cPick from screen\u201d to sample any pixel on your screen (Chromium-based browsers), or paste a color value directly."
+          ? "Use “Pick from screen” to sample any pixel on your screen (Chromium-based browsers), or paste a color value directly."
           : "The screen eyedropper is only available in Chromium-based browsers (Chrome, Edge). You can still paste any hex, rgb(), hsl(), or named color above."}
       </p>
     </div>

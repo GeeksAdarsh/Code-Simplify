@@ -84,7 +84,7 @@ export function DiceRollerTool() {
           </select>
         </div>
         <button onClick={roll} disabled={rolling} className="btn btn-primary h-9 px-4 text-sm disabled:opacity-50">
-          {rolling ? "Rolling\u2026" : "Roll"}
+          {rolling ? "Rolling…" : "Roll"}
         </button>
       </div>
 

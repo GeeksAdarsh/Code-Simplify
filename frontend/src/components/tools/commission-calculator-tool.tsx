@@ -35,7 +35,7 @@ export function CommissionCalculatorTool() {
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Calculates a flat-rate commission on a sale amount \u2014 useful for sales reps, brokers, affiliates, or
+        Calculates a flat-rate commission on a sale amount — useful for sales reps, brokers, affiliates, or
         agents working on a simple percentage-based commission structure.
       </p>
     </div>

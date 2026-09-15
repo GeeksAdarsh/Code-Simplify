@@ -18,7 +18,7 @@ export function RandomPhoneNumberTool() {
   return (
     <div>
       <div className="card border-foreground/20 bg-surface p-4 text-sm">
-        <p className="font-semibold">\u26A0\uFE0F Fake test data only</p>
+        <p className="font-semibold">{"⚠️"} Fake test data only</p>
         <p className="mt-1 text-muted">
           US numbers use the 555 exchange, which is officially reserved by the NANP for fictional use in
           testing and media. These are not real, working phone numbers.

@@ -9,7 +9,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-2 font-mono text-lg font-semibold tracking-tight">
-          <Image src="/logo.png" alt={`${siteConfig.name} logo`} width={28} height={28} className="h-7 w-7 rounded" priority />
+          <Image
+            src="/site-mark.png"
+            alt={`${siteConfig.name} logo`}
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded"
+            priority
+          />
           {siteConfig.name}
         </Link>
 

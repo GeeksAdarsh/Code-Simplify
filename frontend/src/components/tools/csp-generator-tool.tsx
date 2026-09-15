@@ -109,7 +109,7 @@ export function CspGeneratorTool() {
             {copied ? "Copied!" : "Copy"}
           </button>
         </div>
-        <p className="break-all p-3 font-mono text-sm">{header || "\u2014"}</p>
+        <p className="break-all p-3 font-mono text-sm">{header || "—"}</p>
       </div>
     </div>
   );

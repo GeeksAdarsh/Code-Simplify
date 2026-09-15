@@ -88,7 +88,7 @@ export function RandomNumberTool() {
 
       {invalidUnique && (
         <p className="mt-2 text-xs text-muted">
-          The range [{min}, {max}] only contains {range} unique values \u2014 reduce the count or widen the range.
+          The range [{min}, {max}] only contains {range} unique values — reduce the count or widen the range.
         </p>
       )}
 

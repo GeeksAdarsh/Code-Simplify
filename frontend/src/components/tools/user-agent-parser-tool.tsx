@@ -57,7 +57,7 @@ export function UserAgentParserTool() {
 
       {result && (
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <InfoCard label="Browser" value={result.isBot ? "\u2014" : formatNameVersion(result.browserName, result.browserVersion)} />
+          <InfoCard label="Browser" value={result.isBot ? "—" : formatNameVersion(result.browserName, result.browserVersion)} />
           <InfoCard label="Engine" value={formatNameVersion(result.engineName, result.engineVersion)} />
           <InfoCard label="Operating system" value={formatNameVersion(result.osName, result.osVersion)} />
           <InfoCard label="Device type" value={result.deviceType} />
@@ -80,7 +80,7 @@ export function UserAgentParserTool() {
       )}
 
       <p className="mt-3 text-xs text-muted">
-        Parsing is heuristic and runs entirely in your browser \u2014 User-Agent strings are inherently spoofable and
+        Parsing is heuristic and runs entirely in your browser — User-Agent strings are inherently spoofable and
         not a reliable way to detect capabilities.
       </p>
     </div>

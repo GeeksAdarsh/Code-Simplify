@@ -68,16 +68,16 @@ export function GoldPriceCalculatorTool() {
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Gold value</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(value)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(value)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Total with making charges</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(value + makingCharges)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(value + makingCharges)}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Enter today&apos;s 24K gold rate per gram (check your local jeweller or a live gold price site) \u2014 this
+        Enter today&apos;s 24K gold rate per gram (check your local jeweller or a live gold price site) — this
         calculator doesn&apos;t fetch live rates. Purity factors convert the 24K rate to 22K/18K/14K equivalents.
         Optional making charges and GST are added separately by jewellers.
       </p>

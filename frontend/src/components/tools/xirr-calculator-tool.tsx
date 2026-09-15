@@ -75,12 +75,12 @@ export function XirrCalculatorTool() {
 
       <div className="mt-4 card p-4">
         <p className="text-xs text-muted">XIRR (annualized return)</p>
-        <p className="mt-1 font-mono text-3xl font-semibold">{xirr !== null ? `${xirr.toFixed(2)}%` : "\u2014"}</p>
+        <p className="mt-1 font-mono text-3xl font-semibold">{xirr !== null ? `${xirr.toFixed(2)}%` : "—"}</p>
       </div>
 
       <p className="mt-4 text-xs text-muted">
         XIRR accounts for the exact dates of each cash flow, making it accurate for irregular investments like SIPs
-        with varying amounts and dates, top-ups, and partial withdrawals \u2014 unlike a simple CAGR calculation.
+        with varying amounts and dates, top-ups, and partial withdrawals — unlike a simple CAGR calculation.
       </p>
     </div>
   );

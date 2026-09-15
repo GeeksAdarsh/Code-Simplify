@@ -30,7 +30,7 @@ export function SukanyaCalculatorTool() {
         <div />
 
         <label className="block text-xs">
-          <span className="mb-1 block text-muted">Yearly deposit (max \u20B91.5 lakh)</span>
+          <span className="mb-1 block text-muted">Yearly deposit (max ₹1.5 lakh)</span>
           <input type="number" min={250} max={150000} value={yearlyDeposit} onChange={(e) => setYearlyDeposit(Number(e.target.value))} className="w-full rounded border border-border bg-background px-2.5 py-1.5 font-mono text-sm outline-none" />
         </label>
         <label className="block text-xs">

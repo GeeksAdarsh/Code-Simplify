@@ -9,8 +9,8 @@ const SAMPLE = `You are a helpful assistant.
 
 Please follow these rules:
 1. Be concise    
-2. Use \u201csimple\u201d language
-3. Avoid jargon \u2014 explain acronyms
+2. Use “simple” language
+3. Avoid jargon — explain acronyms
 
 
 

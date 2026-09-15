@@ -50,14 +50,14 @@ export function IpLookupTool() {
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <InfoCard label="IP" value={result.query ?? ip} />
           <InfoCard label="Country" value={joinNonEmpty([result.country, result.countryCode && `(${result.countryCode})`])} />
-          <InfoCard label="Region" value={result.regionName ?? "\u2014"} />
-          <InfoCard label="City" value={result.city ?? "\u2014"} />
-          <InfoCard label="ZIP / postal code" value={result.zip || "\u2014"} />
-          <InfoCard label="Timezone" value={result.timezone ?? "\u2014"} />
-          <InfoCard label="Coordinates" value={result.lat !== undefined && result.lon !== undefined ? `${result.lat}, ${result.lon}` : "\u2014"} />
-          <InfoCard label="ISP" value={result.isp ?? "\u2014"} />
-          <InfoCard label="Organization" value={result.org ?? "\u2014"} />
-          <InfoCard label="AS / Network" value={result.as ?? "\u2014"} />
+          <InfoCard label="Region" value={result.regionName ?? "—"} />
+          <InfoCard label="City" value={result.city ?? "—"} />
+          <InfoCard label="ZIP / postal code" value={result.zip || "—"} />
+          <InfoCard label="Timezone" value={result.timezone ?? "—"} />
+          <InfoCard label="Coordinates" value={result.lat !== undefined && result.lon !== undefined ? `${result.lat}, ${result.lon}` : "—"} />
+          <InfoCard label="ISP" value={result.isp ?? "—"} />
+          <InfoCard label="Organization" value={result.org ?? "—"} />
+          <InfoCard label="AS / Network" value={result.as ?? "—"} />
         </div>
       )}
 
@@ -71,7 +71,7 @@ export function IpLookupTool() {
 
 function joinNonEmpty(parts: (string | undefined | false)[]): string {
   const filtered = parts.filter(Boolean) as string[];
-  return filtered.length ? filtered.join(" ") : "\u2014";
+  return filtered.length ? filtered.join(" ") : "—";
 }
 
 function InfoCard({ label, value }: { label: string; value: string }) {

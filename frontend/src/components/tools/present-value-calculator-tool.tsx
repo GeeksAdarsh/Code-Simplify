@@ -49,7 +49,7 @@ export function PresentValueCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         PV = FV / (1 + r)^n. Tells you how much a future sum of money is worth today, discounted at your chosen
-        rate \u2014 useful for comparing goals, offers, or investments payable at different points in time.
+        rate — useful for comparing goals, offers, or investments payable at different points in time.
       </p>
     </div>
   );

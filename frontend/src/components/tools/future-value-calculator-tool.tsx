@@ -61,7 +61,7 @@ export function FutureValueCalculatorTool() {
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        FV = PV \u00D7 (1 + r)^n, plus the future value of any equal periodic contributions added at the end of each
+        FV = PV × (1 + r)^n, plus the future value of any equal periodic contributions added at the end of each
         year. A general-purpose time-value-of-money calculator useful for any compounding scenario.
       </p>
     </div>

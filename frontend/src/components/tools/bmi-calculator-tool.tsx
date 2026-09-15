@@ -73,7 +73,7 @@ export function BmiCalculatorTool() {
 
       <div className="card mt-4 p-4">
         <p className="text-xs text-muted">Your BMI</p>
-        <p className="mt-1 font-mono text-4xl font-semibold">{result ? result.bmi.toFixed(1) : "\u2014"}</p>
+        <p className="mt-1 font-mono text-4xl font-semibold">{result ? result.bmi.toFixed(1) : "—"}</p>
         <p className="mt-1 text-sm font-medium">{result?.category}</p>
 
         <div className="relative mt-4 h-2 rounded-full bg-border">

@@ -61,7 +61,7 @@ export function CryptoProfitCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Accounts for exchange trading fees on both the buy and sell side to give you a realistic net profit and
-        ROI. Remember that crypto gains are typically taxable in most jurisdictions \u2014 check local tax rules
+        ROI. Remember that crypto gains are typically taxable in most jurisdictions — check local tax rules
         separately.
       </p>
     </div>

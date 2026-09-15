@@ -5,7 +5,7 @@ const CONTACT_EMAIL = "adarshsinghzaq12@gmail.com";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Get in touch with the ${siteConfig.name} team \u2014 report a bug, request a tool, or ask a question.`,
+  description: `Get in touch with the ${siteConfig.name} team — report a bug, request a tool, or ask a question.`,
   alternates: { canonical: "/contact" },
 };
 

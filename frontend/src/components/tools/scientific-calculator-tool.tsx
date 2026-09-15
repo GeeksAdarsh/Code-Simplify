@@ -9,7 +9,7 @@ const BUTTON_ROWS: string[][] = [
   ["7", "8", "9", "/", "pi"],
   ["4", "5", "6", "*", "e"],
   ["1", "2", "3", "-", "AC"],
-  ["0", ".", "=", "+", "\u232b"],
+  ["0", ".", "=", "+", "⌫"],
 ];
 
 export function ScientificCalculatorTool() {
@@ -33,7 +33,7 @@ export function ScientificCalculatorTool() {
       setExpression("");
       return;
     }
-    if (token === "\u232b") {
+    if (token === "⌫") {
       setExpression((prev) => prev.slice(0, -1));
       return;
     }
@@ -76,7 +76,7 @@ export function ScientificCalculatorTool() {
             className="w-full bg-transparent text-right font-mono text-2xl outline-none"
           />
           <div className="mt-1 text-right font-mono text-sm text-muted">
-            {error ? error : preview !== null ? `= ${preview.toLocaleString(undefined, { maximumFractionDigits: 8 })}` : "\u00a0"}
+            {error ? error : preview !== null ? `= ${preview.toLocaleString(undefined, { maximumFractionDigits: 8 })}` : " "}
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export function ScientificCalculatorTool() {
         </div>
 
         <p className="mt-4 text-xs text-muted">
-          Supports +, \u2212, \u00d7, \u00f7, ^ (power), % (modulo), parentheses, and functions: sin, cos, tan, asin, acos, atan
+          Supports +, −, ×, ÷, ^ (power), % (modulo), parentheses, and functions: sin, cos, tan, asin, acos, atan
           (degrees), sqrt, cbrt, log (base 10), ln, exp, abs, round, floor, ceil, plus constants pi and e.
         </p>
       </div>

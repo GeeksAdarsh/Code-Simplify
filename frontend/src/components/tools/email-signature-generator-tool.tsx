@@ -83,7 +83,7 @@ export function EmailSignatureGeneratorTool() {
               className="w-full rounded border border-border bg-background px-2.5 py-1.5 text-sm outline-none"
             />
             <p className="mt-1 text-xs text-muted">
-              Must be a publicly hosted image URL \u2014 uploaded files can&apos;t be embedded directly in most email
+              Must be a publicly hosted image URL — uploaded files can&apos;t be embedded directly in most email
               clients.
             </p>
           </div>

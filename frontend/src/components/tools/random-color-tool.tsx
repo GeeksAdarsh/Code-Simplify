@@ -66,7 +66,7 @@ export function RandomColorTool() {
         ))}
       </div>
 
-      <p className="mt-3 text-xs text-muted">Click any swatch to copy its HEX code. Colors are fully random \u2014 not curated palettes.</p>
+      <p className="mt-3 text-xs text-muted">Click any swatch to copy its HEX code. Colors are fully random — not curated palettes.</p>
     </div>
   );
 }

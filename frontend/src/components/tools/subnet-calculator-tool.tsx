@@ -120,7 +120,7 @@ export function SubnetCalculatorTool() {
             <InfoCard label="Wildcard mask" value={base.wildcardMask} />
             <InfoCard label="Network address" value={base.networkAddress} />
             <InfoCard label="Broadcast address" value={base.broadcastAddress} />
-            <InfoCard label="Usable host range" value={base.usableHosts > 0 ? `${base.firstUsableHost} \u2013 ${base.lastUsableHost}` : "None"} />
+            <InfoCard label="Usable host range" value={base.usableHosts > 0 ? `${base.firstUsableHost} – ${base.lastUsableHost}` : "None"} />
             <InfoCard label="Total addresses" value={base.totalAddresses.toLocaleString()} />
             <InfoCard label="Usable hosts" value={base.usableHosts.toLocaleString()} />
           </div>
@@ -166,7 +166,7 @@ export function SubnetCalculatorTool() {
                     s.cidr,
                     s.networkAddress,
                     s.broadcastAddress,
-                    s.usableHosts > 0 ? `${s.firstUsableHost} \u2013 ${s.lastUsableHost}` : "None",
+                    s.usableHosts > 0 ? `${s.firstUsableHost} – ${s.lastUsableHost}` : "None",
                     String(s.usableHosts),
                   ])}
                   maxRows={512}

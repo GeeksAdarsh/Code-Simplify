@@ -40,7 +40,7 @@ export function MarkdownFormatterTool() {
         downloadMimeType="text/markdown"
       />
       <p className="mt-2 text-xs text-muted">
-        Normalizes bullet markers to \u201c-\u201d, ensures a space after heading hashes, strips trailing whitespace, and
+        Normalizes bullet markers to “-”, ensures a space after heading hashes, strips trailing whitespace, and
         collapses extra blank lines. Content inside fenced code blocks (``` or ~~~) is left completely untouched.
       </p>
     </div>

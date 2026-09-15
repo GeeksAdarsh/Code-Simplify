@@ -11,7 +11,7 @@ export function RandomCityTool() {
     <div>
       <BatchGeneratorTool generate={generate} monospace={false} countOptions={[1, 5, 10, 20]} />
       <p className="mt-3 text-xs text-muted">
-        Pulls from major cities around the world \u2014 handy for travel inspiration and geography practice.
+        Pulls from major cities around the world — handy for travel inspiration and geography practice.
       </p>
     </div>
   );

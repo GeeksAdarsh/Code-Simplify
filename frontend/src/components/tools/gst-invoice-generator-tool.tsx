@@ -105,7 +105,7 @@ export function GstInvoiceGeneratorTool() {
       <div className="card mt-4 p-4">
         <div className="flex items-center justify-between border-b border-border pb-2 text-sm text-muted">
           <span>{invoiceNumber}</span>
-          <span>{businessName} \u2192 {clientName}</span>
+          <span>{businessName} → {clientName}</span>
         </div>
         <div className="mt-3 flex items-center justify-between text-sm">
           <span className="text-muted">Subtotal</span>
@@ -136,7 +136,7 @@ export function GstInvoiceGeneratorTool() {
 
       <p className="mt-4 text-xs text-muted">
         For intra-state supply, GST is split equally into CGST + SGST; for inter-state supply, the full rate is
-        charged as IGST. This generates a simple invoice preview for reference \u2014 for GSTR filing-compliant
+        charged as IGST. This generates a simple invoice preview for reference — for GSTR filing-compliant
         invoices, use accounting software that meets your jurisdiction&apos;s e-invoicing requirements.
       </p>
     </div>

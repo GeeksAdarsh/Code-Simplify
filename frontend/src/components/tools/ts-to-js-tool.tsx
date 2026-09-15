@@ -40,7 +40,7 @@ export function TsToJsTool() {
         downloadMimeType="text/javascript"
       />
       <p className="mt-2 text-xs text-muted">
-        Powered by the official TypeScript compiler (transpileModule) \u2014 type annotations, interfaces, and enums are
+        Powered by the official TypeScript compiler (transpileModule) — type annotations, interfaces, and enums are
         stripped or compiled down, but this performs no type-checking. Use the TS Playground to catch runtime errors.
       </p>
     </div>

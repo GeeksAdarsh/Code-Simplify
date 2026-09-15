@@ -58,10 +58,10 @@ export function NumberPickerTool() {
 
       <div className="mt-6 flex flex-col items-center">
         <div className="flex h-32 w-32 items-center justify-center rounded-2xl border-4 border-foreground/20 bg-surface text-4xl font-bold">
-          {picking ? "\u2026" : result ?? "?"}
+          {picking ? "…" : result ?? "?"}
         </div>
         <button onClick={pick} disabled={picking} className="btn btn-primary mt-6 h-10 px-6 text-sm disabled:opacity-50">
-          {picking ? "Picking\u2026" : "Pick a Number"}
+          {picking ? "Picking…" : "Pick a Number"}
         </button>
       </div>
 

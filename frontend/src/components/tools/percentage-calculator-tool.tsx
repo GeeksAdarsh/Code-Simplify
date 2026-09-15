@@ -77,7 +77,7 @@ export function PercentageCalculatorTool() {
       <div className="card mt-4 p-4">
         <p className="text-xs text-muted">Result</p>
         <p className="mt-1 font-mono text-3xl font-semibold">
-          {result === null || Number.isNaN(result) ? "\u2014" : `${result.toLocaleString(undefined, { maximumFractionDigits: 4 })}${mode !== "of" ? "%" : ""}`}
+          {result === null || Number.isNaN(result) ? "—" : `${result.toLocaleString(undefined, { maximumFractionDigits: 4 })}${mode !== "of" ? "%" : ""}`}
         </p>
         {sentence && <p className="mt-2 text-sm text-muted">{sentence}</p>}
       </div>

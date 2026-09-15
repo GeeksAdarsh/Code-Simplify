@@ -110,7 +110,7 @@ export function StockAveragePriceTool() {
 
       <p className="mt-4 text-xs text-muted">
         Add each buy transaction (quantity and price per share) to calculate your true average cost across
-        multiple purchases \u2014 useful when averaging up or down on a position.
+        multiple purchases — useful when averaging up or down on a position.
       </p>
     </div>
   );

@@ -38,7 +38,7 @@ export function JsObfuscatorTool() {
       />
       <p className="mt-2 text-xs text-muted">
         This tool renames local variables/functions, strips whitespace, and hex-encodes string literals to make source
-        code harder to read at a glance. It's a lightweight obfuscation for deterring casual copying \u2014 it is not a
+        code harder to read at a glance. It's a lightweight obfuscation for deterring casual copying — it is not a
         substitute for proper security controls, since determined users can still deobfuscate or debug the output.
       </p>
     </div>

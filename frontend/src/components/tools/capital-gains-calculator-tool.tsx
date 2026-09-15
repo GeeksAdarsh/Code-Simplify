@@ -19,10 +19,10 @@ export function CapitalGainsCalculatorTool() {
   const rateNote =
     assetType === "equity"
       ? result.isLongTerm
-        ? "LTCG on listed equity/equity funds is typically taxed at 12.5% above a \u20B91.25 lakh annual exemption."
+        ? "LTCG on listed equity/equity funds is typically taxed at 12.5% above a ₹1.25 lakh annual exemption."
         : "STCG on listed equity/equity funds is typically taxed at 20%."
       : result.isLongTerm
-        ? "LTCG on this asset type may be eligible for indexation benefit (property) \u2014 typical rate is 12.5%\u201320% depending on asset and indexation choice."
+        ? "LTCG on this asset type may be eligible for indexation benefit (property) — typical rate is 12.5%–20% depending on asset and indexation choice."
         : "STCG on this asset type is added to your income and taxed at your slab rate.";
 
   return (
@@ -59,7 +59,7 @@ export function CapitalGainsCalculatorTool() {
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <div className="card p-4">
           <p className="text-xs text-muted">Capital gain / loss</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(result.gain)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(result.gain)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Holding period</p>
@@ -71,7 +71,7 @@ export function CapitalGainsCalculatorTool() {
         </div>
       </div>
 
-      <p className="mt-4 text-xs text-muted">{rateNote} Capital gains tax rules and rates change frequently \u2014
+      <p className="mt-4 text-xs text-muted">{rateNote} Capital gains tax rules and rates change frequently —
         verify current rates with a tax advisor or the Income Tax Department before filing.
       </p>
     </div>

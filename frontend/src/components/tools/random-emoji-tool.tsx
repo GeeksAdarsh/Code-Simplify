@@ -11,7 +11,7 @@ export function RandomEmojiTool() {
     <div>
       <BatchGeneratorTool generate={generate} monospace={false} countOptions={[1, 5, 10, 20, 40]} />
       <p className="mt-3 text-xs text-muted">
-        Pulls from a curated set of faces, animals, food, and objects \u2014 useful for picking reaction emoji or
+        Pulls from a curated set of faces, animals, food, and objects — useful for picking reaction emoji or
         seeding test data.
       </p>
     </div>

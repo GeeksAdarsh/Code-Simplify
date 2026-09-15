@@ -95,10 +95,10 @@ export function EmailHeaderAnalyzerTool() {
                       )}
                     </div>
                     <div className="mt-1.5 grid gap-1 text-xs text-muted sm:grid-cols-2">
-                      <span>From: {hop.from ?? "\u2014"}</span>
-                      <span>By: {hop.by ?? "\u2014"}</span>
+                      <span>From: {hop.from ?? "—"}</span>
+                      <span>By: {hop.by ?? "—"}</span>
                       <span className="sm:col-span-2">
-                        Timestamp: {hop.timestamp ? hop.timestamp.toUTCString() : "\u2014"}
+                        Timestamp: {hop.timestamp ? hop.timestamp.toUTCString() : "—"}
                       </span>
                     </div>
                   </li>
@@ -126,7 +126,7 @@ export function EmailHeaderAnalyzerTool() {
       )}
 
       <p className="mt-3 text-xs text-muted">
-        Header parsing runs entirely in your browser \u2014 pasted headers are never sent to a server.
+        Header parsing runs entirely in your browser — pasted headers are never sent to a server.
       </p>
     </div>
   );
@@ -136,7 +136,7 @@ function Field({ label, value }: { label: string; value?: string }) {
   return (
     <div className="rounded border border-border bg-background px-3 py-2">
       <p className="text-xs text-muted">{label}</p>
-      <p className="mt-0.5 break-all">{value || "\u2014"}</p>
+      <p className="mt-0.5 break-all">{value || "—"}</p>
     </div>
   );
 }

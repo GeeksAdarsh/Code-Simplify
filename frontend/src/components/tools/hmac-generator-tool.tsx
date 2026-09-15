@@ -111,7 +111,7 @@ export function HmacGeneratorTool() {
             {copied ? "Copied!" : "Copy"}
           </button>
         </div>
-        <p className="mt-2 break-all font-mono text-sm">{output || "\u2014"}</p>
+        <p className="mt-2 break-all font-mono text-sm">{output || "—"}</p>
       </div>
     </div>
   );

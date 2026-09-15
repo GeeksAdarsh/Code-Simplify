@@ -150,7 +150,7 @@ export function JwtGeneratorTool() {
           {error && <p className="border-t border-border px-3 py-2 text-xs text-muted">{error}</p>}
           {token && !error && (
             <p className="border-t border-border px-3 py-2 text-xs text-muted">
-              Header and payload are Base64URL-encoded, not encrypted \u2014 never put secrets inside a JWT payload.
+              Header and payload are Base64URL-encoded, not encrypted — never put secrets inside a JWT payload.
             </p>
           )}
         </div>

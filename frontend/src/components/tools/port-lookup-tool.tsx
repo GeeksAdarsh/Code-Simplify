@@ -54,7 +54,7 @@ export function PortLookupTool() {
       </div>
 
       <p className="mt-3 text-xs text-muted">
-        This is a static reference table of well-known and commonly used ports \u2014 it does not scan or probe any
+        This is a static reference table of well-known and commonly used ports — it does not scan or probe any
         live host.
       </p>
     </div>

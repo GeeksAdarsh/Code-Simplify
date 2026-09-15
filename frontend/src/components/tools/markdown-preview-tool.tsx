@@ -11,7 +11,7 @@ A **fast**, _free_, and privacy-friendly toolbox for developers.
 
 ## Features
 
-- Client-side processing \u2014 nothing leaves your browser
+- Client-side processing — nothing leaves your browser
 - Hundreds of tools across JSON, CSS, JavaScript, and more
 - Clean, modern, black-and-white design
 
@@ -82,7 +82,7 @@ export function MarkdownPreviewTool() {
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
             <span>Live preview</span>
-            <span>Sandboxed \u2014 renders locally</span>
+            <span>Sandboxed — renders locally</span>
           </div>
           <iframe title="Markdown preview" srcDoc={srcDoc} sandbox="" className="h-96 w-full border-0 bg-white" />
         </div>

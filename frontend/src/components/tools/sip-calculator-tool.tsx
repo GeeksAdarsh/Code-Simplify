@@ -63,7 +63,7 @@ export function SipCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Assumes your SIP installment is invested at the start of each month and compounds monthly at a constant
-        rate of return \u2014 actual mutual fund returns fluctuate and are never perfectly constant.
+        rate of return — actual mutual fund returns fluctuate and are never perfectly constant.
       </p>
     </div>
   );

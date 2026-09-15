@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { ConvertTool, type ConvertResult } from "@/components/tools/shared/convert-tool";
 import { encodeHtmlEntities } from "@/lib/html-utils";
 
-const SAMPLE_TEXT = `<p>Caf\u00e9 & "The CodeSimplify" \u2014 100% free \u2665</p>`;
+const SAMPLE_TEXT = `<p>Café & "The CodeSimplify" — 100% free ♥</p>`;
 
 export function HtmlEncoderTool() {
   const convert = useCallback((input: string): ConvertResult => {

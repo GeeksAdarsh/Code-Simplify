@@ -53,7 +53,7 @@ export function UnixTimestampTool() {
         <div>
           <p className="text-xs text-muted">Current Unix timestamp</p>
           <p className="mt-1 font-mono text-2xl font-semibold">
-            {now === null ? "\u2014" : unit === "seconds" ? Math.floor(now / 1000) : now}
+            {now === null ? "—" : unit === "seconds" ? Math.floor(now / 1000) : now}
           </p>
         </div>
         <div className="inline-flex rounded-lg border border-border p-0.5 text-xs">
@@ -68,7 +68,7 @@ export function UnixTimestampTool() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="card p-4">
-          <p className="mb-2 text-xs text-muted">Timestamp \u2192 Date</p>
+          <p className="mb-2 text-xs text-muted">Timestamp → Date</p>
           <div className="flex gap-2">
             <input
               value={timestampInput}
@@ -92,7 +92,7 @@ export function UnixTimestampTool() {
         </div>
 
         <div className="card p-4">
-          <p className="mb-2 text-xs text-muted">Date \u2192 Timestamp</p>
+          <p className="mb-2 text-xs text-muted">Date → Timestamp</p>
           <div className="flex gap-2">
             <input
               type="datetime-local"

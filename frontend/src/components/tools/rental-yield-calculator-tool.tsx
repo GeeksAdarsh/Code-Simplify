@@ -42,8 +42,8 @@ export function RentalYieldCalculatorTool() {
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Gross yield = Annual rent \u00F7 Property value. Net yield further subtracts annual expenses like
-        maintenance, property tax, and insurance. In India, residential rental yields typically range 2\u20134%, while
+        Gross yield = Annual rent ÷ Property value. Net yield further subtracts annual expenses like
+        maintenance, property tax, and insurance. In India, residential rental yields typically range 2–4%, while
         commercial properties often yield higher.
       </p>
     </div>

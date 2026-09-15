@@ -80,23 +80,36 @@ export function SpinWheelTool() {
           >
             {options.map((label, i) => {
               const angle = i * segAngle + segAngle / 2;
+              const displayLabel = label.length > 14 ? `${label.slice(0, 13)}…` : label;
+              const fontSize = options.length > 10 ? 10 : options.length > 6 ? 11 : 12;
               return (
-                <div key={i} className="absolute left-1/2 top-1/2 h-0 w-0" style={{ transform: `rotate(${angle}deg)` }}>
+                <div
+                  key={i}
+                  className="pointer-events-none absolute left-1/2 top-1/2 h-0 w-0"
+                  style={{ transform: `rotate(${angle}deg)` }}
+                >
                   <span
-                    className="absolute -translate-x-1/2 whitespace-nowrap text-xs font-semibold text-white drop-shadow"
-                    style={{ top: "-118px" }}
+                    className="absolute left-1/2 block max-w-[4.5rem] -translate-x-1/2 truncate text-center font-semibold leading-tight text-white drop-shadow"
+                    style={{ top: "-104px", fontSize: `${fontSize}px`, transform: "translateX(-50%) rotate(90deg)" }}
                   >
-                    {label}
+                    {displayLabel}
                   </span>
                 </div>
               );
             })}
           </div>
-          <div className="pointer-events-none absolute left-1/2 top-[-4px] -translate-x-1/2 text-3xl leading-none">\u25BC</div>
+          <div
+            className="pointer-events-none absolute left-1/2 top-[-2px] -translate-x-1/2 text-foreground"
+            aria-hidden="true"
+          >
+            <svg width="22" height="14" viewBox="0 0 22 14" fill="currentColor">
+              <path d="M11 14 0 0h22L11 14z" />
+            </svg>
+          </div>
         </div>
 
         <button onClick={spin} disabled={spinning || options.length < 2} className="btn btn-primary mt-6 h-10 px-6 text-sm disabled:opacity-50">
-          {spinning ? "Spinning\u2026" : "Spin the Wheel"}
+          {spinning ? "Spinning…" : "Spin the Wheel"}
         </button>
 
         {options.length < 2 && <p className="mt-2 text-xs text-muted">Add at least 2 options to spin the wheel.</p>}

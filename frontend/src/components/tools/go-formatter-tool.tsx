@@ -39,7 +39,7 @@ export function GoFormatterTool() {
       />
       <p className="mt-2 text-xs text-muted">
         This formatter re-indents your code based on brace nesting depth. Note that gofmt (the standard Go formatter)
-        uses tabs by default \u2014 this tool uses spaces, so run gofmt locally before committing if your project
+        uses tabs by default — this tool uses spaces, so run gofmt locally before committing if your project
         enforces tab-indented Go source.
       </p>
     </div>

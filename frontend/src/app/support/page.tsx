@@ -5,7 +5,7 @@ const KOFI_URL = "https://ko-fi.com/codesimplify";
 
 export const metadata: Metadata = {
   title: "Support Us",
-  description: `Support ${siteConfig.name} \u2014 help keep every developer tool free, ad-light, and running.`,
+  description: `Support ${siteConfig.name} — help keep every developer tool free, ad-light, and running.`,
   alternates: { canonical: "/support" },
 };
 

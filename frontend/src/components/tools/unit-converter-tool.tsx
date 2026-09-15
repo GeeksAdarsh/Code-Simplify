@@ -13,8 +13,8 @@ const CATEGORIES: { value: UnitCategory; label: string }[] = [
 ];
 
 const TEMPERATURE_UNITS: { value: TemperatureUnit; label: string }[] = [
-  { value: "celsius", label: "Celsius (\u00b0C)" },
-  { value: "fahrenheit", label: "Fahrenheit (\u00b0F)" },
+  { value: "celsius", label: "Celsius (°C)" },
+  { value: "fahrenheit", label: "Fahrenheit (°F)" },
   { value: "kelvin", label: "Kelvin (K)" },
 ];
 
@@ -93,7 +93,7 @@ export function UnitConverterTool() {
           </select>
         </label>
         <button onClick={swap} title="Swap units" className="btn btn-secondary h-9 w-9 shrink-0 justify-self-center px-0 text-sm">
-          {"\u21c4"}
+          {"⇄"}
         </button>
         <label className="block text-xs">
           <span className="mb-1 block text-muted">To</span>
@@ -114,7 +114,7 @@ export function UnitConverterTool() {
       <div className="card mt-4 p-4">
         <p className="text-xs text-muted">Result</p>
         <p className="mt-1 break-all font-mono text-2xl font-semibold">
-          {result === null ? "\u2014" : result.toLocaleString(undefined, { maximumFractionDigits: 6 })}
+          {result === null ? "—" : result.toLocaleString(undefined, { maximumFractionDigits: 6 })}
         </p>
       </div>
     </div>

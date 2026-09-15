@@ -22,7 +22,7 @@ const SAMPLE_B = `{
 
 const typeStyles: Record<DiffEntry["type"], { label: string; className: string }> = {
   added: { label: "+ added", className: "border-foreground/40" },
-  removed: { label: "\u2212 removed", className: "border-foreground/40" },
+  removed: { label: "− removed", className: "border-foreground/40" },
   changed: { label: "~ changed", className: "border-foreground/40" },
 };
 

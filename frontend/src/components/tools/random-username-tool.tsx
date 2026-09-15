@@ -11,7 +11,7 @@ export function RandomUsernameTool() {
     <div>
       <BatchGeneratorTool generate={generate} />
       <p className="mt-3 text-xs text-muted">
-        Combines a random adjective, noun, and number \u2014 handy for test accounts, demo data, and placeholder
+        Combines a random adjective, noun, and number — handy for test accounts, demo data, and placeholder
         profiles.
       </p>
     </div>

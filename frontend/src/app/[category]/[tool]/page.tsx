@@ -21,7 +21,7 @@ export async function generateMetadata({
   if (!found?.category || found.tool.status !== "live") return {};
   const { tool, category } = found;
   const canonical = toolHref(category.slug, tool.slug);
-  const title = `${tool.title} \u2014 Free Online ${category.title} Tool`;
+  const title = `${tool.title} — Free Online ${category.title} Tool`;
 
   return {
     title: tool.title,
@@ -34,10 +34,10 @@ export async function generateMetadata({
       url: canonical,
       siteName: siteConfig.name,
       type: "website",
-      images: [{ url: "/logo.png" }],
+      images: [{ url: "/logo.png", width: 512, height: 512, alt: `${siteConfig.name} logo` }],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title,
       description: tool.description,
       images: ["/logo.png"],

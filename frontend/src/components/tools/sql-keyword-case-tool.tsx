@@ -36,7 +36,7 @@ export function SqlKeywordCaseTool({ targetCase }: SqlKeywordCaseToolProps) {
         downloadMimeType="text/plain"
       />
       <p className="mt-2 text-xs text-muted">
-        Only reserved SQL keywords (SELECT, FROM, WHERE, JOIN, and 100+ others) are converted \u2014 table names, column
+        Only reserved SQL keywords (SELECT, FROM, WHERE, JOIN, and 100+ others) are converted — table names, column
         names, string literals, and comments are left untouched, and the original layout is preserved.
       </p>
     </div>

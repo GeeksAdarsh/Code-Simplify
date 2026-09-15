@@ -44,14 +44,14 @@ export function SecretSantaTool() {
           </button>
           <p className="text-xs text-muted">{names.length} participant(s)</p>
         </div>
-        {duplicates && <p className="mt-2 text-xs text-muted">Names must be unique \u2014 remove or rename duplicates.</p>}
+        {duplicates && <p className="mt-2 text-xs text-muted">Names must be unique — remove or rename duplicates.</p>}
         {names.length < 2 && <p className="mt-2 text-xs text-muted">Enter at least 2 names.</p>}
       </div>
 
       {pairs.length > 0 && (
         <>
           <p className="mt-4 text-center text-xs text-muted">
-            Pass the device around \u2014 each person taps only their own card to reveal who they&apos;re gifting, then taps again to hide it.
+            Pass the device around — each person taps only their own card to reveal who they&apos;re gifting, then taps again to hide it.
           </p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {pairs.map((pair, i) => {

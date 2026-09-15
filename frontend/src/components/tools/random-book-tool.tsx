@@ -11,7 +11,7 @@ export function RandomBookTool() {
     <div>
       <BatchGeneratorTool generate={generate} monospace={false} countOptions={[1, 5, 10, 20]} />
       <p className="mt-3 text-xs text-muted">
-        Picks from a curated list of classic and popular books \u2014 a fun way to find your next read.
+        Picks from a curated list of classic and popular books — a fun way to find your next read.
       </p>
     </div>
   );

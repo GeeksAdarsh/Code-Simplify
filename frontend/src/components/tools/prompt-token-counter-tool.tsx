@@ -60,7 +60,7 @@ export function PromptTokenCounterTool() {
 
       <div className="mt-4 grid gap-3 sm:grid-cols-4">
         <div className="card px-4 py-3 text-center">
-          <p className="text-2xl font-semibold tabular-nums">{loading ? "\u2026" : tokenCount ?? 0}</p>
+          <p className="text-2xl font-semibold tabular-nums">{loading ? "…" : tokenCount ?? 0}</p>
           <p className="mt-1 text-xs text-muted">Tokens ({model.encoding})</p>
         </div>
         <div className="card px-4 py-3 text-center">
@@ -72,7 +72,7 @@ export function PromptTokenCounterTool() {
           <p className="mt-1 text-xs text-muted">Words</p>
         </div>
         <div className="card px-4 py-3 text-center">
-          <p className="text-2xl font-semibold tabular-nums">{tokenCount ? (charCount / tokenCount).toFixed(2) : "\u2014"}</p>
+          <p className="text-2xl font-semibold tabular-nums">{tokenCount ? (charCount / tokenCount).toFixed(2) : "—"}</p>
           <p className="mt-1 text-xs text-muted">Chars / token</p>
         </div>
       </div>
@@ -93,7 +93,7 @@ export function PromptTokenCounterTool() {
 
       <p className="mt-4 text-xs text-muted">
         Uses the exact same byte-pair encoding (via the <code className="font-mono">gpt-tokenizer</code> library) that
-        OpenAI&apos;s API uses to bill and limit context \u2014 not an approximation. Everything runs locally in your
+        OpenAI&apos;s API uses to bill and limit context — not an approximation. Everything runs locally in your
         browser.
       </p>
     </div>

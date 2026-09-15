@@ -65,7 +65,7 @@ export function FdCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Uses standard compound interest with your selected compounding frequency. Actual bank FD rates and payout
-        options vary by bank and tenure \u2014 check with your bank for exact terms.
+        options vary by bank and tenure — check with your bank for exact terms.
       </p>
     </div>
   );

@@ -189,7 +189,7 @@ export function SqlQueryBuilderTool() {
                 </button>
               </div>
             ))}
-            {conditions.length === 0 && <p className="text-xs text-muted">No conditions \u2014 all rows will be selected.</p>}
+            {conditions.length === 0 && <p className="text-xs text-muted">No conditions — all rows will be selected.</p>}
           </div>
         </div>
 

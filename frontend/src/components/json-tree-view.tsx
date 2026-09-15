@@ -193,7 +193,7 @@ function JsonNode({
           className="w-4 shrink-0 text-muted hover:text-foreground"
           aria-label={isCollapsed ? "Expand" : "Collapse"}
         >
-          {isCollapsed ? "\u25b6" : "\u25bc"}
+          {isCollapsed ? "▶" : "▼"}
         </button>
         {keyLabel}
         {nodeKey !== null && !isArrayIndex && <span className="text-muted">: </span>}

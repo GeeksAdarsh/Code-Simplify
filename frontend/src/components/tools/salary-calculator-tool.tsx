@@ -20,7 +20,7 @@ export function SalaryCalculatorTool() {
     <div>
       <div className="card grid gap-4 p-4 sm:grid-cols-2">
         <label className="block text-xs sm:col-span-2">
-          <span className="mb-1 block text-muted">Annual CTC (\u20B9)</span>
+          <span className="mb-1 block text-muted">Annual CTC (₹)</span>
           <input type="number" min={0} value={annualCtc} onChange={(e) => setAnnualCtc(Number(e.target.value))} className="w-full rounded border border-border bg-background px-2.5 py-1.5 font-mono text-sm outline-none" />
         </label>
 
@@ -45,33 +45,33 @@ export function SalaryCalculatorTool() {
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <div className="card p-4">
           <p className="text-xs text-muted">Basic (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.basic)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.basic)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">HRA (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.hra)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.hra)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Other allowances (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.otherAllowances)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.otherAllowances)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Gross salary (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.grossMonthly)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.grossMonthly)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Employee PF (monthly)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.employeePf)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.employeePf)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Net salary (monthly, pre-tax)</p>
-          <p className="mt-1 font-mono text-xl font-semibold">{"\u20B9"}{formatMoney(result.netMonthly)}</p>
+          <p className="mt-1 font-mono text-xl font-semibold">{"₹"}{formatMoney(result.netMonthly)}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
         Breaks down your CTC into common salary components based on typical percentage splits. This shows salary
-        structure only (before income tax) \u2014 use the Take Home Salary Calculator for your final in-hand pay after
+        structure only (before income tax) — use the Take Home Salary Calculator for your final in-hand pay after
         estimated income tax.
       </p>
     </div>

@@ -6,7 +6,7 @@ const LAST_UPDATED = "July 20, 2026";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `Privacy Policy for ${siteConfig.name} \u2014 how we handle data, analytics, and cookies.`,
+  description: `Privacy Policy for ${siteConfig.name} — how we handle data, analytics, and cookies.`,
   alternates: { canonical: "/privacy" },
 };
 

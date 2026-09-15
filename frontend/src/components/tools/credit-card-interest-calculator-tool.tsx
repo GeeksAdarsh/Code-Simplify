@@ -55,7 +55,7 @@ export function CreditCardInterestCalculatorTool() {
       )}
 
       <p className="mt-4 text-xs text-muted">
-        Credit card interest compounds monthly and is usually much higher than other loans \u2014 paying only the
+        Credit card interest compounds monthly and is usually much higher than other loans — paying only the
         minimum can take years and cost far more than the original balance. Paying more than the minimum each
         month dramatically reduces total interest.
       </p>

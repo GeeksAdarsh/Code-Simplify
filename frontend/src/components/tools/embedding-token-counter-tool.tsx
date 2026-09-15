@@ -63,7 +63,7 @@ export function EmbeddingTokenCounterTool() {
           className={`card flex flex-wrap items-center gap-4 px-4 py-3 text-sm ${withinLimit ? "border-foreground/30" : ""}`}
         >
           <span className={`badge ${withinLimit ? "border-foreground text-foreground" : "border-foreground text-foreground"}`}>
-            {loading ? "Counting\u2026" : withinLimit ? "Within limit \u2713" : "Exceeds limit \u2717"}
+            {loading ? "Counting…" : withinLimit ? "Within limit ✓" : "Exceeds limit ✗"}
           </span>
           <span className="text-muted">
             {tokenCount?.toLocaleString() ?? 0} / {limit.toLocaleString()} tokens

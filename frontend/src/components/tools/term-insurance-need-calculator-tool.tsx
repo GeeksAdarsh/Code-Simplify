@@ -56,7 +56,7 @@ export function TermInsuranceNeedCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Adds income replacement (until your planned retirement age) to outstanding loans and future goal costs,
-        then subtracts your existing savings and cover \u2014 a more detailed, goal-based version of the standard
+        then subtracts your existing savings and cover — a more detailed, goal-based version of the standard
         Human Life Value method used by financial planners.
       </p>
     </div>

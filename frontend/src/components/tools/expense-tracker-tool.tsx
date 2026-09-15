@@ -98,7 +98,7 @@ export function ExpenseTrackerTool() {
 
       <p className="mt-4 text-xs text-muted">
         Log individual expenses with a category to see where your money goes. All data stays in your browser and
-        resets when you leave the page \u2014 for ongoing tracking, export or note down your totals periodically.
+        resets when you leave the page — for ongoing tracking, export or note down your totals periodically.
       </p>
     </div>
   );

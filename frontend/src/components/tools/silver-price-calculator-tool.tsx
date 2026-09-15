@@ -54,16 +54,16 @@ export function SilverPriceCalculatorTool() {
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Silver value</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(value)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(value)}</p>
         </div>
         <div className="card p-4">
           <p className="text-xs text-muted">Total with making charges</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(value + makingCharges)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(value + makingCharges)}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Enter today&apos;s silver rate per gram from your local jeweller or a live price source \u2014 this calculator
+        Enter today&apos;s silver rate per gram from your local jeweller or a live price source — this calculator
         doesn&apos;t fetch live rates. Making charges and GST for jewellery are typically added on top.
       </p>
     </div>

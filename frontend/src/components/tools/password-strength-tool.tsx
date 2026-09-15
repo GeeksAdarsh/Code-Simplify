@@ -61,7 +61,7 @@ export function PasswordStrengthTool() {
       </div>
 
       <p className="mt-3 text-xs text-muted">
-        Your password is analyzed entirely in your browser using JavaScript \u2014 it is never sent to a server or
+        Your password is analyzed entirely in your browser using JavaScript — it is never sent to a server or
         stored anywhere.
       </p>
     </div>

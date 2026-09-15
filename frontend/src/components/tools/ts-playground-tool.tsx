@@ -62,10 +62,10 @@ function buildSrcDoc(jsCode: string): string {
 }
 
 const LEVEL_ICON: Record<LogEntry["level"], string> = {
-  log: "\u203A",
-  info: "\u203A",
-  warn: "\u26A0",
-  error: "\u2716",
+  log: "›",
+  info: "›",
+  warn: "⚠",
+  error: "✖",
 };
 
 export function TsPlaygroundTool() {
@@ -139,7 +139,7 @@ export function TsPlaygroundTool() {
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
             <span>Console output</span>
-            <span>Sandboxed \u2014 runs locally</span>
+            <span>Sandboxed — runs locally</span>
           </div>
           <div className="h-96 w-full overflow-auto bg-background p-3 font-mono text-sm">
             {logs.length === 0 && !transpileError && (

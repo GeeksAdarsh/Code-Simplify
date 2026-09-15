@@ -34,12 +34,12 @@ export function CoinFlipTool() {
             animation: flipping ? "coin-flip 0.7s ease-in-out" : undefined,
           }}
         >
-          {flipping ? "\u2728" : side === "heads" ? "Heads" : "Tails"}
+          {flipping ? "✨" : side === "heads" ? "Heads" : "Tails"}
         </div>
       </div>
 
       <button onClick={flip} disabled={flipping} className="btn btn-primary mt-6 h-10 px-6 text-sm disabled:opacity-50">
-        {flipping ? "Flipping\u2026" : "Flip Coin"}
+        {flipping ? "Flipping…" : "Flip Coin"}
       </button>
 
       {history.length > 0 && (

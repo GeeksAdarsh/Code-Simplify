@@ -59,13 +59,13 @@ export function SwpCalculatorTool() {
 
       {result.depleted && (
         <p className="mt-3 text-xs text-muted">
-          Your withdrawal rate is higher than your corpus can sustain at this return rate \u2014 consider a lower
+          Your withdrawal rate is higher than your corpus can sustain at this return rate — consider a lower
           monthly withdrawal or a higher starting corpus.
         </p>
       )}
 
       <p className="mt-4 text-xs text-muted">
-        Simulates month-by-month growth and withdrawals assuming a constant rate of return \u2014 real investment
+        Simulates month-by-month growth and withdrawals assuming a constant rate of return — real investment
         returns vary, so treat this as a planning estimate, not a guarantee.
       </p>
     </div>

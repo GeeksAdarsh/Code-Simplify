@@ -28,7 +28,7 @@ export function FavoriteButton({ categorySlug, slug, className, size = "sm" }: F
         active ? "text-foreground" : "text-muted hover:text-foreground"
       } ${className ?? ""}`}
     >
-      {active ? "\u2605" : "\u2606"}
+      {active ? "★" : "☆"}
     </button>
   );
 }

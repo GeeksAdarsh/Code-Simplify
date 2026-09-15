@@ -37,13 +37,13 @@ export function PercentageDifferenceTool() {
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <div className="card p-4">
           <p className="text-xs text-muted">Percentage difference</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{valid ? `${diff.toLocaleString(undefined, { maximumFractionDigits: 4 })}%` : "\u2014"}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{valid ? `${diff.toLocaleString(undefined, { maximumFractionDigits: 4 })}%` : "—"}</p>
           <p className="mt-2 text-xs text-muted">Symmetric difference relative to the average of A and B. Order doesn&apos;t matter.</p>
         </div>
         <div className="card p-4">
-          <p className="text-xs text-muted">Percentage change (A \u2192 B)</p>
+          <p className="text-xs text-muted">Percentage change (A → B)</p>
           <p className="mt-1 font-mono text-2xl font-semibold">
-            {valid ? `${change >= 0 ? "+" : ""}${change.toLocaleString(undefined, { maximumFractionDigits: 4 })}%` : "\u2014"}
+            {valid ? `${change >= 0 ? "+" : ""}${change.toLocaleString(undefined, { maximumFractionDigits: 4 })}%` : "—"}
           </p>
           <p className="mt-2 text-xs text-muted">Relative to A. Positive means B is larger; negative means B is smaller.</p>
         </div>

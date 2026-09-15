@@ -71,7 +71,7 @@ export function JwtDecoderTool() {
           />
           {verifyStatus === "valid" && <span className="badge border-foreground text-foreground">Signature valid &#10003;</span>}
           {verifyStatus === "invalid" && <span className="badge border-foreground text-foreground">Signature invalid &#10007;</span>}
-          {verifyStatus === "checking" && <span className="text-xs text-muted">Checking\u2026</span>}
+          {verifyStatus === "checking" && <span className="text-xs text-muted">Checking…</span>}
         </div>
       </div>
 

@@ -71,7 +71,7 @@ export function BcryptGeneratorTool() {
           />
         </div>
         <button onClick={handleGenerate} disabled={!password || hashing} className="btn btn-primary h-9 px-4 text-sm disabled:opacity-50">
-          {hashing ? "Hashing\u2026" : "Generate hash"}
+          {hashing ? "Hashing…" : "Generate hash"}
         </button>
 
         {hash && (
@@ -114,7 +114,7 @@ export function BcryptGeneratorTool() {
           disabled={!verifyPassword || !verifyHash || verifyResult === "checking"}
           className="btn btn-secondary h-9 px-4 text-sm disabled:opacity-50"
         >
-          {verifyResult === "checking" ? "Checking\u2026" : "Verify"}
+          {verifyResult === "checking" ? "Checking…" : "Verify"}
         </button>
 
         {verifyResult === "match" && <p className="badge border-foreground text-foreground">Password matches the hash &#10003;</p>}
@@ -123,7 +123,7 @@ export function BcryptGeneratorTool() {
       </div>
 
       <p className="text-xs text-muted">
-        Bcrypt hashing runs entirely in your browser using a pure JavaScript implementation \u2014 your password is
+        Bcrypt hashing runs entirely in your browser using a pure JavaScript implementation — your password is
         never sent anywhere. Higher salt rounds are more secure but take longer to compute.
       </p>
     </div>

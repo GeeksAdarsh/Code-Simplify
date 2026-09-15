@@ -40,7 +40,7 @@ export function ProfitMarginCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Margin is profit as a percentage of the selling price; markup is profit as a percentage of the cost
-        price. Both describe the same profit in different ways \u2014 margin is usually used for pricing analysis,
+        price. Both describe the same profit in different ways — margin is usually used for pricing analysis,
         markup for setting prices from cost.
       </p>
     </div>

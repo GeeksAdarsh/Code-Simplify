@@ -75,7 +75,7 @@ export function NpsCalculatorTool() {
       <p className="mt-4 text-xs text-muted">
         Assumes a fixed monthly NPS contribution compounding monthly, with the required minimum portion of the
         final corpus used to buy an annuity at retirement. Actual annuity payouts depend on the insurer and plan
-        chosen \u2014 use this as a directional estimate only.
+        chosen — use this as a directional estimate only.
       </p>
     </div>
   );

@@ -33,7 +33,7 @@ export function LineCounterTool() {
           <Stat label="Average line length" value={stats.averageLineLength.toFixed(1)} />
           <Stat
             label="Longest line"
-            value={stats.totalLines ? `${stats.longestLineLength} chars (line ${stats.longestLineNumber})` : "\u2014"}
+            value={stats.totalLines ? `${stats.longestLineLength} chars (line ${stats.longestLineNumber})` : "—"}
           />
         </StatGrid>
       </div>

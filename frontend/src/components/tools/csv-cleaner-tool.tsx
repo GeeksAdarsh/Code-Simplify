@@ -46,7 +46,7 @@ export function CsvCleanerTool() {
       const seen = new Set<string>();
       const before = rows.length;
       rows = rows.filter((row) => {
-        const key = row.join("\u0001");
+        const key = row.join("");
         if (seen.has(key)) return false;
         seen.add(key);
         return true;

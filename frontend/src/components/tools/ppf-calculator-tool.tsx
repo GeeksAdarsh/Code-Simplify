@@ -57,7 +57,7 @@ export function PpfCalculatorTool() {
       <p className="mt-4 text-xs text-muted">
         Assumes a fixed yearly contribution made at the start of each year with annual compounding, matching the
         current PPF (Public Provident Fund) rules. The minimum lock-in is 15 years, extendable in blocks of 5.
-        Current PPF contribution limit is \u20B91.5 lakh/year \u2014 verify the latest rate on the India Post/bank website.
+        Current PPF contribution limit is ₹1.5 lakh/year — verify the latest rate on the India Post/bank website.
       </p>
     </div>
   );

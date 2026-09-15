@@ -67,7 +67,7 @@ export function AgeCalculatorTool() {
             <Stat label="Total days" value={age.totalDays.toLocaleString()} />
             <Stat label="Total weeks" value={age.totalWeeks.toLocaleString()} />
             <Stat label="Total months" value={(age.years * 12 + age.months).toLocaleString()} />
-            <Stat label="Next birthday in" value={nextBirthday ? `${nextBirthday.daysUntil} days` : "\u2014"} />
+            <Stat label="Next birthday in" value={nextBirthday ? `${nextBirthday.daysUntil} days` : "—"} />
           </StatGrid>
         </div>
       ) : (

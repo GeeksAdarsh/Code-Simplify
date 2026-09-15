@@ -70,7 +70,7 @@ export function DecodeUpload({ accept = "image/*" }: { accept?: string }) {
                 <p className="mt-3 break-all font-mono text-sm">{result.text}</p>
                 {isUrl && (
                   <a href={result.text} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-xs underline">
-                    Open link {"\u2192"}
+                    Open link {"→"}
                   </a>
                 )}
               </>

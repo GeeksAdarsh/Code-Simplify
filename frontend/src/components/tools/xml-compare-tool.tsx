@@ -82,7 +82,7 @@ export function XmlCompareTool() {
                 <li key={i} className="card border-foreground/40 px-4 py-3 text-sm">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="badge">
-                      {entry.type === "added" ? "+ added" : entry.type === "removed" ? "\u2212 removed" : "~ changed"}
+                      {entry.type === "added" ? "+ added" : entry.type === "removed" ? "− removed" : "~ changed"}
                     </span>
                     <code className="font-mono text-xs text-muted">{entry.path}</code>
                   </div>

@@ -60,9 +60,9 @@ export function CidrCalculatorTool() {
           <InfoCard label="Wildcard mask" value={result.info.wildcardMask} />
           <InfoCard
             label="First usable host"
-            value={result.info.firstUsableHost ?? "\u2014 (no usable hosts)"}
+            value={result.info.firstUsableHost ?? "— (no usable hosts)"}
           />
-          <InfoCard label="Last usable host" value={result.info.lastUsableHost ?? "\u2014 (no usable hosts)"} />
+          <InfoCard label="Last usable host" value={result.info.lastUsableHost ?? "— (no usable hosts)"} />
           <InfoCard label="Total addresses" value={result.info.totalAddresses.toLocaleString()} />
           <InfoCard label="Usable hosts" value={result.info.usableHosts.toLocaleString()} />
           <InfoCard label="IP class" value={result.info.ipClass} />

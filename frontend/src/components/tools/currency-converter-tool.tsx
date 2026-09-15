@@ -84,7 +84,7 @@ export function CurrencyConverterTool() {
           >
             {currencyList.map((c) => (
               <option key={c} value={c}>
-                {c} {currencies[c] ? `\u2013 ${currencies[c]}` : ""}
+                {c} {currencies[c] ? `– ${currencies[c]}` : ""}
               </option>
             ))}
           </select>
@@ -97,14 +97,14 @@ export function CurrencyConverterTool() {
           title="Swap currencies"
           className="btn btn-secondary h-9 w-9 shrink-0 justify-self-center self-end px-0 text-sm"
         >
-          {"\u21c4"}
+          {"⇄"}
         </button>
         <label className="block text-xs">
           <span className="mb-1 block text-muted">To</span>
           <select value={to} onChange={(e) => setTo(e.target.value)} className="w-full rounded border border-border bg-background px-2.5 py-1.5 text-sm">
             {currencyList.map((c) => (
               <option key={c} value={c}>
-                {c} {currencies[c] ? `\u2013 ${currencies[c]}` : ""}
+                {c} {currencies[c] ? `– ${currencies[c]}` : ""}
               </option>
             ))}
           </select>
@@ -120,12 +120,12 @@ export function CurrencyConverterTool() {
         ) : (
           <>
             <p className="mt-1 font-mono text-3xl font-semibold">
-              {converted !== null ? `${converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} ${to}` : "\u2014"}
+              {converted !== null ? `${converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} ${to}` : "—"}
             </p>
             {rates && (
               <p className="mt-2 text-xs text-muted">
                 1 {from} = {(rates[to] / rates[from]).toLocaleString(undefined, { maximumFractionDigits: 6 })} {to}
-                {updatedAt && ` \u00b7 rates as of ${updatedAt}`}
+                {updatedAt && ` · rates as of ${updatedAt}`}
               </p>
             )}
           </>

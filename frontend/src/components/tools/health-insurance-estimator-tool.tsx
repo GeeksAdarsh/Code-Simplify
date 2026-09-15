@@ -28,7 +28,7 @@ export function HealthInsuranceEstimatorTool() {
         </label>
 
         <label className="block text-xs">
-          <span className="mb-1 block text-muted">Sum insured: \u20B9{sumInsuredLakhs} lakh</span>
+          <span className="mb-1 block text-muted">Sum insured: ₹{sumInsuredLakhs} lakh</span>
           <input type="range" min={3} max={100} value={sumInsuredLakhs} onChange={(e) => setSumInsuredLakhs(Number(e.target.value))} className="w-full accent-foreground" />
         </label>
         <div>
@@ -44,12 +44,12 @@ export function HealthInsuranceEstimatorTool() {
       <div className="mt-4 grid gap-3 sm:grid-cols-1">
         <div className="card p-4">
           <p className="text-xs text-muted">Estimated annual premium</p>
-          <p className="mt-1 font-mono text-2xl font-semibold">{"\u20B9"}{formatMoney(estimatedPremium)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold">{"₹"}{formatMoney(estimatedPremium)}</p>
         </div>
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        This is a rough, ballpark estimate based on typical age-band and city-tier premium patterns \u2014 it is{" "}
+        This is a rough, ballpark estimate based on typical age-band and city-tier premium patterns — it is{" "}
         <strong>not</strong> a real insurer quote. Actual health insurance premiums depend on medical history,
         specific insurer pricing, add-ons, and underwriting. Always get quotes directly from insurers for an
         accurate price.

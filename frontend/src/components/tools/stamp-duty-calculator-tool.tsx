@@ -53,7 +53,7 @@ export function StampDutyCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Stamp duty rates vary significantly by Indian state, property type, and owner gender, and are revised
-        periodically by state governments. The rates shown are representative reference values \u2014 verify the
+        periodically by state governments. The rates shown are representative reference values — verify the
         current rate on your state&apos;s registration department website before a transaction.
       </p>
     </div>

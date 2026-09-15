@@ -7,8 +7,8 @@ import { Swatch } from "@/components/tools/shared/color-shared";
 const HARMONIES: { value: HarmonyType; label: string; description: string }[] = [
   { value: "complementary", label: "Complementary", description: "Base color plus its opposite on the color wheel." },
   { value: "analogous", label: "Analogous", description: "Neighboring hues for a calm, cohesive look." },
-  { value: "triadic", label: "Triadic", description: "Three hues evenly spaced 120\u00b0 apart." },
-  { value: "tetradic", label: "Tetradic", description: "Four hues evenly spaced 90\u00b0 apart." },
+  { value: "triadic", label: "Triadic", description: "Three hues evenly spaced 120° apart." },
+  { value: "tetradic", label: "Tetradic", description: "Four hues evenly spaced 90° apart." },
   { value: "split-complementary", label: "Split-complementary", description: "Base plus the two hues next to its opposite." },
   { value: "monochromatic", label: "Monochromatic", description: "Five lightness steps of a single hue." },
 ];

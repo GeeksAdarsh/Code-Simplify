@@ -63,12 +63,12 @@ export function IrrCalculatorTool() {
 
       <div className="mt-4 card p-4">
         <p className="text-xs text-muted">IRR (Internal Rate of Return)</p>
-        <p className="mt-1 font-mono text-3xl font-semibold">{irr !== null ? `${irr.toFixed(2)}%` : "\u2014"}</p>
+        <p className="mt-1 font-mono text-3xl font-semibold">{irr !== null ? `${irr.toFixed(2)}%` : "—"}</p>
       </div>
 
       <p className="mt-4 text-xs text-muted">
         IRR finds the discount rate at which the net present value of all periods' cash flows equals zero.
-        Use this for cash flows spaced at regular intervals (e.g. yearly) \u2014 for irregular dates, use the XIRR
+        Use this for cash flows spaced at regular intervals (e.g. yearly) — for irregular dates, use the XIRR
         Calculator instead.
       </p>
     </div>

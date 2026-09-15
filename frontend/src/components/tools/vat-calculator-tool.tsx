@@ -50,7 +50,7 @@ export function VatCalculatorTool() {
 
       <p className="mt-4 text-xs text-muted">
         Add VAT to a net (tax-exclusive) amount, or remove VAT from a gross (tax-inclusive) amount to find the net
-        price and VAT component. VAT rates vary by country \u2014 adjust the rate to match your jurisdiction.
+        price and VAT component. VAT rates vary by country — adjust the rate to match your jurisdiction.
       </p>
     </div>
   );

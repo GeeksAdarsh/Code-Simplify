@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { getStoredTheme, setStoredTheme, type ThemeMode } from "@/lib/theme";
 
 const ICONS: Record<ThemeMode, string> = {
-  light: "\u2600\ufe0f",
-  dark: "\ud83c\udf19",
+  light: "☀️",
+  dark: "🌙",
 };
 
 const LABELS: Record<ThemeMode, string> = {

@@ -77,7 +77,7 @@ export function NetWorthCalculatorTool() {
       </div>
 
       <p className="mt-4 text-xs text-muted">
-        Net worth = Total assets \u2212 Total liabilities. Add all your assets (cash, investments, property, etc.)
+        Net worth = Total assets − Total liabilities. Add all your assets (cash, investments, property, etc.)
         and liabilities (loans, credit card debt, etc.) to see your overall financial position at a glance.
       </p>
     </div>

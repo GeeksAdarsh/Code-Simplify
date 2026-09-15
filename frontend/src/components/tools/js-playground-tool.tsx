@@ -117,13 +117,13 @@ export function JsPlaygroundTool() {
         <div className="flex flex-col">
           <div className="flex items-center justify-between border-b border-border px-3 py-1.5 text-xs text-muted">
             <span>Console output</span>
-            <span>Sandboxed \u2014 runs locally</span>
+            <span>Sandboxed — runs locally</span>
           </div>
           <div className="h-96 w-full overflow-auto bg-background p-3 font-mono text-sm">
             {logs.length === 0 && <p className="text-muted">Click &quot;Run&quot; to execute your code and see console output here.</p>}
             {logs.map((entry, i) => (
               <div key={i} className={`whitespace-pre-wrap border-b border-border/50 py-1 ${LEVEL_STYLES[entry.level]}`}>
-                <span className="mr-2 text-muted">{entry.level === "error" ? "\u2716" : entry.level === "warn" ? "\u26A0" : "\u203A"}</span>
+                <span className="mr-2 text-muted">{entry.level === "error" ? "✖" : entry.level === "warn" ? "⚠" : "›"}</span>
                 {entry.text}
               </div>
             ))}

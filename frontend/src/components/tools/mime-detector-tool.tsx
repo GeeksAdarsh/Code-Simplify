@@ -70,14 +70,14 @@ export function MimeDetectorTool() {
             </div>
             <div className="flex items-center justify-between gap-4 px-4 py-2.5 text-sm">
               <span className="text-muted">Browser-reported type</span>
-              <span className="font-mono">{browserType || "(none \u2014 often empty for unknown extensions)"}</span>
+              <span className="font-mono">{browserType || "(none — often empty for unknown extensions)"}</span>
             </div>
           </div>
 
           <div>
             <p className="mb-2 text-sm font-medium">Detected from file content (magic bytes)</p>
             {matches && matches.length === 0 && (
-              <div className="card px-4 py-3 text-sm text-muted">No known magic-byte signature matched \u2014 this may be a plain text file, an uncommon format, or the content doesn&apos;t start with a recognizable header.</div>
+              <div className="card px-4 py-3 text-sm text-muted">No known magic-byte signature matched — this may be a plain text file, an uncommon format, or the content doesn&apos;t start with a recognizable header.</div>
             )}
             {matches && matches.length > 0 && (
               <ul className="divide-y divide-border rounded-lg border border-border">
