@@ -14,11 +14,12 @@ export default function AppleIcon() {
           alignItems: "center",
           justifyContent: "center",
           background: "#ffffff",
-          color: "#0a0a0a",
-          fontSize: 84,
-          fontWeight: 700,
-          letterSpacing: "-0.08em",
-          fontFamily: "ui-sans-serif, system-ui, sans-serif",
+          color: "#000000",
+          fontSize: 128,
+          fontWeight: 900,
+          letterSpacing: "-0.12em",
+          fontFamily: "Arial Black, Arial, sans-serif",
+          lineHeight: 1,
         }}
       >
         Cs
