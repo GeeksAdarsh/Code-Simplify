@@ -51,7 +51,10 @@ public class IpLookupService {
             }
 
             return result;
-        } catch (IOException | InterruptedException e) {
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Could not reach the geolocation service: request interrupted");
+        } catch (IOException e) {
             throw new IllegalStateException("Could not reach the geolocation service: " + e.getMessage());
         }
     }

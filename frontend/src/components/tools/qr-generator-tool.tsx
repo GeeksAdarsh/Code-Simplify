@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { CodeEditor } from "@/components/code-editor";
+import { siteConfig } from "@/config/tools";
 import { generateQrDataUrl, type QrOptions } from "@/lib/qr-barcode-utils";
 import { QrPreview } from "@/components/tools/shared/qr-preview";
 
 export function QrGeneratorTool() {
-  const [text, setText] = useState("https://codesimplify.com");
+  const [text, setText] = useState(siteConfig.url);
   const [level, setLevel] = useState<QrOptions["errorCorrectionLevel"]>("M");
   const [dataUrl, setDataUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);

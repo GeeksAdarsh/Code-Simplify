@@ -57,7 +57,10 @@ public class HttpHeaderService {
 
             return new HttpHeaderResponse(uri.toString(), response.statusCode(), statusText(response.statusCode()),
                     headers, redirectLocation);
-        } catch (IOException | InterruptedException e) {
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Could not fetch " + uri + ": request interrupted");
+        } catch (IOException e) {
             throw new IllegalStateException("Could not fetch " + uri + ": " + e.getMessage());
         }
     }

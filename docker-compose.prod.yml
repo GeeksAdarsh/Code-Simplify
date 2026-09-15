@@ -9,6 +9,8 @@ services:
   backend:
     image: ${ECR_REGISTRY}/codesimplify-backend:latest
     restart: unless-stopped
+    environment:
+      APP_CORS_ALLOWED_ORIGINS: https://codesimplify.org
     expose:
       - "8080"
 

@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
 
+import com.devtoolbox.backend.util.NetworkInputValidator;
+
 /**
  * WHOIS (RFC 3912) is a plain-text, unauthenticated TCP protocol on port 43 -
  * there is no HTTP/JSON API, so this makes a raw socket connection. We try a
@@ -45,17 +47,18 @@ public class WhoisService {
     }
 
     public WhoisResult lookup(String domain) {
-        String tld = extractTld(domain);
+        String normalizedDomain = NetworkInputValidator.normalizeDomain(domain);
+        String tld = extractTld(normalizedDomain);
         String server = KNOWN_SERVERS.getOrDefault(tld, resolveServerFromIana(tld));
 
-        String rawText = query(server, domain);
+        String rawText = query(server, normalizedDomain);
 
         String referral = extractReferral(rawText);
         if (referral != null && !referral.equalsIgnoreCase(server)) {
             try {
-                String referredText = query(referral, domain);
+                String referredText = query(referral, normalizedDomain);
                 if (!referredText.isBlank()) {
-                    return new WhoisResult(domain, referral,
+                    return new WhoisResult(normalizedDomain, referral,
                             rawText + "\n\n----- Additional record from " + referral + " -----\n\n" + referredText);
                 }
             } catch (RuntimeException ignored) {
@@ -63,7 +66,7 @@ public class WhoisService {
             }
         }
 
-        return new WhoisResult(domain, server, rawText);
+        return new WhoisResult(normalizedDomain, server, rawText);
     }
 
     private String extractTld(String domain) {

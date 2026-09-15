@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateRandomInt } from "@/lib/random-utils";
 
 const DIE_TYPES = [4, 6, 8, 10, 12, 20];
@@ -40,6 +40,17 @@ export function DiceRollerTool() {
   const [count, setCount] = useState(2);
   const [values, setValues] = useState<number[]>([4, 6]);
   const [rolling, setRolling] = useState(false);
+
+  useEffect(() => {
+    setValues((prev) =>
+      Array.from({ length: count }, (_, i) => {
+        const existing = prev[i];
+        return existing !== undefined && existing >= 1 && existing <= sides
+          ? existing
+          : generateRandomInt(1, sides);
+      }),
+    );
+  }, [count, sides]);
 
   function roll() {
     if (rolling) return;
@@ -96,7 +107,7 @@ export function DiceRollerTool() {
         ))}
       </div>
 
-      {count > 1 && (
+      {count > 1 && !rolling && (
         <p className="mt-4 text-center text-sm text-muted">
           Total: <span className="font-semibold text-foreground">{total}</span>
         </p>

@@ -12,6 +12,7 @@ import org.xbill.DNS.TextParseException;
 import org.xbill.DNS.Type;
 
 import com.devtoolbox.backend.dto.DnsRecordDto;
+import com.devtoolbox.backend.util.NetworkInputValidator;
 
 @Service
 public class DnsLookupService {
@@ -19,6 +20,7 @@ public class DnsLookupService {
     private static final Set<String> SUPPORTED_TYPES = Set.of("A", "AAAA", "MX", "TXT", "NS", "CNAME", "SOA", "CAA");
 
     public List<DnsRecordDto> lookup(String domain, String recordType) {
+        String normalizedDomain = NetworkInputValidator.normalizeDomain(domain);
         String type = (recordType == null || recordType.isBlank() ? "A" : recordType).toUpperCase(Locale.ROOT);
         if (!SUPPORTED_TYPES.contains(type)) {
             throw new IllegalArgumentException(
@@ -31,7 +33,7 @@ public class DnsLookupService {
         }
 
         try {
-            Lookup lookup = new Lookup(domain, dnsType);
+            Lookup lookup = new Lookup(normalizedDomain, dnsType);
             lookup.run();
 
             int result = lookup.getResult();
@@ -57,7 +59,7 @@ public class DnsLookupService {
             }
             return resultList;
         } catch (TextParseException e) {
-            throw new IllegalArgumentException("Invalid domain name: " + domain);
+            throw new IllegalArgumentException("Invalid domain name: " + normalizedDomain);
         }
     }
 }
