@@ -16,6 +16,7 @@ export function SiteHeader() {
             height={28}
             className="h-7 w-7 rounded"
             priority
+            unoptimized
           />
           {siteConfig.name}
         </Link>
