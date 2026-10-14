@@ -29,6 +29,9 @@ export function SiteHeader() {
           <Link href="/categories" className="hidden text-muted transition-colors hover:text-foreground sm:inline">
             All Tools
           </Link>
+          <Link href="/guides" className="hidden text-muted transition-colors hover:text-foreground lg:inline">
+            Guides
+          </Link>
           <Link href="/favorites" className="hidden text-muted transition-colors hover:text-foreground sm:inline">
             &#9733; Favorites
           </Link>

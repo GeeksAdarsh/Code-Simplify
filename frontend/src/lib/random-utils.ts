@@ -176,12 +176,11 @@ export function generateRandomEmoji(): string {
 // ---------------------------------------------------------------------------
 
 export function generateRandomDate(startYear: number, endYear: number): Date {
-  const start = new Date(startYear, 0, 1).getTime();
-  const end = new Date(endYear, 11, 31).getTime();
-  const randomBuffer = new Uint32Array(1);
-  crypto.getRandomValues(randomBuffer);
-  const t = start + (randomBuffer[0] / 0xffffffff) * (end - start);
-  return new Date(t);
+  const DAY_MS = 86_400_000;
+  // UTC on both ends so formatDate's toISOString never crosses into a neighbouring year.
+  const firstDay = Date.UTC(startYear, 0, 1) / DAY_MS;
+  const lastDay = Date.UTC(endYear, 11, 31) / DAY_MS;
+  return new Date(generateRandomInt(firstDay, lastDay) * DAY_MS);
 }
 
 export function formatDate(date: Date): string {

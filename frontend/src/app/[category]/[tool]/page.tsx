@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getLiveCategories, getTool, siteConfig, toolHref } from "@/config/tools";
 import { ToolWidget } from "@/config/tool-widgets";
 import { getToolContent } from "@/config/tool-content";
+import { getToolExtraContent } from "@/config/tool-extra";
 import { ToolPageLayout } from "@/components/tool-page-layout";
 
 export function generateStaticParams() {
@@ -57,14 +58,17 @@ export default async function ToolPage({
   const { tool, category } = found;
 
   const content = getToolContent(category.slug, tool.slug);
+  const extra = getToolExtraContent(category.slug, tool.slug);
+  const faq = [...(content?.faq ?? []), ...(extra?.faq ?? [])];
 
   return (
     <ToolPageLayout
       category={category}
       tool={tool}
+      about={extra?.about}
       howToUse={content?.howToUse}
       features={content?.features}
-      faq={content?.faq}
+      faq={faq}
     >
       <ToolWidget categorySlug={category.slug} toolSlug={tool.slug} />
     </ToolPageLayout>

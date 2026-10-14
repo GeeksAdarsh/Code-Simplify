@@ -17,7 +17,7 @@ export default function SupportPage() {
       <h1 className="text-3xl font-semibold tracking-tight">Support {siteConfig.name}</h1>
       <div className="mt-6 space-y-5 text-sm leading-relaxed text-muted">
         <p>
-          {siteConfig.name} is free, has no sign-up, and runs every tool locally in your browser &mdash; no
+          {siteConfig.name}{" "}is free, has no sign-up, and runs every tool locally in your browser &mdash; no
           ads-for-data tradeoffs, no premium tier holding features back. Keeping it that way costs real money:
           server hosting, a domain, and the time spent building and maintaining {totalTools}+ tools.
         </p>

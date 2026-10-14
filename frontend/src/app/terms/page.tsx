@@ -28,7 +28,7 @@ export default function TermsPage() {
         <section>
           <h2 className="mb-2 text-lg font-semibold text-foreground">2. Use of the service</h2>
           <p>
-            {siteConfig.name} provides free online developer tools for formatting, validating, converting, and
+            {siteConfig.name}{" "}provides free online developer tools for formatting, validating, converting, and
             generating data. The tools are provided &ldquo;as is&rdquo; for personal and commercial use, free of
             charge, without warranty of any kind.
           </p>

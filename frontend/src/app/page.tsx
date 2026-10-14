@@ -26,7 +26,7 @@ export default function Home() {
             One toolbox.
           </h1>
           <p className="max-w-xl text-lg text-muted">
-            {siteConfig.name} is a fast, free collection of online tools for JSON, XML, YAML, SQL, security,
+            {siteConfig.name}{" "}is a fast, free collection of online tools for JSON, XML, YAML, SQL, security,
             text, and more &mdash; built for developers who value speed and privacy.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">

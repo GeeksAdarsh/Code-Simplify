@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 /** Shown briefly while a tool's client bundle loads (each tool is code-split into its own chunk). */
 function ToolWidgetLoading() {
   return (
-    <div className="flex h-64 items-center justify-center rounded-xl border border-border bg-surface text-sm text-muted">
+    <div className="flex h-[22rem] items-center justify-center rounded-xl border border-border bg-surface text-sm text-muted">
       Loading tool&hellip;
     </div>
   );

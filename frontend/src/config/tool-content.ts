@@ -225,13 +225,11 @@ export const toolContent: Record<string, ToolContent> = {
     howToUse: [
       "Paste any JSON into the input box on the left.",
       "A syntax-highlighted, indented view appears automatically on the right.",
-      "Toggle line wrapping to control how long lines are displayed.",
       "Use this to visually review API responses or config files without editing them.",
     ],
     features: [
       "Color-coded syntax highlighting for keys, strings, numbers, booleans, and null.",
       "Automatic formatting for readability \u2014 no manual indentation needed.",
-      "Optional line wrapping for long values.",
       "Runs entirely in your browser for privacy.",
       "Free with no sign-up required.",
     ],
@@ -822,13 +820,11 @@ export const toolContent: Record<string, ToolContent> = {
     howToUse: [
       "Paste any XML into the input box on the left.",
       "A syntax-highlighted, indented view appears automatically on the right.",
-      "Toggle line wrapping to control how long lines are displayed.",
       "Use this to visually review API responses, RSS feeds, or config files without editing them.",
     ],
     features: [
       "Color-coded syntax highlighting for tags, attribute names, attribute values, and comments.",
       "Automatic formatting for readability \u2014 no manual indentation needed.",
-      "Optional line wrapping for long values.",
       "Runs entirely in your browser for privacy.",
       "Free with no sign-up required.",
     ],
@@ -1011,7 +1007,7 @@ export const toolContent: Record<string, ToolContent> = {
       {
         question: "Can I convert a YAML file with multiple documents?",
         answer:
-          "This tool converts the first document in the input. Split multi-document YAML files (separated by ---) and convert each one separately if you need all of them as JSON.",
+          "No \u2014 the input must be a single YAML document, and a file with several documents separated by --- shows an error. Split the file and convert each document separately.",
       },
     ],
   },
@@ -1427,7 +1423,7 @@ export const toolContent: Record<string, ToolContent> = {
     howToUse: [
       "Paste your SQL query into the input box, in any keyword case.",
       "Every reserved SQL keyword (SELECT, FROM, WHERE, JOIN, ORDER BY, and 100+ others) is converted to UPPERCASE automatically.",
-      "Table names, column names, string literals, and comments are left completely untouched.",
+      "Other table and column names, string literals, and comments are left untouched.",
       "Copy the result or download it as a .sql file.",
     ],
     features: [
@@ -1441,7 +1437,7 @@ export const toolContent: Record<string, ToolContent> = {
       {
         question: "Will this change my table or column names?",
         answer:
-          "No, only reserved SQL keywords are affected. Identifiers like table and column names keep their original casing, even if they happen to match a keyword-like word.",
+          "Only words on the SQL keyword list change. A table or column whose name is itself a keyword, such as date, year, or text, will change too unless you quote it (\"date\" or `date`).",
       },
       {
         question: "Does it reformat indentation too?",
@@ -1458,7 +1454,7 @@ export const toolContent: Record<string, ToolContent> = {
     howToUse: [
       "Paste your SQL query into the input box, in any keyword case.",
       "Every reserved SQL keyword is converted to lowercase automatically.",
-      "Table names, column names, string literals, and comments are left completely untouched.",
+      "Other table and column names, string literals, and comments are left untouched.",
       "Copy the result or download it as a .sql file.",
     ],
     features: [
@@ -2291,7 +2287,7 @@ export const toolContent: Record<string, ToolContent> = {
       {
         question: "Will minifying break my layout?",
         answer:
-          "Minifying only removes whitespace and comments that don't affect rendering. Content inside whitespace-sensitive tags like <pre> is preserved exactly.",
+          "Mostly, but not always. Whitespace between tags is removed completely, so inline elements written with a space between them (like <b>Hello</b> <i>world</i>) will display without that space. Check pages with inline formatting after minifying.",
       },
       {
         question: "How much smaller will my file get?",
@@ -2701,7 +2697,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Powered by Prettier's official standalone build \u2014 the same formatter used by millions of JS projects.",
-      "Understands modern syntax: arrow functions, destructuring, async/await, classes, JSX-free ES modules, and more.",
+      "Understands modern syntax: arrow functions, destructuring, async/await, classes, ES modules, and more.",
       "Produces consistent, opinionated formatting with 2-space indentation and double quotes.",
       "Runs entirely in your browser via WebAssembly-free pure JS \u2014 nothing is uploaded.",
     ],
@@ -3060,7 +3056,7 @@ export const toolContent: Record<string, ToolContent> = {
       },
       {
         question: "Does it work on files with mixed HTML and PHP?",
-        answer: "The formatter processes the entire file as text, so HTML outside <?php ?> tags is preserved as-is (it has no braces to affect indentation depth).",
+        answer: "The formatter processes the entire file as text, so HTML outside <?php ?> tags is kept but re-indented along with the PHP. Review mixed HTML/PHP templates after formatting.",
       },
     ],
   },
@@ -3126,7 +3122,7 @@ export const toolContent: Record<string, ToolContent> = {
       },
       {
         question: "Does it handle backtick raw strings?",
-        answer: "Yes, content inside backtick-delimited raw string literals is skipped over and left untouched when counting brace depth.",
+        answer: "Partly. Braces inside backtick raw strings don't affect indentation, but lines inside a multi-line raw string are re-indented, which changes the string's content. Check multi-line raw strings after formatting.",
       },
     ],
   },
@@ -3198,7 +3194,7 @@ export const toolContent: Record<string, ToolContent> = {
     faq: [
       {
         question: "Does it handle complex nested HTML like tables?",
-        answer: "Yes, common structures including tables, nested lists, and blockquotes are converted, though highly complex or non-semantic HTML (e.g. div-based layouts) may not always translate perfectly to Markdown.",
+        answer: "Nested lists, blockquotes, links, and code blocks convert well. Tables are not turned into Markdown tables \u2014 their cells come out as plain lines of text \u2014 and div-based layouts may not translate cleanly.",
       },
       {
         question: "What happens to inline styles and classes?",
@@ -5451,7 +5447,7 @@ export const toolContent: Record<string, ToolContent> = {
       },
       {
         question: "Can I convert negative numbers?",
-        answer: "This tool converts non-negative integers. Negative number representation in binary (such as two's complement) depends on a fixed bit-width, which varies by programming language and platform.",
+        answer: "Yes, with a minus sign: -10 becomes -1010. That is signed notation, not two's complement, which depends on a fixed bit-width that varies by programming language and platform.",
       },
     ],
   },
@@ -5462,7 +5458,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Fully bidirectional conversion between decimal (base 10) and hexadecimal (base 16).",
-      "Accepts hex input with or without the 0x prefix, case-insensitively.",
+      "Accepts hex digits in upper or lower case.",
       "Instant conversion with no page reload or server round-trip.",
       "Useful for programming, color codes, memory addresses, and debugging.",
     ],
@@ -5472,8 +5468,8 @@ export const toolContent: Record<string, ToolContent> = {
         answer: "Hexadecimal is a compact way to represent binary data \u2014 each hex digit represents exactly 4 bits, so a byte fits neatly into 2 hex digits, making it far easier for humans to read and write than long binary strings.",
       },
       {
-        question: "Do I need to include '0x' before a hex number?",
-        answer: "No, you can type the hex digits directly (e.g. \u201cff\u201d) without a prefix; the tool interprets the hex field using base 16 regardless of a leading 0x.",
+        question: "Can I paste a hex number with a 0x prefix?",
+        answer: "Type only the hex digits, such as \u201cff\u201d. A leading 0x isn't accepted, so remove it before pasting.",
       },
     ],
   },
@@ -5534,7 +5530,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Draws from a curated list of everyday English words.",
-      "Generate 1 to 20 words at once.",
+      "Generate up to 20 words at once.",
       "One click to copy a single word or the entire batch.",
       "Runs 100% in your browser \u2014 no server round-trip.",
     ],
@@ -5605,7 +5601,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Supports both random IPv4 and IPv6 address generation.",
-      "Generate 1 to 20 addresses at once.",
+      "Generate up to 20 addresses at once.",
       "Useful for populating test data, documentation examples, and demo UIs.",
     ],
     faq: [
@@ -5629,7 +5625,7 @@ export const toolContent: Record<string, ToolContent> = {
     features: [
       "Sets the locally-administered bit so generated addresses never collide with real vendor-assigned hardware.",
       "Optional uppercase or lowercase hex formatting.",
-      "Generate 1 to 20 addresses at once.",
+      "Generate up to 20 addresses at once.",
     ],
     faq: [
       {
@@ -5693,7 +5689,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Combines random first and last names from large curated lists.",
-      "Generate 1 to 20 names at once.",
+      "Generate up to 20 names at once.",
       "Useful for mock user data, placeholder content, and demo UIs.",
     ],
     faq: [
@@ -5711,7 +5707,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Combines a random adjective, noun, and number into a unique-sounding username.",
-      "Generate 1 to 20 usernames at once.",
+      "Generate up to 20 usernames at once.",
       "Useful for test accounts, demo data, and sign-up form placeholders.",
     ],
     faq: [
@@ -5729,7 +5725,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Combines a playful adjective with an animal name.",
-      "Generate 1 to 20 nicknames at once.",
+      "Generate up to 20 nicknames at once.",
       "Great for gamertags, avatars, and demo profiles.",
     ],
     faq: [
@@ -5818,7 +5814,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "Combines a random house number, street name, city, state, and ZIP code.",
-      "Generate 1 to 20 addresses at once.",
+      "Generate up to 20 addresses at once.",
       "Useful for testing shipping forms, checkout flows, and mock data sets.",
     ],
     faq: [
@@ -5835,7 +5831,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-animal": {
     howToUse: ["Choose how many animals to generate.", "Click Regenerate for a fresh batch.", "Copy any animal name, or all of them, with one click."],
-    features: ["Draws from 50 wild and domestic animal species.", "Generate 1 to 20 at once.", "No repeats logic \u2014 pure random pick every time."],
+    features: ["Draws from 50 wild and domestic animal species.", "Generate up to 20 at once.", "No repeats logic \u2014 pure random pick every time."],
     faq: [
       {
         question: "What can I use a random animal generator for?",
@@ -5846,7 +5842,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-country": {
     howToUse: ["Choose how many countries to generate.", "Click Regenerate for a fresh batch.", "Copy any result, or all of them, with one click."],
-    features: ["Includes the country's flag emoji alongside its name.", "Covers roughly 50 countries across every continent.", "Generate 1 to 20 at once."],
+    features: ["Includes the country's flag emoji alongside its name.", "Covers roughly 50 countries across every continent.", "Generate up to 20 at once."],
     faq: [
       {
         question: "How many countries are in the list?",
@@ -5861,7 +5857,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-city": {
     howToUse: ["Choose how many cities to generate.", "Click Regenerate for a fresh batch.", "Copy any city, or all of them, with one click."],
-    features: ["Draws from major cities across every continent.", "Generate 1 to 20 at once."],
+    features: ["Draws from major cities across every continent.", "Generate up to 20 at once."],
     faq: [
       {
         question: "What can I use a random city generator for?",
@@ -5872,7 +5868,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-food": {
     howToUse: ["Choose how many dishes to generate.", "Click Regenerate for a fresh batch.", "Copy any dish, or all of them, with one click."],
-    features: ["Draws from dishes across many world cuisines.", "Generate 1 to 20 at once.", "A quick way to break decision paralysis over what to eat."],
+    features: ["Draws from dishes across many world cuisines.", "Generate up to 20 at once.", "A quick way to break decision paralysis over what to eat."],
     faq: [
       {
         question: "Can this suggest a recipe too?",
@@ -5883,7 +5879,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-fruit": {
     howToUse: ["Choose how many fruits to generate.", "Click Regenerate for a fresh batch.", "Copy any fruit, or all of them, with one click."],
-    features: ["Draws from 35 common and exotic fruits.", "Generate 1 to 20 at once."],
+    features: ["Draws from 36 common and exotic fruits.", "Generate up to 20 at once."],
     faq: [
       {
         question: "What can I use this for?",
@@ -5894,7 +5890,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-vegetable": {
     howToUse: ["Choose how many vegetables to generate.", "Click Regenerate for a fresh batch.", "Copy any vegetable, or all of them, with one click."],
-    features: ["Draws from a wide variety of common vegetables.", "Generate 1 to 20 at once."],
+    features: ["Draws from a wide variety of common vegetables.", "Generate up to 20 at once."],
     faq: [
       {
         question: "What can I use this for?",
@@ -5905,7 +5901,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-drink": {
     howToUse: ["Choose how many drinks to generate.", "Click Regenerate for a fresh batch.", "Copy any drink, or all of them, with one click."],
-    features: ["All suggestions are non-alcoholic beverages.", "Generate 1 to 20 at once."],
+    features: ["All suggestions are non-alcoholic beverages.", "Generate up to 20 at once."],
     faq: [
       {
         question: "Does this include alcoholic drinks?",
@@ -5916,7 +5912,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-movie": {
     howToUse: ["Choose how many movies to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
-    features: ["Draws from a curated list of well-known, highly-rated films across genres and decades.", "Generate 1 to 20 at once."],
+    features: ["Draws from a curated list of well-known, highly-rated films across genres and decades.", "Generate up to 20 at once."],
     faq: [
       {
         question: "Is this list personalized to my taste?",
@@ -5931,7 +5927,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-tv-show": {
     howToUse: ["Choose how many shows to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
-    features: ["Draws from a curated list of popular, well-reviewed series across genres.", "Generate 1 to 20 at once."],
+    features: ["Draws from a curated list of popular, well-reviewed series across genres.", "Generate up to 20 at once."],
     faq: [
       {
         question: "Is this list personalized to my taste?",
@@ -5942,7 +5938,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-book": {
     howToUse: ["Choose how many books to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
-    features: ["Draws from a curated list of classic and popular titles across genres.", "Generate 1 to 20 at once."],
+    features: ["Draws from a curated list of classic and popular titles across genres.", "Generate up to 20 at once."],
     faq: [
       {
         question: "Does this include the author's name?",
@@ -5953,7 +5949,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-game": {
     howToUse: ["Choose how many games to generate.", "Click Regenerate for a fresh batch.", "Copy any title, or all of them, with one click."],
-    features: ["Draws from a curated list of popular video games across genres and platforms.", "Generate 1 to 20 at once."],
+    features: ["Draws from a curated list of popular video games across genres and platforms.", "Generate up to 20 at once."],
     faq: [
       {
         question: "Does this check which platform I own?",
@@ -5964,7 +5960,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-pokemon": {
     howToUse: ["Choose how many Pok\u00e9mon to generate.", "Click Regenerate for a fresh batch.", "Copy any name, or all of them, with one click."],
-    features: ["Draws from the original 65+ Generation I Pok\u00e9mon lineup.", "Generate 1 to 20 at once."],
+    features: ["Draws from the original 65+ Generation I Pok\u00e9mon lineup.", "Generate up to 20 at once."],
     faq: [
       {
         question: "Is this an official Pok\u00e9mon tool?",
@@ -5979,7 +5975,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-dinosaur": {
     howToUse: ["Choose how many dinosaurs to generate.", "Click Regenerate for a fresh batch.", "Copy any name, or all of them, with one click."],
-    features: ["Draws from well-known dinosaur species names.", "Generate 1 to 20 at once."],
+    features: ["Draws from well-known dinosaur species names.", "Generate up to 20 at once."],
     faq: [
       {
         question: "What can I use this for?",
@@ -5990,7 +5986,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-bird": {
     howToUse: ["Choose how many birds to generate.", "Click Regenerate for a fresh batch.", "Copy any name, or all of them, with one click."],
-    features: ["Draws from a wide variety of well-known bird species.", "Generate 1 to 20 at once."],
+    features: ["Draws from a wide variety of well-known bird species.", "Generate up to 20 at once."],
     faq: [
       {
         question: "What can I use this for?",
@@ -6001,7 +5997,7 @@ export const toolContent: Record<string, ToolContent> = {
 
   "fun/random-flag": {
     howToUse: ["Choose how many flags to generate.", "Click Regenerate for a fresh batch of flags with their country names."],
-    features: ["Displays each country's flag as a large emoji alongside its name.", "Generate 1 to 20 flags at once.", "Great for a quick flag-guessing game with friends."],
+    features: ["Displays each country's flag as a large emoji alongside its name.", "Generate up to 20 flags at once.", "Great for a quick flag-guessing game with friends."],
     faq: [
       {
         question: "Why do the flags look slightly different than expected?",
@@ -6427,7 +6423,7 @@ export const toolContent: Record<string, ToolContent> = {
     howToUse: [
       "Enter your starting monthly SIP amount and the annual percentage you plan to increase it by.",
       "Set your expected annual return and investment duration.",
-      "See your projected future value compared to a flat SIP of the same starting amount.",
+      "See your projected future value. To compare with a flat SIP, set the step-up to 0%.",
     ],
     features: [
       "Models a monthly SIP that increases by a fixed percentage every 12 months.",

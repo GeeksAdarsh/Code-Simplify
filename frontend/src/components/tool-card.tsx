@@ -54,7 +54,7 @@ export function ToolCard({
           </div>
         )}
         <h3 className={`font-medium ${contentPad}`}>{title}</h3>
-        <p className={`mt-1 text-sm text-muted ${contentPad}`}>{description}</p>
+        <p className={`mt-1 line-clamp-2 text-sm text-muted ${contentPad}`}>{description}</p>
       </Link>
     </article>
   );

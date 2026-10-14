@@ -1,8 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { OnMount } from "@monaco-editor/react";
+import { registerShareEditor } from "@/lib/share-bus";
 
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
   ssr: false,
@@ -42,6 +43,18 @@ export function CodeEditor({
 }: CodeEditorProps) {
   const isDark = useIsDarkMode();
   const [contentLeft, setContentLeft] = useState<number | null>(null);
+  const valueRef = useRef(value);
+  const onChangeRef = useRef(onChange);
+  valueRef.current = value;
+  onChangeRef.current = onChange;
+
+  useEffect(() => {
+    if (readOnly || !onChangeRef.current) return;
+    return registerShareEditor(
+      () => valueRef.current,
+      (next) => onChangeRef.current?.(next),
+    );
+  }, [readOnly]);
 
   const handleMount: OnMount = (editorInstance) => {
     const update = () => setContentLeft(editorInstance.getLayoutInfo().contentLeft);
@@ -51,7 +64,7 @@ export function CodeEditor({
   };
 
   return (
-    <div className={`relative overflow-hidden ${className ?? ""}`} style={{ height }}>
+    <div data-cs-share={readOnly ? "readonly" : "editor"} className={`relative overflow-hidden ${className ?? ""}`} style={{ height }}>
       <MonacoEditor
         height="100%"
         value={value}

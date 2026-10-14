@@ -18,7 +18,6 @@ const nextConfig: NextConfig = {
       { source: "/:path*.webp", headers: cache },
       { source: "/icon.png", headers: cache },
       { source: "/apple-icon.png", headers: cache },
-      { source: "/_next/static/:path*", headers: cache },
     ];
   },
   async rewrites() {

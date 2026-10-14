@@ -9,6 +9,7 @@ const companyLinks = [
 ];
 
 const resourceLinks = [
+  { label: "Guides", href: "/guides" },
   { label: "FAQ", href: "/faq" },
   { label: "Roadmap", href: "/roadmap" },
   { label: "All tools", href: "/categories" },

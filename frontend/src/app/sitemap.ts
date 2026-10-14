@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getLiveCategories, siteConfig, toolHref } from "@/config/tools";
+import { guides } from "@/config/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const categories = getLiveCategories();
@@ -7,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: siteConfig.url, changeFrequency: "daily", priority: 1 },
     { url: `${siteConfig.url}/categories`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteConfig.url}/guides`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${siteConfig.url}/about`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${siteConfig.url}/faq`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${siteConfig.url}/roadmap`, changeFrequency: "monthly", priority: 0.4 },
@@ -30,5 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticRoutes, ...categoryRoutes, ...toolRoutes];
+  const guideRoutes: MetadataRoute.Sitemap = guides.map((guide) => ({
+    url: `${siteConfig.url}/guides/${guide.slug}`,
+    lastModified: guide.updated,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...categoryRoutes, ...toolRoutes, ...guideRoutes];
 }
