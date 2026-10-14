@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/json-ld";
 import type { Category, Tool } from "@/config/tools";
 import { siteConfig, toolHref } from "@/config/tools";
 import { getGuidesForTool } from "@/config/guide-utils";
-import { getCrossCategoryTools, getSameCategoryTools, type RelatedTool } from "@/lib/related-tools";
+import { getSameCategoryTools } from "@/lib/related-tools";
 
 interface ToolPageLayoutProps {
   category: Category;
@@ -22,23 +22,6 @@ interface ToolPageLayoutProps {
   faq?: FaqItem[];
 }
 
-function RelatedToolList({ heading, tools }: { heading: string; tools: RelatedTool[] }) {
-  return (
-    <div>
-      <h2 className="text-sm font-semibold text-muted">{heading}</h2>
-      <ul className="mt-4 space-y-2">
-        {tools.map((t) => (
-          <li key={`${t.categorySlug}/${t.slug}`}>
-            <Link href={toolHref(t.categorySlug, t.slug)} className="text-sm hover:underline">
-              {t.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export function ToolPageLayout({
   category,
   tool,
@@ -49,7 +32,6 @@ export function ToolPageLayout({
   faq,
 }: ToolPageLayoutProps) {
   const relatedTools = getSameCategoryTools(category.slug, tool.slug);
-  const crossTools = getCrossCategoryTools(category.slug, tool.title);
   const toolGuides = getGuidesForTool(category.slug, tool.slug);
   const toolUrl = `${siteConfig.url}${toolHref(category.slug, tool.slug)}`;
 
@@ -131,6 +113,20 @@ export function ToolPageLayout({
             </section>
           )}
 
+          {toolGuides.length > 0 && (
+            <p className="text-sm text-muted">
+              {"Learn more: "}
+              {toolGuides.map((guide, i) => (
+                <span key={guide.slug}>
+                  {i > 0 && " · "}
+                  <Link href={`/guides/${guide.slug}`} className="font-medium text-foreground underline">
+                    {guide.title}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          )}
+
           {howToUse && howToUse.length > 0 && (
             <section>
               <h2 className="text-xl font-semibold">How to use the {tool.title}</h2>
@@ -164,36 +160,29 @@ export function ToolPageLayout({
           {faq && faq.length > 0 && <FaqSection items={faq} toolName={tool.title} />}
         </div>
 
-        <aside className="space-y-10">
-          {relatedTools.length > 0 && (
-            <div>
-              <RelatedToolList heading={`More ${category.title} tools`} tools={relatedTools} />
-              <Link
-                href={`/${category.slug}`}
-                className="mt-4 inline-block text-sm font-medium text-foreground hover:underline"
-              >
-                {`View all ${category.title} tools`} &rarr;
-              </Link>
-            </div>
-          )}
-
-          {crossTools.length > 0 && <RelatedToolList heading="Related tools" tools={crossTools} />}
-
-          {toolGuides.length > 0 && (
-            <div>
-              <h2 className="text-sm font-semibold text-muted">Guides</h2>
-              <ul className="mt-4 space-y-2">
-                {toolGuides.map((guide) => (
-                  <li key={guide.slug}>
-                    <Link href={`/guides/${guide.slug}`} className="text-sm hover:underline">
-                      {guide.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </aside>
+        {relatedTools.length > 0 && (
+          <aside className="lg:w-fit lg:justify-self-end">
+            <h2 className="text-sm font-semibold text-muted">More {category.title} tools</h2>
+            <ul className="mt-4 space-y-2">
+              {relatedTools.map((t) => (
+                <li key={t.slug}>
+                  <Link
+                    href={toolHref(t.categorySlug, t.slug)}
+                    className="flex items-center justify-between gap-2 text-sm hover:underline"
+                  >
+                    {t.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={`/${category.slug}`}
+              className="mt-4 inline-block text-sm font-medium text-foreground hover:underline"
+            >
+              {`View all ${category.title} tools`} &rarr;
+            </Link>
+          </aside>
+        )}
       </div>
     </div>
     </ToolShare>

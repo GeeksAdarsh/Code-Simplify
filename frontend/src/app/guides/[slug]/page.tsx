@@ -51,7 +51,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const url = `${siteConfig.url}/guides/${guide.slug}`;
 
   return (
-    <div className="container-page max-w-3xl py-8">
+    <div className="container-page py-10">
+    <div className="mx-auto max-w-3xl">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -85,7 +86,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         <p className="mt-4 text-muted">{guide.description}</p>
 
         {mainTool && (
-          <Link href={mainTool.href} className="card mt-6 flex items-center justify-between gap-4 hover:border-foreground/30">
+          <Link href={mainTool.href} className="card mt-6 flex items-center justify-between gap-4 p-5 transition-colors hover:border-foreground">
             <span>
               <span className="block font-semibold">{`Try the ${mainTool.title}`}</span>
               <span className="mt-1 block line-clamp-2 text-sm text-muted">{mainTool.description}</span>
@@ -132,7 +133,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
             {tools.map((tool) => (
               <li key={tool.href}>
-                <Link href={tool.href} className="card block h-full hover:border-foreground/30">
+                <Link href={tool.href} className="card block h-full p-5 transition-colors hover:border-foreground">
                   <span className="block font-medium">{tool.title}</span>
                   <span className="mt-1 block line-clamp-2 text-sm text-muted">{tool.description}</span>
                 </Link>
@@ -159,6 +160,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           </Link>
         </section>
       )}
+    </div>
     </div>
   );
 }

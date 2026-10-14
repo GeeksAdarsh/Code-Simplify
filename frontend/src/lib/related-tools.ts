@@ -1,23 +1,10 @@
-import { getAllTools, getLiveCategories } from "@/config/tools";
+import { getLiveCategories } from "@/config/tools";
 
 export interface RelatedTool {
   categorySlug: string;
   categoryTitle: string;
   slug: string;
   title: string;
-}
-
-const STOP_WORDS = new Set([
-  "to", "and", "or", "the", "a", "an", "of", "for", "online", "tool", "generator", "random", "calculator", "converter",
-]);
-
-function significantWords(title: string): Set<string> {
-  return new Set(
-    title
-      .toLowerCase()
-      .split(/[^a-z0-9#+]+/)
-      .filter((word) => word.length > 1 && !STOP_WORDS.has(word))
-  );
 }
 
 /**
@@ -36,25 +23,4 @@ export function getSameCategoryTools(categorySlug: string, slug: string, count =
     slug: t.slug,
     title: t.title,
   }));
-}
-
-/** Tools in other categories whose titles share a meaningful word, e.g. "JSON to YAML" ↔ "YAML Formatter". */
-export function getCrossCategoryTools(categorySlug: string, title: string, count = 4): RelatedTool[] {
-  const words = significantWords(title);
-  if (words.size === 0) return [];
-  return getAllTools()
-    .filter((t) => t.status === "live" && t.categorySlug !== categorySlug && t.title !== title)
-    .map((t) => {
-      const shared = [...significantWords(t.title)].filter((word) => words.has(word)).length;
-      return { tool: t, shared };
-    })
-    .filter(({ shared }) => shared > 0)
-    .sort((a, b) => b.shared - a.shared || a.tool.title.localeCompare(b.tool.title))
-    .slice(0, count)
-    .map(({ tool }) => ({
-      categorySlug: tool.categorySlug,
-      categoryTitle: tool.categoryTitle,
-      slug: tool.slug,
-      title: tool.title,
-    }));
 }
