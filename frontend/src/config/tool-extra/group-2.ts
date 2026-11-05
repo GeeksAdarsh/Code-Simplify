@@ -365,22 +365,22 @@ export const group2: Record<string, ToolExtraContent> = {
 
   "go/formatter": {
     about: [
-      "Go code is normally formatted with gofmt, which most editors run on save. Sometimes that isn't available: a snippet pasted into a Jira ticket or chat message with its indentation stripped, Go code copied from a PDF or web page with every line flush left, or a quick review on a machine without the Go toolchain. This tool restores the nesting so the code is readable again.",
-      "It counts braces, brackets and parentheses on each line while skipping anything inside double-quoted strings, character literals like '{', single-line backtick strings and comments. Each line is indented by four spaces per open level, and a line that starts with }, ) or ] moves back one level. Line breaks stay as they are: it doesn't join or split lines, align struct fields, sort imports or add spaces around operators.",
-      "Paste the result into a .go file and run gofmt -w (or go fmt) to get canonical tab-indented output before committing.",
+      "Go code is normally formatted with gofmt, which most editors run on save. Sometimes that isn't available: a snippet pasted into a Jira ticket or chat message with its formatting stripped, Go code copied from a PDF or web page, or a quick review on a machine without the Go toolchain. This tool runs gofmt itself, compiled to WebAssembly, right in your browser.",
+      "Because it is the real gofmt, the output is canonical: tab indentation, standard spacing around operators, struct fields and trailing comments lined up in columns, grouped imports and one statement per line. You can paste a whole file, or just a few functions or statements without a package line.",
+      "The result can go straight into a .go file and will pass a gofmt check in CI without further changes.",
     ],
     faq: [
       {
-        question: "Why does my code still look different from gofmt output?",
-        answer: "gofmt uses tabs, lines up struct field types and trailing comments in columns, and normalizes spacing inside lines. This tool only fixes leading indentation with spaces.",
+        question: "Why does gofmt use tabs instead of spaces?",
+        answer: "Tabs for indentation and spaces for alignment is the official Go style, so every Go project looks the same. Editors show a tab at whatever width you prefer, usually 4 or 8 columns.",
       },
       {
         question: "Is it safe for multi-line raw strings?",
-        answer: "Not entirely. Backtick strings on a single line are skipped, but the inner lines of a backtick string that spans several lines are trimmed and re-indented like code, which changes the string's content — check embedded SQL or templates afterwards.",
+        answer: "Yes. Backtick strings, including multi-line ones with embedded SQL or templates, are left exactly as written.",
       },
       {
         question: "Will the Go formatter find syntax errors?",
-        answer: "No, it doesn't parse or compile the code. An unbalanced brace simply shifts the indentation, so if the final closing } isn't at the left margin, a brace is probably missing somewhere above it.",
+        answer: "Yes. gofmt parses the code first, so a missing brace or parenthesis is reported with its line and column, for example \"2:12: expected ')', found '{'\".",
       },
     ],
   },

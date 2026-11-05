@@ -16,7 +16,7 @@ const CASES: { value: CaseType; label: string }[] = [
   { value: "constant", label: "CONSTANT_CASE" },
 ];
 
-const SAMPLE = "The Quick Brown Fox Jumps Over The Lazy Dog";
+const SAMPLE = "the quick BROWN fox jumps over THE lazy dog";
 
 export function CaseConverterTool() {
   const [caseType, setCaseType] = useState<CaseType>("title");

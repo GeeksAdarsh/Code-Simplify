@@ -23,9 +23,7 @@ const SAMPLE = JSON.stringify(
         Resource: "*",
       },
     ],
-  },
-  null,
-  2
+  }
 );
 
 export function AwsIamPolicyFormatterTool() {

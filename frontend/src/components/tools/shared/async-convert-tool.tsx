@@ -4,6 +4,7 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { languageFromFilename, languageFromLabel } from "@/lib/monaco-language";
+import { warnIfSampleUnchanged } from "@/lib/sample-check";
 
 export interface ConvertResult {
   output: string;
@@ -73,6 +74,10 @@ export function AsyncConvertTool({
 
     return () => clearTimeout(timer);
   }, [input, convert, debounceMs]);
+
+  useEffect(() => {
+    warnIfSampleUnchanged(outputLabel, sampleInput, input, result.output);
+  }, [outputLabel, sampleInput, input, result.output]);
 
   function handleCopy() {
     if (!result.output) return;

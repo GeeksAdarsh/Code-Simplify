@@ -1,46 +1,42 @@
 "use client";
 
 import { useCallback } from "react";
-import { ConvertTool, type ConvertResult } from "@/components/tools/shared/convert-tool";
+import { AsyncConvertTool, type ConvertResult } from "@/components/tools/shared/async-convert-tool";
 import { formatGo } from "@/lib/go-utils";
 
 const SAMPLE_GO = `package main
-import "fmt"
-type Greeter struct {
-Name string
+import ("fmt";"strings")
+type Greeter struct{Name string;Times int}
+func (g Greeter) Greet() string{
+if g.Name==""{return "Hello, stranger!"}
+return strings.Repeat(fmt.Sprintf("Hello, %s! ",g.Name),g.Times)
 }
-func (g Greeter) Greet() string {
-if g.Name == "" {
-return "Hello, stranger!"
-}
-return fmt.Sprintf("Hello, %s!", g.Name)
-}
-func main() {
-g := Greeter{Name: "World"}
-fmt.Println(g.Greet())
-}`;
+func main(){g:=Greeter{Name:"World",Times:2};fmt.Println(g.Greet())}`;
 
 export function GoFormatterTool() {
-  const convert = useCallback((input: string): ConvertResult => {
-    return { output: formatGo(input, 4) };
+  const convert = useCallback(async (input: string): Promise<ConvertResult> => {
+    try {
+      return { output: await formatGo(input) };
+    } catch (e) {
+      return { output: "", error: e instanceof Error ? e.message : String(e) };
+    }
   }, []);
 
   return (
     <div>
-      <ConvertTool
+      <AsyncConvertTool
         sampleInput={SAMPLE_GO}
         convert={convert}
         inputLabel="Go input"
         outputLabel="Formatted output"
-        inputPlaceholder="Paste your Go code here to fix its indentation..."
+        inputPlaceholder="Paste your Go code here to format it..."
         outputPlaceholder="Formatted Go will appear here."
         downloadFilename="formatted.go"
         downloadMimeType="text/x-go"
       />
       <p className="mt-2 text-xs text-muted">
-        This formatter re-indents your code based on brace nesting depth. Note that gofmt (the standard Go formatter)
-        uses tabs by default — this tool uses spaces, so run gofmt locally before committing if your project
-        enforces tab-indented Go source.
+        Runs the official gofmt in your browser, so the output matches what <code>go fmt</code> produces: tab
+        indentation, standard spacing, aligned struct fields, and one statement per line.
       </p>
     </div>
   );

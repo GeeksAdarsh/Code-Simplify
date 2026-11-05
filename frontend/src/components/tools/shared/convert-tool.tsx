@@ -1,9 +1,10 @@
 "use client";
 
-import { type ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { languageFromFilename, languageFromLabel } from "@/lib/monaco-language";
+import { warnIfSampleUnchanged } from "@/lib/sample-check";
 
 export interface ConvertResult {
   output: string;
@@ -50,6 +51,10 @@ export function ConvertTool({
       return { output: "", error: e instanceof Error ? e.message : "Conversion failed" };
     }
   }, [input, convert]);
+
+  useEffect(() => {
+    warnIfSampleUnchanged(outputLabel, sampleInput, input, result.output);
+  }, [outputLabel, sampleInput, input, result.output]);
 
   function handleCopy() {
     if (!result.output) return;

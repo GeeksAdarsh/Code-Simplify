@@ -1,4 +1,56 @@
-export { reindentCode } from "@/lib/code-format-utils";
+const SNIPPET_CLASS = "class SnippetWrapper__";
+const SNIPPET_METHOD = "void snippetBody__()";
+
+/**
+ * Formats Java with Prettier's Java plugin (full reflow, not just re-indent).
+ * A bare method or a few statements isn't a valid compilation unit, so if the
+ * input doesn't parse as-is it is retried inside a wrapper class (and method),
+ * and the wrapper is stripped from the result. Throws the original parse error
+ * if none of these parse.
+ */
+export async function formatJava(input: string, indentSize = 4): Promise<string> {
+  const [prettier, javaPlugin] = await Promise.all([import("prettier/standalone"), import("prettier-plugin-java")]);
+  const format = (code: string) =>
+    prettier.format(code, {
+      parser: "java",
+      plugins: [javaPlugin.default ?? javaPlugin],
+      tabWidth: indentSize,
+      printWidth: 100,
+    });
+
+  try {
+    return await format(input);
+  } catch (originalError) {
+    const wrappers = [
+      { code: `${SNIPPET_CLASS} {\n${input}\n}`, depth: 1 },
+      { code: `${SNIPPET_CLASS} {\n${SNIPPET_METHOD} {\n${input}\n}\n}`, depth: 2 },
+    ];
+    for (const { code, depth } of wrappers) {
+      try {
+        return unwrapSnippet(await format(code), depth, indentSize);
+      } catch {
+        // try the next wrapper
+      }
+    }
+    const message = originalError instanceof Error ? originalError.message : String(originalError);
+    throw new Error(
+      message.startsWith("Failed to parse")
+        ? "This doesn't parse as Java. Look for a missing or extra brace, parenthesis, quote or semicolon."
+        : message,
+    );
+  }
+}
+
+function unwrapSnippet(formatted: string, depth: number, indentSize: number): string {
+  const lines = formatted.trimEnd().split("\n");
+  const start = lines.findIndex((line) => line.trim().startsWith(depth === 1 ? SNIPPET_CLASS : SNIPPET_METHOD)) + 1;
+  const inner = lines.slice(start, lines.length - depth);
+  const indent = " ".repeat(indentSize * depth);
+  return inner
+    .map((line) => (line.startsWith(indent) ? line.slice(indent.length) : line.trimStart()))
+    .join("\n")
+    .replace(/^\n+|\n+$/g, "") + "\n";
+}
 
 export function escapeJavaString(input: string): string {
   let result = "";

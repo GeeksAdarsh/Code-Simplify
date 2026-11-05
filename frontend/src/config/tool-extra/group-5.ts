@@ -25,36 +25,36 @@ export const group5: Record<string, ToolExtraContent> = {
 
   "php/beautifier": {
     about: [
-      "A PHP beautifier turns code with broken or missing indentation into something you can read again. This one trims each line and re-indents it four spaces per level of {, ( and [ nesting, while skipping braces that appear inside strings and // or /* */ comments. Your line breaks stay where they are, so the diff against the original is easy to review.",
-      "A common case is a legacy WordPress plugin or an old include file that was edited over years in different editors, leaving tabs, two-space blocks and flush-left lines mixed together. Paste it in, copy the result, and the structure of every if, foreach and class becomes visible before you start changing logic.",
-      "Know the limits before pasting a whole project: switch/case bodies are not given an extra level, # comments are not recognised as comments, and lines inside multi-line strings or heredocs get trimmed like normal code, which can change the string’s contents.",
+      "A PHP beautifier turns crammed or badly indented code into something you can read again. This one parses the code with a real PHP parser (through Prettier's PHP plugin) and prints it from scratch: one statement per line, four spaces per level, class and function braces on their own line, and spaces around operators.",
+      "A common case is a legacy WordPress plugin or an old include file that was edited over years in different editors, leaving tabs, two-space blocks and whole functions on one line. Paste it in, copy the result, and the structure of every if, foreach and class becomes visible before you start changing logic.",
+      "Because the code is parsed, a syntax error stops the beautifier and shows the line it failed on. That is often the quickest way to find a missing semicolon or brace in a long file.",
     ],
     faq: [
       {
         question: "Will beautifying PHP change how my code runs?",
-        answer: "For ordinary code, no — only leading whitespace changes. The exception is multi-line strings and heredoc/nowdoc blocks, where leading spaces are part of the value, so check those sections after beautifying.",
+        answer: "No. Only whitespace, line breaks and brace placement change. Strings, heredoc and nowdoc bodies are left as they are.",
       },
       {
         question: "Does it split long lines or put each statement on its own line?",
-        answer: "No. It keeps your existing line breaks and only fixes indentation. If several statements sit on one line, they stay on one line.",
+        answer: "Yes to both. Every statement gets its own line, and lines longer than 100 characters are wrapped, for example by putting long argument lists one per line.",
       },
       {
         question: "Can I beautify a PHP file that also contains HTML?",
-        answer: "Yes. The HTML lines are kept, though they are indented according to any open PHP braces around them, for example inside a foreach loop that outputs markup.",
+        answer: "Yes. The PHP blocks are formatted and the HTML between them is kept as it is.",
       },
     ],
   },
 
   "php/formatter": {
     about: [
-      "This PHP formatter is an indentation fixer. It reads your code line by line, counts opening and closing braces, brackets and parentheses, and rewrites each line’s leading whitespace as four spaces per nesting level. Quoted strings and // or /* */ comments are skipped, so a brace inside an echo statement or a comment does not throw the count off.",
-      "It is handy when you need to paste a snippet into a Jira ticket, a pull request comment or a Stack Overflow question and the copied code has lost its indentation. It also helps when reviewing a controller written by several people with different tab settings.",
-      "A practical tip: if the output looks shifted from some point onward, look just above that point for an unbalanced bracket, a # comment containing a brace, or a heredoc. Those are the cases this lightweight approach does not handle, and they often point to a real typo too.",
+      "This PHP formatter parses your code with a real PHP parser (through Prettier's PHP plugin) and prints it again in a consistent style. Line breaks, indentation, brace placement and spacing are all rebuilt, so a function pasted on a single line comes out as properly laid out code.",
+      "It is handy when you need to paste a snippet into a Jira ticket, a pull request comment or a Stack Overflow question and the copied code has lost its formatting. It also helps when reviewing a controller written by several people with different editor settings. The opening <?php tag is optional; snippets without it are formatted as PHP too.",
+      "If the code has a syntax error, the formatter shows the line and column where parsing failed instead of returning a half-formatted result.",
     ],
     faq: [
       {
         question: "Does the PHP formatter follow PSR-12?",
-        answer: "Only partly. It uses PSR-12’s four-space indentation, but it does not move braces, add spaces around operators or enforce line length the way PHP-CS-Fixer or PHP_CodeSniffer would.",
+        answer: "Mostly. It uses four-space indentation, puts class and method braces on their own line, keeps control-structure braces on the same line and adds spaces around operators, as PSR-12 asks. A few PSR-12 rules that need rewriting code, not just layout, are not applied.",
       },
       {
         question: "Can I change the indent to tabs or two spaces?",
@@ -65,9 +65,9 @@ export const group5: Record<string, ToolExtraContent> = {
 
   "python/formatter": {
     about: [
-      "Python uses indentation to define blocks, so mixed tabs and spaces or a stray three-space line can cause an IndentationError or, worse, put code in the wrong block. This formatter works out each line’s nesting depth the way Python’s tokenizer does — tabs count to the next multiple of 8 columns — and rewrites everything with four spaces per level.",
-      "Typical uses are a script copied from a PDF or chat message, a notebook cell pasted into a .py file, or an old Python 2 file where some functions used tabs. It also strips trailing whitespace and reduces runs of more than two blank lines to two, while leaving triple-quoted strings exactly as they were.",
-      "One thing to expect: continuation lines inside brackets that were aligned under an opening parenthesis become a normal one-level indent instead. The code still runs the same, but the visual alignment changes.",
+      "This Python formatter uses Ruff, a fast formatter that produces the same style as Black. It parses your code and prints it again: four spaces per indent level, spaces around operators and after commas, double quotes, two blank lines around top-level functions and classes, and lines wrapped at 88 characters.",
+      "Typical uses are a script copied from a PDF or chat message, a notebook cell pasted into a .py file, or code where someone wrote x=1;y=2 on one line. Mixed tabs and spaces, two-space blocks and cramped spacing are all fixed in one pass.",
+      "Python uses line breaks and indentation to define blocks, so the formatter needs code that is valid Python 3. If a whole program was squashed onto one line, or the syntax is broken, it shows the line and column of the problem instead of guessing.",
     ],
     faq: [
       {
@@ -76,7 +76,7 @@ export const group5: Record<string, ToolExtraContent> = {
       },
       {
         question: "Can it fix code where all indentation was lost?",
-        answer: "No. If every line starts at column zero, the information about which lines belong to which block is gone, and no formatter can reliably guess it. The tool needs some indentation, even inconsistent, to work from.",
+        answer: "No. If every line starts at column zero, or the whole program is on one line, the information about which lines belong to which block is gone, and no formatter can reliably guess it. Restore the line breaks and some indentation first, even if it is inconsistent.",
       },
     ],
   },

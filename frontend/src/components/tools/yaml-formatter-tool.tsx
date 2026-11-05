@@ -6,17 +6,17 @@ import { CodeEditor } from "@/components/code-editor";
 import { byteSize } from "@/lib/json-utils";
 import { parseYaml } from "@/lib/yaml-utils";
 
-const SAMPLE_YAML = `name: CodeSimplify
-version: 1.0
-active: true
-tags:
-  - json
-  - developer
-  - tools
-author:
-  name: Dev Team
-  url: https://example.com
-stars: null`;
+const SAMPLE_YAML = `name:   CodeSimplify
+version: 1.5
+active:    true
+tags: [json,   developer, tools]
+author: {name: Dev Team, url: "https://example.com"}
+servers:
+    -   host: api.example.com
+        port: 443
+    -   host: cdn.example.com
+        port:    80
+stars: ~`;
 
 type IndentOption = "2" | "4";
 

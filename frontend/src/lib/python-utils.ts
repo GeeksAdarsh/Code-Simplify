@@ -57,71 +57,36 @@ function expandTabsWidth(leading: string, tabSize = 8): number {
   return width;
 }
 
-function collapseBlankRuns(lines: string[], maxConsecutive: number): string[] {
-  const result: string[] = [];
-  let blankRun = 0;
-  for (const line of lines) {
-    if (line.trim() === "") {
-      blankRun += 1;
-      if (blankRun <= maxConsecutive) result.push("");
-    } else {
-      blankRun = 0;
-      result.push(line);
-    }
-  }
-  while (result.length > 0 && result[result.length - 1].trim() === "") result.pop();
-  return result;
+let ruffReady: Promise<typeof import("@wasm-fmt/ruff_fmt/web")> | null = null;
+
+function loadRuff() {
+  ruffReady ??= import("@wasm-fmt/ruff_fmt/web").then(async (mod) => {
+    await mod.default();
+    return mod;
+  });
+  return ruffReady;
 }
 
 /**
- * Re-indents Python source to a consistent indent width, based on the same
- * indentation-stack logic Python's own tokenizer uses to determine nesting
- * depth. Content inside triple-quoted strings is left completely untouched.
- * This does not reflow statements, wrap long lines, or normalize spacing
- * around operators \u2014 it focuses on fixing tabs/spaces and inconsistent
- * indent widths, which are the most common real-world Python formatting issues.
+ * Formats Python with Ruff (Black-compatible style): spacing, quotes, line
+ * wrapping and blank lines, not just indentation. Throws on invalid syntax.
  */
-export function formatPython(input: string, indentSize = 4): string {
-  const indentUnit = " ".repeat(indentSize);
-  const lines = input.replace(/\r\n/g, "\n").split("\n");
-  const output: string[] = [];
-  const indentStack = [0];
-  let depth = 0;
-  let multilineMarker: false | "'''" | '"""' = false;
-
-  for (const rawLine of lines) {
-    if (multilineMarker) {
-      output.push(rawLine);
-      if (rawLine.includes(multilineMarker)) multilineMarker = false;
-      continue;
-    }
-
-    if (rawLine.trim() === "") {
-      output.push("");
-      continue;
-    }
-
-    const leadingMatch = rawLine.match(/^[ \t]*/);
-    const leading = leadingMatch ? leadingMatch[0] : "";
-    const content = rawLine.slice(leading.length);
-    const width = expandTabsWidth(leading);
-
-    while (indentStack.length > 1 && width < indentStack[indentStack.length - 1]) {
-      indentStack.pop();
-      depth -= 1;
-    }
-    if (width > indentStack[indentStack.length - 1]) {
-      indentStack.push(width);
-      depth += 1;
-    }
-
-    output.push(indentUnit.repeat(Math.max(depth, 0)) + content.replace(/\s+$/, ""));
-
-    const scan = scanLine(content);
-    if (scan.entersMultilineString) multilineMarker = scan.entersMultilineString;
+export async function formatPythonCode(input: string, indentSize = 4): Promise<string> {
+  const ruff = await loadRuff();
+  const source = input.replace(/\r\n/g, "\n");
+  try {
+    return ruff.format(source, null, { indent_width: indentSize, line_width: 88 });
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
+    throw new Error(message.replace(/at byte range (\d+)\.\.\d+/, (_, start) => `at ${bytePosition(source, Number(start))}`));
   }
+}
 
-  return collapseBlankRuns(output, 2).join("\n");
+/** Ruff reports UTF-8 byte offsets; turn one into a human "line X, column Y". */
+function bytePosition(source: string, byteOffset: number): string {
+  const before = new TextDecoder().decode(new TextEncoder().encode(source).slice(0, byteOffset));
+  const lines = before.split("\n");
+  return `line ${lines.length}, column ${lines[lines.length - 1].length + 1}`;
 }
 
 /**

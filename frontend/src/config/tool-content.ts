@@ -2926,28 +2926,33 @@ export const toolContent: Record<string, ToolContent> = {
   },
   "java/formatter": {
     howToUse: [
-      "Paste your Java code into the input box, or load the sample.",
-      "Click \"Convert\" (or just look at the output panel) to see it re-indented based on brace nesting.",
+      "Paste your Java code into the input box, or load the sample. A whole class, a single method or a few statements all work.",
+      "The formatted output appears automatically: one statement per line, 4-space indents and standard spacing.",
       "Copy the formatted output or download it as a .java file.",
     ],
     features: [
-      "Re-indents code based on brace ({}), bracket ([]), and parenthesis (()) nesting depth.",
-      "Correctly skips over string literals, character literals, and both // and /* */ comments when counting nesting.",
-      "Preserves your original line breaks rather than aggressively reflowing every statement.",
+      "Powered by Prettier's Java plugin, which parses your code and prints it again from scratch, so code crammed onto one line comes out properly laid out.",
+      "Adds spaces around operators and after commas, puts braces in the usual Java position and wraps lines longer than 100 characters.",
+      "Formats a bare method or a handful of statements as well as full classes.",
+      "Shows a clear error instead of guessing when the code has a missing brace, parenthesis or semicolon.",
       "Runs entirely client-side \u2014 your source code is never uploaded.",
     ],
     faq: [
       {
         question: "Does this fully reformat my code like an IDE would?",
-        answer: "No, this is a lightweight re-indenter, not a full AST-based pretty-printer. It fixes indentation based on nesting depth but keeps your existing line breaks and statement layout as-is.",
+        answer: "Yes. It parses the Java and rebuilds the layout, so line breaks, indentation and spacing all change, much like running the format command in IntelliJ or VS Code. Comments are kept.",
       },
       {
-        question: "Does it handle nested classes and lambdas?",
-        answer: "Yes, since indentation is driven purely by brace/bracket/paren depth, nested classes, methods, and lambda bodies are indented correctly regardless of complexity.",
+        question: "Can I format just one method instead of a whole class?",
+        answer: "Yes. If the input isn't a complete file, the formatter tries it as class members and then as statements inside a method, and returns only your code.",
       },
       {
-        question: "What about Java 15+ text blocks (\"\"\"...\"\"\")?",
-        answer: "Multi-line text blocks are a known edge case and may not be indented perfectly, since the formatter treats quotes using traditional single-line string rules.",
+        question: "What about records, switch expressions and text blocks?",
+        answer: "Modern syntax such as records, sealed classes, switch expressions, var and \"\"\" text blocks is supported.",
+      },
+      {
+        question: "Why do I get an error instead of formatted output?",
+        answer: "The formatter needs code that parses as Java. An error usually means an unbalanced brace or parenthesis, a missing semicolon or an unclosed string. Fix that line and the output appears straight away.",
       },
     ],
   },
@@ -2982,27 +2987,27 @@ export const toolContent: Record<string, ToolContent> = {
   "python/formatter": {
     howToUse: [
       "Paste your Python code into the input box, or load the sample.",
-      "The formatted output appears automatically, with consistent 4-space indentation.",
+      "The formatted output appears automatically in Black style: 4-space indents, consistent spacing and double quotes.",
       "Copy the result or download it as a .py file.",
     ],
     features: [
-      "Uses the same indentation-stack algorithm Python's own tokenizer relies on to determine nesting depth.",
-      "Fixes mixed tabs/spaces and inconsistent indent widths (e.g. 2-space and 3-space blocks in the same file).",
-      "Leaves content inside triple-quoted strings (docstrings) completely untouched.",
+      "Powered by Ruff's formatter, which produces the same style as Black, the most widely used Python formatter.",
+      "Fixes spacing around operators, commas and colons, normalizes quotes, splits statements joined with semicolons and wraps lines longer than 88 characters.",
+      "Fixes mixed tabs/spaces and inconsistent indent widths, and inserts the standard blank lines between functions and classes.",
       "Runs entirely client-side \u2014 your source code is never uploaded.",
     ],
     faq: [
       {
         question: "Is this the same as Black or autopep8?",
-        answer: "No, this is a lightweight indentation normalizer, not a full AST-based formatter. It fixes tabs/spaces and indent-width inconsistencies but doesn't reformat operator spacing, line length, or quote style the way Black does.",
+        answer: "It matches Black. The formatting is done by Ruff, whose formatter is designed as a drop-in replacement for Black, so the output is what you would get from running black on the file with default settings.",
       },
       {
         question: "Will it break my docstrings?",
-        answer: "No, lines inside triple-quoted strings (''' or \"\"\") are detected and copied through completely unchanged, so multi-line docstrings and text blocks are always preserved exactly.",
+        answer: "No. The text of docstrings and other triple-quoted strings is kept; only the quote style and the indentation of the docstring lines are normalized, the same way Black does it.",
       },
       {
         question: "What if my file mixes tabs and spaces inconsistently?",
-        answer: "Tabs are expanded to a fixed width (8 columns, the Python convention) purely for measuring relative indentation, then every level is re-emitted using clean 4-space indents.",
+        answer: "It reads the indentation the way Python itself does, so it knows which lines belong to which block, then rewrites each level as four spaces. Blocks indented with tabs and blocks indented with spaces end up consistent.",
       },
     ],
   },
@@ -3035,40 +3040,40 @@ export const toolContent: Record<string, ToolContent> = {
   },
   "php/formatter": {
     howToUse: [
-      "Paste your PHP code into the input box, or load the sample.",
-      "The formatted output appears automatically, re-indented based on brace nesting depth.",
+      "Paste your PHP code into the input box, or load the sample. The opening <?php tag is optional.",
+      "The formatted output appears automatically: one statement per line, 4-space indents and PSR-style braces.",
       "Copy the result or download it as a .php file.",
     ],
     features: [
-      "Re-indents code based on brace/bracket/parenthesis nesting (4-space indent).",
-      "Correctly skips over single- and double-quoted strings and both // and /* */ comments when counting nesting.",
-      "Preserves your existing line breaks rather than aggressively reflowing every statement.",
+      "Powered by Prettier's PHP plugin, which parses your code and prints it again, so code crammed onto one line comes out properly laid out.",
+      "Puts class and function braces on their own line, adds spaces around operators and after commas, and wraps lines longer than 100 characters.",
+      "Shows the exact line of a syntax error instead of producing a broken result.",
       "Runs entirely client-side \u2014 your source code is never uploaded.",
     ],
     faq: [
       {
         question: "Does this fully reformat my code like PHP-CS-Fixer would?",
-        answer: "No, this is a lightweight re-indenter, not a full AST-based pretty-printer. It fixes indentation based on nesting depth but keeps your existing statement layout as-is.",
+        answer: "It rebuilds the layout of the code, including line breaks, indentation, brace placement and spacing, which covers what most people use PHP-CS-Fixer for. It does not apply rule-based rewrites such as reordering imports or changing array() to [].",
       },
       {
         question: "Are heredoc/nowdoc blocks supported?",
-        answer: "Heredoc (<<<EOT ... EOT;) and nowdoc syntax are a known edge case and may not be indented perfectly, since the formatter uses simple quote-based string detection rather than full PHP lexing.",
+        answer: "Yes. The code is parsed by a real PHP parser, so heredoc and nowdoc bodies are recognized and their content is left alone.",
       },
       {
         question: "Does it work on files with mixed HTML and PHP?",
-        answer: "The formatter processes the entire file as text, so HTML outside <?php ?> tags is kept but re-indented along with the PHP. Review mixed HTML/PHP templates after formatting.",
+        answer: "Yes. The PHP blocks are formatted and the HTML around them is kept as it is.",
       },
     ],
   },
   "php/beautifier": {
     howToUse: [
-      "Paste your PHP code into the input box, or load the sample.",
-      "The beautified output appears automatically with consistent indentation.",
+      "Paste your PHP code into the input box, or load the sample. The opening <?php tag is optional.",
+      "The beautified output appears automatically: one statement per line, 4-space indents and PSR-style braces.",
       "Copy the result or download it as a .php file.",
     ],
     features: [
-      "Identical formatting engine to the PHP Formatter, offered under the name most developers search for.",
-      "Turns inconsistently indented PHP into cleanly nested, readable source.",
+      "Identical formatting engine to the PHP Formatter (Prettier's PHP plugin), offered under the name most developers search for.",
+      "Turns crammed or inconsistently indented PHP into cleanly laid out, readable source.",
     ],
     faq: [
       {
@@ -3080,19 +3085,19 @@ export const toolContent: Record<string, ToolContent> = {
   "rust/formatter": {
     howToUse: [
       "Paste your Rust code into the input box, or load the sample.",
-      "The formatted output appears automatically, re-indented based on brace nesting depth.",
+      "The formatted output appears automatically, with each statement and block on its own line and 4-space indents.",
       "Copy the result or download it as a .rs file.",
     ],
     features: [
-      "Re-indents code based on brace/bracket/parenthesis nesting (4-space indent, matching rustfmt's default).",
+      "Splits code crammed onto one line after { and ; and before }, keeping } else, }, and }; together, then re-indents by nesting depth (4 spaces, matching rustfmt's default).",
+      "Adds standard spacing after commas and colons and around =, ==, -> and =>, while leaving <, >, & and * alone because they double as generics and references.",
       "Distinguishes char literals ('a', '\\n', '\\u{1F600}') from lifetime annotations ('a, 'static) so lifetimes are never mistaken for unterminated strings.",
-      "Correctly skips over double-quoted strings and both // and /* */ comments when counting nesting.",
       "Runs entirely client-side \u2014 your source code is never uploaded.",
     ],
     faq: [
       {
         question: "Is this a replacement for rustfmt?",
-        answer: "No, this is a lightweight brace-based re-indenter, not a full syntax-aware formatter. For canonical Rust formatting, always run rustfmt locally or in CI \u2014 use this tool for quick cleanup when you don't have a Rust toolchain handy.",
+        answer: "Not quite. It fixes line breaks, indentation and common spacing, which makes crammed code readable, but it doesn't parse Rust, wrap long lines or reorder imports. Run rustfmt locally or in CI for the exact official style.",
       },
       {
         question: "Are raw strings (r\"...\") handled correctly?",
@@ -3106,23 +3111,24 @@ export const toolContent: Record<string, ToolContent> = {
   },
   "go/formatter": {
     howToUse: [
-      "Paste your Go code into the input box, or load the sample.",
-      "The formatted output appears automatically, re-indented based on brace nesting depth.",
+      "Paste your Go code into the input box, or load the sample. A full file or just a few functions or statements both work.",
+      "The formatted output appears automatically, exactly as gofmt would print it.",
       "Copy the result or download it as a .go file.",
     ],
     features: [
-      "Re-indents code based on brace/bracket/parenthesis nesting depth.",
-      "Correctly skips over string and char literals and both // and /* */ comments when counting nesting.",
+      "Runs the official gofmt, compiled to WebAssembly, so the output is identical to go fmt: tab indentation, standard spacing and aligned struct fields and comments.",
+      "Puts statements joined with semicolons on separate lines and expands one-line functions.",
+      "Reports syntax errors with the line and column number.",
       "Runs entirely client-side \u2014 your source code is never uploaded.",
     ],
     faq: [
       {
         question: "Is this the same as gofmt?",
-        answer: "No, gofmt is a full syntax-aware formatter that also uses tabs for indentation by default. This tool is a lightweight, space-based re-indenter for quick cleanup when you don't have a Go toolchain handy \u2014 always run gofmt before committing Go code.",
+        answer: "Yes. It is gofmt itself running in your browser, so the result matches what go fmt or your editor's format-on-save produces. The only addition is that a top-level function written on one line is expanded onto several lines.",
       },
       {
         question: "Does it handle backtick raw strings?",
-        answer: "Partly. Braces inside backtick raw strings don't affect indentation, but lines inside a multi-line raw string are re-indented, which changes the string's content. Check multi-line raw strings after formatting.",
+        answer: "Yes. Raw strings, including multi-line ones with embedded SQL or templates, are left exactly as written.",
       },
     ],
   },
