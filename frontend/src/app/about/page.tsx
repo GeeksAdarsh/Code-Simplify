@@ -3,7 +3,7 @@ import Link from "next/link";
 import { siteConfig, categories, getAllTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About CodeSimplify — Free, Private Online Tools",
   description: `Learn about ${siteConfig.name}, a free collection of online developer tools that run entirely in your browser.`,
   alternates: { canonical: "/about" },
 };

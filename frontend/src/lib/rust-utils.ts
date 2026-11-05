@@ -40,6 +40,11 @@ function spaceRustLine(line: string): string {
       continue;
     }
 
+    if (line.startsWith("..=", i)) {
+      out += "..=";
+      i += 3;
+      continue;
+    }
     const two = line.slice(i, i + 2);
     if (two === "::" || two === "..") {
       out += two;

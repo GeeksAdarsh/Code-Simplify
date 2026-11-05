@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/tools";
 const CONTACT_EMAIL = "adarshsinghzaq12@gmail.com";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us — Feedback, Bugs and Tool Requests",
   description: `Get in touch with the ${siteConfig.name} team — report a bug, request a tool, or ask a question.`,
   alternates: { canonical: "/contact" },
 };

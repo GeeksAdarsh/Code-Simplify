@@ -5,7 +5,7 @@ const CONTACT_EMAIL = "adarshsinghzaq12@gmail.com";
 const LAST_UPDATED = "July 20, 2026";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy — How CodeSimplify Handles Data",
   description: `Privacy Policy for ${siteConfig.name} — how we handle data, analytics, and cookies.`,
   alternates: { canonical: "/privacy" },
 };

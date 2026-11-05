@@ -242,9 +242,10 @@ const CARD_PREFIXES: Record<CardNetwork, { prefixes: string[]; length: number }>
   discover: { prefixes: ["6011"], length: 16 },
 };
 
+/** Expects the number with a placeholder 0 in the check-digit position. */
 function luhnCheckDigit(digits: string): number {
   let sum = 0;
-  let double = true;
+  let double = false;
   for (let i = digits.length - 1; i >= 0; i--) {
     let d = Number(digits[i]) * (double ? 2 : 1);
     if (d > 9) d -= 9;

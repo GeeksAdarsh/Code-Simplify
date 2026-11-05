@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/tools";
 import { FaqSection } from "@/components/faq-section";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "FAQ — Privacy, Pricing and How the Tools Work",
   description: `Frequently asked questions about ${siteConfig.name} — pricing, privacy, data handling, and more.`,
   alternates: { canonical: "/faq" },
 };

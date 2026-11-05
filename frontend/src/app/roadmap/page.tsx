@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig, getAllTools } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: "Roadmap",
+  title: "Roadmap — Upcoming Tools and Features",
   description: `What's shipped and what's coming next for ${siteConfig.name}.`,
   alternates: { canonical: "/roadmap" },
 };

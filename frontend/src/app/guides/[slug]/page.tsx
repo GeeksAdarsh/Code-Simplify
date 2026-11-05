@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!guide) return {};
   const canonical = `/guides/${guide.slug}`;
   return {
-    title: guide.seoTitle,
+    title: guide.seoTitle.length > 50 ? { absolute: guide.seoTitle } : guide.seoTitle,
     description: guide.description,
     alternates: { canonical },
     openGraph: {

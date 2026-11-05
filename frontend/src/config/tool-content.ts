@@ -969,7 +969,7 @@ export const toolContent: Record<string, ToolContent> = {
       {
         question: "Does this support multiple YAML documents in one file (separated by ---)?",
         answer:
-          "This validator checks the first document in the input. For files with multiple --- separated documents, validate each one individually for the clearest results.",
+          "No \u2014 the input must be a single YAML document. A file with several documents separated by --- shows an error, so split it and validate each document separately.",
       },
       {
         question: "Are tabs allowed in YAML?",
@@ -2079,7 +2079,7 @@ export const toolContent: Record<string, ToolContent> = {
     ],
     features: [
       "RFC 9562-compliant UUID v7 structure with a 48-bit big-endian millisecond timestamp.",
-      "Time-ordered: UUIDs generated later always sort after ones generated earlier.",
+      "Time-ordered: UUIDs from a later millisecond always sort after earlier ones; within the same millisecond the order is random.",
       "Better database index locality than UUID v4 while still being globally unique.",
       "Runs entirely in your browser \u2014 free and unlimited.",
     ],
@@ -4298,7 +4298,7 @@ export const toolContent: Record<string, ToolContent> = {
   },
   "ai/openai-schema-validator": {
     howToUse: [
-      "Paste your JSON Schema (either standalone, or wrapped in a response_format/function definition) into the editor.",
+      "Paste the JSON Schema object itself into the editor (the value of json_schema.schema or a function's parameters, not the whole response_format or function definition).",
       "The tool walks every property and reports errors, warnings, and suggestions against OpenAI's structured outputs constraints.",
       "Fix flagged issues \u2014 like missing additionalProperties: false or properties missing from required \u2014 and re-check.",
     ],
@@ -4891,6 +4891,18 @@ export const toolContent: Record<string, ToolContent> = {
         question: "Is my birth date sent anywhere?",
         answer: "No, all calculations happen locally in your browser using JavaScript \u2014 no data is transmitted or stored.",
       },
+      {
+        question: "How old am I?",
+        answer: "Enter your date of birth above and the calculator shows your exact age right away in years, months and days, plus the total days and weeks you have lived and how many days remain until your next birthday.",
+      },
+      {
+        question: "At what age are you a senior citizen?",
+        answer: "It depends on the country and the benefit. In India you are a senior citizen at 60 for income tax and most bank schemes, and a super senior citizen at 80. In the US, 65 is the usual age for Medicare and most senior discounts, though some start at 55 or 62. Set the \u201cas of\u201d date to check your age on a specific date.",
+      },
+      {
+        question: "How do I calculate my full retirement age?",
+        answer: "For US Social Security, full retirement age is 66 if you were born from 1943 to 1954, rises by 2 months for each year from 1955 to 1959 (66 and 10 months for 1959), and is 67 if you were born in 1960 or later. In India, retirement age for most government jobs is 60. Enter your birth date and set the \u201cas of\u201d date to the retirement date to see exactly how old you will be.",
+      },
     ],
   },
   "date-time/timezone-converter": {
@@ -5361,6 +5373,18 @@ export const toolContent: Record<string, ToolContent> = {
       {
         question: "Is this calculator safe from code injection since it evaluates expressions?",
         answer: "Yes \u2014 it uses a custom-built expression parser (not JavaScript's eval), which only recognizes numbers, defined math functions, and arithmetic operators, so it cannot execute arbitrary code.",
+      },
+      {
+        question: "Is there a free online calculator?",
+        answer: "Yes, this one is free with no sign-up or download, and it works on phones and computers. For specific jobs, CodeSimplify also has a percentage calculator, age calculator, EMI and loan calculators, SIP and FD calculators, and a unit converter.",
+      },
+      {
+        question: "Is there a keyboard shortcut to open the calculator?",
+        answer: "On Windows, press Windows + R, type calc and press Enter. On a Mac, press Command + Space, type Calculator and press Return. On this page you can type straight into the display with your keyboard and press Enter to get the answer.",
+      },
+      {
+        question: "How do I put a calculator on my home screen?",
+        answer: "Open this page in your phone's browser. In Chrome on Android, tap the \u22ee menu and choose Add to Home screen. In Safari on iPhone, tap the Share button and choose Add to Home Screen. The calculator then opens from an icon like an app.",
       },
     ],
   },
@@ -7382,7 +7406,7 @@ export const toolContent: Record<string, ToolContent> = {
     features: [
       "Covers major Indian states with representative stamp duty rates.",
       "Separate stamp duty and registration fee calculation.",
-      "Editable rates for custom scenarios.",
+      "Adjustable registration fee percentage for your state's actual charge.",
       "Instant total transaction cost estimate.",
       "Free and completely private.",
     ],
@@ -7493,7 +7517,7 @@ export const toolContent: Record<string, ToolContent> = {
     features: [
       "Calculates daily and monthly mining profitability after real costs.",
       "Accounts for electricity cost and pool fees separately.",
-      "Shows the break-even electricity price for your setup.",
+      "Shows electricity cost separately, so you can see how much a cheaper rate would add to profit.",
       "Works for any cryptocurrency and mining hardware.",
       "Free and completely private.",
     ],

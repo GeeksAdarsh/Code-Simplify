@@ -28,8 +28,9 @@ export function RustFormatterTool() {
       />
       <p className="mt-2 text-xs text-muted">
         Puts every statement and block on its own line and re-indents by nesting depth (4-space indent), skipping
-        strings, char literals and comments. Lifetimes (&apos;a) are not mistaken for char literals. It does not
-        change spacing inside a line, so run rustfmt locally for the exact official style.
+        strings, char literals and comments, and adds spaces around commas, colons, braces and operators like = and
+        =&gt;. Lifetimes (&apos;a) are not mistaken for char literals. It is not rustfmt, so run rustfmt locally for
+        the exact official style.
       </p>
     </div>
   );

@@ -15,7 +15,8 @@ function escapeText(input: string): string {
 
 function unescapeText(input: string): { output: string; error?: string } {
   const trimmed = input.trim();
-  const candidate = trimmed.startsWith('"') && trimmed.endsWith('"') ? trimmed : JSON.stringify(trimmed);
+  const quoted = trimmed.length >= 2 && trimmed.startsWith('"') && trimmed.endsWith('"');
+  const candidate = quoted ? trimmed : `"${trimmed}"`;
   try {
     return { output: JSON.parse(candidate) };
   } catch {

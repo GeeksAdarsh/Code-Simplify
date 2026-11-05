@@ -1,6 +1,54 @@
 import type { ToolExtraContent } from "./types";
 
 export const group4: Record<string, ToolExtraContent> = {
+  "json/formatter": {
+    about: [
+      "A JSON formatter, also called a JSON beautifier or pretty printer, takes JSON that is minified or messy and rewrites it with one key per line and consistent indentation. The data does not change; only the whitespace does, so the result is safe to paste back into your code or config.",
+      "Paste a response from your browser's Network tab, a log line, or a config file and the formatted version appears instantly. Choose 2 spaces, 4 spaces or tabs, sort keys alphabetically so two files diff cleanly, or switch the output to a collapsible tree to explore deeply nested data. The minified tab gives you the smallest single-line version for sending in an API request.",
+      "If the JSON is invalid, the formatter shows the line and column of the first problem. The usual causes are a trailing comma after the last item, single quotes instead of double quotes, keys without quotes, and comments, none of which strict JSON allows. Everything runs in your browser, so tokens, customer data and internal configs are never uploaded.",
+    ],
+    faq: [
+      {
+        question: "How do I format JSON in VS Code or on the command line?",
+        answer: "In VS Code, open the .json file and press Shift + Alt + F on Windows (Shift + Option + F on Mac). On the command line, pipe it through jq: cat data.json | jq . or use Python: python -m json.tool data.json. This page gives the same result without installing anything.",
+      },
+      {
+        question: "Why is my JSON invalid when it looks correct?",
+        answer: "The most common hidden problems are a comma after the last item in an object or array, smart quotes (\u201c \u201d) copied from a document or chat app instead of straight double quotes, and a JavaScript object pasted instead of JSON, with unquoted keys or single quotes. The error message points to the line and column where parsing stopped.",
+      },
+      {
+        question: "Does formatting change my data?",
+        answer: "No. Only spaces and line breaks change. Values, types and key order stay the same unless you turn on Sort keys, which reorders object keys alphabetically but keeps every value intact.",
+      },
+    ],
+  },
+
+  "security/password-generator": {
+    about: [
+      "This password generator creates random passwords using your browser's cryptographically secure random number generator, the same kind of randomness used for encryption keys. Each character is picked independently, so there are no patterns, dictionary words or predictable substitutions for an attacker to guess.",
+      "Set the length anywhere from 6 to 64 characters and choose which character sets to include: uppercase, lowercase, numbers and symbols. Turn on Exclude ambiguous characters if you will read or type the password by hand, so characters like l, L, o and O are never confused with 1 and 0. The strength meter shows the estimated entropy in bits as you change options.",
+      "Length matters more than anything else. A 16-character password using all four character sets has about 105 bits of entropy, far beyond what any brute-force attack can try. Use a different password for every account, and store them in a password manager so you only need to remember one strong master password. Passwords are created on your device and are never sent or saved.",
+    ],
+    faq: [
+      {
+        question: "What makes a password strong?",
+        answer: "Length and randomness. A strong password is at least 12 to 16 characters long, randomly generated rather than made from words or personal details, and used for only one account. Mixing uppercase, lowercase, numbers and symbols increases the number of possible combinations for each character.",
+      },
+      {
+        question: "Is it safe to use an online password generator?",
+        answer: "It is safe when the password is generated in your browser and never sent to a server, which is how this one works: it uses crypto.getRandomValues on your device, and nothing is uploaded or logged. Avoid generators that create passwords on a server or ask for your email.",
+      },
+      {
+        question: "How long would it take to crack a generated password?",
+        answer: "An 8-character password with all character sets can be cracked in hours to days by a fast offline attack. Each extra character multiplies the work by about 94, so a 16-character random password would take far longer than the age of the universe with today's hardware.",
+      },
+      {
+        question: "Should I use a passphrase instead?",
+        answer: "A passphrase of 5 or more random words, such as four unrelated words plus a number, is easier to remember and type and can be just as strong. It is a good choice for a master password. For everything else, a random password stored in a password manager is simplest.",
+      },
+    ],
+  },
+
   "json/to-php": {
     about: [
       "JSON to PHP turns a JSON document into a PHP array literal you can paste straight into a .php file. The output starts with an opening <?php tag and assigns everything to a $data variable, using short [ ] syntax, four-space indentation, and a trailing comma after every element so later edits produce clean diffs.",
@@ -107,6 +155,14 @@ export const group4: Record<string, ToolExtraContent> = {
       {
         question: "Can it open JSON with comments, like tsconfig.json?",
         answer: "No. The viewer uses strict JSON parsing, so // or /* */ comments and trailing commas, which tsconfig.json and VS Code settings files allow, cause an error. Remove them first.",
+      },
+      {
+        question: "How do I open and view a JSON file?",
+        answer: "Open the .json file in any text editor, select all, copy, and paste it into the input box here. The formatted, color-highlighted view appears right away. This works the same on Windows, Mac, Linux and phones, with no app to install.",
+      },
+      {
+        question: "Can I view JSON in Chrome without an extension?",
+        answer: "Chrome shows raw JSON responses as plain text, and recent versions add a basic Pretty-print checkbox. For color highlighting and a size readout, copy the response from the page or the Network tab and paste it here.",
       },
     ],
   },

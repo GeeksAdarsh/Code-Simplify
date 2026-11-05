@@ -4,7 +4,7 @@ import { siteConfig, getAllTools } from "@/config/tools";
 const KOFI_URL = "https://ko-fi.com/codesimplify";
 
 export const metadata: Metadata = {
-  title: "Support Us",
+  title: "Support CodeSimplify — Help Keep the Tools Free",
   description: `Support ${siteConfig.name} — help keep every developer tool free, ad-light, and running.`,
   alternates: { canonical: "/support" },
 };

@@ -108,6 +108,34 @@ export const group3: Record<string, ToolExtraContent> = {
         question: "How do I generate a UUID v4 in JavaScript?",
         answer: "In modern browsers and Node.js 19+, call crypto.randomUUID(). It returns a lowercase, hyphenated v4 UUID — the same format this page shows by default.",
       },
+      {
+        question: "What does UUID stand for, and what is it used for?",
+        answer: "UUID stands for Universally Unique Identifier. It is a 128-bit ID that any program can create on its own and still be practically certain nobody else has the same one. Developers use UUIDs as database primary keys, order and request IDs, file names for uploads, and idempotency keys for APIs, anywhere an ID must be unique without asking a central server.",
+      },
+      {
+        question: "What is an example of a UUID, and which characters are allowed?",
+        answer: "A UUID v4 looks like 3f2b8c1e-9d4a-4e7b-a5c6-1b2d3e4f5a6b. It is 36 characters: 32 hexadecimal digits (0–9 and a–f) split into groups of 8-4-4-4-12 by hyphens. Letters are case-insensitive, so uppercase is equally valid, and some systems store it without hyphens as 32 characters.",
+      },
+      {
+        question: "How do I generate a UUID in Python, Java, C# or SQL?",
+        answer: "Python: import uuid; uuid.uuid4(). Java: UUID.randomUUID(). C#: Guid.NewGuid(). PostgreSQL 13+: SELECT gen_random_uuid(). MySQL's UUID() returns a v1 UUID, not v4. All of these produce the same standard format this page generates.",
+      },
+      {
+        question: "Can you decode a UUID?",
+        answer: "Only partly. Every UUID tells you its version (the first digit of the third group) and variant. A UUID v4 contains nothing else: the rest is random, so there is no hidden data to decode. Time-based UUID v1 and UUID v7 do embed the moment they were created, which can be read back.",
+      },
+      {
+        question: "Is a UUID secret, and is it safe to expose?",
+        answer: "A UUID is an identifier, not a password. A v4 UUID reveals nothing about your system, so showing it in a URL or API response is generally fine. But don't rely on it to protect anything: if knowing an ID gives access to data, check permissions on the server. For secret values such as API keys or reset tokens, use a random token generator instead. If a UUID is linked to a person, privacy laws like GDPR can treat it as personal data.",
+      },
+      {
+        question: "Can UUIDs run out or collide?",
+        answer: "Not in practice. A v4 UUID has 122 random bits, about 5.3 × 10^36 possible values. You would need to generate around 2.7 × 10^18 of them, a billion per second for 85 years, before there is even a 50% chance of a single duplicate.",
+      },
+      {
+        question: "Why use a UUID instead of an auto-increment ID? Is it overkill?",
+        answer: "Auto-increment IDs (1, 2, 3…) are smaller and faster to index, and they are fine for a single database. UUIDs are worth it when IDs are created on many servers or offline devices, when records are merged between databases, or when you don't want users to guess other IDs or count your orders. If index speed matters, use time-ordered UUID v7; if you need short IDs for URLs, Nano ID is a common alternative.",
+      },
     ],
   },
 

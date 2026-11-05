@@ -4,7 +4,7 @@ import { siteConfig, toolHref, getLiveCategories } from "@/config/tools";
 import { JsonLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
-  title: "All Tools",
+  title: "All Free Online Developer Tools & Calculators",
   description: `Browse every free online developer tool on ${siteConfig.name}, organized by category: JSON, XML, YAML, SQL, security, text, and more.`,
   alternates: { canonical: "/categories" },
 };
