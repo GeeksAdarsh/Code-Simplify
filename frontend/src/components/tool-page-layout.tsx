@@ -10,6 +10,7 @@ import type { Category, Tool } from "@/config/tools";
 import { siteConfig, toolHref } from "@/config/tools";
 import { getGuidesForTool } from "@/config/guide-utils";
 import { getSameCategoryTools } from "@/lib/related-tools";
+import { applicationCategoryFor, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/schema";
 
 interface ToolPageLayoutProps {
   category: Category;
@@ -42,13 +43,21 @@ export function ToolPageLayout({
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
+          "@type": "WebApplication",
+          "@id": `${toolUrl}#app`,
           name: tool.title,
           description: tool.description,
           url: toolUrl,
-          applicationCategory: "DeveloperApplication",
-          operatingSystem: "Any (runs in browser)",
+          applicationCategory: applicationCategoryFor(category.slug),
+          operatingSystem: "Any",
+          browserRequirements: "Requires JavaScript. Works in any modern browser.",
+          isAccessibleForFree: true,
+          inLanguage: "en",
+          ...(features && features.length > 0 ? { featureList: features } : {}),
+          ...(tool.keywords && tool.keywords.length > 0 ? { keywords: tool.keywords.join(", ") } : {}),
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          publisher: { "@id": ORGANIZATION_ID },
+          isPartOf: { "@id": WEBSITE_ID },
         }}
       />
       <JsonLd

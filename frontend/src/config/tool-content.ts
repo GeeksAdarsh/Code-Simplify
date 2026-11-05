@@ -1632,6 +1632,16 @@ export const toolContent: Record<string, ToolContent> = {
         answer:
           "Yes, enable \"Encode as full URL\" to encode special characters in the text while leaving the URL's structural characters intact.",
       },
+      {
+        question: "How do I encode a URL?",
+        answer:
+          "Paste the URL or text into the input box and the encoded version appears on the right. Each unsafe character is replaced by % followed by its hex code, for example a space becomes %20 and & becomes %26. Copy the result and use it in your link or query string.",
+      },
+      {
+        question: "Is URL encoding the same as encrypting a URL?",
+        answer:
+          "No. URL encoding only makes characters safe to put in a link, and anyone can decode it instantly. It does not hide or protect anything. To keep data in a URL secret, encrypt it on the server (for example with AES) or avoid putting sensitive data in URLs at all.",
+      },
     ],
   },
   "security/url-decode": {
@@ -5786,6 +5796,18 @@ export const toolContent: Record<string, ToolContent> = {
         question: "Is this legal to use?",
         answer: "Yes, generating and using fake numbers purely for software testing purposes is standard practice (the same technique payment processors like Stripe use for their own published test card numbers). Do not attempt to use them for any real transaction.",
       },
+      {
+        question: "How do I generate a test credit card number with a security code (CVV)?",
+        answer: "Pick a card network and how many cards you need. Each generated card comes with a Luhn-valid number, a future expiry date and a CVC/CVV security code: 3 digits for Visa, Mastercard and Discover, 4 digits for Amex. Copy them into your test checkout form.",
+      },
+      {
+        question: "What makes a card number \"valid\"?",
+        answer: "A card number is format-valid when it has the right prefix for its network (4 for Visa, 51\u201355 or 2221\u20132720 for Mastercard, 34 or 37 for Amex, 6011 or 65 for Discover), the right length, and a last digit that passes the Luhn checksum. Passing these checks only means the number looks correct; whether a real account exists is decided by the issuing bank.",
+      },
+      {
+        question: "What is a random card number used for?",
+        answer: "Random, Luhn-valid card numbers are used as test data: to check that a payment form detects the card type, rejects typos, and formats the number correctly, without putting real card details into a development or staging system.",
+      },
     ],
   },
 
@@ -6575,6 +6597,7 @@ export const toolContent: Record<string, ToolContent> = {
       { question: "Is FD interest taxable?", answer: "Yes, in India, interest earned on FDs is fully taxable as per your income tax slab, and banks deduct TDS if annual interest exceeds the prescribed threshold." },
       { question: "What's the difference between cumulative and non-cumulative FDs?", answer: "A cumulative FD reinvests interest and pays it all at maturity (what this calculator models). A non-cumulative FD pays out interest periodically (monthly/quarterly) instead of compounding it." },
       { question: "Can I withdraw an FD before maturity?", answer: "Most banks allow premature withdrawal with a penalty (usually 0.5\u20131% reduction in interest rate). Check your bank's specific terms." },
+      { question: "How do I calculate cumulative interest on an FD?", answer: "Use the compound interest formula with your bank's compounding frequency: Maturity = P \u00D7 (1 + r/n)^(n \u00D7 t), where P is the deposit, r the annual rate as a decimal, n the compoundings per year (4 for quarterly) and t the years. Cumulative interest is Maturity \u2212 P. For example, \u20B91,00,000 at 7% compounded quarterly for 5 years matures at about \u20B91,41,478, so the interest is about \u20B941,478." },
     ],
   },
 
@@ -7103,6 +7126,7 @@ export const toolContent: Record<string, ToolContent> = {
       { question: "Is commission income taxable?", answer: "Yes, commission income is generally taxable as regular income in most jurisdictions. Consult a tax professional for how it's treated in your specific situation (employee vs. self-employed)." },
       { question: "What's a typical real estate commission rate?", answer: "Real estate commission rates vary by market and region, commonly ranging from 1\u20136% of the property sale value, often split between buyer's and seller's agents." },
       { question: "Can I use this for calculating my net proceeds after a broker fee?", answer: "Yes, enter your gross sale amount and the broker's commission percentage to see your net amount after the commission is deducted." },
+      { question: "How do I find the commission rate?", answer: "Divide the commission earned by the sale amount and multiply by 100. For example, a \u20B92,500 commission on a \u20B950,000 sale is 2,500 \u00F7 50,000 \u00D7 100 = 5%. To go the other way, commission = sale amount \u00D7 rate \u00F7 100." },
     ],
   },
 
@@ -7367,6 +7391,7 @@ export const toolContent: Record<string, ToolContent> = {
       { question: "Do women get a stamp duty discount?", answer: "Yes, several Indian states (like Delhi) offer a reduced stamp duty rate for properties registered in a woman's name, as an incentive for female property ownership." },
       { question: "Are these rates always accurate?", answer: "The rates shown are representative reference values that can change with state government notifications. Always verify the current rate on your state's registration/revenue department website before a transaction." },
       { question: "What is the registration fee separate from stamp duty?", answer: "Registration fee is an additional charge (typically 1% of property value) paid to register the property transaction with the government, separate from the stamp duty tax itself." },
+      { question: "How do I find the stamp duty value of a property?", answer: "Stamp duty is charged on the higher of the agreement value and the government's ready reckoner (circle rate) value for that area. Look up the circle rate on your state's registration or IGR website, multiply it by the property's area, compare it with your agreement price, then apply your state's stamp duty percentage to the higher figure. Enter that value here to see the duty and registration fee." },
     ],
   },
 

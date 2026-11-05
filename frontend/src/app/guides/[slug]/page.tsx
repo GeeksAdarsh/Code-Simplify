@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/json-ld";
 import { guides } from "@/config/guides";
 import { getGuide } from "@/config/guide-utils";
 import { getTool, siteConfig, toolHref } from "@/config/tools";
+import { ORGANIZATION_ID, SITE_LOGO, WEBSITE_ID } from "@/lib/schema";
 
 export function generateStaticParams() {
   return guides.map((guide) => ({ slug: guide.slug }));
@@ -57,12 +58,19 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         data={{
           "@context": "https://schema.org",
           "@type": "Article",
+          "@id": `${url}#article`,
           headline: guide.title,
           description: guide.description,
+          datePublished: guide.updated,
           dateModified: guide.updated,
           url,
-          author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
-          publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+          mainEntityOfPage: url,
+          inLanguage: "en",
+          image: SITE_LOGO,
+          author: { "@type": "Organization", "@id": ORGANIZATION_ID, name: siteConfig.name, url: siteConfig.url },
+          publisher: { "@type": "Organization", "@id": ORGANIZATION_ID, name: siteConfig.name, logo: SITE_LOGO },
+          isPartOf: { "@id": WEBSITE_ID },
+          ...(mainTool ? { mentions: tools.map((t) => ({ "@type": "WebApplication", name: t.title, url: `${siteConfig.url}${t.href}` })) } : {}),
         }}
       />
       <JsonLd

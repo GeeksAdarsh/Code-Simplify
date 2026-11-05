@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/tools";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
+import { ORGANIZATION_ID, SAME_AS, SITE_LOGO, WEBSITE_ID } from "@/lib/schema";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const GA_MEASUREMENT_ID = "G-S1S7JLX46K";
@@ -84,18 +85,23 @@ export default function RootLayout({
           data={{
             "@context": "https://schema.org",
             "@type": "WebSite",
+            "@id": WEBSITE_ID,
             name: siteConfig.name,
             url: siteConfig.url,
             description: siteConfig.description,
+            inLanguage: "en",
+            publisher: { "@id": ORGANIZATION_ID },
           }}
         />
         <JsonLd
           data={{
             "@context": "https://schema.org",
             "@type": "Organization",
+            "@id": ORGANIZATION_ID,
             name: siteConfig.name,
             url: siteConfig.url,
-            logo: `${siteConfig.url}/logo.png`,
+            logo: SITE_LOGO,
+            sameAs: SAME_AS,
           }}
         />
         <Script

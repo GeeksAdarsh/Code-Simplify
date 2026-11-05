@@ -1,3 +1,5 @@
+import { JsonLd } from "@/components/json-ld";
+
 export interface FaqItem {
   question: string;
   answer: string;
@@ -47,10 +49,7 @@ export function FaqSection({
           </details>
         ))}
       </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
     </section>
   );
 }
