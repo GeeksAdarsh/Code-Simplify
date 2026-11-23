@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getLiveCategories, siteConfig, toolHref } from "@/config/tools";
+import { duplicateToolOf, getLiveCategories, siteConfig, toolHref } from "@/config/tools";
 import { guides } from "@/config/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const toolRoutes: MetadataRoute.Sitemap = categories.flatMap((category) =>
-    category.tools.map((tool) => ({
+    category.tools.filter((tool) => !duplicateToolOf[`${category.slug}/${tool.slug}`]).map((tool) => ({
       url: `${siteConfig.url}${toolHref(category.slug, tool.slug)}`,
       changeFrequency: "weekly" as const,
       priority: 0.9,

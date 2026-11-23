@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getLiveCategories, getTool, siteConfig, toolHref } from "@/config/tools";
+import { canonicalToolHref, getLiveCategories, getTool, siteConfig } from "@/config/tools";
 import { ToolWidget } from "@/config/tool-widgets";
 import { getToolContent } from "@/config/tool-content";
 import { getToolExtraContent } from "@/config/tool-extra";
@@ -21,7 +21,7 @@ export async function generateMetadata({
   const found = getTool(categorySlug, toolSlug);
   if (!found?.category || found.tool.status !== "live") return {};
   const { tool, category } = found;
-  const canonical = toolHref(category.slug, tool.slug);
+  const canonical = canonicalToolHref(category.slug, tool.slug);
   const pageTitle = tool.seoTitle ?? tool.title;
   const socialTitle = `${pageTitle} — Free Online ${category.title} Tool`;
 

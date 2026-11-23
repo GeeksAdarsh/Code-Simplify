@@ -2867,6 +2867,28 @@ export function toolHref(categorySlug: string, toolSlug: string) {
   return `/${categorySlug}/${toolSlug}`;
 }
 
+/**
+ * Pages that render the same widget as another page. They stay reachable, but
+ * their canonical points at the main page and they are left out of the sitemap.
+ */
+export const duplicateToolOf: Record<string, string> = {
+  "json/beautifier": "json/formatter",
+  "yaml/from-json": "json/to-yaml",
+  "sql/beautifier": "sql/formatter",
+  "ids/random-password": "security/password-generator",
+  "css/beautifier": "css/formatter",
+  "javascript/beautifier": "javascript/formatter",
+  "php/beautifier": "php/formatter",
+};
+
+/** Canonical path for a tool page, e.g. "/json/formatter". */
+export function canonicalToolHref(categorySlug: string, toolSlug: string): string {
+  const main = duplicateToolOf[`${categorySlug}/${toolSlug}`];
+  if (!main) return toolHref(categorySlug, toolSlug);
+  const [mainCategory, mainTool] = main.split("/");
+  return toolHref(mainCategory, mainTool);
+}
+
 export const siteConfig = {
   name: "CodeSimplify",
   tagline: "Free online developer tools",

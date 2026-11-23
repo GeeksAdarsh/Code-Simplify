@@ -7,7 +7,7 @@ import { RecentToolTracker } from "@/components/recent-tool-tracker";
 import { ShareLinkButton, ToolShare, ToolShareRoot } from "@/components/tool-share";
 import { JsonLd } from "@/components/json-ld";
 import type { Category, Tool } from "@/config/tools";
-import { siteConfig, toolHref } from "@/config/tools";
+import { canonicalToolHref, siteConfig, toolHref } from "@/config/tools";
 import { getGuidesForTool } from "@/config/guide-utils";
 import { getSameCategoryTools } from "@/lib/related-tools";
 import { applicationCategoryFor, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/schema";
@@ -34,7 +34,7 @@ export function ToolPageLayout({
 }: ToolPageLayoutProps) {
   const relatedTools = getSameCategoryTools(category.slug, tool.slug);
   const toolGuides = getGuidesForTool(category.slug, tool.slug);
-  const toolUrl = `${siteConfig.url}${toolHref(category.slug, tool.slug)}`;
+  const toolUrl = `${siteConfig.url}${canonicalToolHref(category.slug, tool.slug)}`;
 
   return (
     <ToolShare>

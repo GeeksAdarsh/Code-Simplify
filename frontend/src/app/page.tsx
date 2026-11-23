@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { siteConfig, toolHref, getAllTools, getLiveCategories, getFeaturedTools } from "@/config/tools";
 import { ToolCard } from "@/components/tool-card";
+import { guides } from "@/config/guides";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -103,6 +104,27 @@ export default function Home() {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      <section className="container-page py-12">
+        <div className="mb-6 flex items-baseline justify-between">
+          <h2 className="text-xl font-semibold">Guides</h2>
+          <Link href="/guides" className="text-sm text-muted hover:text-foreground">
+            All guides &rarr;
+          </Link>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {guides.map((guide) => (
+            <Link
+              key={guide.slug}
+              href={`/guides/${guide.slug}`}
+              className="card p-5 transition-colors hover:border-foreground"
+            >
+              <h3 className="font-medium">{guide.title}</h3>
+              <p className="mt-2 line-clamp-2 text-sm text-muted">{guide.description}</p>
+            </Link>
+          ))}
         </div>
       </section>
     </div>
