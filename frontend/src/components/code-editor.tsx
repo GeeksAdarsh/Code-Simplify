@@ -81,7 +81,7 @@ export function CodeEditor({
           automaticLayout: true,
           wordWrap: "on",
           tabSize: 2,
-          renderLineHighlight: readOnly ? "none" : "line",
+          renderLineHighlight: readOnly || !value ? "none" : "line",
           padding: { top: 12, bottom: 12 },
           overviewRulerLanes: 0,
           scrollbar: {
